@@ -2,9 +2,9 @@
 # its own tiny fly.io app. See doc/deployment.md for the provisioning runbook.
 #
 # It is reachable exclusively over the organization's private network at
-# rubytoolbox-production-redis.internal:6379 - no public IPs are allocated since no
+# laraveltoolbox-redis.internal:6379 - no public IPs are allocated since no
 # services are exposed - and requires authentication via the REDIS_PASSWORD
-# secret (fly secrets set --app rubytoolbox-production-redis REDIS_PASSWORD=...).
+# secret (fly secrets set --app laraveltoolbox-redis REDIS_PASSWORD=...).
 #
 # Queue data is mostly transient, but persisted via append-only file on the
 # attached volume so a machine restart loses (almost) nothing.
@@ -14,7 +14,7 @@
 #
 # Deploy with: fly deploy --config .deploy/redis.toml
 
-app = "rubytoolbox-production-redis"
+app = "laraveltoolbox-redis"
 primary_region = "fra"
 
 [build]

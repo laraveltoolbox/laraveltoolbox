@@ -5,7 +5,7 @@
 # for the expected list. CANONICAL_HOST intentionally stays unset until
 # the DNS cutover so the app remains debuggable under rubytoolbox.fly.dev.
 
-app = "rubytoolbox-production"
+app = "laraveltoolbox"
 primary_region = "fra"
 
 # Machines have no swap by default and OOM-kill on overrun - a little swap
