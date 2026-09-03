@@ -1,0 +1,20 @@
+NOTICE
+======
+
+This repository is a fork of The Ruby Toolbox.
+
+  Upstream:   https://github.com/rubytoolbox/rubytoolbox
+  Forked at:  1a1fc34e2afd73d0e806ab94d3a25a013dfa6eaa (2026-09-02)
+  License:    MIT (see MIT-LICENSE)
+
+The original work is Copyright (c) 2017 Christoph Olszowka and The Ruby
+Toolbox contributors, distributed under the MIT License. That license and
+its copyright notice are retained unchanged in MIT-LICENSE, as the license
+requires.
+
+This fork is operated independently at https://www.laravel-toolbox.com and
+is not affiliated with, endorsed by, or supported by The Ruby Toolbox
+project, its maintainers, or its sponsors. Please do not direct support
+requests about this fork to the upstream project.
+
+Modifications made in this fork are likewise available under the MIT License.

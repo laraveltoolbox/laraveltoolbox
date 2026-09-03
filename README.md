@@ -1,3 +1,8 @@
+> **This is a fork.** It is a copy of [rubytoolbox/rubytoolbox](https://github.com/rubytoolbox/rubytoolbox)
+> (MIT), operated independently at [laravel-toolbox.com](https://www.laravel-toolbox.com) and **not**
+> affiliated with or endorsed by The Ruby Toolbox. See [NOTICE](./NOTICE) for details.
+> Please report issues with the upstream project upstream, not here.
+
 <div align="center">
   <img src="./app/assets/images/logo/regular.svg" width="400px" alt="The Ruby Toolbox"/>
 
