@@ -103,82 +103,82 @@ RSpec.describe Project::Health::Checks do
     end
   end
 
-  describe "RUBYGEM_ABANDONED" do
-    let(:check) { described_class::RUBYGEM_ABANDONED }
+  describe "PACKAGE_ABANDONED" do
+    let(:check) { described_class::PACKAGE_ABANDONED }
 
     it "applies when gem had no release in more than 3 years" do
-      project = instance_double Project, rubygem_latest_release_on: 3.years.ago - 1.minute
+      project = instance_double Project, package_latest_release_on: 3.years.ago - 1.minute
       expect(check.applies?(project)).to be true
     end
 
     it "does not apply when gem had release within last than 3 years" do
-      project = instance_double Project, rubygem_latest_release_on: 3.years.ago + 1.minute
+      project = instance_double Project, package_latest_release_on: 3.years.ago + 1.minute
       expect(check.applies?(project)).to be false
     end
 
     it "does not apply when gem had no release" do
-      project = instance_double Project, rubygem_latest_release_on: nil
+      project = instance_double Project, package_latest_release_on: nil
       expect(check.applies?(project)).to be false
     end
   end
 
-  describe "RUBYGEM_STALE" do
-    let(:check) { described_class::RUBYGEM_STALE }
+  describe "PACKAGE_STALE" do
+    let(:check) { described_class::PACKAGE_STALE }
 
     before do
-      allow(described_class::RUBYGEM_ABANDONED).to receive(:applies?)
+      allow(described_class::PACKAGE_ABANDONED).to receive(:applies?)
     end
 
     it "applies when gem had no release in more than last year" do
-      project = instance_double Project, rubygem_latest_release_on: 1.year.ago - 1.minute
+      project = instance_double Project, package_latest_release_on: 1.year.ago - 1.minute
       expect(check.applies?(project)).to be true
     end
 
-    it "does not apply when RUBYGEM_ABANDONED check applies" do
-      allow(described_class::RUBYGEM_ABANDONED).to receive(:applies?).and_return(true)
-      project = instance_double Project, rubygem_latest_release_on: 1.year.ago - 1.minute
+    it "does not apply when PACKAGE_ABANDONED check applies" do
+      allow(described_class::PACKAGE_ABANDONED).to receive(:applies?).and_return(true)
+      project = instance_double Project, package_latest_release_on: 1.year.ago - 1.minute
       expect(check.applies?(project)).to be false
     end
 
     it "does not apply when gem had release within last year" do
-      project = instance_double Project, rubygem_latest_release_on: 1.year.ago + 1.minute
+      project = instance_double Project, package_latest_release_on: 1.year.ago + 1.minute
       expect(check.applies?(project)).to be false
     end
 
     it "does not apply when gem had no release" do
-      project = instance_double Project, rubygem_latest_release_on: nil
+      project = instance_double Project, package_latest_release_on: nil
       expect(check.applies?(project)).to be false
     end
   end
 
-  describe "RUBYGEM_LONG_RUNNING" do
-    let(:check) { described_class::RUBYGEM_LONG_RUNNING }
+  describe "PACKAGE_LONG_RUNNING" do
+    let(:check) { described_class::PACKAGE_LONG_RUNNING }
 
     it "applies when gem is older than 5 years and had a release within last year" do
       project = instance_double Project,
-                                rubygem_first_release_on:  5.years.ago - 1.minute,
-                                rubygem_latest_release_on: 1.year.ago + 1.minute
+                                package_first_release_on:  5.years.ago - 1.minute,
+                                package_latest_release_on: 1.year.ago + 1.minute
       expect(check.applies?(project)).to be true
     end
 
     it "does not apply when gem is newer than 5 years" do
       project = instance_double Project,
-                                rubygem_first_release_on:  5.years.ago + 1.minute,
-                                rubygem_latest_release_on: 1.year.ago + 1.minute
+                                package_first_release_on:  5.years.ago + 1.minute,
+                                package_latest_release_on: 1.year.ago + 1.minute
       expect(check.applies?(project)).to be false
     end
 
     it "does not apply when gem has no release within last year" do
       project = instance_double Project,
-                                rubygem_first_release_on:  5.years.ago - 1.minute,
-                                rubygem_latest_release_on: 1.year.ago - 1.minute
+                                package_first_release_on:  5.years.ago - 1.minute,
+                                package_latest_release_on: 1.year.ago - 1.minute
       expect(check.applies?(project)).to be false
     end
 
     it "does not apply when project has no releases" do
       project = instance_double Project,
-                                rubygem_first_release_on:  nil,
-                                rubygem_latest_release_on: nil
+                                package_first_release_on:  nil,
+                                package_latest_release_on: nil
       expect(check.applies?(project)).to be false
     end
   end

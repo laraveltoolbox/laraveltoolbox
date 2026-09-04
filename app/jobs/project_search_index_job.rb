@@ -9,7 +9,7 @@ class ProjectSearchIndexJob < ApplicationJob
   def self.index_payload(*projects)
     projects.map do |project|
       {
-        # Some gem names fail to work as IDs on meilisearch,
+        # Some package names fail to work as IDs on meilisearch,
         # so we construct a reliable one
         id:          Digest::SHA256.hexdigest(project.permalink),
         permalink:   project.permalink,

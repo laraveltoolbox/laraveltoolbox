@@ -35,31 +35,31 @@ class Database::SelectiveExport
         Categorization.where project: projects
       end
 
-      def rubygems
-        Rubygem.where project: projects
+      def packages
+        Package.where project: projects
       end
 
-      def rubygem_download_stats
+      def package_download_stats
         # RADAR: Use select instead of pluck?
-        Rubygem::DownloadStat.where(rubygem_name: rubygems.pluck(:name))
+        Package::DownloadStat.where(package_name: packages.pluck(:name))
                              .where(date: 3.months.ago.to_date..)
                              .order(date: :asc)
       end
 
-      def rubygem_code_statistics
-        Rubygem::CodeStatistic.where rubygem: rubygems
+      def package_code_statistics
+        Package::CodeStatistic.where package: packages
       end
 
-      def rubygem_dependencies
-        RubygemDependency.where rubygem: rubygems, dependency: rubygems
+      def package_dependencies
+        PackageDependency.where package: packages, dependency: packages
       end
 
-      def rubygem_advisories
-        Rubygem::Advisory.where rubygem: rubygems
+      def package_advisories
+        Package::Advisory.where package: packages
       end
 
-      def rubygem_trends
-        Rubygem::Trend.where(rubygem: rubygems).where(date: 1.month.ago.to_date..)
+      def package_trends
+        Package::Trend.where(package: packages).where(date: 1.month.ago.to_date..)
       end
 
       def github_repos
@@ -80,12 +80,12 @@ class Database::SelectiveExport
   EXPORT_ORDER = %i[
     category_groups
     categories
-    rubygems
-    rubygem_download_stats
-    rubygem_code_statistics
-    rubygem_dependencies
-    rubygem_trends
-    rubygem_advisories
+    packages
+    package_download_stats
+    package_code_statistics
+    package_dependencies
+    package_trends
+    package_advisories
     github_repos
     github_readmes
     github_ignores
@@ -118,19 +118,17 @@ class Database::SelectiveExport
     <<~BANNER
       /*
        *
-       * ===== The Ruby Toolbox - Selective database export =====
+       * ===== The Laravel Toolbox - Selective database export =====
        *
-       * * https://www.ruby-toolbox.com
-       * * https://github.com/rubytoolbox/rubytoolbox/
+       * * https://www.laravel-toolbox.com
+       * * https://github.com/laraveltoolbox/laraveltoolbox/
        *
-       * This is a partial database export of the production data of the ruby toolbox,
+       * This is a partial database export of the production data of the Laravel Toolbox,
        * intended for getting a development environment based on realistic data up & running
        * quickly without having to load the pretty massive full dataset, which can take several
        * hours to import.
        *
-       * More information can be found in https://github.com/rubytoolbox/rubytoolbox/issues/1205
-       *
-       + The latest export can be fetched from https://www.ruby-toolbox.com/database/exports/selective
+       + The latest export can be fetched from https://www.laravel-toolbox.com/database/exports/selective
        *
        * This export has been generated at #{Time.current.utc.iso8601}
        *

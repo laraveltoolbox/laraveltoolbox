@@ -58,10 +58,10 @@ RSpec.describe CategoriesController do
       end
 
       it "passes a project order instance to Category.find_for_show!" do
-        order = Project::Order.new(order: "rubygem_downloads")
-        allow(Project::Order).to receive(:new).with(order: "rubygem_downloads").and_return(order)
+        order = Project::Order.new(order: "package_downloads")
+        allow(Project::Order).to receive(:new).with(order: "package_downloads").and_return(order)
         expect(Category).to receive(:find_for_show!).with(category.id, order:).and_return(Category.first)
-        get :show, params: { id: category.id, order: "rubygem_downloads" }
+        get :show, params: { id: category.id, order: "package_downloads" }
       end
 
       describe "case-sensitivity" do

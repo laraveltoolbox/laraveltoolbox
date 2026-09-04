@@ -1,0 +1,10 @@
+.hero
+  section.section: .container
+    p.heading= link_to "Laravel Toolbox UI Components Styleguide", "/pages/components"
+    h2= current_page.split("/").last.humanize
+
+
+= component_example "Package Download Stats Chart" do
+  - Package.order(downloads: :desc).limit(6).pluck(:name).each do |package_name|
+    h3.title= package_name
+    = package_download_chart package_name

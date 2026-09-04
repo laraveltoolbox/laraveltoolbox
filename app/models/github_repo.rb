@@ -9,7 +9,7 @@ class GithubRepo < ApplicationRecord
            inverse_of:  :github_repo,
            dependent:   :nullify
 
-  has_many :rubygems,
+  has_many :packages,
            through: :projects
 
   has_one :readme,
@@ -63,6 +63,6 @@ class GithubRepo < ApplicationRecord
   end
 
   def sibling_gem_with_most_downloads
-    rubygems.order(downloads: :desc).first
+    packages.order(downloads: :desc).first
   end
 end

@@ -22,8 +22,8 @@ RSpec.describe RemoteUpdateSchedulerJob do
   end
 
   it "does not queue gem updates when no gems need an update" do
-    allow(Rubygem).to receive(:update_batch).and_return(pluckable_relation(:name, []))
-    expect(RubygemUpdateJob).not_to receive(:perform_async)
+    allow(Package).to receive(:update_batch).and_return(pluckable_relation(:name, []))
+    expect(PackageUpdateJob).not_to receive(:perform_async)
     do_perform
   end
 
@@ -38,9 +38,9 @@ RSpec.describe RemoteUpdateSchedulerJob do
   #
   # rubocop:disable RSpec/MultipleExpectations
   it "enqueues updates for all gems returned in the update_batch" do
-    allow(Rubygem).to receive(:update_batch).and_return(pluckable_relation(:name, %w[foo bar]))
-    expect(RubygemUpdateJob).to receive(:perform_async).with("foo")
-    expect(RubygemUpdateJob).to receive(:perform_async).with("bar")
+    allow(Package).to receive(:update_batch).and_return(pluckable_relation(:name, %w[foo bar]))
+    expect(PackageUpdateJob).to receive(:perform_async).with("foo")
+    expect(PackageUpdateJob).to receive(:perform_async).with("bar")
     do_perform
   end
 

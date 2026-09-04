@@ -25,32 +25,32 @@ module Project::Health::Checks
       project.github_repo_issue_closure_rate < 75
   end
 
-  RUBYGEM_ABANDONED = Project::Health::Status.new(:rubygem_abandoned, :red, :diamond) do |project|
-    project.rubygem_latest_release_on &&
-      project.rubygem_latest_release_on < 3.years.ago
+  PACKAGE_ABANDONED = Project::Health::Status.new(:package_abandoned, :red, :diamond) do |project|
+    project.package_latest_release_on &&
+      project.package_latest_release_on < 3.years.ago
   end
 
-  RUBYGEM_STALE = Project::Health::Status.new(:rubygem_stale, :yellow, :diamond) do |project|
-    !RUBYGEM_ABANDONED.applies?(project) &&
-      project.rubygem_latest_release_on &&
-      project.rubygem_latest_release_on < 1.year.ago
+  PACKAGE_STALE = Project::Health::Status.new(:package_stale, :yellow, :diamond) do |project|
+    !PACKAGE_ABANDONED.applies?(project) &&
+      project.package_latest_release_on &&
+      project.package_latest_release_on < 1.year.ago
   end
 
-  RUBYGEM_LONG_RUNNING = Project::Health::Status.new(:rubygem_long_running, :green, :diamond) do |project|
-    project.rubygem_latest_release_on &&
-      project.rubygem_first_release_on &&
-      project.rubygem_first_release_on < 5.years.ago &&
-      project.rubygem_latest_release_on > 1.year.ago
+  PACKAGE_LONG_RUNNING = Project::Health::Status.new(:package_long_running, :green, :diamond) do |project|
+    project.package_latest_release_on &&
+      project.package_first_release_on &&
+      project.package_first_release_on < 5.years.ago &&
+      project.package_latest_release_on > 1.year.ago
   end
 
   ALL = [
     GITHUB_REPO_ARCHIVED,
     GITHUB_REPO_GONE,
     GITHUB_REPO_NO_COMMIT_ACTIVITY,
-    RUBYGEM_ABANDONED,
+    PACKAGE_ABANDONED,
     GITHUB_REPO_LOW_COMMIT_ACTIVITY,
     GITHUB_REPO_OPEN_ISSUES,
-    RUBYGEM_STALE,
-    RUBYGEM_LONG_RUNNING,
+    PACKAGE_STALE,
+    PACKAGE_LONG_RUNNING,
   ].freeze
 end

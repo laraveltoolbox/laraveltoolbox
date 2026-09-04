@@ -12,7 +12,7 @@ class ProjectBlueprint < ApplicationBlueprint
   association :categories, blueprint: CategoryBlueprint
   association :github_repo, blueprint: GithubRepoBlueprint
   association :health, blueprint: Project::HealthBlueprint
-  association :rubygem, blueprint: RubygemBlueprint
+  association :package, blueprint: PackageBlueprint
 
   field :urls do |project, options|
     {

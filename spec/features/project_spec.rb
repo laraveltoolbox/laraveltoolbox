@@ -27,7 +27,7 @@ RSpec.describe "Project Display" do
 
     visit project_path(project)
 
-    within '.metric[data-metric-name="rubygem_reverse_dependencies_count"]' do
+    within '.metric[data-metric-name="package_reverse_dependencies_count"]' do
       page.find("a.button").click
     end
 

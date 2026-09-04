@@ -4,21 +4,19 @@
       **Like it's HTML counterpart [project comparisons](/compare) the projects
       API allows to query the data for an arbitrary selection of projects.**
 
-      This allows you to programatically retrieve data for gems and their
-      GitHub source repositories in a single place, as well as additional
-      metrics specific to the Ruby Toolbox like popularity scores and
+      This allows you to programatically retrieve data for Composer packages
+      and their GitHub source repositories in a single place, as well as additional
+      metrics specific to the Laravel Toolbox like popularity scores and
       project health status.
 
       The API has currently no rate-limiting policy, however please use it
       reasonably. If you need larger scale access to data for analysis please
-      use our [production database exports](#{page_path("docs/features/production_database_exports")}) instead.
-
-      **A simple ruby API client is available on rubygems as [rubytoolbox-api](/projects/rubytoolbox-api).**
+      batch your requests instead.
 
   h5.is-size-5
     strong GET&nbsp;
     code
-      | /api/projects/compare/rubocop,rspec-expectations,oj
+      | /api/projects/compare/laravel/framework,phpunit/phpunit,guzzlehttp/guzzle
 
   markdown:
     This endpoint is limited to #{Api::Projects::ComparisonsController::LIMIT}
@@ -30,4 +28,4 @@
   style= Rouge::Themes::Github.render(scope: '.highlight')
 
   .highlight: pre
-    == highlight_json JSON.pretty_generate(comparisons_api_sample_response(:rubocop, "rspec-expectations", :oj))
+    == highlight_json JSON.pretty_generate(comparisons_api_sample_response("laravel/framework", "phpunit/phpunit", "guzzlehttp/guzzle"))

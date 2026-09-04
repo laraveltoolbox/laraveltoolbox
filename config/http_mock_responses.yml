@@ -1,110 +1,5 @@
-"https://rubygems.org/api/v1/gems/rspec.json":
-  status: 200
-  body: |
-    {
-      "name": "rspec",
-      "downloads": 145999055,
-      "version": "3.7.0",
-      "version_created_at": "2017-10-17T15:12:32.872Z",
-      "version_downloads": 20169199,
-      "platform": "ruby",
-      "authors": "Steven Baker, David Chelimsky, Myron Marston",
-      "info": "BDD for Ruby",
-      "licenses": [
-        "MIT"
-      ],
-      "metadata": {},
-      "sha": "0174cfbed780e42aa181227af623e2ae37511f20a2fdfec48b54f6cf4d7a6404",
-      "project_uri": "https://rubygems.org/gems/rspec",
-      "gem_uri": "https://rubygems.org/gems/rspec-3.7.0.gem",
-      "homepage_uri": "http://github.com/rspec",
-      "wiki_uri": "",
-      "documentation_uri": "http://relishapp.com/rspec",
-      "mailing_list_uri": "http://rubyforge.org/mailman/listinfo/rspec-users",
-      "source_code_uri": "http://github.com/rspec/rspec",
-      "bug_tracker_uri": "",
-      "changelog_uri": null,
-      "dependencies": {
-        "development": [],
-        "runtime": [
-          {
-            "name": "rspec-core",
-            "requirements": "~> 3.7.0"
-          },
-          {
-            "name": "rspec-expectations",
-            "requirements": "~> 3.7.0"
-          },
-          {
-            "name": "rspec-mocks",
-            "requirements": "~> 3.7.0"
-          }
-        ]
-      }
-    }
-
-"https://rubygems.org/api/v1/gems/rspec/reverse_dependencies.json":
-  status: 200
-  body: |
-    ["rspec-fixture", "rspec-file-transfer-matchers", "rkid", "rbehave", "quicktest", "picolena"]
-
-"https://rubygems.org/api/v1/versions/rspec.json":
-  status: 200
-  body: |
-    [{
-      "authors": "Steven Baker, David Chelimsky, Myron Marston",
-      "built_at": "2017-10-17T00:00:00.000Z",
-      "created_at": "2017-10-17T15:12:32.872Z",
-      "description": "BDD for Ruby",
-      "downloads_count": 23558708,
-      "metadata": {},
-      "number": "3.7.0",
-      "summary": "rspec-3.7.0",
-      "platform": "ruby",
-      "rubygems_version": "\u003e= 0",
-      "ruby_version": "\u003e= 0",
-      "prerelease": false,
-      "licenses": ["MIT"],
-      "requirements": [],
-      "sha": "0174cfbed780e42aa181227af623e2ae37511f20a2fdfec48b54f6cf4d7a6404"
-    }, {
-      "authors": "Steven Baker, David Chelimsky, Myron Marston",
-      "built_at": "2017-05-04T00:00:00.000Z",
-      "created_at": "2017-05-04T23:58:19.430Z",
-      "description": "BDD for Ruby",
-      "downloads_count": 41425604,
-      "metadata": {},
-      "number": "3.6.0",
-      "summary": "rspec-3.6.0",
-      "platform": "ruby",
-      "rubygems_version": "\u003e= 0",
-      "ruby_version": "\u003e= 0",
-      "prerelease": false,
-      "licenses": ["MIT"],
-      "requirements": [],
-      "sha": "ebc3d479cf2f144b3deef5d72dbb1cc6a15750899d26a8da164a2cc53c04a5d9"
-    }, {
-      "authors": "Steven Baker",
-      "built_at": "2005-08-11T04:00:00.000Z",
-      "created_at": "2009-07-25T17:56:49.000Z",
-      "description": "RSpec is a behaviour specification framework for Ruby.  RSpec was created in response to Dave Astels' article _A New Look at Test Driven Development_ which can be read at: http://daveastels.com/index.php?p=5  RSpec is intended to provide the features discussed in Dave's article.",
-      "downloads_count": 2298,
-      "metadata": {},
-      "number": "0.1.0",
-      "summary": "Behaviour Specification Framework for Ruby",
-      "platform": "ruby",
-      "rubygems_version": "\u003e= 0",
-      "ruby_version": null,
-      "prerelease": false,
-      "licenses": null,
-      "requirements": null,
-      "sha": "b59c1eb10f74c00b28cdb771618814a863bbfaa5a92314d92868c59850720300"
-    }]
-
-"https://rubygems.org/api/v1/gems/thisisdowninmock.json":
-  status: 500
-
-"https://api.github.com/repos/rails/rails":
+---
+https://api.github.com/repos/rails/rails:
   status: 200
   body: |
     {
@@ -224,99 +119,274 @@
       "network_count": 15500,
       "subscribers_count": 2520
     }
-
-
-"https://api.github.com/repos/ohnogithub/isdown":
+https://api.github.com/repos/ohnogithub/isdown:
   status: 500
-
-# Test gem with bogus built_at dates (mimics smarter_csv scenario)
-# - Version 2.0.0: built_at is 1980 (bogus), but created_at is 2026-02-04
-# - Version 1.0.0: built_at and created_at are both 2025-05-29
-# - Version 0.1.0: built_at and created_at are both 2012-07-29
-"https://rubygems.org/api/v1/gems/bogus_dates_gem.json":
+https://packagist.org/packages/spatie/laravel-permission.json:
   status: 200
-  body: |
+  body: |-
     {
-      "name": "bogus_dates_gem",
-      "downloads": 5000000,
-      "version": "2.0.0",
-      "version_created_at": "2026-02-04T17:26:55.907Z",
-      "version_downloads": 1000,
-      "platform": "ruby",
-      "authors": "Test Author",
-      "info": "A gem for testing date handling",
-      "licenses": ["MIT"],
-      "metadata": {},
-      "project_uri": "https://rubygems.org/gems/bogus_dates_gem",
-      "gem_uri": "https://rubygems.org/gems/bogus_dates_gem-2.0.0.gem",
-      "homepage_uri": "http://example.com",
-      "wiki_uri": "",
-      "documentation_uri": "",
-      "mailing_list_uri": "",
-      "source_code_uri": "",
-      "bug_tracker_uri": "",
-      "changelog_uri": null,
-      "dependencies": {
-        "development": [],
-        "runtime": []
+      "package": {
+        "name": "spatie/laravel-permission",
+        "description": "Permission handling for Laravel 8.0 and up",
+        "time": "2015-07-24T12:00:00+00:00",
+        "type": "library",
+        "repository": "https://github.com/spatie/laravel-permission",
+        "github_stars": 12962,
+        "language": "PHP",
+        "dependents": 1234,
+        "favers": 13133,
+        "downloads": {
+          "total": 114204067,
+          "monthly": 5716142,
+          "daily": 238209
+        }
       }
     }
-
-"https://rubygems.org/api/v1/gems/bogus_dates_gem/reverse_dependencies.json":
+https://repo.packagist.org/p2/spatie/laravel-permission.json:
   status: 200
-  body: |
-    []
-
-"https://rubygems.org/api/v1/versions/bogus_dates_gem.json":
+  body: |-
+    {
+      "minified": "composer/2.0",
+      "packages": {
+        "spatie/laravel-permission": [
+          {
+            "name": "spatie/laravel-permission",
+            "description": "Permission handling for Laravel 8.0 and up",
+            "version": "6.10.1",
+            "version_normalized": "6.10.1.0",
+            "license": [
+              "MIT"
+            ],
+            "authors": [
+              {
+                "name": "Freek Van der Herten"
+              },
+              {
+                "name": "Spatie"
+              }
+            ],
+            "source": {
+              "type": "git",
+              "url": "https://github.com/spatie/laravel-permission.git",
+              "reference": "9d24aca7e6b4b0f0a04eebd9e0b46a1eb1b23a8f"
+            },
+            "dist": {
+              "type": "zip",
+              "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/9d24aca"
+            },
+            "type": "library",
+            "time": "2026-02-01T10:00:00+00:00",
+            "homepage": "https://spatie.be/docs/laravel-permission",
+            "support": {
+              "issues": "https://github.com/spatie/laravel-permission/issues",
+              "docs": "https://spatie.be/docs/laravel-permission",
+              "source": "https://github.com/spatie/laravel-permission"
+            },
+            "require": {
+              "php": "^8.2",
+              "illuminate/auth": "^10.0|^11.0",
+              "illuminate/container": "^10.0|^11.0"
+            },
+            "require-dev": {
+              "orchestra/testbench": "^8.0",
+              "phpunit/phpunit": "^10.1"
+            }
+          },
+          {
+            "name": "spatie/laravel-permission",
+            "description": "Permission handling for Laravel 8.0 and up",
+            "version": "6.10.0",
+            "version_normalized": "6.10.0.0",
+            "license": [
+              "MIT"
+            ],
+            "authors": [
+              {
+                "name": "Freek Van der Herten"
+              },
+              {
+                "name": "Spatie"
+              }
+            ],
+            "source": {
+              "type": "git",
+              "url": "https://github.com/spatie/laravel-permission.git",
+              "reference": "9d24aca7e6b4b0f0a04eebd9e0b46a1eb1b23a8f"
+            },
+            "dist": {
+              "type": "zip",
+              "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/9d24aca"
+            },
+            "type": "library",
+            "time": "2025-11-15T10:00:00+00:00",
+            "homepage": "https://spatie.be/docs/laravel-permission",
+            "support": {
+              "issues": "https://github.com/spatie/laravel-permission/issues",
+              "docs": "https://spatie.be/docs/laravel-permission",
+              "source": "https://github.com/spatie/laravel-permission"
+            }
+          },
+          {
+            "name": "spatie/laravel-permission",
+            "description": "Permission handling for Laravel 8.0 and up",
+            "version": "6.0.0-beta1",
+            "version_normalized": "6.0.0.0-beta1",
+            "license": [
+              "MIT"
+            ],
+            "authors": [
+              {
+                "name": "Freek Van der Herten"
+              },
+              {
+                "name": "Spatie"
+              }
+            ],
+            "source": {
+              "type": "git",
+              "url": "https://github.com/spatie/laravel-permission.git",
+              "reference": "9d24aca7e6b4b0f0a04eebd9e0b46a1eb1b23a8f"
+            },
+            "dist": {
+              "type": "zip",
+              "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/9d24aca"
+            },
+            "type": "library",
+            "time": "2025-10-01T10:00:00+00:00",
+            "homepage": "https://spatie.be/docs/laravel-permission",
+            "support": {
+              "issues": "https://github.com/spatie/laravel-permission/issues",
+              "docs": "https://spatie.be/docs/laravel-permission",
+              "source": "https://github.com/spatie/laravel-permission"
+            }
+          },
+          {
+            "name": "spatie/laravel-permission",
+            "description": "Permission handling for Laravel 8.0 and up",
+            "version": "1.0.0",
+            "version_normalized": "1.0.0.0",
+            "license": [
+              "MIT"
+            ],
+            "authors": [
+              {
+                "name": "Freek Van der Herten"
+              },
+              {
+                "name": "Spatie"
+              }
+            ],
+            "source": {
+              "type": "git",
+              "url": "https://github.com/spatie/laravel-permission.git",
+              "reference": "9d24aca7e6b4b0f0a04eebd9e0b46a1eb1b23a8f"
+            },
+            "dist": {
+              "type": "zip",
+              "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/9d24aca"
+            },
+            "type": "library",
+            "time": "2015-07-24T12:00:00+00:00",
+            "homepage": "https://spatie.be/docs/laravel-permission",
+            "support": {
+              "issues": "https://github.com/spatie/laravel-permission/issues",
+              "docs": "https://spatie.be/docs/laravel-permission",
+              "source": "https://github.com/spatie/laravel-permission"
+            }
+          }
+        ]
+      }
+    }
+https://packagist.org/packages/downinmock/package.json:
+  status: 500
+  body: Internal Server Error
+https://packagist.org/packages/unknown/package.json:
+  status: 404
+  body: '{"status":"error"}'
+https://repo.packagist.org/p2/unknown/package.json:
+  status: 404
+  body: '{"status":"error"}'
+https://packagist.org/packages/spatie/laravel-permission/stats/all.json?average=daily&from=2026-01-04:
   status: 200
-  body: |
-    [{
-      "authors": "Test Author",
-      "built_at": "1980-01-02T00:00:00.000Z",
-      "created_at": "2026-02-04T17:26:55.907Z",
-      "description": "A gem for testing date handling",
-      "downloads_count": 1000,
-      "metadata": {},
-      "number": "2.0.0",
-      "summary": "bogus_dates_gem-2.0.0",
-      "platform": "ruby",
-      "rubygems_version": ">= 0",
-      "ruby_version": ">= 0",
-      "prerelease": false,
-      "licenses": ["MIT"],
-      "requirements": [],
-      "sha": "abc123"
-    }, {
-      "authors": "Test Author",
-      "built_at": "2025-05-29T00:00:00.000Z",
-      "created_at": "2025-05-29T14:14:13.428Z",
-      "description": "A gem for testing date handling",
-      "downloads_count": 500000,
-      "metadata": {},
-      "number": "1.0.0",
-      "summary": "bogus_dates_gem-1.0.0",
-      "platform": "ruby",
-      "rubygems_version": ">= 0",
-      "ruby_version": ">= 0",
-      "prerelease": false,
-      "licenses": ["MIT"],
-      "requirements": [],
-      "sha": "def456"
-    }, {
-      "authors": "Test Author",
-      "built_at": "2012-07-29T00:00:00.000Z",
-      "created_at": "2012-07-29T23:25:27.563Z",
-      "description": "A gem for testing date handling",
-      "downloads_count": 100,
-      "metadata": {},
-      "number": "0.1.0",
-      "summary": "bogus_dates_gem-0.1.0",
-      "platform": "ruby",
-      "rubygems_version": ">= 0",
-      "ruby_version": null,
-      "prerelease": false,
-      "licenses": null,
-      "requirements": null,
-      "sha": "ghi789"
-    }]
-
+  body: |-
+    {
+      "labels": [
+        "2026-01-04",
+        "2026-01-05",
+        "2026-01-06"
+      ],
+      "values": {
+        "spatie/laravel-permission": [
+          10,
+          20,
+          30
+        ]
+      },
+      "average": "daily"
+    }
+https://packagist.org/packages/unknown/package/stats/all.json?average=daily&from=2026-01-04:
+  status: 404
+  body: "{}"
+https://packagist.org/api/security-advisories/?updatedSince=1:
+  status: 200
+  body: |-
+    {
+      "advisories": {
+        "spatie/laravel-permission": [
+          {
+            "advisoryId": "PKSA-abcd-1234-efgh",
+            "packageName": "spatie/laravel-permission",
+            "remoteId": "GHSA-abcd-1234-efgh",
+            "title": "Example advisory",
+            "link": "https://github.com/advisories/GHSA-abcd-1234-efgh",
+            "cve": "CVE-2026-1234",
+            "affectedVersions": "<1.2.3",
+            "source": "GitHub",
+            "reportedAt": "2026-02-01 13:54:13",
+            "severity": "high"
+          }
+        ]
+      }
+    }
+https://packagist.org/packages/list.json?type=laravel-package:
+  status: 200
+  body: |-
+    {
+      "packageNames": [
+        "vendor/laravel-thing",
+        "vendor/other"
+      ]
+    }
+https://packagist.org/packages/laravel/framework/dependents.json?order_by=downloads:
+  status: 200
+  body: |-
+    {
+      "packages": [
+        {
+          "name": "vendor/first"
+        },
+        {
+          "name": "vendor/second"
+        }
+      ],
+      "next": "https://packagist.org/packages/laravel/framework/dependents.json?page=2&order_by=downloads"
+    }
+https://packagist.org/packages/laravel/framework/dependents.json?page=2&order_by=downloads:
+  status: 200
+  body: |-
+    {
+      "packages": [
+        {
+          "name": "vendor/third"
+        }
+      ]
+    }
+https://packagist.org/packages/unknown/package/dependents.json?order_by=downloads:
+  status: 404
+  body: "{}"
+https://packagist.org/packages/list.json?type=unknown-type:
+  status: 404
+  body: "{}"
+https://packagist.org/api/security-advisories/?updatedSince=2:
+  status: 404
+  body: "{}"

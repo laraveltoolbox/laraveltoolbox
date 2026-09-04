@@ -16,11 +16,11 @@ RSpec.describe "Mobile Navigation", :js, viewport: :mobile do
       expect(page).to have_css(".navbar-menu")
       within ".navbar-menu" do
         expect(page).to have_text("Home")
-        expect(page).to have_text("News")
+        expect(page).to have_text("Documentation")
 
         fill_in :q, with: "My Search"
         click_button "Search"
-        expect(page).to have_title "Search results for 'My Search' - The Ruby Toolbox", exact: true
+        expect(page).to have_title "Search results for 'My Search' - The Laravel Toolbox", exact: true
       end
     end
   end

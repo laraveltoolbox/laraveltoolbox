@@ -10,7 +10,7 @@ module Factories
                 first_release: Date.new(2020, 3, 12),
                 latest_release: Date.new(2021, 1, 2),
                 description: nil)
-      rubygem = self.rubygem(name, downloads:, first_release:, latest_release:)
+      package = self.package(name, downloads:, first_release:, latest_release:)
 
       github_repo = GithubRepo.create!(
         path:             "#{name}/#{name}",
@@ -21,14 +21,14 @@ module Factories
       )
       Project.create! permalink:   name,
                       score:,
-                      rubygem:,
+                      package:,
                       github_repo:,
                       description:
     end
     # rubocop:enable Metrics/ParameterLists
 
-    def rubygem(name, downloads: 5000, first_release: Date.new(2018, 2, 28), latest_release: Date.new(2021, 1, 2))
-      Rubygem.create!(
+    def package(name, downloads: 5000, first_release: Date.new(2018, 2, 28), latest_release: Date.new(2021, 1, 2))
+      Package.create!(
         name:,
         current_version:   "1.0",
         downloads:,
@@ -37,22 +37,22 @@ module Factories
       )
     end
 
-    def rubygem_download_stat(name, date:, total_downloads: 5000)
-      Rubygem::DownloadStat.create! rubygem_name:    name,
+    def package_download_stat(name, date:, total_downloads: 5000)
+      Package::DownloadStat.create! package_name:    name,
                                     date:,
                                     total_downloads:
     end
 
-    def rubygem_trend(name, date:, position:, with_stats: false)
+    def package_trend(name, date:, position:, with_stats: false)
       date = Date.parse(date.to_s)
       if with_stats
-        rubygem_download_stat name, date: date - 8.weeks, total_downloads: 500
-        rubygem_download_stat name, date: date - 4.weeks, total_downloads: 2000
+        package_download_stat name, date: date - 8.weeks, total_downloads: 500
+        package_download_stat name, date: date - 4.weeks, total_downloads: 2000
       end
-      Rubygem::Trend.create! rubygem_name:          name,
+      Package::Trend.create! package_name:          name,
                              position:,
                              date:,
-                             rubygem_download_stat: rubygem_download_stat(name, date:, total_downloads: 15_000)
+                             package_download_stat: package_download_stat(name, date:, total_downloads: 15_000)
     end
 
     def category(name)

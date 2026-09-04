@@ -9,13 +9,13 @@ RSpec.describe TrendsController do
 
   describe "GET index" do
     it "redirects to show for maximum available stat date" do
-      allow(Rubygem::Trend::Navigation).to receive(:latest_date).and_return(Date.new(2019, 1, 2))
+      allow(Package::Trend::Navigation).to receive(:latest_date).and_return(Date.new(2019, 1, 2))
       get :index
       expect(response).to redirect_to(action: :show, id: "2019-01-02")
     end
 
     it "renders a text message when no data is in the database" do
-      allow(Rubygem::DownloadStat).to receive(:maximum).with(:date)
+      allow(Package::DownloadStat).to receive(:maximum).with(:date)
       get :index
       expect(response.body).to eq "No stats data is available, please seed the database"
     end
@@ -23,8 +23,8 @@ RSpec.describe TrendsController do
 
   describe "GET show" do
     before do
-      Factories.rubygem "foo"
-      Factories.rubygem_trend "foo",
+      Factories.package "foo"
+      Factories.package_trend "foo",
                               date:     "2019-02-24",
                               position: 1
     end
@@ -38,8 +38,8 @@ RSpec.describe TrendsController do
     end
 
     it "assigns a navigation instance" do
-      navigation = Rubygem::Trend::Navigation.new(Date.new(2019, 2, 24))
-      allow(Rubygem::Trend::Navigation).to receive(:find)
+      navigation = Package::Trend::Navigation.new(Date.new(2019, 2, 24))
+      allow(Package::Trend::Navigation).to receive(:find)
         .with("2019-02-24")
         .and_return(navigation)
 
@@ -49,7 +49,7 @@ RSpec.describe TrendsController do
 
     it "assigns trends for requested date" do
       collection = []
-      allow(Rubygem::Trend).to receive(:for_date)
+      allow(Package::Trend).to receive(:for_date)
         .with(Date.new(2019, 2, 24))
         .and_return(collection)
       do_request

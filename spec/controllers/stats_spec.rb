@@ -16,10 +16,10 @@ RSpec.describe Stats, type: :model do
     end
   end
 
-  describe "#rubygems_count" do
+  describe "#packages_count" do
     it "queries and returns the total number of gems" do
-      allow(Rubygem).to receive(:count).and_return(count)
-      expect(stats.rubygems_count).to eq count
+      allow(Package).to receive(:count).and_return(count)
+      expect(stats.packages_count).to eq count
     end
   end
 

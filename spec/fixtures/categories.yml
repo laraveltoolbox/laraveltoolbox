@@ -19,7 +19,7 @@ dependency_management:
 gem_creation:
   permalink: gem_creation
   name: Gem Creation
-  description: Tools that aid in creating, maintaining and publishing Rubygems
+  description: Tools that aid in creating, maintaining and publishing Packages
   created_at: '2017-11-01T22:39:45.888Z'
   updated_at: '2019-01-07T13:46:25.120Z'
   category_group_permalink: Developer_Tools

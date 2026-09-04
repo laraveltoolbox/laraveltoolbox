@@ -7,7 +7,7 @@ RSpec.describe ProjectUpdateJob do
 
   let(:job) { described_class.new }
   let(:do_perform) { job.perform permalink }
-  let(:permalink) { "rspec" }
+  let(:permalink) { "spatie/laravel-permission" }
 
   describe "#perform" do
     it "creates the project if not existent yet" do
@@ -20,11 +20,11 @@ RSpec.describe ProjectUpdateJob do
       expect { do_perform }.not_to(change(Project, :count))
     end
 
-    it "assigns an existing gem if matching" do
+    it "assigns an existing package if matching" do
       project = Project.create!(permalink:)
-      RubygemUpdateJob.new.perform(permalink)
-      rubygem = Rubygem.find(permalink)
-      expect { do_perform }.to change { project.reload.rubygem }.from(nil).to(rubygem)
+      PackageUpdateJob.new.perform(permalink)
+      package = Package.find(permalink)
+      expect { do_perform }.to change { project.reload.package }.from(nil).to(package)
     end
 
     [ProjectScoreJob, ProjectSearchIndexJob].each do |job_type|
@@ -38,14 +38,14 @@ RSpec.describe ProjectUpdateJob do
       let(:project) { Project.create! permalink: }
 
       before do
-        RubygemUpdateJob.new.perform(permalink)
+        PackageUpdateJob.new.perform(permalink)
       end
 
-      it "assigns a github_repo_path if detected in gem urls" do
-        expect { do_perform }.to change { project.reload.github_repo_path }.from(nil).to("rspec/rspec")
+      it "assigns a github_repo_path if detected in package urls" do
+        expect { do_perform }.to change { project.reload.github_repo_path }.from(nil).to("spatie/laravel-permission")
       end
 
-      it "assigns nil github_repo_path when gem name is blacklisted" do
+      it "assigns nil github_repo_path when package name is blacklisted" do
         project.update! github_repo_path: "foo/bar"
         stub_const "#{described_class}::REPO_LINK_BLACKLIST", [project.permalink]
         expect { do_perform }.to change { project.reload.github_repo_path }.to(nil)
@@ -59,29 +59,29 @@ RSpec.describe ProjectUpdateJob do
       end
 
       it "enqueues a GithubRepoUpdateJob if the github repo is missing" do
-        expect(GithubRepoUpdateJob).to receive(:perform_async).with("rspec/rspec")
+        expect(GithubRepoUpdateJob).to receive(:perform_async).with("spatie/laravel-permission")
         do_perform
       end
 
       it "does not enqueue a GithubRepoUpdateJob if the github repo exists" do
-        GithubRepo.create! path: "rspec/rspec", stargazers_count: 0, watchers_count: 0, forks_count: 0
+        GithubRepo.create! path: "spatie/laravel-permission", stargazers_count: 0, watchers_count: 0, forks_count: 0
         expect(GithubRepoUpdateJob).not_to receive(:perform_async)
         do_perform
       end
 
       it "does not enqueue a GithubRepoUpdateJob if no repo is referenced" do
-        Rubygem.find(permalink).destroy
+        Package.find(permalink).update! homepage_url: nil, source_code_url: nil, bug_tracker_url: nil
         expect(GithubRepoUpdateJob).not_to receive(:perform_async)
         do_perform
       end
     end
 
     describe "for github-only project" do
-      let(:permalink) { "rspec/rspec" }
+      let(:permalink) { "laravel/laravel" }
 
       it "assigns permalink as the github_repo_path for github-only projects" do
         project = Project.create!(permalink:)
-        expect { do_perform }.to change { project.reload.github_repo_path }.from(nil).to("rspec/rspec")
+        expect { do_perform }.to change { project.reload.github_repo_path }.from(nil).to(permalink)
       end
     end
   end

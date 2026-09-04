@@ -7,7 +7,7 @@ RSpec.describe "Styleguide Display", :js do
 
   it "can display all pages of the styleguide" do
     visit "/pages/components"
-    expect(page).to have_text "Ruby Toolbox UI Components Styleguide".upcase
+    expect(page).to have_text "Laravel Toolbox UI Components Styleguide".upcase
     expect(page).to have_text "Components Overview"
 
     page_links = page.find_all(".component-list a").to_h { |a| [a["href"], a.text] }

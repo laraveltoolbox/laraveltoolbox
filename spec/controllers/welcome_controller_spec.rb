@@ -25,13 +25,6 @@ RSpec.describe WelcomeController do
       expect(assigns(:featured_categories)).to be collection
     end
 
-    it "assigns new categories" do
-      collection = Category.limit(3)
-      allow(Category).to receive(:recently_added).and_return(collection)
-      do_request
-      expect(assigns(:new_categories)).to be collection
-    end
-
     it "assigns a Stats instance" do
       stats = instance_double Stats
       allow(Stats).to receive(:new).and_return(stats)
@@ -41,8 +34,8 @@ RSpec.describe WelcomeController do
 
     it "assigns trending_projects" do
       array = []
-      scope = class_double Rubygem::Trend, limit: array
-      allow(Rubygem::Trend).to receive(:latest).and_return(scope)
+      scope = class_double Package::Trend, limit: array
+      allow(Package::Trend).to receive(:latest).and_return(scope)
       do_request
       expect(assigns(:trending_projects)).to be array
     end

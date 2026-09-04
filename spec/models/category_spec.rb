@@ -62,37 +62,16 @@ RSpec.describe Category do
     end
   end
 
-  describe ".recently_added" do
-    before do
-      5.times do |i|
-        described_class.create! permalink:      (i + 1).to_s,
-                                name:           (i + 1).to_s,
-                                category_group: group,
-                                created_at:     i.days.ago
-      end
-    end
-
-    it "returns 4 newest categories" do
-      expect(described_class.recently_added.pluck(:permalink)).to eq %w[1 2 3 4]
-    end
-
-    it "eager-loads projects" do
-      query = -> { described_class.recently_added.flat_map { |category| category.projects.map(&:permalink) } }
-      query.call # warm-up, so activerecord doesn't sprinkle in db schema meta queries
-      expect(&query).to make_database_queries(count: 2)
-    end
-  end
-
   describe "#catalog_show_url" do
     it "is the url where the category definition can be seen on github" do
-      expected = "https://github.com/rubytoolbox/catalog/tree/main/catalog/unimportant/mocking.yml"
+      expected = "https://github.com/laraveltoolbox/catalog/tree/main/catalog/unimportant/mocking.yml"
       expect(category.catalog_show_url).to eq expected
     end
   end
 
   describe "#catalog_edit_url" do
     it "is the url where the category definition can be edited on github" do
-      expected = "https://github.com/rubytoolbox/catalog/edit/main/catalog/unimportant/mocking.yml"
+      expected = "https://github.com/laraveltoolbox/catalog/edit/main/catalog/unimportant/mocking.yml"
       expect(category.catalog_edit_url).to eq expected
     end
   end

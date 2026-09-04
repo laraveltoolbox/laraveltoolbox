@@ -2,7 +2,7 @@
 
 class TrendsController < ApplicationController
   def index
-    latest_date = Rubygem::Trend::Navigation.latest_date
+    latest_date = Package::Trend::Navigation.latest_date
     if latest_date
       redirect_to action: :show, id: latest_date
     else
@@ -12,9 +12,9 @@ class TrendsController < ApplicationController
   end
 
   def show
-    @navigation = Rubygem::Trend::Navigation.find(params.expect(:id))
+    @navigation = Package::Trend::Navigation.find(params.expect(:id))
     redirect_to id: @navigation.date unless @navigation.exact_match?(params[:id])
 
-    @trends = Rubygem::Trend.for_date(@navigation.date)
+    @trends = Package::Trend.for_date(@navigation.date)
   end
 end

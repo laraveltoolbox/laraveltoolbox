@@ -26,12 +26,12 @@
 
   .columns: .description.column= @project.description
 
-  - if @project.rubygem
+  - if @project.package
     .columns: .download-chart.column
-      = rubygem_download_chart @project.rubygem_name
+      = package_download_chart @project.package_name
 
     .columns: .quarterly-releases.column
-      = project_release_history @project.rubygem_quarterly_release_counts
+      = project_release_history @project.package_quarterly_release_counts
 
 
 section.section: .container: .project
@@ -44,7 +44,7 @@ section.readme.section: .container: .columns.is-multiline
       strong Dependencies
 
   .column
-    - RubygemDependency::TYPES.each do |type|
+    - PackageDependency::TYPES.each do |type|
       - dependencies = @dependencies.public_send(type)
       - if dependencies.present?
         .columns: .column
@@ -59,7 +59,7 @@ section.readme.section: .container: .columns.is-multiline
                     = link_to project_path(dependency.dependency_project.permalink) do
                       strong= dependency.dependency_project.permalink
                   - else
-                    / This happens if a gem has all it's versions yanked (or never existed)
+                    / This happens if a package has all it's versions removed (or never existed)
                     strong= dependency.dependency_name
                 .has-text-grey: small= "#{dependency.requirements}"
 

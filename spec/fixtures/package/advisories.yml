@@ -1,0 +1,35 @@
+nokogiri1:
+  package_name: nokogiri
+  identifier: PKSA-242x-7cm6-4w8j
+  date: '2022-05-24'
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+  advisory_data:
+    identifier: PKSA-242x-7cm6-4w8j
+    package_name: nokogiri
+    remote_id: GHSA-242x-7cm6-4w8j
+    url: https://github.com/advisories/GHSA-242x-7cm6-4w8j
+    title: Use of Uninitialized Resource / Use After Free vulnerability
+    cve: CVE-2019-18197
+    affected_versions: '<1.10.5'
+    source: GitHub
+    severity: high
+    reported_at: '2022-05-24 09:12:44'
+
+actionpack1:
+  package_name: actionpack
+  identifier: PKSA-mm33-5vfq-3mm3
+  date: "2022-04-27"
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+  advisory_data:
+    identifier: PKSA-mm33-5vfq-3mm3
+    package_name: actionpack
+    remote_id: GHSA-mm33-5vfq-3mm3
+    url: https://github.com/advisories/GHSA-mm33-5vfq-3mm3
+    title: Possible XSS Vulnerability
+    cve:
+    affected_versions: '>=5.2.0,<5.2.7.1|>=6.0.0,<6.0.4.8'
+    source: FriendsOfPHP/security-advisories
+    severity: medium
+    reported_at: '2022-04-27 16:31:07'

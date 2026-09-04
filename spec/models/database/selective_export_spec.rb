@@ -23,23 +23,23 @@ RSpec.describe Database::SelectiveExport do
 
     expect_scope(:categorizations) { Categorization.where project: described_class.projects }
 
-    expect_scope(:rubygems) { Rubygem.where project: described_class.projects }
-    expect_scope :rubygem_download_stats do
-      Rubygem::DownloadStat.where(rubygem_name: described_class.rubygems.pluck(:name))
+    expect_scope(:packages) { Package.where project: described_class.projects }
+    expect_scope :package_download_stats do
+      Package::DownloadStat.where(package_name: described_class.packages.pluck(:name))
                            .where(date: 3.months.ago.to_date..)
                            .order(date: :asc)
     end
-    expect_scope :rubygem_code_statistics do
-      Rubygem::CodeStatistic.where rubygem: described_class.rubygems
+    expect_scope :package_code_statistics do
+      Package::CodeStatistic.where package: described_class.packages
     end
-    expect_scope :rubygem_dependencies do
-      RubygemDependency.where rubygem: described_class.rubygems, dependency: described_class.rubygems
+    expect_scope :package_dependencies do
+      PackageDependency.where package: described_class.packages, dependency: described_class.packages
     end
-    expect_scope :rubygem_advisories do
-      Rubygem::Advisory.where rubygem: described_class.rubygems
+    expect_scope :package_advisories do
+      Package::Advisory.where package: described_class.packages
     end
-    expect_scope :rubygem_trends do
-      Rubygem::Trend.where(rubygem: described_class.rubygems).where(date: 1.month.ago.to_date..)
+    expect_scope :package_trends do
+      Package::Trend.where(package: described_class.packages).where(date: 1.month.ago.to_date..)
     end
 
     expect_scope(:github_repos) { GithubRepo.where projects: described_class.projects }
@@ -77,12 +77,12 @@ RSpec.describe Database::SelectiveExport do
       %i[
         category_groups
         categories
-        rubygems
-        rubygem_download_stats
-        rubygem_code_statistics
-        rubygem_dependencies
-        rubygem_trends
-        rubygem_advisories
+        packages
+        package_download_stats
+        package_code_statistics
+        package_dependencies
+        package_trends
+        package_advisories
         github_repos
         github_readmes
         github_ignores

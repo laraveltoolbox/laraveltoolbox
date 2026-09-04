@@ -76,8 +76,8 @@ RSpec.describe GithubRepoUpdateJob do
     end
 
     it "enqueues a corresponding project update job" do
-      rubygem = Rubygem.create! name: "rails", downloads: 500, current_version: "1.0"
-      Project.create!(permalink: "rails", github_repo_path: repo_path, rubygem:)
+      package = Package.create! name: "rails", downloads: 500, current_version: "1.0"
+      Project.create!(permalink: "rails", github_repo_path: repo_path, package:)
       expect(ProjectUpdateJob).to receive(:perform_async).with("rails")
       do_perform
     end

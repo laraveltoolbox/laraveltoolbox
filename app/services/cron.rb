@@ -10,12 +10,14 @@ class Cron
   def run(time: Time.current.utc) # rubocop:disable Metrics/MethodLength -- It's easier to have it in one place
     case time.hour
     when 0
-      RubygemsSyncJob.perform_async
+      PackagesSyncJob.perform_async
+    when 3
+      PackageAdvisoriesSyncJob.perform_async
     end
 
     Database::StoreSelectiveExportJob.perform_async if (time.hour % 4).zero?
 
-    RubygemDownloadsPersistenceJob.perform_async
+    PackageDownloadsPersistenceJob.perform_async
     RemoteUpdateSchedulerJob.perform_async
     CatalogImportJob.perform_async
     GithubIgnore.expire!

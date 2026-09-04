@@ -9,7 +9,7 @@ simplecov-ruby/simplecov:
     <li><a href="https://github.com/simplecov-ruby/simplecov" title="Source Code @ GitHub">Source Code</a></li>
     <li><a href="http://rubydoc.info/gems/simplecov/frames" title="RDoc API Documentation at Rubydoc.info" rel="nofollow">API documentation</a></li>
     <li><a href="https://github.com/simplecov-ruby/simplecov/blob/main/CHANGELOG.md" title="Project Changelog">Changelog</a></li>
-    <li><a href="http://rubygems.org/gems/simplecov" title="SimpleCov @ rubygems.org" rel="nofollow">Rubygem</a></li>
+    <li><a href="http://rubygems.org/gems/simplecov" title="SimpleCov @ rubygems.org" rel="nofollow">Package</a></li>
     <li><a href="https://github.com/simplecov-ruby/simplecov/actions?query=workflow%3Astable" title="SimpleCov is built around the clock by github.com">Continuous Integration</a></li>
     </ul>
     <p>SimpleCov is a code coverage analysis tool for Ruby. It uses <a href="https://ruby-doc.org/stdlib/libdoc/coverage/rdoc/Coverage.html" title="API doc for Ruby's Coverage library" rel="nofollow">Ruby's built-in Coverage</a> library to gather code

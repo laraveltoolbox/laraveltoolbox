@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe "Project routes", type: :routing do
   fixtures :all
 
-  it "routes rubygems-based projects to the project page" do
+  it "routes packages-based projects to the project page" do
     expect(get("/projects/simplecov")).to route_to(
       controller: "projects",
       action:     "show",
@@ -13,7 +13,7 @@ RSpec.describe "Project routes", type: :routing do
     )
   end
 
-  it "routes rubygems-based projects with dots to the project page" do
+  it "routes packages-based projects with dots to the project page" do
     expect(get("/projects/simplecov.rb")).to route_to(
       controller: "projects",
       action:     "show",

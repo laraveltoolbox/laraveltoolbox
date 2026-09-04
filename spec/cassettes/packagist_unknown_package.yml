@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://packagist.org/packages/laravel-toolbox/there-is-no-such-package.json
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Content-Type:
+      - application/json
+      User-Agent:
+      - laravel-toolbox.com API client
+      Connection:
+      - close
+      Host:
+      - packagist.org
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 04 Sep 2026 13:29:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Server:
+      - BunnyCDN-DE1-1049
+      Cdn-Pullzone:
+      - '3535225'
+      Cdn-Requestcountrycode:
+      - PL
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - max-age=0, must-revalidate, private
+      Expires:
+      - Fri, 04 Sep 2026 13:29:09 GMT
+      Strict-Transport-Security:
+      - max-age=31104000
+      X-Frame-Options:
+      - DENY
+      Content-Security-Policy:
+      - 'default-src ''self''; base-uri ''none''; block-all-mixed-content; connect-src
+        ''self'' https://*.algolia.net https://*.algolianet.com; frame-src https://www.google.com/recaptcha/;
+        img-src ''self'' https: data:; object-src ''none''; script-src ''unsafe-eval''
+        https://www.gstatic.com/recaptcha/ ''strict-dynamic''; style-src ''self''
+        ''unsafe-inline'''
+      X-Content-Security-Policy:
+      - 'default-src ''self''; base-uri ''none''; block-all-mixed-content; connect-src
+        ''self'' https://*.algolia.net https://*.algolianet.com; frame-src https://www.google.com/recaptcha/;
+        img-src ''self'' https: data:; object-src ''none''; script-src ''unsafe-eval''
+        https://www.gstatic.com/recaptcha/ ''strict-dynamic''; style-src ''self''
+        ''unsafe-inline'''
+      Cdn-Proxyver:
+      - '1.62'
+      Cdn-Requestpullsuccess:
+      - 'True'
+      Cdn-Requestpullcode:
+      - '404'
+      Cdn-Cachedat:
+      - '09/04/2026 13:29:09'
+      Cdn-Edgestorageid:
+      - '865'
+      Cdn-Requestid:
+      - 3c006d3d77ea86effebf7699bd136eef
+      Cdn-Cache:
+      - MISS
+      Cdn-Status:
+      - '404'
+      Cdn-Requesttime:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"status":"error","message":"Package not found"}'
+  recorded_at: Fri, 04 Sep 2026 13:29:09 GMT
+recorded_with: VCR 6.4.0

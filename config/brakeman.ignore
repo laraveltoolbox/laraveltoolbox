@@ -1,40 +1,6 @@
 {
   "ignored_warnings": [
     {
-      "warning_type": "Cross-Site Scripting",
-      "warning_code": 2,
-      "fingerprint": "03ab278ac8565e7484a7e9ad844f4193836268cd57eea2ef00242315f83db0f2",
-      "check_name": "CrossSiteScripting",
-      "message": "Unescaped model attribute",
-      "file": "app/views/blog/show.html.slim",
-      "line": 18,
-      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
-      "code": "Blog.new(:root => Rails.root.join(\"app\", \"blog_posts\"), :cache => Rails.env.production?).find(params.expect(:id)).body_html",
-      "render_path": [
-        {
-          "type": "controller",
-          "class": "BlogController",
-          "method": "show",
-          "line": 16,
-          "file": "app/controllers/blog_controller.rb",
-          "rendered": {
-            "name": "blog/show",
-            "file": "app/views/blog/show.html.slim"
-          }
-        }
-      ],
-      "location": {
-        "type": "template",
-        "template": "blog/show"
-      },
-      "user_input": null,
-      "confidence": "High",
-      "cwe_id": [
-        79
-      ],
-      "note": ""
-    },
-    {
       "warning_type": "SQL Injection",
       "warning_code": 0,
       "fingerprint": "3c70b5bd040a7aab0441010848eb25aafa2fc4e1a718be68424f255fc3f9e2e8",
@@ -83,17 +49,17 @@
     {
       "warning_type": "SQL Injection",
       "warning_code": 0,
-      "fingerprint": "c0d4655aa243396315971c36cc69f4a3f6cf40a1071ca7d4b38214fc93aed196",
+      "fingerprint": "752bbb2b1206b0a073debffaa1dc90e6a8e48a77caa05e8abe62f72477742708",
       "check_name": "SQL",
       "message": "Possible SQL injection",
-      "file": "app/jobs/rubygem_downloads_persistence_job.rb",
+      "file": "app/jobs/package_downloads_persistence_job.rb",
       "line": 33,
       "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
-      "code": "ActiveRecord::Base.connection.execute(\"INSERT INTO\\n  rubygem_download_stats (rubygem_name, total_downloads, date)\\n  SELECT\\n    name AS rubygem_name,\\n    downloads AS total_downloads,\\n    DATE '#{date}' as date\\n  FROM   rubygems\\n\\nON CONFLICT (rubygem_name, date) DO UPDATE\\nSET\\n  total_downloads = excluded.total_downloads\\n\".squish)",
+      "code": "ActiveRecord::Base.connection.execute(\"INSERT INTO\\n  package_download_stats (package_name, total_downloads, date)\\n  SELECT\\n    name AS package_name,\\n    downloads AS total_downloads,\\n    DATE '#{date}' as date\\n  FROM   packages\\n\\nON CONFLICT (package_name, date) DO UPDATE\\nSET\\n  total_downloads = excluded.total_downloads\\n\".squish)",
       "render_path": null,
       "location": {
         "type": "method",
-        "class": "RubygemDownloadsPersistenceJob",
+        "class": "PackageDownloadsPersistenceJob",
         "method": "perform"
       },
       "user_input": "date",

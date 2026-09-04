@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   def show
     redirect_to "/projects/#{@project.permalink}" if @project.permalink != params[:id]
 
-    @dependencies = RubygemDependency.for_project @project
+    @dependencies = PackageDependency.for_project @project
   end
 
   def reverse_dependencies

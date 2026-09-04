@@ -21,8 +21,8 @@ RSpec.describe Cron, type: :service do
     cron.run time: time_at(rand(24))
   end
 
-  it "queues RubygemDownloadsPersistenceJob every hour" do
-    expect(RubygemDownloadsPersistenceJob).to receive(:perform_async)
+  it "queues PackageDownloadsPersistenceJob every hour" do
+    expect(PackageDownloadsPersistenceJob).to receive(:perform_async)
     cron.run time: time_at(rand(24))
   end
 
@@ -31,13 +31,23 @@ RSpec.describe Cron, type: :service do
     cron.run time: time_at(rand(24))
   end
 
-  it "enqueues RubygemsSyncJob at 0 am" do
-    expect(RubygemsSyncJob).to receive(:perform_async)
+  it "enqueues PackageAdvisoriesSyncJob at 3 am" do
+    expect(PackageAdvisoriesSyncJob).to receive(:perform_async)
+    cron.run time: time_at(3)
+  end
+
+  it "does not enqueue PackageAdvisoriesSyncJob at 4 am" do
+    expect(PackageAdvisoriesSyncJob).not_to receive(:perform_async)
+    cron.run time: time_at(4)
+  end
+
+  it "enqueues PackagesSyncJob at 0 am" do
+    expect(PackagesSyncJob).to receive(:perform_async)
     cron.run time: time_at(0)
   end
 
-  it "does not enqueue RubygemsSyncJob at 1 am" do
-    expect(RubygemsSyncJob).not_to receive(:perform_async)
+  it "does not enqueue PackagesSyncJob at 1 am" do
+    expect(PackagesSyncJob).not_to receive(:perform_async)
     cron.run time: time_at(1)
   end
 
@@ -60,7 +70,7 @@ RSpec.describe Cron, type: :service do
     let(:err) { StandardError.new("Foobar") }
 
     before do
-      allow(RubygemsSyncJob).to receive(:perform_async).and_raise(err)
+      allow(PackagesSyncJob).to receive(:perform_async).and_raise(err)
     end
 
     it "forwards exceptions to Appsignal" do

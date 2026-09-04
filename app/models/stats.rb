@@ -5,8 +5,8 @@ class Stats
     @projects_with_categories_count ||= Project.joins(:categories).count
   end
 
-  def rubygems_count
-    @rubygems_count ||= Rubygem.count
+  def packages_count
+    @packages_count ||= Package.count
   end
 
   def categories_count

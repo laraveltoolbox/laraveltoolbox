@@ -60,6 +60,6 @@ RSpec.describe "Documentation Display", :js do
     within "footer.footer" do
       click_link "Documentation"
     end
-    expect(page).to have_text "Welcome to the Ruby Toolbox documentation"
+    expect(page).to have_text "Welcome to the Laravel Toolbox documentation"
   end
 end

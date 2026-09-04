@@ -22,7 +22,7 @@ RSpec.describe HttpService do
       let(:do_get) { described_class.new.get url }
 
       describe "for a known url" do
-        let(:url) { "https://rubygems.org/api/v1/gems/rspec.json" }
+        let(:url) { "https://packagist.org/packages/spatie/laravel-permission.json" }
 
         it "returns an HTTP response" do
           expect(do_get).to be_a HTTP::Response
@@ -33,7 +33,7 @@ RSpec.describe HttpService do
         end
 
         it "has the expected body" do
-          expect(Oj.load(do_get.body)).to have_key "downloads"
+          expect(Oj.load(do_get.body)).to have_key "package"
         end
       end
 

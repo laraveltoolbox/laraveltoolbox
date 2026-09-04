@@ -1,12 +1,17 @@
 # frozen_string_literal: true
 
 module HttpService
-  USER_AGENT = "ruby-toolbox.com API client"
+  USER_AGENT = "laravel-toolbox.com API client"
+
+  # Most upstream API responses are small, but a few endpoints (notably the
+  # packagist security advisory dump) return multiple megabytes and need more
+  # headroom than the default
+  DEFAULT_READ_TIMEOUT = 3
 
   class << self
-    def client
+    def client(read_timeout: DEFAULT_READ_TIMEOUT)
       if Rails.configuration.http_connect
-        real_http_client
+        real_http_client read_timeout:
       else
         mock_http_client
       end
@@ -14,8 +19,8 @@ module HttpService
 
     private
 
-    def real_http_client
-      HTTP.timeout(connect: 3, write: 3, read: 3)
+    def real_http_client(read_timeout:)
+      HTTP.timeout(connect: 3, write: 3, read: read_timeout)
           .headers(
             "Accept"       => "application/json",
             "Content-Type" => "application/json",

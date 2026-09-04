@@ -1,0 +1,22 @@
+= documentation_page "Historical Package Download Data" do
+  article.blog-post
+    markdown:
+      Historical package download data is used **to display download charts on project pages**
+      as well as for the calculation of **[trending projects](/pages/docs/features/trending_projects)**.
+
+      To keep the usage of database resources at bay we [persist only weekly stats, the cutoff day being
+      Sunday](https://github.com/laraveltoolbox/laraveltoolbox/blob/main/app/jobs/package_downloads_persistence_job.rb).
+
+      The download data is being synced from the package registry API throughout each day, so the numbers do not
+      have an equal cutoff time - therefore they will always be slightly skewed.
+      For example one project might get it's stats updated early in the day, another towards the end of the day, meaning
+      the number of downloads for the latter has effectively accumulated downloads from another day. As "incorrect" as this
+      may be, for the purposes of illustrating historical trends in package downloads we consider this "good enough" ;)
+
+      #### How to read the charts
+
+      The charts show **total accumulated downloads** as well as the **absolute change over the trailing month**.
+      Keep in mind that **install counts include automated installs from CI systems and deployments**, so they
+      indicate **relative popularity between libraries** rather than an exact number of human users.
+
+      Because the dataset is **only sampled once per week**, short-lived spikes may not be visible in the charts.

@@ -16,18 +16,18 @@ class ProjectScoreJob < ApplicationJob
   private
 
   def calculated_score
-    scores = [rubygem_score, github_repo_score].compact
+    scores = [package_score, github_repo_score].compact
     return if scores.empty?
 
     scores.sum / scores.count
   end
 
-  delegate :rubygem, :github_repo, to: :project
+  delegate :package, :github_repo, to: :project
 
-  def rubygem_score
-    return unless rubygem
+  def package_score
+    return unless package
 
-    rubygem.downloads * 100.0 / rubygem.class.maximum(:downloads)
+    package.downloads * 100.0 / package.class.maximum(:downloads)
   end
 
   def github_repo_score

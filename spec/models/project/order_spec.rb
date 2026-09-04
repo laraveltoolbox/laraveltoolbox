@@ -86,7 +86,7 @@ RSpec.describe Project::Order do
     end
 
     it "is false when the current direction is not the default" do
-      expect(described_class.new(order: "rubygem_downloads").default_direction?).to be false
+      expect(described_class.new(order: "package_downloads").default_direction?).to be false
     end
   end
 end

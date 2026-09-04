@@ -14,12 +14,12 @@ RSpec.describe ProjectScoreJob, :clean_database do
     end
 
     def create_gems!
-      Rubygem.create! name: "popular", current_version: "1.0", downloads: 1_000_000
-      Rubygem.create! name: "rspec", current_version: "1.0", downloads: 500_000,
+      Package.create! name: "popular", current_version: "1.0", downloads: 1_000_000
+      Package.create! name: "rspec", current_version: "1.0", downloads: 500_000,
                       source_code_url: "https://github.com/rspec/rspec"
     end
 
-    it "sets the expected score on projects with rubygem and github repo" do
+    it "sets the expected score on projects with package and github repo" do
       create_repos!
       create_gems!
       ProjectUpdateJob.new.perform "rspec"
@@ -34,7 +34,7 @@ RSpec.describe ProjectScoreJob, :clean_database do
       expect { job.perform "rspec/rspec" }.to change { Project.find("rspec/rspec").score }.from(nil).to(10.0)
     end
 
-    it "sets the expected score on projects with just a rubygem" do
+    it "sets the expected score on projects with just a package" do
       create_gems!
       ProjectUpdateJob.new.perform "rspec"
 

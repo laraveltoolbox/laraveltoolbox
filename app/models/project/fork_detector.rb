@@ -6,7 +6,7 @@
 # Before bundler it was pretty tough to include a gem including
 # some additional bugfix in a project. Many people adopted the practice
 # of submitting the bugfix PR, and in the meantime published their own
-# version of the gem to rubygem with a namespace.
+# version of the gem to package with a namespace.
 #
 # Those gems quite commonly still reference the original upstream
 # github repo, leading to high project popularity scores and polluting
@@ -37,10 +37,10 @@ class Project::ForkDetector
   # popularity of the upstream repo
   #
   GithubSibling = Check.new("github_sibling") do |project|
-    next unless project.github_repo_sibling_gem_with_most_downloads && project.rubygem_downloads
+    next unless project.github_repo_sibling_gem_with_most_downloads && project.package_downloads
 
     sibling = project.github_repo_sibling_gem_with_most_downloads
-    relative_downloads = ((project.rubygem_downloads * 100) / sibling.downloads.to_f).round(2)
+    relative_downloads = ((project.package_downloads * 100) / sibling.downloads.to_f).round(2)
     next unless relative_downloads < 1.0
 
     sibling.name
@@ -48,18 +48,18 @@ class Project::ForkDetector
 
   #
   # If the github repo reference was not set on the upstream
-  # rubygem the impact on the score is not so big, yet these forks
+  # package the impact on the score is not so big, yet these forks
   # can still also produce noise in search results due to matching
   # keywords in the name and description.
   #
-  RubygemSibling = Check.new("rubygem_sibling") do |project|
-    next if !project.rubygem_downloads || (project.rubygem_downloads > 50_000)
+  PackageSibling = Check.new("package_sibling") do |project|
+    next if !project.package_downloads || (project.package_downloads > 50_000)
 
-    sibling = Rubygem.where(description: project.rubygem_description).order(downloads: :desc).first
+    sibling = Package.where(description: project.package_description).order(downloads: :desc).first
 
     next unless sibling
 
-    relative_downloads = ((project.rubygem_downloads * 100) / sibling.downloads.to_f).round(2)
+    relative_downloads = ((project.package_downloads * 100) / sibling.downloads.to_f).round(2)
 
     next unless relative_downloads < 50
 
@@ -68,7 +68,7 @@ class Project::ForkDetector
 
   FORK_CHECKS = [
     GithubSibling,
-    RubygemSibling,
+    PackageSibling,
   ].freeze
 
   attr_accessor :project

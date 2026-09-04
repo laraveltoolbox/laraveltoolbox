@@ -79,13 +79,13 @@ RSpec.describe SearchesController do
 
     it "passes query, a project order instance and show_forks status to Search.new" do
       search = Search.new("hello world")
-      order = Project::Order.new(order: "rubygem_downloads")
+      order = Project::Order.new(order: "package_downloads")
       allow(Project::Order).to receive(:new)
-        .with(order: "rubygem_downloads", directions: Project::Order::SEARCH_DIRECTIONS)
+        .with(order: "package_downloads", directions: Project::Order::SEARCH_DIRECTIONS)
         .and_return(order)
       expect(Search).to receive(:new).with("hello world", order:, show_forks: false)
                                      .and_return(search)
-      do_request query: "hello world", order: "rubygem_downloads"
+      do_request query: "hello world", order: "package_downloads"
     end
 
     it "passes show_forks true to search when set in params" do
@@ -96,7 +96,7 @@ RSpec.describe SearchesController do
           show_forks: true
         )
         .and_return(Search.new("hello world"))
-      do_request query: "hello world", order: "rubygem_downloads", show_forks: true
+      do_request query: "hello world", order: "package_downloads", show_forks: true
     end
 
     it "redirects to results including forks when project search has no results" do

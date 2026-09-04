@@ -42,8 +42,8 @@ sparklemotion/nokogiri:
   total_pull_requests_count: 541
   issue_closure_rate: '91.14'
   pull_request_acceptance_rate: '59.15'
-rubygems/rubygems:
-  path: rubygems/rubygems
+packages/packages:
+  path: packages/packages
   stargazers_count: 2725
   forks_count: 1225
   watchers_count: 157
@@ -67,12 +67,12 @@ rubygems/rubygems:
   merged_pull_requests_count: 1921
   closed_pull_requests_count: 385
   average_recent_committed_at: '2021-05-23T03:51:25.000Z'
-  code_of_conduct_url: https://github.com/rubygems/rubygems/blob/master/CODE_OF_CONDUCT.md
+  code_of_conduct_url: https://github.com/packages/packages/blob/master/CODE_OF_CONDUCT.md
   code_of_conduct_name: Contributor Covenant
   topics:
   - package-manager
   - ruby
-  - rubygems
+  - packages
   total_issues_count: 2235
   total_pull_requests_count: 2353
   issue_closure_rate: '88.41'

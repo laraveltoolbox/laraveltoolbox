@@ -1,42 +1,46 @@
 = documentation_page "Guide for library maintainers" do
   article.blog-post
     markdown:
-      If you're **maintaining a Ruby library** this guide provides an **overview of how you can prepare your
-      library for best visibility on the Ruby Toolbox**.
+      If you're **maintaining a PHP or Laravel library** this guide provides an **overview of how you can prepare your
+      library for best visibility on the Laravel Toolbox**.
 
-      **[RubyGems.org](https://www.rubygems.org)** provides **[great documentation on creating Rubygems](https://guides.rubygems.org/)**, so we won't
-      go into any of that here. Instead, please check out their documentation on
-      **[creating gems](https://guides.rubygems.org/make-your-own-gem/), [library naming conventions](https://guides.rubygems.org/name-your-gem/),
-      [versioning](https://guides.rubygems.org/patterns/#semantic-versioning) and [further community conventions](https://guides.rubygems.org/patterns/)**. It's always good to have some consistency across the ecosystem, so please keep those community best practices in mind
+      **[Packagist.org](https://packagist.org)** and **[Composer](https://getcomposer.org/doc/)** provide **great documentation
+      on publishing packages**, so we won't go into any of that here. Instead, please check out their documentation on
+      **[the composer.json schema](https://getcomposer.org/doc/04-schema.md), [package naming conventions](https://getcomposer.org/doc/04-schema.md#name),
+      [versioning](https://getcomposer.org/doc/articles/versions.md) and [submitting packages](https://packagist.org/about)**.
+      It's always good to have some consistency across the ecosystem, so please keep those community best practices in mind
       when you publish libraries.
 
-      **We sync data for all gems indexed on [RubyGems.org](https://www.rubygems.org) that have at least one currently available release.**
-      If all existing versions of a gem are yanked, we remove it from our database on the next sync.
+      **We sync data for all packages indexed on [Packagist.org](https://packagist.org) that have at least one currently available release.**
+      If all existing versions of a package are removed, we remove it from our database on the next sync.
 
       #### Referencing your GitHub repository
 
-      To make sure we **correctly link your Rubygem against its source code repository** on GitHub (if applicable) and display stats for both on your project you should **reference your GitHub repository in your Rubygem's `.gemspec`**.
+      To make sure we **correctly link your package against its source code repository** on GitHub (if applicable) and display stats for both on your project you should **reference your GitHub repository in your package's `composer.json`**.
 
-      You can do so by either setting the [`spec.homepage`](https://guides.rubygems.org/specification-reference/#homepage) or the `homepage_uri`, `source_code_uri` or `bug_tracker_uri` on [`spec.metadata`](https://guides.rubygems.org/specification-reference/#metadata) and
-      publishing a new gem release:
+      You can do so by either setting the [`homepage`](https://getcomposer.org/doc/04-schema.md#homepage) or any of the
+      [`support`](https://getcomposer.org/doc/04-schema.md#support) urls and publishing a new release:
 
       <pre>
-      # widgets.gemspec
+      // composer.json
 
-      # Either set the homepage directly:
+      {
+        "name": "vendor/widgets",
 
-      spec.homepage = "https://github.com/USER/REPO"
+        // Either set the homepage directly:
 
-      # OR any of these will work (ordered by precedence)
+        "homepage": "https://github.com/USER/REPO",
 
-      spec.metadata = {
-        homepage_uri: "https://github.com/USER/REPO",
-        source_code_uri: "https://github.com/USER/REPO",
-        bug_tracker_uri: "https://github.com/USER/REPO",
+        // OR any of these will work (ordered by precedence)
+
+        "support": {
+          "source": "https://github.com/USER/REPO",
+          "issues": "https://github.com/USER/REPO/issues"
+        }
       }
       </pre>
 
-      Once this data becomes available through the RubyGems.org API and gets synced by the Ruby Toolbox **we'll pick up the GitHub repository
+      Once this data becomes available through the Packagist.org API and gets synced by the Laravel Toolbox **we'll pick up the GitHub repository
       reference and start displaying your library's GitHub metrics as well**.
 
       To keep things orderly **please remember to also [drop outdated links](/pages/docs/features/bugfix_forks) when you publish a forked version of a library**.

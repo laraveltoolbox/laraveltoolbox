@@ -8,7 +8,7 @@ RSpec.describe StatsHelpers, :clean_database do
   describe "#percentiles" do
     it "returns a hash of number distribution percentiles" do
       Factories.project "example"
-      expect(helper.percentiles(:rubygems, :downloads)).to be_a(Hash)
+      expect(helper.percentiles(:packages, :downloads)).to be_a(Hash)
         .and(satisfy { |h| h.keys == (0..100).to_a.map { |n| "#{n}%" } })
         .and(satisfy { |h| h.values.all?(Numeric) })
     end
@@ -17,10 +17,10 @@ RSpec.describe StatsHelpers, :clean_database do
   describe "#date_groups" do
     before do
       # Null values must not cause problems...
-      Rubygem.create! name: "foo", downloads: 1, current_version: 1
+      Package.create! name: "foo", downloads: 1, current_version: 1
 
       [2003, 2014, 2014, 2016, 2016, 2016, Time.current.year + 1].each_with_index do |year, i|
-        Rubygem.create! name:             i,
+        Package.create! name:             i,
                         downloads:        i,
                         current_version:  i,
                         first_release_on: Date.new(year)
@@ -28,7 +28,7 @@ RSpec.describe StatsHelpers, :clean_database do
     end
 
     it "returns counts grouped by year in given column" do
-      expect(helper.date_groups(:rubygems, :first_release_on)).to eq(
+      expect(helper.date_groups(:packages, :first_release_on)).to eq(
         2014 => 2,
         2016 => 3
       )

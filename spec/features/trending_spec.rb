@@ -10,9 +10,9 @@ RSpec.describe "Trending Projects", :js do
     Factories.project "widget"
     Factories.project "other"
 
-    Factories.rubygem_trend "foobar", date: Time.current, position: 2, with_stats: true
-    Factories.rubygem_trend "widget", date: Time.current, position: 1, with_stats: true
-    Factories.rubygem_trend "other", date: 1.week.ago, position: 1, with_stats: true
+    Factories.package_trend "foobar", date: Time.current, position: 2, with_stats: true
+    Factories.package_trend "widget", date: Time.current, position: 1, with_stats: true
+    Factories.package_trend "other", date: 1.week.ago, position: 1, with_stats: true
   end
 
   it "allows users to look at trending projects" do

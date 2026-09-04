@@ -19,7 +19,6 @@ class Category < ApplicationRecord
 
   scope :by_rank, -> { where.not(rank: nil).order(rank: :asc) }
   scope :featured, -> { by_rank.limit(16).includes(:projects) }
-  scope :recently_added, -> { order(created_at: :desc).limit(4).includes(:projects) }
 
   include PgSearch::Model
 
@@ -39,12 +38,12 @@ class Category < ApplicationRecord
   end
 
   def self.find_for_show!(permalink, order: Project::Order.new)
-    includes(:category_group, projects: %i[rubygem github_repo])
+    includes(:category_group, projects: %i[package github_repo])
       .order(order.sql)
       .find(permalink.try(:strip))
   end
 
-  CATALOG_GITHUB_BASE_URL = "https://github.com/rubytoolbox/catalog/"
+  CATALOG_GITHUB_BASE_URL = "https://github.com/laraveltoolbox/catalog/"
 
   def catalog_show_url
     catalog_github_url

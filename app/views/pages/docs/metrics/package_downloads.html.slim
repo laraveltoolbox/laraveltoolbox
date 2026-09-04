@@ -1,0 +1,4 @@
+= render "metric_numeric_documentation", table: :packages, column: :downloads do
+  .columns
+    .column= project_ranking "Most downloads", table: :packages, column: :downloads, description: "&nbsp;".html_safe
+    .column= project_ranking "Most downloads for new projects", table: :packages, column: :downloads, description: "Projects released first within last year", scope: Project.for_display.where("packages.first_release_on > ?", 1.year.ago)
