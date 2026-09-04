@@ -43,6 +43,11 @@ console_command = "bin/rails console"
   # RADAR: Consider removing them
   RAILS_SERVE_STATIC_FILES = "enabled"
   RAILS_LOG_TO_STDOUT = "enabled"
+  # The category catalog is curated in https://github.com/laraveltoolbox/catalog.
+  # Uncomment once that repository publishes its export to github pages - until
+  # then the app imports the copy checked into db/catalog.json, and an
+  # unreachable CATALOG_URL would fail the hourly import.
+  # CATALOG_URL = "https://laraveltoolbox.github.io/catalog/catalog.json"
 
 [processes]
   web = "bundle exec puma -C config/puma.rb"

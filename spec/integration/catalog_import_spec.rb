@@ -9,14 +9,16 @@ RSpec.describe CatalogImport, :clean_database do
 
   let(:category_data) { catalog_data["category_groups"].pluck("categories").flatten }
 
-  let(:project_permalinks) { %w[clockwork sidekiq swirrl/taskit willian/has_paginate] }
+  let(:project_permalinks) do
+    %w[barryvdh/laravel-debugbar laravel/scout laravel/telescope spatie/laravel-backup spatie/laravel-medialibrary]
+  end
 
   let(:import) { described_class.new(catalog_data) }
 
   before do
-    Project.create! permalink: "clockwork"
-    Project.create! permalink: "swirrl/taskit"
-    Project.create! permalink: "sidekiq"
+    Project.create! permalink: "laravel/scout"
+    Project.create! permalink: "spatie/laravel-backup"
+    Project.create! permalink: "spatie/laravel-medialibrary"
   end
 
   describe "perform" do
@@ -72,8 +74,8 @@ RSpec.describe CatalogImport, :clean_database do
       expect { import.perform }.to change { Category.find_by(permalink: obsolete_category.permalink) }.to(nil)
     end
 
-    it "creates missing github-based project" do
-      expect { import.perform }.to change(Project, :count).by(1)
+    it "creates projects that are not known locally yet" do
+      expect { import.perform }.to change(Project, :count).by(2)
     end
 
     it "results in expected set of projects" do

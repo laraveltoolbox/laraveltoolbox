@@ -66,7 +66,7 @@ class CatalogImport
                        description:    category_data["description"],
                        category_group: group
 
-      upsert_github_projects category_data["projects"]
+      upsert_projects category_data["projects"]
     end
   end
 
@@ -76,15 +76,15 @@ class CatalogImport
   end
 
   #
-  # Rubygems-based projects are created automatically whenever a newly added
-  # gem is synced via the regular sync background jobs. Github projects
-  # are only created when they are referenced in the catalog - hence,
-  # we must deal with adding them here.
+  # A catalog entry can reference a composer package that has not entered the
+  # local mirror yet, as well as a plain github repository. Both need a project
+  # record to link the categorization against - the package and repository data
+  # is filled in by the regular sync background jobs afterwards.
   #
-  def upsert_github_projects(projects)
+  def upsert_projects(projects)
     projects.each do |project|
       normalized_path = Github.normalize_path(project)
-      next if project.exclude?("/") || Project.find_by(permalink: normalized_path)
+      next if Project.exists?(permalink: normalized_path)
 
       Project.create! permalink: normalized_path
     end

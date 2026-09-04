@@ -18,3 +18,20 @@ project, its maintainers, or its sponsors. Please do not direct support
 requests about this fork to the upstream project.
 
 Modifications made in this fork are likewise available under the MIT License.
+
+Third-party data
+----------------
+
+The category catalog in db/catalog.json is derived in part from the Laravel
+Package Ocean dataset:
+
+  Source:     https://github.com/HassanZahirnia/laravel-package-ocean
+  License:    MIT
+  Copyright:  (c) 2023 Hassan Zahirnia
+
+The remaining catalog entries were compiled from the packages covered by
+Laravel News (https://laravel-news.com/category/packages). Only package
+names were taken; categorization is our own.
+
+Package metadata and download statistics are retrieved from the packagist.org
+API (https://packagist.org/apidoc).

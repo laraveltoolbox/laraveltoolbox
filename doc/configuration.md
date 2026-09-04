@@ -37,7 +37,7 @@ The `RAILS_MAX_THREADS` option sets the number of threads to be used per [puma w
 
 ## Canonical Domain and SSL enforcement *(optional)*
 
-Setting `CANONICAL_HOST=www.ruby-toolbox.com` will enforce any requests made to the app under a different domain to be redirected to the canonical one.
+Setting `CANONICAL_HOST=www.laravel-toolbox.com` will enforce any requests made to the app under a different domain to be redirected to the canonical one.
 
 It will also enable SSL enforcement - if a user visits via plain HTTP, they will be redirected to the SSL variant.
 
@@ -51,13 +51,28 @@ The [sidekiq web UI](sidekiq-web) is mounted at `/ops/sidekiq`. It is protected 
 
 If this is not configured the app generates a random password on boot.
 
+## Catalog Source *(optional)*
+
+The category catalog is curated in the [catalog repository][catalog], which publishes its
+JSON export to [Github Pages][catalog-gh-pages]. Set `CATALOG_URL` to that export so the
+hourly catalog import picks up changes:
+
+```
+CATALOG_URL=https://laraveltoolbox.github.io/catalog/catalog.json
+```
+
+Without this variable the import falls back to the copy checked into the repo at
+`db/catalog.json`, which is what development and test environments use. Note that the
+import fails loudly if `CATALOG_URL` is set but unreachable, so only point it at an
+export that is actually published.
+
 ## Catalog Update Github Webhook *(optional)*
 
 On every update the [catalog][catalog] builds a new JSON export and deploys it to [Github Pages][catalog-gh-pages]. In order to synchronize the live catalog as fast as possible, a Github event webhook can be configured to trigger catalog synchronization on successful catalog builds.
 
 If this is not configured an hourly update cron job will pull the latest data, so this is not a required configuration option.
 
-* Payload URL: `https://www.ruby-toolbox.com/webhooks/github`
+* Payload URL: `https://www.laravel-toolbox.com/webhooks/github`
 * Content-Type: `application/json`
 * Secret: `Some Secret String`. Also **set this as `GITHUB_WEBHOOK_SECRET` on the app environment**.
 * :heavy_check_mark: Enable SSL Verification
@@ -72,13 +87,13 @@ See also https://github.com/rubytoolbox/rubytoolbox/pull/339
 By setting `RAILS_SERVE_STATIC_FILES` to true the Rails app will be hosting the assets. The production Docker image ships the precompiled assets (see the [Dockerfile](../Dockerfile)), so the app serves them directly with far-future cache headers.
 
 [appsignal]: https://appsignal.com/
-[catalog-gh-pages]: https://rubytoolbox.github.io/catalog
-[catalog]: https://github.com/rubytoolbox/catalog
+[catalog-gh-pages]: https://laraveltoolbox.github.io/catalog
+[catalog]: https://github.com/laraveltoolbox/catalog
 [postgresql]: https://www.postgresql.org/
-[puma]: http://ruby-toolbox.com/projects/puma
+[puma]: https://github.com/puma/puma
 [redis]: https://redis.io/
 [sidekiq-web]: https://github.com/mperham/sidekiq/wiki/Monitoring#web-ui
-[sidekiq]: http://ruby-toolbox.com/projects/sidekiq
+[sidekiq]: https://github.com/sidekiq/sidekiq
 
 ---
 

@@ -8,12 +8,17 @@
 
   [![CI](https://github.com/rubytoolbox/rubytoolbox/actions/workflows/ci.yml/badge.svg)](https://github.com/rubytoolbox/rubytoolbox/actions/workflows/ci.yml) [![Depfu](https://badges.depfu.com/badges/84ab24dbd83e15c8dfd36144e10d14f2/overview.svg)](https://depfu.com/github/rubytoolbox/rubytoolbox) [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/rubytoolbox/rubytoolbox)
 
-  **Find actively maintained & popular open source software libraries for the Ruby programming language**
+  **Find actively maintained & popular open source packages for Laravel and PHP**
 </div>
 
-The Ruby Toolbox is a catalog of all Rubygems that keeps track of popularity and health metrics to help you choose a reliable library.
+The Laravel Toolbox is a catalog of Composer packages for Laravel that keeps track of popularity and health metrics to help you choose a reliable library.
 
-**This is the source code for the site you can visit at https://www.ruby-toolbox.com/**
+Package metadata and download statistics come from [packagist.org](https://packagist.org/apidoc). The category
+catalog is curated in [laraveltoolbox/catalog](https://github.com/laraveltoolbox/catalog) and imported from the
+export that repository publishes; its initial categorization is derived from the
+[Laravel Package Ocean](https://github.com/HassanZahirnia/laravel-package-ocean) dataset (see [NOTICE](./NOTICE)).
+
+**This is the source code for the site you can visit at https://www.laravel-toolbox.com/**
 
 ## Development
 
@@ -46,6 +51,7 @@ to get the full toolchain.
 * During development you can launch [guard](https://github.com/guard/guard) using `bundle exec guard` to continuously check your changes
 * The repo has [overcommit](https://github.com/brigade/overcommit) git hooks set up to check your changes before commit, push etc. You can set it up once with `bundle exec overcommit --install`. Whenever the hook config file `.overcommit.yml` changes, you need to verify it's contents and approve the changes with `bundle exec overcommit --sign`
 * You can find the [sidekiq](https://github.com/mperham/sidekiq/) web UI at `http://localhost:5000/ops/sidekiq`. Username can be empty, the default password is `development`.
+* The category catalog is curated in [laraveltoolbox/catalog](https://github.com/laraveltoolbox/catalog), which publishes an export to github pages. Production imports it via the `CATALOG_URL` environment variable; without that variable the hourly `CatalogImportJob` falls back to the local copy in [`db/catalog.json`](./db/catalog.json), which `bundle exec rake catalog:pull` refreshes.
 
 ## Production
 

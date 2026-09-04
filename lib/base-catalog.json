@@ -1,69 +1,44 @@
 {
   "category_groups": [
     {
+      "permalink": "data-and-storage",
+      "name": "Data & Storage",
+      "description": "Working with the database, eloquent and files",
       "categories": [
         {
-          "name": "Active Record Versioning",
+          "permalink": "database-eloquent",
+          "name": "Database & Eloquent",
           "description": null,
           "projects": [
-            "acts-as-approvable",
-            "version_fu",
-            "vestal_versions"
-          ],
-          "permalink": "Active_Record_Versioning"
+            "laravel/scout",
+            "spatie/laravel-backup"
+          ]
         },
         {
-          "name": "Pagination",
+          "permalink": "file-management",
+          "name": "File Management",
           "description": null,
           "projects": [
-            "ajax_pagination",
-            "kaminari",
-            "willian/has_paginate"
-          ],
-          "permalink": "pagination"
-        },
-        {
-          "name": "Rails Search",
-          "description": null,
-          "projects": [
-            "elasticsearch-rails",
-            "ruby_simple_search",
-            "xapit"
-          ],
-          "permalink": "rails_search"
+            "spatie/laravel-medialibrary"
+          ]
         }
-      ],
-      "description": null,
-      "name": "Active Record Plugins",
-      "permalink": "Active_Record_Plugins"
+      ]
     },
     {
+      "permalink": "developer-tooling",
+      "name": "Developer Tooling",
+      "description": "Everything that supports building, testing and shipping",
       "categories": [
         {
-          "name": "Background Jobs",
+          "permalink": "debugging-dev-tools",
+          "name": "Debugging & Dev Tools",
           "description": null,
           "projects": [
-            "resque",
-            "sidekiq"
-          ],
-          "permalink": "Background_Jobs"
-        },
-        {
-          "name": "Scheduling",
-          "description": null,
-          "projects": [
-            "clockwork",
-            "resque-scheduler",
-            "rufus-scheduler",
-            "Swirrl/Taskit",
-            "whenever"
-          ],
-          "permalink": "scheduling"
+            "barryvdh/laravel-debugbar",
+            "laravel/telescope"
+          ]
         }
-      ],
-      "description": null,
-      "name": "Background Processing",
-      "permalink": "Background_Processing"
+      ]
     }
   ]
 }
