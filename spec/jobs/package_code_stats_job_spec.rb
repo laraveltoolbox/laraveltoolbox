@@ -43,7 +43,7 @@ RSpec.describe PackageCodeStatsJob do
       it { is_expected.to eq :unknown_source }
 
       it "keeps whatever statistics we already have" do
-        expect { perform }.not_to change { package.code_statistics.pluck(:language) }
+        expect { perform }.not_to(change { package.code_statistics.pluck(:language) })
       end
     end
 
