@@ -9,7 +9,7 @@
       = render partial: "search_form"
       - unless @search
         javascript:
-          document.querySelector(".hero.search input[type=text]").focus();
+          document.querySelector(".hero.search input[name=q]").focus();
 
 - if @search
   section.section.search-results: .container
