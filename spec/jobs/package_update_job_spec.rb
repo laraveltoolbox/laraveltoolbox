@@ -109,6 +109,17 @@ RSpec.describe PackageUpdateJob do
       end
     end
 
+    describe "when the package never cut a stable release" do
+      let(:package_name) { "vendor/dev-only" }
+
+      it "falls back to the unstable release" do
+        do_perform
+
+        expect(Package.find(package_name)).to have_attributes(current_version: "dev-main",
+                                                              releases_count:  1)
+      end
+    end
+
     describe "when the package is unknown to packagist" do
       let(:package_name) { "unknown/package" }
 

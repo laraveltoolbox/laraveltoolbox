@@ -390,3 +390,45 @@ https://packagist.org/packages/list.json?type=unknown-type:
 https://packagist.org/api/security-advisories/?updatedSince=2:
   status: 404
   body: "{}"
+https://packagist.org/packages/vendor/dev-only.json:
+  status: 200
+  body: |-
+    {
+      "package": {
+        "name": "vendor/dev-only",
+        "description": "A package that never cut a stable release",
+        "repository": "https://github.com/vendor/dev-only",
+        "dependents": 0,
+        "downloads": {
+          "total": 42,
+          "monthly": 4,
+          "daily": 1
+        }
+      }
+    }
+https://repo.packagist.org/p2/vendor/dev-only.json:
+  status: 200
+  body: |-
+    {
+      "packages": {
+        "vendor/dev-only": [
+          {
+            "name": "vendor/dev-only",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "license": [
+              "MIT"
+            ],
+            "time": "2026-03-02T10:00:00+00:00",
+            "source": {
+              "type": "git",
+              "url": "https://github.com/vendor/dev-only.git",
+              "reference": "5f1b2c3"
+            },
+            "require": {
+              "php": "^8.2"
+            }
+          }
+        ]
+      }
+    }

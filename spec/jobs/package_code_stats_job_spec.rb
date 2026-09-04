@@ -32,6 +32,21 @@ RSpec.describe PackageCodeStatsJob do
         .to([["c", 300], ["ruby", 100]])
     end
 
+    context "when the package has no github source to measure" do
+      before do
+        allow(PackageCodeStatsService).to receive(:statistics)
+          .and_raise(PackageCodeStatsService::UnknownSourceError, "no github source repository")
+
+        package.code_statistics.create! language: "php", code: 1, comments: 2, blanks: 3
+      end
+
+      it { is_expected.to eq :unknown_source }
+
+      it "keeps whatever statistics we already have" do
+        expect { perform }.not_to change { package.code_statistics.pluck(:language) }
+      end
+    end
+
     context "when we have some dropped language in the database" do
       before do
         package.code_statistics.create! language: "no_longer_used_language",
