@@ -19,6 +19,14 @@ $weight-bold:     700
 
 $family-monospace: "IBM Plex Mono", monospace
 
+// Control geometry measured off laravel.com. Inputs sit at 6px; buttons want
+// 8px, which is applied below since bulma derives both from $control-radius.
+// Their elevation is deliberately at the edge of visibility - two layers at
+// 3% and 6% black rather than a conventional drop shadow.
+$radius: 6px
+$button-padding-horizontal: 1.5em
+$input-shadow: 0 0 1px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.06)
+
 // Bulma colors reference:
 // * https://bulma.io/documentation/overview/colors/
 // * https://bulma.io/documentation/modifiers/typography-helpers/
@@ -60,6 +68,18 @@ $navbar-breakpoint: $widescreen
 @import "~/stylesheets/components/project_release_history"
 @import "~/stylesheets/components/readme"
 @import "~/stylesheets/components/section_heading"
+
+// laravel.com tightens tracking by -0.025em at every size. It is the single
+// biggest reason their type reads as compact rather than merely small.
+body
+  letter-spacing: -0.025em
+
+.button
+  border-radius: 8px
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.06)
+  // Buttons carrying a colour are flat - the fill already lifts them.
+  &.is-primary, &.is-link, &.is-info, &.is-success, &.is-warning, &.is-danger, &.is-dark, &.is-black
+    box-shadow: none
 
 .border-bottom
   border-bottom: 1px solid $light
