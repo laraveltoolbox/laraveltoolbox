@@ -21,6 +21,35 @@ def purge_queues!
   Sidekiq::ScheduledSet.new.clear
 end
 
+#
+# The mirror is rebuilt from scratch, so it goes out via truncation rather than
+# record by record: destroying a package cascades into its releases, download
+# stats and dependencies one row at a time, which takes hours for a mirror of
+# any size.
+#
+# Categories and category groups survive - the catalog import restores their
+# project assignments right afterwards.
+#
+TRUNCATED_TABLES = %w[
+  packages
+  package_advisories
+  package_code_statistics
+  package_dependencies
+  package_download_stats
+  package_trends
+  projects
+  categorizations
+  github_repos
+  github_readmes
+].freeze
+
+def discard_mirror!
+  connection = ActiveRecord::Base.connection
+  tables = TRUNCATED_TABLES.map { connection.quote_table_name(it) }.join(", ")
+
+  connection.execute "TRUNCATE TABLE #{tables} RESTART IDENTITY CASCADE"
+end
+
 namespace :packages do
   desc "Discard all mirrored package data and rebuild it from packagist (destructive, requires CONFIRM=yes)"
   task reset: :environment do
@@ -30,13 +59,7 @@ namespace :packages do
 
     puts "Discarding #{Package.count} packages and #{Project.count} projects..."
     purge_queues!
-
-    # Packages cascade into their projects, dependencies, download stats,
-    # trends, advisories and code statistics
-    Package.in_batches(&:destroy_all)
-    # Github-only projects have no package to cascade from
-    Project.in_batches(&:destroy_all)
-    GithubRepo.without_projects.destroy_all
+    discard_mirror!
 
     CatalogImportJob.perform_async
     PackagesSyncJob.perform_async
