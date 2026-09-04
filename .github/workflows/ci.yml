@@ -4,6 +4,9 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  # Allows re-running the suite from the actions tab, e.g. to re-check the
+  # catalog against packagist without pushing a commit
+  workflow_dispatch:
 
 env:
   # Bundler settings previously provided by ruby/setup-ruby's bundler-cache
