@@ -138,8 +138,8 @@ module ComponentHelpers
     render("components/landing_hero", title:, image:, &)
   end
 
-  def landing_feature(title:, image: nil, &)
-    render("components/landing_feature", title:, image:, &)
+  def landing_feature(title:, image: nil, path: nil, &)
+    render("components/landing_feature", title:, image:, path:, &)
   end
 
   def documentation_page(title, &)

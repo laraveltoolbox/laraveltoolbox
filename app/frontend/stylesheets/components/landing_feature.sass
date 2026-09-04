@@ -8,6 +8,19 @@
     align-items: stretch
     align-content: stretch
 
+    // A hairline separating adjacent features, drawn in the gutter bulma
+    // already leaves between columns. Only the feature opening a row goes
+    // without one: two per row on mobile, four from tablet up.
+    border-left: 1px solid $border
+
+    +mobile
+      &:nth-child(2n + 1)
+        border-left: 0
+
+    +tablet
+      &:nth-child(4n + 1)
+        border-left: 0
+
     header
       .image
         display: inline-block
@@ -32,3 +45,11 @@
       @extend .has-text-right
       a
         @extend .button, .is-outlined,.is-primary
+
+  // The linked variant: the whole feature is the target, so it must not pick up
+  // link colouring for its body copy - only the title answers on hover
+  a.feature
+    color: inherit
+
+    &:hover h3
+      color: $primary

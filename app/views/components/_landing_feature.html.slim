@@ -1,7 +1,13 @@
-.feature
+/ With a path the whole feature becomes the link rather than just its title -
+/ the blurb is what explains the destination, so it should be clickable too.
+/ That rules out a nested link, which is why the styleguide's footer variant
+/ and this one are mutually exclusive.
+- body = capture { yield }
+
+= content_tag(path ? :a : :div, href: path, class: "feature") do
   header
     - if image
       .image= vite_image_tag File.join("images", image), title: title
     h3= title
 
-  = yield
+  = body

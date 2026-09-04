@@ -12,25 +12,23 @@
         = render partial: "search_form"
 
   section.section: .container
-    = section_heading "How it works"
-
     .landing-features
-      = landing_feature title: "Categories" do
+      = landing_feature title: "Categories", path: categories_path do
         article
           markdown:
             Curated groups of libraries that solve the same problem, so you can compare like with like.
 
-      = landing_feature title: "Search" do
+      = landing_feature title: "Search", path: search_path do
         article
           markdown:
             Every package published on Packagist, searchable beyond our categories.
 
-      = landing_feature title: "Project Popularity" do
+      = landing_feature title: "Project Popularity", path: trends_path do
         article
           markdown:
             Ranked by Composer installs and GitHub stars, so you can see how many people actually rely on a library.
 
-      = landing_feature title: "Project Health" do
+      = landing_feature title: "Project Health", path: page_path("docs/index") do
         article
           markdown:
             Release cadence, commit activity and open issues, condensed into one colour-coded indicator.
