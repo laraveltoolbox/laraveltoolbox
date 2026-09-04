@@ -60,16 +60,15 @@ RSpec.describe PackagesSyncJob do
       allow(job).to receive_messages(local_packages:, remote_packages:)
     end
 
-    it "triggers update jobs for all locally missing packages" do
-      allow(PackageUpdateJob).to receive(:perform_async).with("vendor/gone")
-      expect(PackageUpdateJob).to receive(:perform_async).with("vendor/fresh")
+    it "triggers update jobs for the locally and remotely missing packages" do
+      expect(PackageUpdateJob).to receive(:perform_bulk)
+        .with([["vendor/fresh"], ["vendor/gone"]], batch_size: described_class::BULK_BATCH_SIZE)
+
       job.perform
     end
 
-    it "triggers update jobs for all remotely missing packages" do
-      allow(PackageUpdateJob).to receive(:perform_async).with("vendor/fresh")
-      expect(PackageUpdateJob).to receive(:perform_async).with("vendor/gone")
-      job.perform
+    it "leaves packages that are present on both sides alone" do
+      expect(job.differing_packages).not_to include "vendor/known", "vendor/other"
     end
   end
 end

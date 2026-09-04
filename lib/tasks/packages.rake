@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Redis handles a few large pushes much better than a flood of small ones
+BULK_BATCH_SIZE = 1_000
+
 namespace :packages do
   desc "Discard all mirrored package data and rebuild it from packagist (destructive, requires CONFIRM=yes)"
   task reset: :environment do
@@ -26,7 +29,9 @@ namespace :packages do
   desc "Queue historical download stats backfill for all mirrored packages"
   task backfill_stats: :environment do
     names = Package.pluck(:name)
-    names.each { PackageBackfillStatsJob.perform_async it }
+    # Pushing tens of thousands of jobs one by one exhausts redis' patience,
+    # so they go over in batches
+    PackageBackfillStatsJob.perform_bulk names.zip, batch_size: BULK_BATCH_SIZE
 
     puts "Queued download stats backfill for #{names.count} packages."
   end

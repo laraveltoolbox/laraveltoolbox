@@ -29,14 +29,20 @@ class PackagesSyncJob < ApplicationJob
 
   LARAVEL_PACKAGE_TYPE = "laravel-package"
 
-  def perform
-    (remote_packages - local_packages).each do |locally_missing_package|
-      PackageUpdateJob.perform_async locally_missing_package
-    end
+  # Redis handles a few large pushes much better than a flood of small ones
+  BULK_BATCH_SIZE = 1_000
 
-    (local_packages - remote_packages).each do |remotely_missing_package|
-      PackageUpdateJob.perform_async remotely_missing_package
-    end
+  # Packages we know nothing about yet get pulled in, packages that vanished
+  # upstream get dropped - both is the update job's business.
+  #
+  # These are pushed in batches: on the initial sync this is tens of thousands
+  # of jobs, and pushing them individually overwhelms redis.
+  def perform
+    PackageUpdateJob.perform_bulk differing_packages.zip, batch_size: BULK_BATCH_SIZE
+  end
+
+  def differing_packages
+    (remote_packages - local_packages) | (local_packages - remote_packages)
   end
 
   def local_packages
