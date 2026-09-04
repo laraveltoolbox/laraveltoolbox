@@ -22,6 +22,29 @@ RSpec.describe "Project Display" do
     end
   end
 
+  it "shows which laravel and php versions the package supports" do
+    project = Factories.project "widgets"
+
+    visit "/projects/#{project.permalink}"
+    expect(page).to have_css(".hero")
+    expect(page).to have_no_css(".project-compatibility")
+
+    project.package.update! laravel_versions:    [11, 12, Laravel::LATEST_VERSION],
+                            laravel_requirement: "^11.0|^12.0|^13.0",
+                            php_requirement:     "^8.2",
+                            php_minimum_version: "8.2"
+
+    visit "/projects/#{project.permalink}"
+
+    within ".project-compatibility" do
+      expect(page).to have_text "Laravel 11 – #{Laravel::LATEST_VERSION}"
+      expect(page).to have_text "PHP 8.2+"
+    end
+
+    # Packages that keep up with the current laravel major are called out
+    expect(page).to have_css ".project-compatibility-tag.supports-latest"
+  end
+
   it "can display a project's reverse dependencies", :js do
     project = Project.find("bundler")
 

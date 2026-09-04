@@ -54,6 +54,36 @@ RSpec.describe Package do
     end
   end
 
+  describe "#laravel_version_label" do
+    it "collapses a contiguous range" do
+      expect(described_class.new(laravel_versions: [11, 12, 13]).laravel_version_label).to eq "11 – 13"
+    end
+
+    it "keeps a single version as is" do
+      expect(described_class.new(laravel_versions: [13]).laravel_version_label).to eq "13"
+    end
+
+    it "spells out the runs when there are gaps" do
+      expect(described_class.new(laravel_versions: [8, 11, 12, 13]).laravel_version_label).to eq "8, 11 – 13"
+    end
+
+    it "is blank for packages that do not depend on laravel" do
+      expect(described_class.new(laravel_versions: []).laravel_version_label).to be_nil
+    end
+  end
+
+  describe "#supports_latest_laravel?" do
+    it "is true when the latest known laravel version is supported" do
+      package = described_class.new laravel_versions: [Laravel::LATEST_VERSION]
+      expect(package.supports_latest_laravel?).to be true
+    end
+
+    it "is false otherwise" do
+      package = described_class.new laravel_versions: [Laravel::LATEST_VERSION - 1]
+      expect(package.supports_latest_laravel?).to be false
+    end
+  end
+
   describe "#documentation_url" do
     it "is the package's documentation_url if set" do
       url = "https://laravel.com/docs"

@@ -1,0 +1,20 @@
+- laravel_versions = project.package_laravel_version_label
+- php_version = project.package_php_minimum_version
+
+- if laravel_versions.present? || php_version.present?
+  .project-compatibility
+    - if laravel_versions.present?
+      .project-compatibility-tag class=("supports-latest" if project.package_supports_latest_laravel?)
+        .tags.has-addons
+          span.tag
+            span.icon: i.fa.fa-bolt
+          strong.tag title=project.package_laravel_requirement
+            = "Laravel #{laravel_versions}"
+
+    - if php_version.present?
+      .project-compatibility-tag
+        .tags.has-addons
+          span.tag
+            span.icon: i.fa.fa-code
+          strong.tag title=project.package_php_requirement
+            = "PHP #{php_version}+"

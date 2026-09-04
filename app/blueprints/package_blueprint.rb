@@ -9,6 +9,15 @@ class PackageBlueprint < ApplicationBlueprint
          :licenses,
          :url
 
+  field :compatibility do |package|
+    {
+      laravel_versions:    package.laravel_versions,
+      laravel_requirement: package.laravel_requirement,
+      php_minimum_version: package.php_minimum_version,
+      php_requirement:     package.php_requirement,
+    }
+  end
+
   field :stats do |package|
     {
       downloads:                  package.downloads,

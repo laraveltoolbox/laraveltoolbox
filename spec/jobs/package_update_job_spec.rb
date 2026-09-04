@@ -19,6 +19,10 @@ RSpec.describe PackageUpdateJob do
         documentation_url:          "https://spatie.be/docs/laravel-permission",
         downloads:                  114_204_067,
         homepage_url:               "https://spatie.be/docs/laravel-permission",
+        laravel_requirement:        "^10.0|^11.0",
+        laravel_versions:           [10, 11],
+        php_requirement:            "^8.2",
+        php_minimum_version:        "8.2",
         licenses:                   %w[MIT],
         mailing_list_url:           nil,
         name:                       "spatie/laravel-permission",
@@ -35,6 +39,16 @@ RSpec.describe PackageUpdateJob do
       do_perform
 
       expect(Package.find(package_name)).to have_attributes(expected_attributes)
+    end
+
+    it "derives the laravel and php compatibility from the release's runtime requirements" do
+      do_perform
+
+      expect(Package.find(package_name)).to have_attributes(
+        laravel_versions:    [10, 11],
+        laravel_requirement: "^10.0|^11.0",
+        php_minimum_version: "8.2"
+      )
     end
 
     it "ignores unstable releases when picking the current version" do

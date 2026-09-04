@@ -64,8 +64,12 @@ class PackageUpdateJob < ApplicationJob
       downloads:                  package_data.dig("downloads", "total").to_i,
       first_release_on:           release_dates.first,
       homepage_url:               current_release["homepage"].presence || package_data["repository"],
+      laravel_requirement:        Laravel.requirement_for(runtime_requirements),
+      laravel_versions:           Laravel.versions_for(runtime_requirements),
       latest_release_on:          release_dates.last,
       licenses:                   Array(current_release["license"]),
+      php_minimum_version:        Composer::Constraint.new(php_requirement).minimum_version,
+      php_requirement:            php_requirement,
       releases_count:             versions.count,
       reverse_dependencies_count: package_data["dependents"].to_i,
       source_code_url:            current_release.dig("source", "url").presence || package_data["repository"],
@@ -73,6 +77,18 @@ class PackageUpdateJob < ApplicationJob
     }
   end
   # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+
+  #
+  # The runtime dependencies of the current release. `require-dev` is
+  # deliberately excluded - it says nothing about what the package needs to run.
+  #
+  def runtime_requirements
+    @runtime_requirements ||= Hash(current_release["require"])
+  end
+
+  def php_requirement
+    runtime_requirements["php"]
+  end
 
   def support
     current_release["support"] || {}
@@ -133,7 +149,7 @@ class PackageUpdateJob < ApplicationJob
 
   def dependency_requirements
     {
-      "runtime"     => current_release["require"],
+      "runtime"     => runtime_requirements,
       "development" => current_release["require-dev"],
     }.flat_map do |type, requirements|
       Hash(requirements).map { |dependency_name, requirement| [type, dependency_name, requirement] }

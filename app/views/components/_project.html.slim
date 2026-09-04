@@ -22,6 +22,8 @@
         - project.categories.each do |category|
           = category_card category, compact: true, inline: true
 
+  .columns: .column= project_compatibility project
+
   .columns: .column= project_health_tags project
 
   .columns: .links.column

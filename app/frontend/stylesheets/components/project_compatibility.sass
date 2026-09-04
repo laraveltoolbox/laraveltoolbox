@@ -1,0 +1,15 @@
+.project-compatibility
+  @extend .field, .is-grouped, .is-grouped-multiline
+
+.project-compatibility-tag
+  @extend .control
+
+  // The laravel tag is the one people scan for, so the version range gets the
+  // accent while the icon addon stays neutral - and packages that already
+  // support the current laravel major are called out in green.
+  strong.tag
+    @extend .is-dark
+
+  &.supports-latest
+    strong.tag
+      @extend .is-success

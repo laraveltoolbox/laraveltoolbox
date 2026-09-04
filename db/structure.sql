@@ -558,7 +558,11 @@ CREATE TABLE public.packages (
     releases_count integer,
     reverse_dependencies_count integer,
     fetched_at timestamp without time zone,
-    quarterly_release_counts jsonb DEFAULT '{}'::jsonb NOT NULL
+    quarterly_release_counts jsonb DEFAULT '{}'::jsonb NOT NULL,
+    laravel_versions integer[] DEFAULT '{}'::integer[] NOT NULL,
+    laravel_requirement character varying,
+    php_requirement character varying,
+    php_minimum_version character varying
 );
 
 
@@ -1155,6 +1159,7 @@ ALTER TABLE ONLY public.projects
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20260904160000'),
 ('20260904140000'),
 ('20260904120000'),
 ('20240927105531'),

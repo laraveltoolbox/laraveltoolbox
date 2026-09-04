@@ -51,6 +51,10 @@ module ComponentHelpers
     render "components/project_health_tags", project:
   end
 
+  def project_compatibility(project)
+    render "components/project_compatibility", project:
+  end
+
   def project_health_tag(health_status)
     render "components/project_health_tag", status: health_status
   end

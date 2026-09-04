@@ -68,4 +68,20 @@ class Package < ApplicationRecord
   def url
     File.join "https://packagist.org/packages", name
   end
+
+  #
+  # The supported laravel versions compressed into a readable label, i.e.
+  # "11 – 13" for a contiguous range or "8, 11 – 13" when there are gaps.
+  #
+  def laravel_version_label
+    return if laravel_versions.blank?
+
+    laravel_versions.sort.slice_when { |previous, current| current > previous + 1 }.map do |run|
+      run.one? ? run.first.to_s : "#{run.first} – #{run.last}"
+    end.join(", ")
+  end
+
+  def supports_latest_laravel?
+    laravel_versions.include? Laravel::LATEST_VERSION
+  end
 end
