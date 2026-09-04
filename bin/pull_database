@@ -1,19 +1,50 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
-echo "=== Ruby Toolbox production database subset import ==="
-echo
-echo "This script will:"
-echo
-echo "* Drop your local database"
-echo "* Re-create it and load the current schema"
-echo "* Fetch a partial database export from https://www.ruby-toolbox.com/database/exports/selective and import it"
-echo
-echo "Proceeding in 5 seconds, please quickly hit CTRL+C if you want to cancel 🧨"
+#
+# Imports a subset of the production data into the local development database,
+# see Database::SelectiveExport. Point DATABASE_EXPORT_URL somewhere else to
+# pull the export from a different instance.
+#
+EXPORT_URL="${DATABASE_EXPORT_URL:-https://laraveltoolbox.fly.dev/database/exports/selective}"
 
-sleep 5
+echo "=== The Laravel Toolbox production database subset import ==="
+echo
+echo "This will:"
+echo
+echo "* Fetch a partial database export from $EXPORT_URL"
+echo "* DROP your local development database"
+echo "* Re-create it, load the current schema and import the export"
+echo
+
+if [ "${CONFIRM:-}" != "yes" ]; then
+  read -r -p "This destroys your local database. Type 'yes' to continue: " confirmation
+  if [ "$confirmation" != "yes" ]; then
+    echo "Aborted, nothing was changed."
+    exit 1
+  fi
+fi
+
+dump="$(mktemp -t laravel-toolbox-export)"
+trap 'rm -f "$dump"' EXIT
+
+#
+# The download happens before anything destructive: the export depends on the
+# production S3 bucket being configured, and a failure used to leave the
+# developer with an empty database and no way back.
+#
+echo "Fetching the export..."
+if ! curl -fSL --retry 2 "$EXPORT_URL" -o "$dump"; then
+  echo "Could not download the export from $EXPORT_URL - your database was left untouched." >&2
+  exit 1
+fi
+
+if ! gunzip -t "$dump" 2>/dev/null; then
+  echo "The response from $EXPORT_URL is not a gzip archive - your database was left untouched." >&2
+  exit 1
+fi
 
 set -x
 
-rails db:drop db:create db:schema:load
-curl -L https://www.ruby-toolbox.com/database/exports/selective | gunzip | rails dbconsole
+bin/rails db:drop db:create db:schema:load
+gunzip -c "$dump" | bin/rails dbconsole
