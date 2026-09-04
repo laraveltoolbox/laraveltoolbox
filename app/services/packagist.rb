@@ -20,6 +20,13 @@ module Packagist
   # than the small json documents the other endpoints return
   ADVISORIES_READ_TIMEOUT = 30
 
+  # The format the p2 mirror serves release metadata in, see
+  # https://github.com/composer/composer/blob/main/src/Composer/MetadataMinifier/MetadataMinifier.php
+  MINIFIED_FORMAT = "composer/2.0"
+
+  # Marks a field as removed rather than inherited in the minified format
+  UNSET_MARKER = "__unset"
+
   class InvalidResponse < StandardError
     attr_reader :status, :url
 
@@ -43,8 +50,16 @@ module Packagist
     # All tagged releases of the package, newest first. Returns nil when
     # packagist does not know the package.
     #
+    # The p2 mirror serves this in composer's minified format, where each entry
+    # only carries the fields that changed relative to the previous one - so the
+    # releases are expanded back into standalone documents before returning.
+    #
     def versions(name)
-      get(File.join(REPO_URL, "p2", "#{name}.json"))&.dig("packages", name)
+      data = get File.join(REPO_URL, "p2", "#{name}.json")
+      versions = data&.dig("packages", name)
+      return versions unless versions && data["minified"] == MINIFIED_FORMAT
+
+      expand versions
     end
 
     #
@@ -99,6 +114,24 @@ module Packagist
     end
 
     private
+
+    #
+    # Rebuilds standalone release documents from composer's minified format:
+    # every entry inherits the previous one's fields, overriding those it names
+    # itself and dropping those it marks as unset.
+    #
+    def expand(versions)
+      inherited = nil
+
+      versions.map do |version|
+        inherited = if inherited
+                      unset = version.select { |_, value| value == UNSET_MARKER }.keys
+                      inherited.merge(version).except(*unset)
+                    else
+                      version
+                    end
+      end
+    end
 
     def get(url, read_timeout: HttpService::DEFAULT_READ_TIMEOUT)
       response = HttpService.client(read_timeout:).get url

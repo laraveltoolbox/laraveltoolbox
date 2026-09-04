@@ -32,6 +32,41 @@ RSpec.describe Packagist do
       expect(versions.pluck("version")).to eq %w[6.10.1 6.10.0 6.0.0-beta1 1.0.0]
     end
 
+    #
+    # The p2 mirror only spells out the fields that changed since the previous
+    # release, so without expanding them every release but the newest would
+    # look like it has no requirements, license or support urls at all.
+    #
+    it "expands the fields inherited from the previous release" do
+      expect(versions.pluck("require")).to all eq(
+        "php" => "^8.2", "illuminate/auth" => "^10.0|^11.0", "illuminate/container" => "^10.0|^11.0"
+      )
+    end
+
+    it "drops fields the minified format marks as unset" do
+      allow(described_class).to receive(:get).and_return(
+        "minified" => "composer/2.0",
+        "packages" => {
+          package_name => [
+            { "version" => "2.0.0", "require" => { "php" => "^8.2" }, "homepage" => "https://example.com" },
+            { "version" => "1.0.0", "homepage" => "__unset" },
+          ],
+        }
+      )
+
+      expect(versions.pluck("homepage")).to eq ["https://example.com", nil]
+    end
+
+    context "when the response is not minified" do
+      it "returns the releases untouched" do
+        allow(described_class).to receive(:get).and_return(
+          "packages" => { package_name => [{ "version" => "1.0.0" }] }
+        )
+
+        expect(versions).to eq [{ "version" => "1.0.0" }]
+      end
+    end
+
     context "when packagist does not know the package" do
       let(:package_name) { "unknown/package" }
 
