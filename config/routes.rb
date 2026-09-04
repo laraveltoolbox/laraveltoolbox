@@ -15,8 +15,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :blog, only: %i[index show], constraints: { id: /[^.]+/ }
-
   # Routes for documentation via HighVoltage gem
   get "/pages/*id" => "pages#show", as: :page, format: false
 
