@@ -66,6 +66,23 @@ $$;
 
 
 --
+-- Name: package_stats_calculation_month(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.package_stats_calculation_month() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+    previous_downloads bigint;
+    previous_relative_change decimal;
+BEGIN
+    SELECT total_downloads, relative_change_month INTO previous_downloads, previous_relative_change FROM package_download_stats WHERE package_name = NEW.package_name AND date = NEW.date - 28; IF previous_downloads IS NOT NULL THEN NEW.absolute_change_month := NEW.total_downloads - previous_downloads; IF previous_downloads > 0 THEN NEW.relative_change_month := ROUND((NEW.absolute_change_month * 100.0) / previous_downloads, 2); IF previous_relative_change IS NOT NULL THEN NEW.growth_change_month := NEW.relative_change_month - previous_relative_change; END IF; END IF; END IF;
+    RETURN NEW;
+END;
+$$;
+
+
+--
 -- Name: projects_update_description_tsvector_trigger(); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -87,24 +104,7 @@ CREATE FUNCTION public.projects_update_permalink_tsvector_trigger() RETURNS trig
     LANGUAGE plpgsql
     AS $$
 BEGIN
-    new.permalink_tsvector := to_tsvector('pg_catalog.simple', coalesce(new.permalink, ''));
-    RETURN NEW;
-END;
-$$;
-
-
---
--- Name: rubygem_stats_calculation_month(); Type: FUNCTION; Schema: public; Owner: -
---
-
-CREATE FUNCTION public.rubygem_stats_calculation_month() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$
-DECLARE
-    previous_downloads bigint;
-    previous_relative_change decimal;
-BEGIN
-    SELECT total_downloads, relative_change_month INTO previous_downloads, previous_relative_change FROM rubygem_download_stats WHERE rubygem_name = NEW.rubygem_name AND date = NEW.date - 28; IF previous_downloads IS NOT NULL THEN NEW.absolute_change_month := NEW.total_downloads - previous_downloads; IF previous_downloads > 0 THEN NEW.relative_change_month := ROUND((NEW.absolute_change_month * 100.0) / previous_downloads, 2); IF previous_relative_change IS NOT NULL THEN NEW.growth_change_month := NEW.relative_change_month - previous_relative_change; END IF; END IF; END IF;
+    new.permalink_tsvector := to_tsvector('pg_catalog.simple', coalesce(replace(new.permalink, '/', ' '), ''));
     RETURN NEW;
 END;
 $$;
@@ -382,33 +382,12 @@ CREATE TABLE public.github_repos (
 
 
 --
--- Name: projects; Type: TABLE; Schema: public; Owner: -
+-- Name: package_advisories; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.projects (
-    permalink character varying NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    rubygem_name character varying,
-    github_repo_path public.citext,
-    score numeric(5,2),
-    description text,
-    permalink_tsvector tsvector,
-    description_tsvector tsvector,
-    bugfix_fork_of character varying,
-    bugfix_fork_criteria character varying[] DEFAULT '{}'::character varying[] NOT NULL,
-    is_bugfix_fork boolean DEFAULT false NOT NULL,
-    CONSTRAINT check_project_permalink_and_rubygem_name_parity CHECK (((rubygem_name IS NULL) OR ((rubygem_name)::text = (permalink)::text)))
-);
-
-
---
--- Name: rubygem_advisories; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.rubygem_advisories (
+CREATE TABLE public.package_advisories (
     id bigint NOT NULL,
-    rubygem_name character varying NOT NULL,
+    package_name character varying NOT NULL,
     identifier character varying NOT NULL,
     date date NOT NULL,
     advisory_data jsonb DEFAULT '{}'::jsonb NOT NULL,
@@ -418,10 +397,10 @@ CREATE TABLE public.rubygem_advisories (
 
 
 --
--- Name: rubygem_advisories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: package_advisories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.rubygem_advisories_id_seq
+CREATE SEQUENCE public.package_advisories_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -430,19 +409,19 @@ CREATE SEQUENCE public.rubygem_advisories_id_seq
 
 
 --
--- Name: rubygem_advisories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: package_advisories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.rubygem_advisories_id_seq OWNED BY public.rubygem_advisories.id;
+ALTER SEQUENCE public.package_advisories_id_seq OWNED BY public.package_advisories.id;
 
 
 --
--- Name: rubygem_code_statistics; Type: TABLE; Schema: public; Owner: -
+-- Name: package_code_statistics; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.rubygem_code_statistics (
+CREATE TABLE public.package_code_statistics (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    rubygem_name character varying NOT NULL,
+    package_name character varying NOT NULL,
     language character varying NOT NULL,
     code integer NOT NULL,
     blanks integer NOT NULL,
@@ -453,12 +432,12 @@ CREATE TABLE public.rubygem_code_statistics (
 
 
 --
--- Name: rubygem_dependencies; Type: TABLE; Schema: public; Owner: -
+-- Name: package_dependencies; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.rubygem_dependencies (
+CREATE TABLE public.package_dependencies (
     id bigint NOT NULL,
-    rubygem_name character varying NOT NULL,
+    package_name character varying NOT NULL,
     dependency_name character varying NOT NULL,
     type character varying NOT NULL,
     requirements character varying,
@@ -468,10 +447,10 @@ CREATE TABLE public.rubygem_dependencies (
 
 
 --
--- Name: rubygem_dependencies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: package_dependencies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.rubygem_dependencies_id_seq
+CREATE SEQUENCE public.package_dependencies_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -480,19 +459,19 @@ CREATE SEQUENCE public.rubygem_dependencies_id_seq
 
 
 --
--- Name: rubygem_dependencies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: package_dependencies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.rubygem_dependencies_id_seq OWNED BY public.rubygem_dependencies.id;
+ALTER SEQUENCE public.package_dependencies_id_seq OWNED BY public.package_dependencies.id;
 
 
 --
--- Name: rubygem_download_stats; Type: TABLE; Schema: public; Owner: -
+-- Name: package_download_stats; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.rubygem_download_stats (
+CREATE TABLE public.package_download_stats (
     id bigint NOT NULL,
-    rubygem_name character varying NOT NULL,
+    package_name character varying NOT NULL,
     date date NOT NULL,
     total_downloads bigint NOT NULL,
     absolute_change_month integer,
@@ -502,10 +481,10 @@ CREATE TABLE public.rubygem_download_stats (
 
 
 --
--- Name: rubygem_download_stats_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: package_download_stats_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.rubygem_download_stats_id_seq
+CREATE SEQUENCE public.package_download_stats_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -514,32 +493,32 @@ CREATE SEQUENCE public.rubygem_download_stats_id_seq
 
 
 --
--- Name: rubygem_download_stats_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: package_download_stats_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.rubygem_download_stats_id_seq OWNED BY public.rubygem_download_stats.id;
+ALTER SEQUENCE public.package_download_stats_id_seq OWNED BY public.package_download_stats.id;
 
 
 --
--- Name: rubygem_trends; Type: TABLE; Schema: public; Owner: -
+-- Name: package_trends; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.rubygem_trends (
+CREATE TABLE public.package_trends (
     id bigint NOT NULL,
     date date NOT NULL,
-    rubygem_name character varying NOT NULL,
+    package_name character varying NOT NULL,
     "position" integer NOT NULL,
-    rubygem_download_stat_id integer NOT NULL,
+    package_download_stat_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: rubygem_trends_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: package_trends_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.rubygem_trends_id_seq
+CREATE SEQUENCE public.package_trends_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -548,17 +527,17 @@ CREATE SEQUENCE public.rubygem_trends_id_seq
 
 
 --
--- Name: rubygem_trends_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: package_trends_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.rubygem_trends_id_seq OWNED BY public.rubygem_trends.id;
+ALTER SEQUENCE public.package_trends_id_seq OWNED BY public.package_trends.id;
 
 
 --
--- Name: rubygems; Type: TABLE; Schema: public; Owner: -
+-- Name: packages; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.rubygems (
+CREATE TABLE public.packages (
     name character varying NOT NULL,
     downloads bigint NOT NULL,
     current_version character varying NOT NULL,
@@ -580,6 +559,27 @@ CREATE TABLE public.rubygems (
     reverse_dependencies_count integer,
     fetched_at timestamp without time zone,
     quarterly_release_counts jsonb DEFAULT '{}'::jsonb NOT NULL
+);
+
+
+--
+-- Name: projects; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.projects (
+    permalink character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    package_name character varying,
+    github_repo_path public.citext,
+    score numeric(5,2),
+    description text,
+    permalink_tsvector tsvector,
+    description_tsvector tsvector,
+    bugfix_fork_of character varying,
+    bugfix_fork_criteria character varying[] DEFAULT '{}'::character varying[] NOT NULL,
+    is_bugfix_fork boolean DEFAULT false NOT NULL,
+    CONSTRAINT check_project_permalink_and_package_name_parity CHECK (((package_name IS NULL) OR ((package_name)::text = (permalink)::text)))
 );
 
 
@@ -628,31 +628,31 @@ ALTER TABLE ONLY public.database_exports ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- Name: rubygem_advisories id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: package_advisories id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_advisories ALTER COLUMN id SET DEFAULT nextval('public.rubygem_advisories_id_seq'::regclass);
-
-
---
--- Name: rubygem_dependencies id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.rubygem_dependencies ALTER COLUMN id SET DEFAULT nextval('public.rubygem_dependencies_id_seq'::regclass);
+ALTER TABLE ONLY public.package_advisories ALTER COLUMN id SET DEFAULT nextval('public.package_advisories_id_seq'::regclass);
 
 
 --
--- Name: rubygem_download_stats id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: package_dependencies id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_download_stats ALTER COLUMN id SET DEFAULT nextval('public.rubygem_download_stats_id_seq'::regclass);
+ALTER TABLE ONLY public.package_dependencies ALTER COLUMN id SET DEFAULT nextval('public.package_dependencies_id_seq'::regclass);
 
 
 --
--- Name: rubygem_trends id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: package_download_stats id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_trends ALTER COLUMN id SET DEFAULT nextval('public.rubygem_trends_id_seq'::regclass);
+ALTER TABLE ONLY public.package_download_stats ALTER COLUMN id SET DEFAULT nextval('public.package_download_stats_id_seq'::regclass);
+
+
+--
+-- Name: package_trends id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.package_trends ALTER COLUMN id SET DEFAULT nextval('public.package_trends_id_seq'::regclass);
 
 
 --
@@ -704,43 +704,43 @@ ALTER TABLE ONLY public.database_exports
 
 
 --
--- Name: rubygem_advisories rubygem_advisories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: package_advisories package_advisories_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_advisories
-    ADD CONSTRAINT rubygem_advisories_pkey PRIMARY KEY (id);
-
-
---
--- Name: rubygem_code_statistics rubygem_code_statistics_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.rubygem_code_statistics
-    ADD CONSTRAINT rubygem_code_statistics_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.package_advisories
+    ADD CONSTRAINT package_advisories_pkey PRIMARY KEY (id);
 
 
 --
--- Name: rubygem_dependencies rubygem_dependencies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: package_code_statistics package_code_statistics_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_dependencies
-    ADD CONSTRAINT rubygem_dependencies_pkey PRIMARY KEY (id);
-
-
---
--- Name: rubygem_download_stats rubygem_download_stats_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.rubygem_download_stats
-    ADD CONSTRAINT rubygem_download_stats_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.package_code_statistics
+    ADD CONSTRAINT package_code_statistics_pkey PRIMARY KEY (id);
 
 
 --
--- Name: rubygem_trends rubygem_trends_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: package_dependencies package_dependencies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_trends
-    ADD CONSTRAINT rubygem_trends_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.package_dependencies
+    ADD CONSTRAINT package_dependencies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: package_download_stats package_download_stats_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.package_download_stats
+    ADD CONSTRAINT package_download_stats_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: package_trends package_trends_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.package_trends
+    ADD CONSTRAINT package_trends_pkey PRIMARY KEY (id);
 
 
 --
@@ -871,6 +871,104 @@ CREATE UNIQUE INDEX index_github_repos_on_path ON public.github_repos USING btre
 
 
 --
+-- Name: index_package_advisories_on_package_name_and_identifier; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_package_advisories_on_package_name_and_identifier ON public.package_advisories USING btree (package_name, identifier);
+
+
+--
+-- Name: index_package_code_statistics_on_package_name_and_language; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_package_code_statistics_on_package_name_and_language ON public.package_code_statistics USING btree (package_name, language);
+
+
+--
+-- Name: index_package_dependencies_on_dependency_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_package_dependencies_on_dependency_name ON public.package_dependencies USING btree (dependency_name);
+
+
+--
+-- Name: index_package_dependencies_on_package_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_package_dependencies_on_package_name ON public.package_dependencies USING btree (package_name);
+
+
+--
+-- Name: index_package_download_stats_on_absolute_change_month; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_package_download_stats_on_absolute_change_month ON public.package_download_stats USING btree (absolute_change_month DESC NULLS LAST);
+
+
+--
+-- Name: index_package_download_stats_on_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_package_download_stats_on_date ON public.package_download_stats USING btree (date);
+
+
+--
+-- Name: index_package_download_stats_on_growth_change_month; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_package_download_stats_on_growth_change_month ON public.package_download_stats USING btree (growth_change_month DESC NULLS LAST);
+
+
+--
+-- Name: index_package_download_stats_on_package_name_and_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_package_download_stats_on_package_name_and_date ON public.package_download_stats USING btree (package_name, date);
+
+
+--
+-- Name: index_package_download_stats_on_relative_change_month; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_package_download_stats_on_relative_change_month ON public.package_download_stats USING btree (relative_change_month DESC NULLS LAST);
+
+
+--
+-- Name: index_package_download_stats_on_total_downloads; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_package_download_stats_on_total_downloads ON public.package_download_stats USING btree (total_downloads DESC NULLS LAST);
+
+
+--
+-- Name: index_package_trends_on_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_package_trends_on_date ON public.package_trends USING btree (date);
+
+
+--
+-- Name: index_package_trends_on_date_and_position; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_package_trends_on_date_and_position ON public.package_trends USING btree (date, "position");
+
+
+--
+-- Name: index_package_trends_on_position; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_package_trends_on_position ON public.package_trends USING btree ("position");
+
+
+--
+-- Name: index_packages_on_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_packages_on_name ON public.packages USING btree (name);
+
+
+--
 -- Name: index_projects_on_bugfix_fork_of; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -899,6 +997,13 @@ CREATE INDEX index_projects_on_is_bugfix_fork ON public.projects USING btree (is
 
 
 --
+-- Name: index_projects_on_package_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_projects_on_package_name ON public.projects USING btree (package_name);
+
+
+--
 -- Name: index_projects_on_permalink; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -910,111 +1015,6 @@ CREATE UNIQUE INDEX index_projects_on_permalink ON public.projects USING btree (
 --
 
 CREATE INDEX index_projects_on_permalink_tsvector ON public.projects USING gin (permalink_tsvector);
-
-
---
--- Name: index_projects_on_rubygem_name; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_projects_on_rubygem_name ON public.projects USING btree (rubygem_name);
-
-
---
--- Name: index_rubygem_advisories_on_rubygem_name_and_identifier; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_rubygem_advisories_on_rubygem_name_and_identifier ON public.rubygem_advisories USING btree (rubygem_name, identifier);
-
-
---
--- Name: index_rubygem_code_statistics_on_rubygem_name_and_language; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_rubygem_code_statistics_on_rubygem_name_and_language ON public.rubygem_code_statistics USING btree (rubygem_name, language);
-
-
---
--- Name: index_rubygem_dependencies_on_dependency_name; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_dependencies_on_dependency_name ON public.rubygem_dependencies USING btree (dependency_name);
-
-
---
--- Name: index_rubygem_dependencies_on_rubygem_name; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_dependencies_on_rubygem_name ON public.rubygem_dependencies USING btree (rubygem_name);
-
-
---
--- Name: index_rubygem_download_stats_on_absolute_change_month; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_absolute_change_month ON public.rubygem_download_stats USING btree (absolute_change_month DESC NULLS LAST);
-
-
---
--- Name: index_rubygem_download_stats_on_date; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_date ON public.rubygem_download_stats USING btree (date);
-
-
---
--- Name: index_rubygem_download_stats_on_growth_change_month; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_growth_change_month ON public.rubygem_download_stats USING btree (growth_change_month DESC NULLS LAST);
-
-
---
--- Name: index_rubygem_download_stats_on_relative_change_month; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_relative_change_month ON public.rubygem_download_stats USING btree (relative_change_month DESC NULLS LAST);
-
-
---
--- Name: index_rubygem_download_stats_on_rubygem_name_and_date; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_rubygem_download_stats_on_rubygem_name_and_date ON public.rubygem_download_stats USING btree (rubygem_name, date);
-
-
---
--- Name: index_rubygem_download_stats_on_total_downloads; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_download_stats_on_total_downloads ON public.rubygem_download_stats USING btree (total_downloads DESC NULLS LAST);
-
-
---
--- Name: index_rubygem_trends_on_date; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_trends_on_date ON public.rubygem_trends USING btree (date);
-
-
---
--- Name: index_rubygem_trends_on_date_and_position; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_rubygem_trends_on_date_and_position ON public.rubygem_trends USING btree (date, "position");
-
-
---
--- Name: index_rubygem_trends_on_position; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rubygem_trends_on_position ON public.rubygem_trends USING btree ("position");
-
-
---
--- Name: index_rubygems_on_name; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_rubygems_on_name ON public.rubygems USING btree (name);
 
 
 --
@@ -1032,6 +1032,13 @@ CREATE TRIGGER categories_update_name_tsvector_trigger BEFORE INSERT OR UPDATE O
 
 
 --
+-- Name: package_download_stats package_stats_calculation_month; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER package_stats_calculation_month BEFORE INSERT OR UPDATE ON public.package_download_stats FOR EACH ROW EXECUTE FUNCTION public.package_stats_calculation_month();
+
+
+--
 -- Name: projects projects_update_description_tsvector_trigger; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -1043,13 +1050,6 @@ CREATE TRIGGER projects_update_description_tsvector_trigger BEFORE INSERT OR UPD
 --
 
 CREATE TRIGGER projects_update_permalink_tsvector_trigger BEFORE INSERT OR UPDATE ON public.projects FOR EACH ROW EXECUTE FUNCTION public.projects_update_permalink_tsvector_trigger();
-
-
---
--- Name: rubygem_download_stats rubygem_stats_calculation_month; Type: TRIGGER; Schema: public; Owner: -
---
-
-CREATE TRIGGER rubygem_stats_calculation_month BEFORE INSERT OR UPDATE ON public.rubygem_download_stats FOR EACH ROW EXECUTE FUNCTION public.rubygem_stats_calculation_month();
 
 
 --
@@ -1077,19 +1077,19 @@ ALTER TABLE ONLY public.categories
 
 
 --
--- Name: rubygem_dependencies fk_rails_7b157253c8; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: package_dependencies fk_rails_7b157253c8; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_dependencies
-    ADD CONSTRAINT fk_rails_7b157253c8 FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
+ALTER TABLE ONLY public.package_dependencies
+    ADD CONSTRAINT fk_rails_7b157253c8 FOREIGN KEY (package_name) REFERENCES public.packages(name);
 
 
 --
--- Name: rubygem_trends fk_rails_8a29c552ee; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: package_trends fk_rails_8a29c552ee; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_trends
-    ADD CONSTRAINT fk_rails_8a29c552ee FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
+ALTER TABLE ONLY public.package_trends
+    ADD CONSTRAINT fk_rails_8a29c552ee FOREIGN KEY (package_name) REFERENCES public.packages(name);
 
 
 --
@@ -1101,11 +1101,11 @@ ALTER TABLE ONLY public.active_storage_variant_records
 
 
 --
--- Name: rubygem_trends fk_rails_ac818cf2a2; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: package_trends fk_rails_ac818cf2a2; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_trends
-    ADD CONSTRAINT fk_rails_ac818cf2a2 FOREIGN KEY (rubygem_download_stat_id) REFERENCES public.rubygem_download_stats(id);
+ALTER TABLE ONLY public.package_trends
+    ADD CONSTRAINT fk_rails_ac818cf2a2 FOREIGN KEY (package_download_stat_id) REFERENCES public.package_download_stats(id);
 
 
 --
@@ -1117,27 +1117,27 @@ ALTER TABLE ONLY public.active_storage_attachments
 
 
 --
--- Name: rubygem_download_stats fk_rails_c4eb80d594; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: package_download_stats fk_rails_c4eb80d594; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_download_stats
-    ADD CONSTRAINT fk_rails_c4eb80d594 FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
-
-
---
--- Name: rubygem_code_statistics fk_rails_d2e8b78455; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.rubygem_code_statistics
-    ADD CONSTRAINT fk_rails_d2e8b78455 FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
+ALTER TABLE ONLY public.package_download_stats
+    ADD CONSTRAINT fk_rails_c4eb80d594 FOREIGN KEY (package_name) REFERENCES public.packages(name);
 
 
 --
--- Name: rubygem_advisories fk_rails_da0771e125; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: package_code_statistics fk_rails_d2e8b78455; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.rubygem_advisories
-    ADD CONSTRAINT fk_rails_da0771e125 FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
+ALTER TABLE ONLY public.package_code_statistics
+    ADD CONSTRAINT fk_rails_d2e8b78455 FOREIGN KEY (package_name) REFERENCES public.packages(name);
+
+
+--
+-- Name: package_advisories fk_rails_da0771e125; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.package_advisories
+    ADD CONSTRAINT fk_rails_da0771e125 FOREIGN KEY (package_name) REFERENCES public.packages(name);
 
 
 --
@@ -1145,7 +1145,7 @@ ALTER TABLE ONLY public.rubygem_advisories
 --
 
 ALTER TABLE ONLY public.projects
-    ADD CONSTRAINT fk_rails_ddb4eb0108 FOREIGN KEY (rubygem_name) REFERENCES public.rubygems(name);
+    ADD CONSTRAINT fk_rails_ddb4eb0108 FOREIGN KEY (package_name) REFERENCES public.packages(name);
 
 
 --
@@ -1155,6 +1155,8 @@ ALTER TABLE ONLY public.projects
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20260904140000'),
+('20260904120000'),
 ('20240927105531'),
 ('20240927105530'),
 ('20240927105529'),

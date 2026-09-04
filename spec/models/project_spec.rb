@@ -20,23 +20,23 @@ RSpec.describe Project do
     it { is_expected.to have_many(:categories).through(:categorizations) }
 
     it {
-      expect(model).to belong_to(:rubygem)
+      expect(model).to belong_to(:package)
         .with_primary_key(:name)
-        .with_foreign_key(:rubygem_name)
+        .with_foreign_key(:package_name)
         .inverse_of(:project)
         .optional
     }
 
     it {
       expect(model).to have_many(:reverse_dependencies)
-        .through(:rubygem)
+        .through(:package)
         .source(:reverse_dependency_projects)
         .order(score: :desc)
     }
 
     it {
       expect(model).to have_many(:advisories)
-        .through(:rubygem)
+        .through(:package)
     }
 
     it {
@@ -48,11 +48,11 @@ RSpec.describe Project do
     }
   end
 
-  it "does not allow mismatches between permalink and rubygem name" do
+  it "does not allow mismatches between permalink and package name" do
     project = described_class.create! permalink: "somegem"
-    expect { project.update! rubygem_name: "othergem" }.to raise_error(
+    expect { project.update! package_name: "othergem" }.to raise_error(
       ActiveRecord::StatementInvalid,
-      /check_project_permalink_and_rubygem_name_parity/
+      /check_project_permalink_and_package_name_parity/
     )
   end
 
@@ -62,7 +62,7 @@ RSpec.describe Project do
     end
 
     it "only makes expected amount of queries" do
-      nested_accessor = ->(p) { [p.categories.map(&:name), p.rubygem_downloads, p.github_repo_stargazers_count] }
+      nested_accessor = ->(p) { [p.categories.map(&:name), p.package_downloads, p.github_repo_stargazers_count] }
 
       # Sometimes activerecord sprinkles in a few `SELECT a.attname, format_type(a.atttypid, a.atttypmod),`
       # here for good measure. Actually it's supposed to be 5 queries.
@@ -110,11 +110,16 @@ RSpec.describe Project do
     end
 
     it "fetches projects from database that match given name ordered by score" do
-      Factories.project "demofoo"
+      Factories.project "demofoo", score: 30
       Factories.project "foobar", score: 10
       Factories.project "foo", score: 5
       Factories.project "foofoo", score: nil
-      expect(described_class.suggest("fo")).to eq %w[foobar foo foofoo]
+      expect(described_class.suggest("fo")).to eq %w[demofoo foobar foo foofoo]
+    end
+
+    it "matches the package name of a vendor-prefixed composer package" do
+      Factories.project "spatie/laravel-permission"
+      expect(described_class.suggest("permission")).to eq %w[spatie/laravel-permission]
     end
 
     it "is case-insensitive" do
@@ -164,8 +169,8 @@ RSpec.describe Project do
     describe "result order" do
       before do
         (1..3).each do |i|
-          rubygem = Rubygem.create! name: "widgets#{i}", downloads: 10 - i, current_version: "1.0"
-          described_class.create! permalink: rubygem.name, score: 10 + i, rubygem:
+          package = Package.create! name: "widgets#{i}", downloads: 10 - i, current_version: "1.0"
+          described_class.create! permalink: package.name, score: 10 + i, package:
         end
       end
 
@@ -176,7 +181,7 @@ RSpec.describe Project do
       end
 
       it "allows to pass a custom order instance" do
-        order = Project::Order.new(order: "rubygem_downloads")
+        order = Project::Order.new(order: "package_downloads")
         expected = %w[widgets1 widgets2 widgets3]
         expect(described_class.search("widget", order:).pluck(:permalink)).to eq expected
       end
@@ -184,12 +189,13 @@ RSpec.describe Project do
   end
 
   describe "#github_only?" do
-    it "is false when no / is present in permalink" do
-      expect(described_class.new(permalink: "foobar")).not_to be_github_only
+    it "is false when the project is backed by a packagist package" do
+      expect(described_class.new(permalink: "spatie/laravel-permission", package_name: "spatie/laravel-permission"))
+        .not_to be_github_only
     end
 
-    it "is true when a / is present in permalink" do
-      expect(described_class.new(permalink: "foo/bar")).to be_github_only
+    it "is true when the project only references a github repository" do
+      expect(described_class.new(permalink: "laravel/laravel")).to be_github_only
     end
   end
 
@@ -202,8 +208,8 @@ RSpec.describe Project do
   describe "url delegation" do
     %i[changelog_url documentation_url mailing_list_url].each do |url|
       describe "##{url}" do
-        it "is fetched from the rubygem" do
-          project = described_class.new(rubygem: Rubygem.new(url => "foobar"))
+        it "is fetched from the package" do
+          project = described_class.new(package: Package.new(url => "foobar"))
           expect(project.send(url)).to eq "foobar"
         end
       end
@@ -212,17 +218,17 @@ RSpec.describe Project do
     describe "#source_code_url" do
       let(:project) do
         described_class.new(
-          rubygem:     Rubygem.new(source_code_url: "from_gem"),
+          package:     Package.new(source_code_url: "from_gem"),
           github_repo: GithubRepo.new(path: "foo/bar")
         )
       end
 
       it "prefers the gem's source code url" do
-        expect(project.source_code_url).to eq project.rubygem_source_code_url
+        expect(project.source_code_url).to eq project.package_source_code_url
       end
 
       it "falls back to github repo url if not given in gem" do
-        project.rubygem.source_code_url = nil
+        project.package.source_code_url = nil
         expect(project.source_code_url).to eq project.github_repo_url
       end
     end
@@ -230,17 +236,17 @@ RSpec.describe Project do
     describe "#homepage_url" do
       let(:project) do
         described_class.new(
-          rubygem:     Rubygem.new(homepage_url: "from_gem"),
+          package:     Package.new(homepage_url: "from_gem"),
           github_repo: GithubRepo.new(homepage_url: "from_repo")
         )
       end
 
       it "prefers the gem's homepage url" do
-        expect(project.homepage_url).to eq project.rubygem_homepage_url
+        expect(project.homepage_url).to eq project.package_homepage_url
       end
 
       it "falls back to github repo homepage url if not given in gem" do
-        project.rubygem.homepage_url = nil
+        project.package.homepage_url = nil
         expect(project.homepage_url).to eq project.github_repo_homepage_url
       end
     end
@@ -248,17 +254,17 @@ RSpec.describe Project do
     describe "#wiki_url" do
       let(:project) do
         described_class.new(
-          rubygem:     Rubygem.new(wiki_url: "from_gem"),
+          package:     Package.new(wiki_url: "from_gem"),
           github_repo: GithubRepo.new(path: "foo/bar")
         )
       end
 
       it "prefers the gem's wiki url" do
-        expect(project.wiki_url).to eq project.rubygem_wiki_url
+        expect(project.wiki_url).to eq project.package_wiki_url
       end
 
       it "falls back to github repo wiki url if not given in gem" do
-        project.rubygem.wiki_url = nil
+        project.package.wiki_url = nil
         expect(project.wiki_url).to eq project.github_repo_wiki_url
       end
     end
@@ -266,17 +272,17 @@ RSpec.describe Project do
     describe "#bug_tracker_url" do
       let(:project) do
         described_class.new(
-          rubygem:     Rubygem.new(bug_tracker_url: "from_gem"),
+          package:     Package.new(bug_tracker_url: "from_gem"),
           github_repo: GithubRepo.new(path: "foo/bar")
         )
       end
 
       it "prefers the gem's bug_tracker_url url" do
-        expect(project.bug_tracker_url).to eq project.rubygem_bug_tracker_url
+        expect(project.bug_tracker_url).to eq project.package_bug_tracker_url
       end
 
       it "falls back to github repo issues url if not given in gem" do
-        project.rubygem.bug_tracker_url = nil
+        project.package.bug_tracker_url = nil
         expect(project.bug_tracker_url).to eq project.github_repo_issues_url
       end
     end

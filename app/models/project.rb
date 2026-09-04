@@ -13,20 +13,20 @@ class Project < ApplicationRecord
 
   has_many :categories, through: :categorizations
 
-  belongs_to :rubygem,
+  belongs_to :package,
              primary_key: :name,
-             foreign_key: :rubygem_name,
+             foreign_key: :package_name,
              optional:    true,
              inverse_of:  :project
 
   # Projects that are using this project as a dependency on the
-  # rubygem definition
+  # package definition
   has_many :reverse_dependencies,
            -> { with_score.order(score: :desc) },
-           through: :rubygem,
+           through: :package,
            source:  :reverse_dependency_projects
 
-  has_many :advisories, through: :rubygem
+  has_many :advisories, through: :package
 
   belongs_to :github_repo,
              primary_key: :path,
@@ -35,8 +35,8 @@ class Project < ApplicationRecord
              inverse_of:  :projects
 
   scope :includes_associations, lambda {
-    includes(:github_repo, :categories, rubygem: %i[advisories])
-      .left_outer_joins(:github_repo, :rubygem, :categories)
+    includes(:github_repo, :categories, package: %i[advisories])
+      .left_outer_joins(:github_repo, :package, :categories)
   }
 
   scope :with_score, -> { where.not(score: nil) }
@@ -51,11 +51,15 @@ class Project < ApplicationRecord
       .with_score
   end
 
+  #
+  # Composer package names are prefixed with their vendor, so a plain prefix
+  # match would only ever suggest packages when typing the vendor name.
+  #
   def self.suggest(name)
     return [] if name.blank?
 
     Project
-      .where("permalink ILIKE ?", "#{sanitize_sql_like(name)}%")
+      .where("permalink ILIKE ?", "%#{sanitize_sql_like(name)}%")
       .order("score DESC NULLS LAST")
       .limit(25)
       .pluck(:permalink)
@@ -102,9 +106,9 @@ class Project < ApplicationRecord
            :url,
            :reverse_dependencies_count,
            :quarterly_release_counts,
-           to:        :rubygem,
+           to:        :package,
            allow_nil: true,
-           prefix:    :rubygem
+           prefix:    :package
 
   delegate :stargazers_count,
            :forks_count,
@@ -149,37 +153,44 @@ class Project < ApplicationRecord
 
   # For now we just go with the permalink as the name. In the future
   # this might support canonical human names (i.e. RSpec instead of rspec
-  # derived from the gem)
+  # derived from the package)
   def name
     permalink
   end
 
+  #
+  # Projects that are not backed by a packagist package, i.e. those that only
+  # exist because the catalog references a github repository directly.
+  #
+  # Note that composer package names contain a slash just like github repo
+  # paths do, so the permalink shape alone cannot tell the two apart.
+  #
   def github_only?
-    permalink.include? "/"
+    package_name.blank?
   end
 
   def github_repo_path=(github_repo_path)
     super(Github.normalize_path(github_repo_path))
   end
 
-  alias documentation_url rubygem_documentation_url
-  alias changelog_url rubygem_changelog_url
-  alias mailing_list_url rubygem_mailing_list_url
+  alias documentation_url package_documentation_url
+  alias changelog_url package_changelog_url
+  alias mailing_list_url package_mailing_list_url
 
   def source_code_url
-    rubygem_source_code_url || github_repo_url
+    package_source_code_url || github_repo_url
   end
 
   def homepage_url
-    rubygem_homepage_url || github_repo_homepage_url
+    package_homepage_url || github_repo_homepage_url
   end
 
   def wiki_url
-    rubygem_wiki_url || github_repo_wiki_url
+    package_wiki_url || github_repo_wiki_url
   end
 
   def bug_tracker_url
-    rubygem_bug_tracker_url || github_repo_issues_url
+    package_bug_tracker_url || github_repo_issues_url
   end
 
   def health
