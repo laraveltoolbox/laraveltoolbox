@@ -60,10 +60,10 @@ en:
     github_repo_archived: Repository is archived
     github_repo_gone: Repository is gone
     github_repo_open_issues: There's a lot of open issues
-    package_abandoned: No release in over 3 years
+    package_abandoned: No release in over 2 years
     package_stale: No release in over a year
-    low_commit_activity: Low commit activity in last 3 years
-    no_commit_activity: No commit activity in last 3 years
+    low_commit_activity: Low commit activity in last 18 months
+    no_commit_activity: No commit activity in last 2 years
     healthy: The project is in a healthy, maintained state
     package_long_running: A long-lived project that still receives updates
   labels:

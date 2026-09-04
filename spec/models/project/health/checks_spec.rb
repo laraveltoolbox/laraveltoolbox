@@ -41,8 +41,8 @@ RSpec.describe Project::Health::Checks do
   describe "GITHUB_REPO_NO_COMMIT_ACTIVITY" do
     let(:check) { described_class::GITHUB_REPO_NO_COMMIT_ACTIVITY }
 
-    it "applies when project has a github_repo_repo_pushed_at more than 3 years ago" do
-      project = instance_double Project, github_repo_repo_pushed_at: 3.years.ago - 1.minute
+    it "applies when project has a github_repo_repo_pushed_at older than the support window" do
+      project = instance_double Project, github_repo_repo_pushed_at: described_class::SUPPORT_WINDOW.ago - 1.minute
       expect(check.applies?(project)).to be true
     end
 
@@ -52,7 +52,7 @@ RSpec.describe Project::Health::Checks do
     end
 
     it "does not apply when project has recent github_repo_repo_pushed_at" do
-      project = instance_double Project, github_repo_repo_pushed_at: 3.years.ago + 1.minute
+      project = instance_double Project, github_repo_repo_pushed_at: described_class::SUPPORT_WINDOW.ago + 1.minute
       expect(check.applies?(project)).to be false
     end
   end
@@ -60,21 +60,24 @@ RSpec.describe Project::Health::Checks do
   describe "GITHUB_REPO_LOW_COMMIT_ACTIVITY" do
     let(:check) { described_class::GITHUB_REPO_LOW_COMMIT_ACTIVITY }
 
-    it "applies when project has github_repo_average_recent_committed_at more than 3 years ago" do
+    it "applies when project has github_repo_average_recent_committed_at older than the bugfix window" do
       allow(described_class::GITHUB_REPO_NO_COMMIT_ACTIVITY).to receive(:applies?)
-      project = instance_double Project, github_repo_average_recent_committed_at: 3.years.ago - 1.minute
+      project = instance_double Project,
+                                github_repo_average_recent_committed_at: described_class::BUGFIX_WINDOW.ago - 1.minute
       expect(check.applies?(project)).to be true
     end
 
     it "does not apply if no commit activity check applies as well" do
       allow(described_class::GITHUB_REPO_NO_COMMIT_ACTIVITY).to receive(:applies?).and_return(true)
-      project = instance_double Project, github_repo_average_recent_committed_at: 3.years.ago - 1.minute
+      project = instance_double Project,
+                                github_repo_average_recent_committed_at: described_class::BUGFIX_WINDOW.ago - 1.minute
       expect(check.applies?(project)).to be false
     end
 
-    it "does not apply when github_repo_average_recent_committed_at is less than 3 years ago" do
+    it "does not apply when github_repo_average_recent_committed_at is within the bugfix window" do
       allow(described_class::GITHUB_REPO_NO_COMMIT_ACTIVITY).to receive(:applies?)
-      project = instance_double Project, github_repo_average_recent_committed_at: 3.years.ago + 1.minute
+      project = instance_double Project,
+                                github_repo_average_recent_committed_at: described_class::BUGFIX_WINDOW.ago + 1.minute
       expect(check.applies?(project)).to be false
     end
   end
@@ -106,17 +109,17 @@ RSpec.describe Project::Health::Checks do
   describe "PACKAGE_ABANDONED" do
     let(:check) { described_class::PACKAGE_ABANDONED }
 
-    it "applies when gem had no release in more than 3 years" do
-      project = instance_double Project, package_latest_release_on: 3.years.ago - 1.minute
+    it "applies when package had no release within the support window" do
+      project = instance_double Project, package_latest_release_on: described_class::SUPPORT_WINDOW.ago - 1.minute
       expect(check.applies?(project)).to be true
     end
 
-    it "does not apply when gem had release within last than 3 years" do
-      project = instance_double Project, package_latest_release_on: 3.years.ago + 1.minute
+    it "does not apply when package had a release within the support window" do
+      project = instance_double Project, package_latest_release_on: described_class::SUPPORT_WINDOW.ago + 1.minute
       expect(check.applies?(project)).to be false
     end
 
-    it "does not apply when gem had no release" do
+    it "does not apply when package had no release" do
       project = instance_double Project, package_latest_release_on: nil
       expect(check.applies?(project)).to be false
     end
@@ -129,23 +132,23 @@ RSpec.describe Project::Health::Checks do
       allow(described_class::PACKAGE_ABANDONED).to receive(:applies?)
     end
 
-    it "applies when gem had no release in more than last year" do
-      project = instance_double Project, package_latest_release_on: 1.year.ago - 1.minute
+    it "applies when package had no release in more than last year" do
+      project = instance_double Project, package_latest_release_on: described_class::RELEASE_CYCLE.ago - 1.minute
       expect(check.applies?(project)).to be true
     end
 
     it "does not apply when PACKAGE_ABANDONED check applies" do
       allow(described_class::PACKAGE_ABANDONED).to receive(:applies?).and_return(true)
-      project = instance_double Project, package_latest_release_on: 1.year.ago - 1.minute
+      project = instance_double Project, package_latest_release_on: described_class::RELEASE_CYCLE.ago - 1.minute
       expect(check.applies?(project)).to be false
     end
 
-    it "does not apply when gem had release within last year" do
-      project = instance_double Project, package_latest_release_on: 1.year.ago + 1.minute
+    it "does not apply when package had release within last year" do
+      project = instance_double Project, package_latest_release_on: described_class::RELEASE_CYCLE.ago + 1.minute
       expect(check.applies?(project)).to be false
     end
 
-    it "does not apply when gem had no release" do
+    it "does not apply when package had no release" do
       project = instance_double Project, package_latest_release_on: nil
       expect(check.applies?(project)).to be false
     end
@@ -154,24 +157,24 @@ RSpec.describe Project::Health::Checks do
   describe "PACKAGE_LONG_RUNNING" do
     let(:check) { described_class::PACKAGE_LONG_RUNNING }
 
-    it "applies when gem is older than 5 years and had a release within last year" do
+    it "applies when package is older than 5 years and had a release within last year" do
       project = instance_double Project,
                                 package_first_release_on:  5.years.ago - 1.minute,
-                                package_latest_release_on: 1.year.ago + 1.minute
+                                package_latest_release_on: described_class::RELEASE_CYCLE.ago + 1.minute
       expect(check.applies?(project)).to be true
     end
 
-    it "does not apply when gem is newer than 5 years" do
+    it "does not apply when package is newer than 5 years" do
       project = instance_double Project,
                                 package_first_release_on:  5.years.ago + 1.minute,
-                                package_latest_release_on: 1.year.ago + 1.minute
+                                package_latest_release_on: described_class::RELEASE_CYCLE.ago + 1.minute
       expect(check.applies?(project)).to be false
     end
 
-    it "does not apply when gem has no release within last year" do
+    it "does not apply when package has no release within last year" do
       project = instance_double Project,
                                 package_first_release_on:  5.years.ago - 1.minute,
-                                package_latest_release_on: 1.year.ago - 1.minute
+                                package_latest_release_on: described_class::RELEASE_CYCLE.ago - 1.minute
       expect(check.applies?(project)).to be false
     end
 
