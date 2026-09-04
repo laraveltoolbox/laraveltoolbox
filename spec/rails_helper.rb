@@ -48,6 +48,10 @@ end
 # To clean up test output, comment this line to
 Capybara.server = :puma, { Silent: true }
 
+# The icon-only buttons (search submit, clear search) name themselves with
+# aria-label, so let specs find them by that name
+Capybara.enable_aria_label = true
+
 # A chromedriver found in PATH (e.g. Ubuntu's snap-confined shim at /usr/bin/chromedriver) can be
 # incompatible with the installed Chrome and unable to launch it. Make Selenium Manager always
 # provision a matching chromedriver itself instead of picking up whatever is in PATH.

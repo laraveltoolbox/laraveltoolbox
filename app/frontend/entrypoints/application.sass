@@ -168,22 +168,9 @@ header.main
         height: 2px
 
     // In the bar search is a utility, not the page's main action: the field
-    // is narrower than the one in the hero and the submit button carries only
-    // its icon, with the label kept for screen readers.
+    // is narrower than the one in the hero.
     .search-form
       width: 15rem
-
-      // Spelled out rather than `@extend .is-sr-only`: extending from inside
-      // a `.button` descendant drags every component that extends .button
-      // into the selector list
-      .button span:not(.icon)
-        position: absolute
-        width: 0.01em
-        height: 0.01em
-        padding: 0
-        overflow: hidden
-        white-space: nowrap
-        clip: rect(0, 0, 0, 0)
 
     // Make the mobile search direct icon appear similar to the
     // navbar burger and ensure it's nicely aligned
