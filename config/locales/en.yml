@@ -64,6 +64,7 @@ en:
     package_stale: No release in over a year
     low_commit_activity: Low commit activity in last 18 months
     no_commit_activity: No commit activity in last 2 years
+    nothing_known: Not enough data collected yet
     healthy: The project is in a healthy, maintained state
     package_long_running: A long-lived project that still receives updates
   labels:

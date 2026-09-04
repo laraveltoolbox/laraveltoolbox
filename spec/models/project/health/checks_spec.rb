@@ -38,6 +38,30 @@ RSpec.describe Project::Health::Checks do
     end
   end
 
+  describe "NOTHING_KNOWN" do
+    let(:check) { described_class::NOTHING_KNOWN }
+
+    it "applies when neither package nor github data has been collected" do
+      project = instance_double Project, github_repo_path?: false, package: nil, github_repo: nil
+      expect(check.applies?(project)).to be true
+    end
+
+    it "does not apply when the project has a package" do
+      project = instance_double Project, github_repo_path?: false, package: Package.new, github_repo: nil
+      expect(check.applies?(project)).to be false
+    end
+
+    it "does not apply when the project has a github repo" do
+      project = instance_double Project, github_repo_path?: false, package: nil, github_repo: GithubRepo.new
+      expect(check.applies?(project)).to be false
+    end
+
+    it "leaves a vanished repository to its own check" do
+      project = instance_double Project, github_repo_path?: true, package: nil, github_repo: nil
+      expect(check.applies?(project)).to be false
+    end
+  end
+
   describe "GITHUB_REPO_NO_COMMIT_ACTIVITY" do
     let(:check) { described_class::GITHUB_REPO_NO_COMMIT_ACTIVITY }
 

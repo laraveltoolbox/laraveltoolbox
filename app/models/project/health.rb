@@ -5,6 +5,9 @@
 # in Project::Health::Checks
 #
 class Project::Health
+  # Worst first - #overall_level reports the first one that any check matched
+  LEVELS = %i[red yellow grey green].freeze
+
   class Status
     attr_accessor :key, :level, :icon, :check_block
 
@@ -14,7 +17,7 @@ class Project::Health
       self.icon = icon
       self.check_block = check_block
 
-      raise ArgumentError, "Unknown level #{level}" unless %i[red yellow green].include? level
+      raise ArgumentError, "Unknown level #{level}" unless LEVELS.include? level
       raise I18n::MissingTranslation.new(I18n.locale, i18n_key) unless I18n.exists? i18n_key
     end
 
@@ -48,9 +51,6 @@ class Project::Health
   end
 
   def overall_level
-    return :red if status.any? { |status| status.level == :red }
-    return :yellow if status.any? { |status| status.level == :yellow }
-
-    :green
+    LEVELS.find { |level| status.any? { it.level == level } } || :green
   end
 end

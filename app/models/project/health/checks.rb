@@ -20,6 +20,18 @@ module Project::Health::Checks
       project.github_repo.nil?
   end
 
+  #
+  # Catalog entries get a project record before the sync jobs have fetched
+  # anything about them. None of the checks below can say anything in that
+  # state, and falling through to the healthy default would claim the project
+  # is well maintained purely because we know nothing about it.
+  #
+  NOTHING_KNOWN = Project::Health::Status.new(:nothing_known, :grey, :question) do |project|
+    !GITHUB_REPO_GONE.applies?(project) &&
+      project.package.nil? &&
+      project.github_repo.nil?
+  end
+
   GITHUB_REPO_NO_COMMIT_ACTIVITY = Project::Health::Status.new(:no_commit_activity, :red, :github) do |project|
     project.github_repo_repo_pushed_at &&
       project.github_repo_repo_pushed_at < SUPPORT_WINDOW.ago
@@ -56,6 +68,7 @@ module Project::Health::Checks
   end
 
   ALL = [
+    NOTHING_KNOWN,
     GITHUB_REPO_ARCHIVED,
     GITHUB_REPO_GONE,
     GITHUB_REPO_NO_COMMIT_ACTIVITY,
