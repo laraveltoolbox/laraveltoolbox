@@ -11,6 +11,16 @@ module ApplicationHelper
     cache(key, &)
   end
 
+  #
+  # Composer package names contain a slash, which rails' url helpers escape into
+  # `%2F` - and `/projects/vendor%2Fname` does not match the projects route (see
+  # Patterns::ROUTE_PATTERN). Project links are therefore built by hand.
+  #
+  def project_href(project, *segments)
+    permalink = project.try(:permalink) || project
+    File.join "/projects", permalink.to_s, *segments
+  end
+
   def metric_icon(metric)
     "fa-#{t(:icon, scope: "metrics.#{metric}")}"
   end

@@ -14,5 +14,5 @@
         .level-right: .level-item
           .field.has-addons
             p.control
-              a.button.is-small.tooltip.is-tooltip-bottom href=reverse_dependencies_project_path(@project) data-tooltip="Browse packages that depend on this project"
+              a.button.is-small.tooltip.is-tooltip-bottom href=project_href(@project, "reverse_dependencies") data-tooltip="Browse packages that depend on this project"
                 span.icon: i.fa.fa-search

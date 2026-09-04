@@ -8,12 +8,12 @@ RSpec.describe "Project Display" do
   it "can display Project README" do
     project = Factories.project "widgets"
 
-    visit project_path(project)
+    visit "/projects/#{project.permalink}"
     expect(page).to have_css(".hero")
     expect(page).to have_no_css(".readme .content")
 
     project.github_repo.create_readme! html: "<strong>some content</strong>", etag: "1234"
-    visit project_path(project)
+    visit "/projects/#{project.permalink}"
 
     expect(page).to have_css(".readme .content")
 
@@ -25,7 +25,7 @@ RSpec.describe "Project Display" do
   it "can display a project's reverse dependencies", :js do
     project = Project.find("bundler")
 
-    visit project_path(project)
+    visit "/projects/#{project.permalink}"
 
     within '.metric[data-metric-name="package_reverse_dependencies_count"]' do
       page.find("a.button").click

@@ -5,8 +5,7 @@
     .column
       p.heading Project
       h2
-        // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
-        a href="/projects/#{@project.permalink}"
+        a href=project_href(@project)
           = @project.permalink
 
     .meta
@@ -56,7 +55,7 @@ section.readme.section: .container: .columns.is-multiline
               .column
                 .dependency-name
                   - if dependency.dependency_project
-                    = link_to project_path(dependency.dependency_project.permalink) do
+                    = link_to project_href(dependency.dependency_project) do
                       strong= dependency.dependency_project.permalink
                   - else
                     / This happens if a package has all it's versions removed (or never existed)

@@ -5,7 +5,7 @@
     .column
       p.heading Project
       h2
-        a href=reverse_dependencies_project_path(@project)
+        a href=project_href(@project, "reverse_dependencies")
           span Reverse Dependencies for&nbsp;
           // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
         strong: a href="/projects/#{@project.permalink}"

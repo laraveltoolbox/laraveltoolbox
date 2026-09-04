@@ -2,9 +2,8 @@
   header.level.is-mobile
     .level-left
       .level-item
-        // Note that rails url helpers escape slashes (as seen in github-based projects) and this breaks.
         h3.is-size-4
-          a href="/projects/#{project.permalink}"
+          a href=project_href(project)
             = project.permalink
 
     .level-right

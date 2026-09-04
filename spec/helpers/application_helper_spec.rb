@@ -3,6 +3,32 @@
 require "rails_helper"
 
 RSpec.describe ApplicationHelper do
+  #
+  # `project_path` percent-escapes the slash of a composer package name, and
+  # `/projects/vendor%2Fname` does not match the projects route at all.
+  #
+  describe "#project_href" do
+    it "keeps the slash of a composer package name unescaped" do
+      project = Project.new permalink: "illuminate/support"
+      expect(helper.project_href(project)).to eq "/projects/illuminate/support"
+    end
+
+    it "appends further path segments" do
+      project = Project.new permalink: "illuminate/support"
+      expect(helper.project_href(project, "reverse_dependencies"))
+        .to eq "/projects/illuminate/support/reverse_dependencies"
+    end
+
+    it "accepts a bare permalink" do
+      expect(helper.project_href("pestphp/pest")).to eq "/projects/pestphp/pest"
+    end
+
+    it "routes to the projects controller" do
+      expect(Rails.application.routes.recognize_path(helper.project_href("illuminate/support")))
+        .to include(controller: "projects", action: "show", id: "illuminate/support")
+    end
+  end
+
   fixtures :all
 
   describe "#expiring_cache" do
