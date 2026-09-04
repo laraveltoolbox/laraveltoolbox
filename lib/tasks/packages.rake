@@ -19,6 +19,10 @@ def purge_queues!
   Sidekiq::Queue.all.to_a.each(&:clear)
   Sidekiq::RetrySet.new.clear
   Sidekiq::ScheduledSet.new.clear
+rescue RedisClient::Error => e
+  # A redis that is down is often exactly why a reset is being run, so it must
+  # not stop us from clearing out the database
+  warn "Could not reach redis to drop the queues (#{e.class}), continuing anyway"
 end
 
 #
@@ -43,6 +47,17 @@ TRUNCATED_TABLES = %w[
   github_readmes
 ].freeze
 
+#
+# Without redis the mirror still gets cleared, the rebuild just has to be
+# kicked off by hand (or by the hourly cron) once it is back
+#
+def queue_rebuild!
+  CatalogImportJob.perform_async
+  PackagesSyncJob.perform_async
+rescue RedisClient::Error => e
+  warn "Could not reach redis (#{e.class}) - queue CatalogImportJob and PackagesSyncJob once it is back"
+end
+
 def discard_mirror!
   connection = ActiveRecord::Base.connection
   tables = TRUNCATED_TABLES.map { connection.quote_table_name(it) }.join(", ")
@@ -61,8 +76,7 @@ namespace :packages do
     purge_queues!
     discard_mirror!
 
-    CatalogImportJob.perform_async
-    PackagesSyncJob.perform_async
+    queue_rebuild!
 
     puts "Queued the catalog import and a full packagist sync."
     puts "The sync enqueues one update job per package, so expect the mirror to fill up over the next hours."
