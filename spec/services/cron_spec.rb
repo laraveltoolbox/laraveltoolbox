@@ -51,6 +51,16 @@ RSpec.describe Cron, type: :service do
     cron.run time: time_at(1)
   end
 
+  #
+  # Nothing else here can populate an empty mirror, so a fresh deployment would
+  # otherwise sit empty until the next midnight.
+  #
+  it "enqueues PackagesSyncJob at any hour while the mirror is empty" do
+    allow(Package).to receive(:exists?).and_return(false)
+    expect(PackagesSyncJob).to receive(:perform_async)
+    cron.run time: time_at(rand(1..23))
+  end
+
   describe "Database::StoreSelectiveExportJob" do
     let(:allowed_hours) { 0.upto(23).select { (it % 4).zero? } }
     let(:other_hours) { 0.upto(23).to_a - allowed_hours }
