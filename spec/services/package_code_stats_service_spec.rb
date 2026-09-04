@@ -71,18 +71,22 @@ RSpec.describe PackageCodeStatsService, type: :service do
       expect(statistics).to include(
         have_attributes(
           language: "php",
-          code:     be_within(15).of(35),
-          comments: be_within(5).of(4)
+          blanks:   7,
+          code:     28,
+          comments: 5
         )
       ).and include(
         have_attributes(
           language: "markdown",
-          code:     0
+          code:     0,
+          comments: 5
         )
       ).and include(
+        # Tokei reports "JavaScript", which the result set normalizes
         have_attributes(
-          language: "javascript",
-          code:     be_within(5).of(4)
+          language: "java_script",
+          code:     4,
+          comments: 1
         )
       )
     end
