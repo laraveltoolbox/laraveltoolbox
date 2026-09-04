@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe Package::Advisory do
   fixtures :all
 
-  subject(:model) { package_advisories(:nokogiri1) }
+  subject(:model) { package_advisories(:laravel_framework1) }
 
   it {
     expect(model).to belong_to(:package)
@@ -37,21 +37,22 @@ RSpec.describe Package::Advisory do
 
     it do # rubocop:disable RSpec/ExampleLength
       expect(info).to have_attributes(
-        identifier:        "PKSA-242x-7cm6-4w8j",
-        package_name:      "nokogiri",
-        remote_id:         "GHSA-242x-7cm6-4w8j",
-        cve:               "CVE-2019-18197",
-        url:               "https://github.com/advisories/GHSA-242x-7cm6-4w8j",
-        reported_at:       Time.zone.parse("2022-05-24 09:12:44"),
-        title:             "Use of Uninitialized Resource / Use After Free vulnerability",
-        source:            "GitHub",
+        identifier:        "PKSA-w7xr-vk7n-rstm",
+        package_name:      "laravel/framework",
+        remote_id:         "laravel/framework/CVE-2024-52301.yaml",
+        cve:               "CVE-2024-52301",
+        url:               "https://github.com/advisories/GHSA-gv7v-rgg6-548h",
+        reported_at:       Time.zone.parse("2024-11-12 15:29:00"),
+        title:             "Laravel environment manipulation via query string",
+        source:            "FriendsOfPHP/security-advisories",
         severity:          "high",
-        affected_versions: "<1.10.5"
+        affected_versions: "<6.20.45|>=7.0.0,<7.30.7|>=8.0.0,<8.83.28|>=9.0.0,<9.52.17|" \
+                           ">=10.0.0,<10.48.23|>=11.0.0,<11.31.0"
       )
     end
 
     describe "for an advisory without an assigned CVE" do
-      let(:model) { package_advisories :actionpack1 }
+      let(:model) { package_advisories :laravel_framework2 }
 
       it { expect(info).to have_attributes(cve: nil, severity: "medium") }
     end

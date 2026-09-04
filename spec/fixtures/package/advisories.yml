@@ -1,35 +1,35 @@
-nokogiri1:
-  package_name: nokogiri
-  identifier: PKSA-242x-7cm6-4w8j
-  date: '2022-05-24'
+laravel_framework1:
+  package_name: laravel/framework
+  identifier: PKSA-w7xr-vk7n-rstm
+  date: '2024-11-12'
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
   advisory_data:
-    identifier: PKSA-242x-7cm6-4w8j
-    package_name: nokogiri
-    remote_id: GHSA-242x-7cm6-4w8j
-    url: https://github.com/advisories/GHSA-242x-7cm6-4w8j
-    title: Use of Uninitialized Resource / Use After Free vulnerability
-    cve: CVE-2019-18197
-    affected_versions: '<1.10.5'
-    source: GitHub
-    severity: high
-    reported_at: '2022-05-24 09:12:44'
-
-actionpack1:
-  package_name: actionpack
-  identifier: PKSA-mm33-5vfq-3mm3
-  date: "2022-04-27"
-  created_at: <%= Time.current %>
-  updated_at: <%= Time.current %>
-  advisory_data:
-    identifier: PKSA-mm33-5vfq-3mm3
-    package_name: actionpack
-    remote_id: GHSA-mm33-5vfq-3mm3
-    url: https://github.com/advisories/GHSA-mm33-5vfq-3mm3
-    title: Possible XSS Vulnerability
-    cve:
-    affected_versions: '>=5.2.0,<5.2.7.1|>=6.0.0,<6.0.4.8'
+    identifier: PKSA-w7xr-vk7n-rstm
+    package_name: laravel/framework
+    remote_id: laravel/framework/CVE-2024-52301.yaml
+    url: https://github.com/advisories/GHSA-gv7v-rgg6-548h
+    title: Laravel environment manipulation via query string
+    cve: CVE-2024-52301
+    affected_versions: '<6.20.45|>=7.0.0,<7.30.7|>=8.0.0,<8.83.28|>=9.0.0,<9.52.17|>=10.0.0,<10.48.23|>=11.0.0,<11.31.0'
     source: FriendsOfPHP/security-advisories
+    severity: high
+    reported_at: '2024-11-12 15:29:00'
+
+laravel_framework2:
+  package_name: laravel/framework
+  identifier: PKSA-m5cs-t1y6-qpcs
+  date: '2026-06-17'
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+  advisory_data:
+    identifier: PKSA-m5cs-t1y6-qpcs
+    package_name: laravel/framework
+    remote_id: GHSA-crmm-hgp2-wgrp
+    url: https://github.com/advisories/GHSA-crmm-hgp2-wgrp
+    title: 'Laravel Framework: Temporary Signed URL Path Confusion'
+    cve:
+    affected_versions: '<12.61.1|>=13.0.0,<13.12.0'
+    source: GitHub
     severity: medium
-    reported_at: '2022-04-27 16:31:07'
+    reported_at: '2026-06-17 13:54:13'

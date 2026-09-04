@@ -3,7 +3,7 @@
     p.heading= link_to "Laravel Toolbox UI Components Styleguide", "/pages/components"
     h2= current_page.split("/").last.humanize
 
-- readme = Project.find("simplecov").github_repo_readme
+- readme = Project.find("nunomaduro/collision").github_repo_readme
 
 = component_example "Project README" do
   = project_readme readme

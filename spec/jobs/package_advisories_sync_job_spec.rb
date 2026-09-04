@@ -25,7 +25,7 @@ RSpec.describe PackageAdvisoriesSyncJob do
     }
   end
 
-  let(:package_name) { "nokogiri" }
+  let(:package_name) { "laravel/sanctum" }
 
   describe ".import(advisory_data)" do
     subject(:import) { described_class.import advisory_payload }

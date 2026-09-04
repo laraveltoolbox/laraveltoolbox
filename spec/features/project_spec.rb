@@ -46,7 +46,7 @@ RSpec.describe "Project Display" do
   end
 
   it "can display a project's reverse dependencies", :js do
-    project = Project.find("bundler")
+    project = Project.find("illuminate/support")
 
     visit "/projects/#{project.permalink}"
 
@@ -55,7 +55,7 @@ RSpec.describe "Project Display" do
     end
 
     within ".hero" do
-      expect(page).to have_text "Reverse Dependencies for bundler"
+      expect(page).to have_text "Reverse Dependencies for illuminate/support"
     end
 
     expect_display_mode "Compact"

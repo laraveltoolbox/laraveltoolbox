@@ -1,226 +1,218 @@
 # Generated from realistic dataset using bin/make_fixtures.rb, please don't modify manually
 ---
-nokogiri_bundler:
-  id: 464766
-  package_name: nokogiri
-  dependency_name: bundler
-  type: development
-  requirements: "~> 2.2"
-  created_at: '2021-04-08T02:49:25.081Z'
-  updated_at: '2021-04-08T02:49:25.081Z'
-nokogiri_concourse:
-  id: 464776
-  package_name: nokogiri
-  dependency_name: concourse
-  type: development
-  requirements: "~> 0.41"
-  created_at: '2021-04-08T02:49:26.559Z'
-  updated_at: '2021-04-08T02:49:26.559Z'
-nokogiri_hoe-markdown:
-  id: 464783
-  package_name: nokogiri
-  dependency_name: hoe-markdown
-  type: development
-  requirements: "~> 1.4"
-  created_at: '2021-04-08T02:49:27.869Z'
-  updated_at: '2021-04-08T02:49:27.869Z'
-nokogiri_mini_portile2:
-  id: 464857
-  package_name: nokogiri
-  dependency_name: mini_portile2
+laravel/sanctum_illuminate/support:
+  id: 1
+  package_name: laravel/sanctum
+  dependency_name: illuminate/support
   type: runtime
-  requirements: "~> 2.5.0"
-  created_at: '2021-04-08T02:49:40.333Z'
-  updated_at: '2021-04-08T02:49:40.333Z'
-nokogiri_minitest:
-  id: 464791
-  package_name: nokogiri
-  dependency_name: minitest
-  type: development
-  requirements: "~> 5.8"
-  created_at: '2021-04-08T02:49:29.000Z'
-  updated_at: '2021-04-08T02:49:29.000Z'
-nokogiri_minitest-reporters:
-  id: 464798
-  package_name: nokogiri
-  dependency_name: minitest-reporters
-  type: development
-  requirements: "~> 1.4"
-  created_at: '2021-04-08T02:49:30.023Z'
-  updated_at: '2021-04-08T02:49:30.023Z'
-nokogiri_racc:
-  id: 464863
-  package_name: nokogiri
-  dependency_name: racc
+  requirements: "^11.0|^12.0|^13.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+laravel/sanctum_illuminate/contracts:
+  id: 2
+  package_name: laravel/sanctum
+  dependency_name: illuminate/contracts
   type: runtime
-  requirements: "~> 1.4"
-  created_at: '2021-04-08T02:49:41.497Z'
-  updated_at: '2021-04-08T02:49:41.497Z'
-nokogiri_rake:
-  id: 464806
-  package_name: nokogiri
-  dependency_name: rake
+  requirements: "^11.0|^12.0|^13.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+laravel/sanctum_illuminate/database:
+  id: 3
+  package_name: laravel/sanctum
+  dependency_name: illuminate/database
+  type: runtime
+  requirements: "^11.0|^12.0|^13.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+laravel/sanctum_symfony/console:
+  id: 4
+  package_name: laravel/sanctum
+  dependency_name: symfony/console
+  type: runtime
+  requirements: "^7.0|^8.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+laravel/sanctum_mockery/mockery:
+  id: 5
+  package_name: laravel/sanctum
+  dependency_name: mockery/mockery
   type: development
-  requirements: "~> 13.0"
-  created_at: '2021-04-08T02:49:31.478Z'
-  updated_at: '2021-04-08T02:49:31.478Z'
-nokogiri_rake-compiler:
-  id: 464814
-  package_name: nokogiri
-  dependency_name: rake-compiler
+  requirements: "^1.6"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+laravel/sanctum_phpstan/phpstan:
+  id: 6
+  package_name: laravel/sanctum
+  dependency_name: phpstan/phpstan
   type: development
-  requirements: "~> 1.1"
-  created_at: '2021-04-08T02:49:32.952Z'
-  updated_at: '2021-04-08T02:49:32.952Z'
-nokogiri_rake-compiler-dock:
-  id: 464821
-  package_name: nokogiri
-  dependency_name: rake-compiler-dock
+  requirements: "^1.10"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+laravel/sanctum_orchestra/testbench:
+  id: 7
+  package_name: laravel/sanctum
+  dependency_name: orchestra/testbench
   type: development
-  requirements: "~> 1.1"
-  created_at: '2021-04-08T02:49:34.160Z'
-  updated_at: '2021-04-08T02:49:34.160Z'
-nokogiri_rexical:
-  id: 464829
-  package_name: nokogiri
-  dependency_name: rexical
+  requirements: "^9.15|^10.8|^11.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+larastan/larastan_illuminate/support:
+  id: 8
+  package_name: larastan/larastan
+  dependency_name: illuminate/support
+  type: runtime
+  requirements: "^11.44.2 || ^12.4.1 || ^13"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+larastan/larastan_illuminate/console:
+  id: 9
+  package_name: larastan/larastan
+  dependency_name: illuminate/console
+  type: runtime
+  requirements: "^11.44.2 || ^12.4.1 || ^13"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+larastan/larastan_illuminate/contracts:
+  id: 10
+  package_name: larastan/larastan
+  dependency_name: illuminate/contracts
+  type: runtime
+  requirements: "^11.44.2 || ^12.4.1 || ^13"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+larastan/larastan_phpstan/phpstan:
+  id: 11
+  package_name: larastan/larastan
+  dependency_name: phpstan/phpstan
+  type: runtime
+  requirements: "^2.2.2"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+larastan/larastan_laravel/framework:
+  id: 12
+  package_name: larastan/larastan
+  dependency_name: laravel/framework
   type: development
-  requirements: "~> 1.0.5"
-  created_at: '2021-04-08T02:49:35.507Z'
-  updated_at: '2021-04-08T02:49:35.507Z'
-nokogiri_rubocop:
-  id: 464834
-  package_name: nokogiri
-  dependency_name: rubocop
+  requirements: "^11.44.2 || ^12.7.2 || ^13"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+larastan/larastan_mockery/mockery:
+  id: 13
+  package_name: larastan/larastan
+  dependency_name: mockery/mockery
   type: development
-  requirements: "~> 1.7"
-  created_at: '2021-04-08T02:49:36.512Z'
-  updated_at: '2021-04-08T02:49:36.512Z'
-nokogiri_simplecov:
-  id: 464842
-  package_name: nokogiri
-  dependency_name: simplecov
+  requirements: "^1.6.12"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+pestphp/pest_nunomaduro/collision:
+  id: 14
+  package_name: pestphp/pest
+  dependency_name: nunomaduro/collision
+  type: runtime
+  requirements: "^8.9.5"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+pestphp/pest_phpunit/phpunit:
+  id: 15
+  package_name: pestphp/pest
+  dependency_name: phpunit/phpunit
+  type: runtime
+  requirements: "^13.3.1"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+pestphp/pest_brianium/paratest:
+  id: 16
+  package_name: pestphp/pest
+  dependency_name: brianium/paratest
+  type: runtime
+  requirements: "^7.24.1"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+nunomaduro/collision_filp/whoops:
+  id: 17
+  package_name: nunomaduro/collision
+  dependency_name: filp/whoops
+  type: runtime
+  requirements: "^2.18.4"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+nunomaduro/collision_symfony/console:
+  id: 18
+  package_name: nunomaduro/collision
+  dependency_name: symfony/console
+  type: runtime
+  requirements: "^7.4.14 || ^8.1.1"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+nunomaduro/collision_nunomaduro/termwind:
+  id: 19
+  package_name: nunomaduro/collision
+  dependency_name: nunomaduro/termwind
+  type: runtime
+  requirements: "^2.4.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+nunomaduro/collision_larastan/larastan:
+  id: 20
+  package_name: nunomaduro/collision
+  dependency_name: larastan/larastan
   type: development
-  requirements: "~> 0.20"
-  created_at: '2021-04-08T02:49:38.008Z'
-  updated_at: '2021-04-08T02:49:38.008Z'
-nokogiri_yard:
-  id: 464849
-  package_name: nokogiri
-  dependency_name: yard
+  requirements: "^3.10.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+nunomaduro/collision_laravel/framework:
+  id: 21
+  package_name: nunomaduro/collision
+  dependency_name: laravel/framework
   type: development
-  requirements: "~> 0.9"
-  created_at: '2021-04-08T02:49:39.262Z'
-  updated_at: '2021-04-08T02:49:39.262Z'
-simplecov_docile:
-  id: 451769
-  package_name: simplecov
-  dependency_name: docile
+  requirements: "^11.48.0 || ^12.56.0 || ^13.20.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+illuminate/support_illuminate/contracts:
+  id: 22
+  package_name: illuminate/support
+  dependency_name: illuminate/contracts
   type: runtime
-  requirements: "~> 1.1"
-  created_at: '2021-04-07T11:40:35.729Z'
-  updated_at: '2021-04-07T11:40:35.729Z'
-simplecov_simplecov-html:
-  id: 451773
-  package_name: simplecov
-  dependency_name: simplecov-html
+  requirements: "^13.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+illuminate/support_nesbot/carbon:
+  id: 23
+  package_name: illuminate/support
+  dependency_name: nesbot/carbon
   type: runtime
-  requirements: "~> 0.11"
-  created_at: '2021-04-07T11:40:35.840Z'
-  updated_at: '2021-04-07T11:40:35.840Z'
-simplecov_simplecov_json_formatter:
-  id: 451775
-  package_name: simplecov
-  dependency_name: simplecov_json_formatter
+  requirements: "^3.8.4"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+illuminate/support_doctrine/inflector:
+  id: 24
+  package_name: illuminate/support
+  dependency_name: doctrine/inflector
   type: runtime
-  requirements: "~> 0.1"
-  created_at: '2021-04-07T11:40:35.913Z'
-  updated_at: '2021-04-07T11:40:35.913Z'
-rubocop_bundler:
-  id: 453274
-  package_name: rubocop
-  dependency_name: bundler
-  type: development
-  requirements: ">= 1.15.0, < 3.0"
-  created_at: '2021-04-07T11:43:38.768Z'
-  updated_at: '2021-04-07T11:43:38.768Z'
-rubocop_parallel:
-  id: 453280
-  package_name: rubocop
-  dependency_name: parallel
+  requirements: "^2.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+laravel/framework_symfony/console:
+  id: 25
+  package_name: laravel/framework
+  dependency_name: symfony/console
   type: runtime
-  requirements: "~> 1.10"
-  created_at: '2021-04-07T11:43:39.855Z'
-  updated_at: '2021-04-07T11:43:39.855Z'
-rubocop_parser:
-  id: 453288
-  package_name: rubocop
-  dependency_name: parser
+  requirements: "^7.4.0 || ^8.0.0"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+laravel/framework_monolog/monolog:
+  id: 26
+  package_name: laravel/framework
+  dependency_name: monolog/monolog
   type: runtime
-  requirements: ">= 3.0.0.0"
-  created_at: '2021-04-07T11:43:40.942Z'
-  updated_at: '2021-04-07T11:43:40.942Z'
-rubocop_rainbow:
-  id: 453295
-  package_name: rubocop
-  dependency_name: rainbow
+  requirements: "^3.10"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+laravel/framework_nesbot/carbon:
+  id: 27
+  package_name: laravel/framework
+  dependency_name: nesbot/carbon
   type: runtime
-  requirements: ">= 2.2.2, < 4.0"
-  created_at: '2021-04-07T11:43:41.996Z'
-  updated_at: '2021-04-07T11:43:41.996Z'
-rubocop_regexp_parser:
-  id: 453302
-  package_name: rubocop
-  dependency_name: regexp_parser
-  type: runtime
-  requirements: ">= 1.8, < 3.0"
-  created_at: '2021-04-07T11:43:43.172Z'
-  updated_at: '2021-04-07T11:43:43.172Z'
-rubocop_rexml:
-  id: 453309
-  package_name: rubocop
-  dependency_name: rexml
-  type: runtime
-  requirements: ">= 0"
-  created_at: '2021-04-07T11:43:43.987Z'
-  updated_at: '2021-04-07T11:43:43.987Z'
-rubocop_rubocop-ast:
-  id: 453315
-  package_name: rubocop
-  dependency_name: rubocop-ast
-  type: runtime
-  requirements: ">= 1.5.0, < 2.0"
-  created_at: '2021-04-07T11:43:45.221Z'
-  updated_at: '2021-05-23T01:06:58.071Z'
-rubocop_ruby-progressbar:
-  id: 453324
-  package_name: rubocop
-  dependency_name: ruby-progressbar
-  type: runtime
-  requirements: "~> 1.7"
-  created_at: '2021-04-07T11:43:46.619Z'
-  updated_at: '2021-04-07T11:43:46.619Z'
-rubocop_unicode-display_width:
-  id: 453332
-  package_name: rubocop
-  dependency_name: unicode-display_width
-  type: runtime
-  requirements: ">= 1.4.0, < 3.0"
-  created_at: '2021-04-07T11:43:47.929Z'
-  updated_at: '2021-04-07T11:43:47.929Z'
-minitest_hoe:
-  id: 488283
-  package_name: minitest
-  dependency_name: hoe
-  type: development
-  requirements: "~> 3.22"
-  created_at: '2021-04-08T19:20:59.643Z'
-  updated_at: '2021-04-08T19:20:59.643Z'
-minitest_rdoc:
-  id: 488289
-  package_name: minitest
-  dependency_name: rdoc
-  type: development
-  requirements: ">= 4.0, < 7"
-  created_at: '2021-04-08T19:21:00.307Z'
-  updated_at: '2021-04-08T19:21:00.307Z'
+  requirements: "^3.8.4"
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'

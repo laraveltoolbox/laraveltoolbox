@@ -5,17 +5,25 @@ require File.join(__dir__, "..", "config", "environment")
 #
 # This little script can be used to help with building new fixtures for the specs.
 # You will need to have a production database dump loaded locally so realistic data
-# to build the fixtures from is available.
+# to build the fixtures from is available - see bin/pull_database.
 #
 
+#
+# The fixture projects deliberately avoid the package names used in
+# config/http_mock_responses.yml: specs that exercise creating a package from
+# scratch expect those to be absent from the database.
+#
 PROJECTS = %w[
-  nokogiri
-  bundler
-  simplecov
-  rubocop
-  minitest
-  imathis/octopress
+  laravel/sanctum
+  illuminate/support
+  nunomaduro/collision
+  larastan/larastan
+  pestphp/pest
+  laravel/docs
 ].freeze
+
+# The one project whose readme is carried along, as they are rather large
+README_PROJECT = "nunomaduro/collision"
 
 EXCLUDED_COLUMNS = %w[
   fetched_at
@@ -25,7 +33,6 @@ EXCLUDED_COLUMNS = %w[
   bugfix_fork_criteria
   is_bugfix_fork
   name_tsvector
-  description_tsvector
 ].freeze
 
 def fixturify(model)
@@ -38,15 +45,16 @@ PROJECTS.each do |project_name|
 
   RESULTS[:projects][project_name] = fixturify project
 
-  if project.rubygem
-    RESULTS[:rubygems][project.rubygem_name] = fixturify project.rubygem
-    project.rubygem.rubygem_dependencies.each do |dependency|
-      RESULTS[:rubygem_dependencies]["#{dependency.rubygem_name}_#{dependency.dependency_name}"] = fixturify dependency
+  if project.package
+    RESULTS[:packages][project.package_name] = fixturify project.package
+    project.package.package_dependencies.each do |dependency|
+      RESULTS[:package_dependencies]["#{dependency.package_name}_#{dependency.dependency_name}"] =
+        fixturify dependency
     end
   end
   RESULTS[:github_repos][project.github_repo_path] = fixturify project.github_repo if project.github_repo
 
-  if project.permalink == "simplecov"
+  if project.permalink == README_PROJECT
     RESULTS[:github_readmes][project.github_repo_path] =
       fixturify project.github_repo_readme
   end

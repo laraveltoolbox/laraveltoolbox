@@ -7,7 +7,7 @@ RSpec.describe PackageCodeStatsJob do
 
   subject(:job) { described_class.new }
 
-  let(:package) { packages :nokogiri }
+  let(:package) { packages :"laravel/sanctum" }
 
   let(:fake_statistics) do
     PackageCodeStatsService::ResultSet.new(

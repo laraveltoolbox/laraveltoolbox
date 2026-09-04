@@ -1,462 +1,391 @@
 # Generated from realistic dataset using bin/make_fixtures.rb, please don't modify manually
 ---
-nokogiri:
-  name: nokogiri
-  downloads: 398962784
-  current_version: 1.11.5
-  authors: Mike Dalessio, Aaron Patterson, Yoko Harada, Akinori MUSHA, John Shahid,
-    Karol Bucek, Lars Kanis, Sergio Arbeo, Timothy Elliott, Nobuyoshi Nakada
-  description: |
-    Nokogiri (鋸) makes it easy and painless to work with XML and HTML from Ruby. It provides a
-    sensible, easy-to-understand API for reading, writing, modifying, and querying documents. It is
-    fast and standards-compliant by relying on native parsers like libxml2 (C) and xerces (Java).
+laravel/sanctum:
+  name: laravel/sanctum
+  downloads: 211334271
+  current_version: v4.3.3
+  authors: Taylor Otwell
+  description: Laravel Sanctum provides a featherweight authentication system for
+    SPAs and simple APIs.
   licenses:
   - MIT
-  bug_tracker_url: https://github.com/sparklemotion/nokogiri/issues
-  changelog_url:
-  documentation_url: https://nokogiri.org/rdoc/index.html
-  homepage_url: https://nokogiri.org
-  mailing_list_url:
-  source_code_url: https://github.com/sparklemotion/nokogiri
-  wiki_url:
-  created_at: '2018-01-03T00:54:01.378Z'
-  updated_at: '2021-05-23T09:35:29.603Z'
-  first_release_on: '2008-10-30'
-  latest_release_on: '2021-05-20'
-  releases_count: 508
-  reverse_dependencies_count: 7166
-  quarterly_release_counts:
-    2008-4: 9
-    2009-1: 5
-    2009-2: 3
-    2009-3: 1
-    2009-4: 2
-    2010-2: 3
-    2010-3: 3
-    2010-4: 4
-    2011-1: 1
-    2011-2: 2
-    2011-3: 2
-    2012-1: 5
-    2012-2: 12
-    2012-3: 2
-    2012-4: 2
-    2013-1: 6
-    2013-2: 3
-    2013-4: 2
-    2014-2: 8
-    2014-3: 2
-    2014-4: 3
-    2015-1: 2
-    2015-3: 2
-    2015-4: 6
-    2016-1: 3
-    2016-2: 1
-    2016-4: 2
-    2017-1: 2
-    2017-2: 2
-    2017-3: 1
-    2018-1: 1
-    2018-2: 1
-    2018-3: 1
-    2018-4: 4
-    2019-1: 4
-    2019-2: 1
-    2019-3: 1
-    2019-4: 3
-    2020-1: 3
-    2020-2: 1
-    2020-3: 2
-    2020-4: 1
-    2021-1: 3
-    2021-2: 3
-bundler:
-  name: bundler
-  downloads: 661962459
-  current_version: 2.2.18
-  authors: André Arko, Samuel Giddins, Colby Swandale, Hiroshi Shibata, David Rodríguez,
-    Grey Baker, Stephanie Morillo, Chris Morris, James Wen, Tim Moore, André Medeiros,
-    Jessica Lynn Suttles, Terence Lee, Carl Lerche, Yehuda Katz
-  description: Bundler manages an application's dependencies through its entire life,
-    across many machines, systematically and repeatably
-  licenses:
-  - MIT
-  bug_tracker_url: https://github.com/packages/packages/issues?q=is%3Aopen+is%3Aissue+label%3ABundler
+  bug_tracker_url: https://github.com/laravel/sanctum/issues
   changelog_url:
   documentation_url:
-  homepage_url: https://bundler.io/
+  homepage_url: https://github.com/laravel/sanctum
   mailing_list_url:
-  source_code_url: https://github.com/packages/packages/
+  source_code_url: https://github.com/laravel/sanctum.git
   wiki_url:
-  created_at: '2018-01-03T03:27:28.619Z'
-  updated_at: '2021-05-28T00:57:29.375Z'
-  first_release_on: '2009-07-29'
-  latest_release_on: '2021-05-25'
-  releases_count: 303
-  reverse_dependencies_count: 65406
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+  first_release_on: '2020-01-20'
+  latest_release_on: '2026-06-23'
+  releases_count: 79
+  reverse_dependencies_count: 1309
   quarterly_release_counts:
-    2009-3: 6
-    2009-4: 3
-    2010-1: 25
-    2010-2: 14
-    2010-3: 12
-    2010-4: 4
-    2011-1: 4
-    2011-2: 9
-    2011-3: 11
-    2011-4: 6
-    2012-1: 6
-    2012-2: 3
-    2012-3: 5
-    2012-4: 5
-    2013-1: 12
-    2013-2: 1
-    2013-3: 3
-    2013-4: 4
-    2014-1: 8
-    2014-2: 3
-    2014-3: 10
-    2014-4: 10
-    2015-1: 18
-    2015-2: 22
-    2015-3: 1
-    2015-4: 5
-    2016-1: 3
-    2016-2: 11
-    2016-3: 4
-    2016-4: 7
-    2017-1: 8
-    2017-2: 6
-    2017-3: 5
-    2017-4: 3
-    2018-2: 1
-    2018-3: 4
-    2018-4: 9
-    2019-1: 2
-    2019-2: 1
-    2019-3: 2
-    2019-4: 4
-    2020-1: 2
-    2020-3: 1
-    2020-4: 6
-    2021-1: 11
-    2021-2: 3
-simplecov:
-  name: simplecov
-  downloads: 141246376
-  current_version: 0.21.2
-  authors: Christoph Olszowka, Tobias Pfeiffer
-  description: Code coverage for Ruby with a powerful configuration library and automatic
-    merging of coverage across test suites
-  licenses:
-  - MIT
-  bug_tracker_url: https://github.com/simplecov-ruby/simplecov/issues
-  changelog_url:
-  documentation_url: https://www.rubydoc.info/gems/simplecov/0.21.2
-  homepage_url: https://github.com/simplecov-ruby/simplecov
-  mailing_list_url: https://groups.google.com/forum/#!forum/simplecov
-  source_code_url: https://github.com/simplecov-ruby/simplecov/tree/v0.21.2
-  wiki_url:
-  created_at: '2018-01-03T01:48:03.557Z'
-  updated_at: '2021-05-22T23:37:29.817Z'
-  first_release_on: '2010-08-21'
-  latest_release_on: '2021-01-09'
-  releases_count: 57
-  reverse_dependencies_count: 11202
-  quarterly_release_counts:
-    2010-3: 6
-    2010-4: 1
-    2011-1: 3
-    2011-2: 1
-    2011-3: 2
-    2011-4: 1
-    2012-1: 2
-    2012-2: 3
-    2012-4: 2
-    2013-2: 1
-    2013-3: 1
-    2013-4: 2
-    2014-3: 2
-    2015-1: 1
-    2015-2: 1
-    2015-4: 2
-    2016-1: 1
-    2016-3: 1
-    2017-1: 3
-    2017-3: 2
-    2018-1: 2
-    2019-3: 2
-    2020-1: 9
-    2020-3: 1
-    2020-4: 2
-    2021-1: 3
-rubocop:
-  name: rubocop
-  downloads: 159048832
-  current_version: 1.15.0
-  authors: Bozhidar Batsov, Jonas Arvidsson, Yuji Nakayama
-  description: |2
-        RuboCop is a Ruby code style checking and code formatting tool.
-        It aims to enforce the community-driven Ruby Style Guide.
-  licenses:
-  - MIT
-  bug_tracker_url: https://github.com/rubocop/rubocop/issues
-  changelog_url:
-  documentation_url: https://docs.rubocop.org/rubocop/1.15/
-  homepage_url: https://rubocop.org/
-  mailing_list_url:
-  source_code_url: https://github.com/rubocop/rubocop/
-  wiki_url:
-  created_at: '2018-01-03T01:34:12.800Z'
-  updated_at: '2021-05-23T01:06:42.080Z'
-  first_release_on: '2012-05-03'
-  latest_release_on: '2021-05-17'
-  releases_count: 177
-  reverse_dependencies_count: 9464
-  quarterly_release_counts:
-    2012-2: 1
-    2012-4: 1
-    2013-1: 4
-    2013-2: 18
-    2013-3: 8
-    2013-4: 4
-    2014-1: 5
-    2014-2: 6
-    2014-3: 4
-    2014-4: 3
-    2015-1: 2
-    2015-2: 5
-    2015-3: 4
-    2015-4: 2
-    2016-1: 6
-    2016-2: 3
-    2016-3: 3
-    2016-4: 4
-    2017-1: 3
-    2017-2: 3
-    2017-3: 1
-    2017-4: 3
-    2018-1: 2
-    2018-2: 5
-    2018-3: 6
-    2018-4: 3
-    2019-1: 6
-    2019-2: 9
-    2019-3: 3
-    2019-4: 4
-    2020-1: 3
-    2020-2: 7
-    2020-3: 9
-    2020-4: 16
-    2021-1: 7
-    2021-2: 4
-minitest:
-  name: minitest
-  downloads: 380211284
-  current_version: 5.14.4
-  authors: Ryan Davis
-  description: |-
-    minitest provides a complete suite of testing facilities supporting
-    TDD, BDD, mocking, and benchmarking.
-
-        "I had a class with Jim Weirich on testing last week and we were
-         allowed to choose our testing frameworks. Kirk Haines and I were
-         paired up and we cracked open the code for a few test
-         frameworks...
-
-         I MUST say that minitest is *very* readable / understandable
-         compared to the 'other two' options we looked at. Nicely done and
-         thank you for helping us keep our mental sanity."
-
-        -- Wayne E. Seguin
-
-    minitest/test is a small and incredibly fast unit testing framework.
-    It provides a rich set of assertions to make your tests clean and
-    readable.
-
-    minitest/spec is a functionally complete spec engine. It hooks onto
-    minitest/test and seamlessly bridges test assertions over to spec
-    expectations.
-
-    minitest/benchmark is an awesome way to assert the performance of your
-    algorithms in a repeatable manner. Now you can assert that your newb
-    co-worker doesn't replace your linear algorithm with an exponential
-    one!
-
-    minitest/mock by Steven Baker, is a beautifully tiny mock (and stub)
-    object framework.
-
-    minitest/pride shows pride in testing and adds coloring to your test
-    output. I guess it is an example of how to write IO pipes too. :P
-
-    minitest/test is meant to have a clean implementation for language
-    implementors that need a minimal set of methods to bootstrap a working
-    test suite. For example, there is no magic involved for test-case
-    discovery.
-
-        "Again, I can't praise enough the idea of a testing/specing
-         framework that I can actually read in full in one sitting!"
-
-        -- Piotr Szotkowski
-
-    Comparing to rspec:
-
-        rspec is a testing DSL. minitest is ruby.
-
-        -- Adam Hawkins, "Bow Before MiniTest"
-
-    minitest doesn't reinvent anything that ruby already provides, like:
-    classes, modules, inheritance, methods. This means you only have to
-    learn ruby to use minitest and all of your regular OO practices like
-    extract-method refactorings still apply.
-  licenses:
-  - MIT
-  bug_tracker_url: https://github.com/seattlerb/minitest/issues
-  changelog_url:
-  documentation_url:
-  homepage_url: https://github.com/seattlerb/minitest
-  mailing_list_url:
-  source_code_url:
-  wiki_url:
-  created_at: '2018-01-03T00:41:42.780Z'
-  updated_at: '2021-05-23T10:53:44.621Z'
-  first_release_on: '2008-10-09'
-  latest_release_on: '2021-02-24'
-  releases_count: 119
-  reverse_dependencies_count: 11539
-  quarterly_release_counts:
-    2008-4: 1
-    2009-1: 1
-    2009-2: 3
-    2010-1: 2
-    2010-3: 3
-    2010-4: 3
-    2011-2: 6
-    2011-3: 5
-    2011-4: 7
-    2012-1: 6
-    2012-2: 6
-    2012-3: 4
-    2012-4: 6
-    2013-1: 6
-    2013-2: 12
-    2013-3: 2
-    2013-4: 2
-    2014-1: 5
-    2014-2: 4
-    2014-3: 3
-    2014-4: 2
-    2015-1: 1
-    2015-2: 3
-    2015-3: 2
-    2015-4: 2
-    2016-1: 1
-    2016-2: 1
-    2016-3: 2
-    2016-4: 2
-    2017-2: 1
-    2017-3: 1
-    2017-4: 1
-    2018-1: 4
-    2019-3: 3
-    2019-4: 1
-    2020-1: 1
-    2020-2: 1
-    2020-3: 1
-    2021-1: 2
-actionpack:
-  name: actionpack
-  downloads: 531303567
-  current_version: 7.1.3.2
-  authors: David Heinemeier Hansson
-  description: Web apps on Rails. Simple, battle-tested conventions for building and
-    testing MVC web applications. Works with any Rack-compatible server.
-  licenses:
-  - MIT
-  bug_tracker_url: https://github.com/rails/rails/issues
-  changelog_url:
-  documentation_url: https://api.rubyonrails.org/v7.1.3.2/
-  homepage_url: https://rubyonrails.org
-  mailing_list_url: https://discuss.rubyonrails.org/c/rubyonrails-talk
-  source_code_url: https://github.com/rails/rails/tree/v7.1.3.2/actionpack
-  wiki_url:
-  created_at: '2018-01-03T03:27:19.356Z'
-  updated_at: '2024-04-19T11:24:02.200Z'
-  first_release_on: '2004-10-25'
-  latest_release_on: '2024-02-21'
-  releases_count: 464
-  reverse_dependencies_count: 1495
-  fetched_at: '2024-04-19T11:24:02.200Z'
-  quarterly_release_counts:
-    2004-4: 5
-    2005-1: 8
-    2005-2: 2
-    2005-3: 2
-    2005-4: 5
-    2006-1: 1
-    2006-2: 3
-    2006-3: 2
-    2007-1: 4
-    2007-4: 6
-    2008-2: 1
-    2008-3: 2
-    2008-4: 3
-    2009-1: 1
-    2009-3: 3
-    2009-4: 1
-    2010-1: 1
-    2010-2: 7
-    2010-3: 5
-    2010-4: 4
-    2011-1: 7
-    2011-2: 19
-    2011-3: 9
-    2011-4: 8
-    2012-1: 12
-    2012-2: 11
-    2012-3: 9
-    2012-4: 7
-    2013-1: 15
-    2013-2: 3
-    2013-3: 3
-    2013-4: 12
-    2014-1: 7
-    2014-2: 12
-    2014-3: 15
-    2014-4: 14
-    2015-1: 14
-    2015-2: 7
-    2015-3: 4
-    2015-4: 7
-    2016-1: 13
-    2016-2: 5
-    2016-3: 9
-    2016-4: 3
-    2017-1: 6
-    2017-2: 11
-    2017-3: 13
-    2017-4: 2
-    2018-1: 6
-    2018-2: 1
-    2018-3: 2
-    2018-4: 6
-    2019-1: 11
-    2019-2: 1
-    2019-3: 2
-    2019-4: 9
-    2020-1: 2
-    2020-2: 7
+    2020-1: 7
+    2020-2: 11
     2020-3: 2
     2020-4: 4
-    2021-1: 9
-    2021-2: 6
-    2021-3: 4
-    2021-4: 10
-    2022-1: 16
-    2022-2: 8
-    2022-3: 7
-    2023-1: 7
+    2021-1: 4
+    2021-2: 5
+    2021-4: 6
+    2022-1: 4
+    2022-2: 1
+    2022-3: 2
+    2023-1: 3
     2023-2: 4
-    2023-3: 8
-    2023-4: 4
+    2023-3: 3
+    2023-4: 2
+    2024-1: 2
+    2024-2: 1
+    2024-3: 1
+    2024-4: 4
+    2025-1: 1
+    2025-2: 2
+    2025-3: 2
+    2025-4: 1
+    2026-1: 5
+    2026-2: 2
+  laravel_versions:
+  - 11
+  - 12
+  - 13
+  laravel_requirement: "^11.0|^12.0|^13.0"
+  php_requirement: "^8.2"
+  php_minimum_version: '8.2'
+illuminate/support:
+  name: illuminate/support
+  downloads: 118798489
+  current_version: v13.30.1
+  authors: Taylor Otwell
+  description: The Illuminate Support package.
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/laravel/framework/issues
+  changelog_url:
+  documentation_url:
+  homepage_url: https://laravel.com
+  mailing_list_url:
+  source_code_url: https://github.com/illuminate/support.git
+  wiki_url:
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+  first_release_on: '2012-05-10'
+  latest_release_on: '2026-08-31'
+  releases_count: 1031
+  reverse_dependencies_count: 44125
+  quarterly_release_counts:
+    2012-2: 1
+    2012-4: 3
+    2013-1: 3
+    2013-2: 6
+    2013-3: 2
+    2013-4: 15
+    2014-1: 17
+    2014-2: 9
+    2014-3: 3
+    2014-4: 2
+    2015-1: 6
+    2015-2: 4
+    2015-3: 4
+    2015-4: 6
+    2016-1: 10
+    2016-2: 4
+    2016-3: 4
+    2016-4: 2
+    2017-1: 4
+    2017-2: 2
+    2017-3: 3
+    2017-4: 3
+    2018-1: 23
+    2018-2: 11
+    2018-3: 22
+    2018-4: 9
+    2019-1: 12
+    2019-2: 12
+    2019-3: 16
+    2019-4: 10
+    2020-1: 39
+    2020-2: 45
+    2020-3: 52
+    2020-4: 52
+    2021-1: 38
+    2021-2: 20
+    2021-3: 27
+    2021-4: 25
+    2022-1: 30
+    2022-2: 35
+    2022-3: 28
+    2022-4: 21
+    2023-1: 33
+    2023-2: 29
+    2023-3: 19
+    2023-4: 21
+    2024-1: 25
+    2024-2: 35
+    2024-3: 19
+    2024-4: 23
+    2025-1: 30
+    2025-2: 30
+    2025-3: 33
+    2025-4: 20
+    2026-1: 25
+    2026-2: 28
+    2026-3: 21
+  laravel_versions:
+  - 13
+  laravel_requirement: "^13.0"
+  php_requirement: "^8.3"
+  php_minimum_version: '8.3'
+nunomaduro/collision:
+  name: nunomaduro/collision
+  downloads: 380262829
+  current_version: v8.9.5
+  authors: Nuno Maduro
+  description: Cli error handling for console/command-line PHP applications.
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/nunomaduro/collision/issues
+  changelog_url:
+  documentation_url:
+  homepage_url: https://github.com/nunomaduro/collision
+  mailing_list_url:
+  source_code_url: https://github.com/nunomaduro/collision.git
+  wiki_url:
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+  first_release_on: '2017-10-08'
+  latest_release_on: '2026-07-15'
+  releases_count: 120
+  reverse_dependencies_count: 9819
+  quarterly_release_counts:
+    2017-4: 25
+    2018-1: 7
+    2018-2: 1
+    2018-4: 2
+    2019-1: 2
+    2020-1: 6
+    2020-2: 5
+    2020-3: 4
+    2020-4: 3
+    2021-1: 3
+    2021-2: 2
+    2021-3: 5
+    2022-1: 3
+    2022-2: 2
+    2022-3: 2
+    2022-4: 1
+    2023-1: 16
+    2023-2: 5
+    2023-3: 3
+    2023-4: 3
+    2024-1: 2
+    2024-3: 2
+    2024-4: 2
+    2025-1: 4
+    2025-2: 3
+    2025-4: 1
+    2026-1: 3
+    2026-2: 2
+    2026-3: 1
+  laravel_versions: []
+  laravel_requirement:
+  php_requirement: "^8.2.0"
+  php_minimum_version: '8.2'
+larastan/larastan:
+  name: larastan/larastan
+  downloads: 68001210
+  current_version: v3.11.0
+  authors: Can Vural
+  description: Larastan - Discover bugs in your code without running it. A phpstan/phpstan
+    extension for Laravel
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/larastan/larastan/issues
+  changelog_url:
+  documentation_url:
+  homepage_url: https://github.com/larastan/larastan
+  mailing_list_url:
+  source_code_url: https://github.com/larastan/larastan.git
+  wiki_url:
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+  first_release_on: '2018-07-17'
+  latest_release_on: '2026-09-01'
+  releases_count: 187
+  reverse_dependencies_count: 6776
+  quarterly_release_counts:
+    2018-3: 24
+    2018-4: 14
+    2019-1: 3
+    2019-2: 1
+    2019-3: 5
+    2019-4: 4
+    2020-1: 5
+    2020-2: 5
+    2020-3: 3
+    2020-4: 7
+    2021-1: 4
+    2021-2: 5
+    2021-3: 6
+    2021-4: 6
+    2022-1: 8
+    2022-2: 7
+    2022-3: 2
+    2022-4: 14
+    2023-1: 6
+    2023-2: 5
+    2023-3: 1
+    2023-4: 2
     2024-1: 5
+    2024-2: 5
+    2024-3: 1
+    2024-4: 7
+    2025-1: 7
+    2025-2: 9
+    2025-3: 5
+    2025-4: 2
+    2026-1: 4
+    2026-2: 4
+    2026-3: 1
+  laravel_versions:
+  - 11
+  - 12
+  - 13
+  laravel_requirement: "^11.44.2 || ^12.4.1 || ^13"
+  php_requirement: "^8.2"
+  php_minimum_version: '8.2'
+pestphp/pest:
+  name: pestphp/pest
+  downloads: 84634503
+  current_version: v5.1.3
+  authors: Nuno Maduro
+  description: The elegant PHP Testing Framework.
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/pestphp/pest/issues
+  changelog_url:
+  documentation_url:
+  homepage_url: https://github.com/pestphp/pest
+  mailing_list_url:
+  source_code_url: https://github.com/pestphp/pest.git
+  wiki_url:
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+  first_release_on: '2020-05-11'
+  latest_release_on: '2026-08-25'
+  releases_count: 252
+  reverse_dependencies_count: 18361
+  quarterly_release_counts:
+    2020-2: 9
+    2020-3: 10
+    2020-4: 12
+    2021-1: 6
+    2021-2: 11
+    2021-3: 14
+    2021-4: 2
+    2022-1: 1
+    2022-2: 1
+    2022-3: 2
+    2022-4: 2
+    2023-1: 11
+    2023-2: 13
+    2023-3: 29
+    2023-4: 18
+    2024-1: 19
+    2024-2: 2
+    2024-3: 18
+    2024-4: 14
+    2025-1: 5
+    2025-2: 2
+    2025-3: 8
+    2025-4: 8
+    2026-1: 9
+    2026-2: 13
+    2026-3: 13
+  laravel_versions: []
+  laravel_requirement:
+  php_requirement: "^8.4"
+  php_minimum_version: '8.4'
+laravel/framework:
+  name: laravel/framework
+  downloads: 572852237
+  current_version: v13.30.1
+  authors: Taylor Otwell
+  description: The Laravel Framework.
+  licenses:
+  - MIT
+  bug_tracker_url: https://github.com/laravel/framework/issues
+  changelog_url:
+  documentation_url:
+  homepage_url: https://laravel.com
+  mailing_list_url:
+  source_code_url: https://github.com/laravel/framework.git
+  wiki_url:
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+  first_release_on: '2013-02-08'
+  latest_release_on: '2026-09-01'
+  releases_count: 1290
+  reverse_dependencies_count: 20934
+  quarterly_release_counts:
+    2013-1: 3
+    2013-2: 6
+    2013-3: 2
+    2013-4: 15
+    2014-1: 13
+    2014-2: 14
+    2014-3: 5
+    2014-4: 7
+    2015-1: 25
+    2015-2: 15
+    2015-3: 14
+    2015-4: 19
+    2016-1: 27
+    2016-2: 21
+    2016-3: 28
+    2016-4: 16
+    2017-1: 21
+    2017-2: 12
+    2017-3: 22
+    2017-4: 15
+    2018-1: 28
+    2018-2: 11
+    2018-3: 22
+    2018-4: 15
+    2019-1: 19
+    2019-2: 18
+    2019-3: 17
+    2019-4: 15
+    2020-1: 35
+    2020-2: 53
+    2020-3: 53
+    2020-4: 43
+    2021-1: 40
+    2021-2: 27
+    2021-3: 21
+    2021-4: 34
+    2022-1: 31
+    2022-2: 30
+    2022-3: 31
+    2022-4: 23
+    2023-1: 33
+    2023-2: 23
+    2023-3: 22
+    2023-4: 26
+    2024-1: 25
+    2024-2: 26
+    2024-3: 27
+    2024-4: 29
+    2025-1: 33
+    2025-2: 34
+    2025-3: 35
+    2025-4: 22
+    2026-1: 27
+    2026-2: 32
+    2026-3: 30
+  laravel_versions: []
+  laravel_requirement:
+  php_requirement: "^8.3"
+  php_minimum_version: '8.3'

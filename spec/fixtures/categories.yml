@@ -1,61 +1,62 @@
 # Generated from realistic dataset using bin/make_fixtures.rb, please don't modify manually
 ---
-html_parsing:
-  permalink: html_parsing
-  name: HTML parsing
-  description:
-  created_at: '2017-11-01T22:39:56.302Z'
-  updated_at: '2017-11-01T22:39:56.302Z'
-  category_group_permalink: Web_Apps_Services_Interaction
+authorization:
+  permalink: authorization
+  name: Authorization
+  description: Roles, permissions and policies for controlling what a user is allowed
+    to do
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+  category_group_permalink: Security
   rank:
-dependency_management:
-  permalink: dependency_management
-  name: Dependency Management
-  description:
-  created_at: '2017-11-01T22:39:50.108Z'
-  updated_at: '2017-11-01T22:39:50.108Z'
-  category_group_permalink: Package_Dependency_Management
+core_extensions:
+  permalink: core_extensions
+  name: Core Extensions
+  description: Helpers, macros and collections that extend the framework's own building
+    blocks
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+  category_group_permalink: Framework
   rank:
-gem_creation:
-  permalink: gem_creation
-  name: Gem Creation
-  description: Tools that aid in creating, maintaining and publishing Packages
-  created_at: '2017-11-01T22:39:45.888Z'
-  updated_at: '2019-01-07T13:46:25.120Z'
+error_handling:
+  permalink: error_handling
+  name: Error Handling
+  description: Reporting, rendering and debugging of exceptions during development
+    and in production
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
   category_group_permalink: Developer_Tools
+  rank:
+static_analysis:
+  permalink: static_analysis
+  name: Static Analysis
+  description: Tools that find bugs and enforce conventions without running the code
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+  category_group_permalink: Code_Quality
   rank:
 code_coverage:
   permalink: code_coverage
   name: Code Coverage
-  description: Utilities that report which code is being run. Most commonly this is
-    used as test coverage which reports what parts of your code are not tested, but
-    there are also tools to find dead production code
-  created_at: '2018-12-16T15:43:36.171Z'
-  updated_at: '2018-12-16T15:43:36.171Z'
-  category_group_permalink: Code_Quality
-  rank:
-code_metrics:
-  permalink: code_metrics
-  name: Code Metrics
-  description: Utilities to improve code quality by reporting common code smells like
-    complexity, unsafe defaults, unused variables or stylistic inconsistencies
-  created_at: '2017-11-01T22:39:42.736Z'
-  updated_at: '2018-12-16T15:43:36.190Z'
+  description: Utilities that report which parts of your code the test suite actually
+    exercises
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
   category_group_permalink: Code_Quality
   rank:
 testing_frameworks:
   permalink: testing_frameworks
   name: Test Frameworks
   description: Frameworks for writing automated tests for your software
-  created_at: '2017-11-01T22:39:53.925Z'
-  updated_at: '2021-05-31T10:53:28.756Z'
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
   category_group_permalink: Testing
   rank: 4
-Blog_Engines:
-  permalink: Blog_Engines
-  name: Blog Engines
-  description:
-  created_at: '2017-11-01T22:39:43.599Z'
-  updated_at: '2017-11-01T22:39:43.599Z'
-  category_group_permalink: Content_Management_Blogging
+documentation:
+  permalink: documentation
+  name: Documentation
+  description: Generating and publishing reference documentation for a codebase
+  created_at: '2026-01-12T09:14:22.000Z'
+  updated_at: '2026-09-04T18:03:41.000Z'
+  category_group_permalink: Documentation
   rank:
