@@ -1,7 +1,25 @@
 # frozen_string_literal: true
 
+require "sidekiq/api"
+
 # Redis handles a few large pushes much better than a flood of small ones
 BULK_BATCH_SIZE = 1_000
+
+#
+# Everything queued up before a reset refers to packages that are about to be
+# discarded, so it is dropped along with them. This also gets redis' memory
+# usage back down, which a backlog of several hundred thousand jobs can push
+# past what the instance has available.
+#
+def purge_queues!
+  stats = Sidekiq::Stats.new
+  puts "Dropping #{stats.enqueued} queued and #{stats.retry_size} retrying jobs..."
+
+  # Sidekiq::Queue.all is a plain array, not an active record relation
+  Sidekiq::Queue.all.to_a.each(&:clear)
+  Sidekiq::RetrySet.new.clear
+  Sidekiq::ScheduledSet.new.clear
+end
 
 namespace :packages do
   desc "Discard all mirrored package data and rebuild it from packagist (destructive, requires CONFIRM=yes)"
@@ -11,6 +29,7 @@ namespace :packages do
     end
 
     puts "Discarding #{Package.count} packages and #{Project.count} projects..."
+    purge_queues!
 
     # Packages cascade into their projects, dependencies, download stats,
     # trends, advisories and code statistics
