@@ -1,26 +1,32 @@
 @import "font-awesome"
-@import "@fontsource/lato/400.css"
-@import "@fontsource/lato/700.css"
+@import "@fontsource/instrument-sans/400.css"
+@import "@fontsource/instrument-sans/500.css"
+@import "@fontsource/instrument-sans/600.css"
+@import "@fontsource/instrument-sans/700.css"
+@import "@fontsource/ibm-plex-mono/400.css"
+@import "@fontsource/ibm-plex-mono/500.css"
 @import "accessible-autocomplete/dist/accessible-autocomplete.min.css"
 
-// Default bulma font stack, plus Lato webfont as priority
-$family-sans-serif: "Lato", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+// Default bulma font stack, plus Instrument Sans webfont as priority
+$family-sans-serif: "Instrument Sans", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 
-// Adjust bulma weight variables to weights of lato font that are actually loaded
+// Weights matching the Instrument Sans faces loaded above
 $weight-light:    400
 $weight-normal:   400
-$weight-medium:   400
-$weight-semibold: 700
+$weight-medium:   500
+$weight-semibold: 600
 $weight-bold:     700
+
+$family-monospace: "IBM Plex Mono", monospace
 
 // Bulma colors reference:
 // * https://bulma.io/documentation/overview/colors/
 // * https://bulma.io/documentation/modifiers/typography-helpers/
-$red: #A61414
+$red: #f53003
 $link: $red
 $primary: $red
 $success: #59A80F
-$text: #222
+$text: #141e12
 
 $navbar-height: 4.5rem
 $navbar-item-hover-background-color: transparent
