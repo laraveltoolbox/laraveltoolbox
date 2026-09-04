@@ -41,6 +41,10 @@ $text: #141e12
 $navbar-height: 4rem
 $navbar-item-hover-background-color: rgba($red, 0.05)
 $navbar-item-active-background-color: rgba($red, 0.05)
+// Only the background tints on hover; bulma would otherwise recolour the label
+// to $link, leaving hovered and current items looking like different states
+$navbar-item-hover-color: $text
+$navbar-item-active-color: $text
 $navbar-tab-hover-background-color: transparent
 $navbar-tab-active-background-color: transparent
 // Need to set these variables despite them being bulma defaults
