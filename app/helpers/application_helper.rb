@@ -47,7 +47,7 @@ module ApplicationHelper
     metrics = if table == :github_repos
                 ["github_repo_stargazers_count", "github_repo_#{column}"].uniq
               else
-                ["rubygem_downloads", "rubygem_#{column}"].uniq
+                ["package_downloads", "package_#{column}"].uniq
               end
 
     project_list projects, title:, metrics:, description:
@@ -104,23 +104,6 @@ module ApplicationHelper
       show_forks: @search&.show_forks,
       display:    @display_mode&.current,
     }
-  end
-
-  # why
-  # https://rails.lighthouseapp.com/projects/8994/tickets/4334-to_param-and-resource_path-escapes-forward-slashes
-  # https://github.com/rails/rails/issues/16058
-  def blog_post_path(post)
-    File.join blog_index_path, post.slug
-  end
-
-  # See above.
-  def blog_post_url(post)
-    File.join blog_index_url, post.slug
-  end
-
-  # Just to make sure to never mess up using url instead of path or the wrong format.
-  def feed_url
-    blog_index_url(format: :rss)
   end
 
   def site_name

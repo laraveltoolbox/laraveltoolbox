@@ -1,4 +1,5 @@
 import Chart from "chart.js"
+import { BRAND, FILL } from "~/javascript/charts/colors"
 
 export default function(selector, labels, values, scale) {
   var ctx = document.querySelector(selector)
@@ -15,8 +16,8 @@ export default function(selector, labels, values, scale) {
           lineTension: 0.2,
           borderWidth: 5,
           pointRadius: 1,
-          backgroundColor: "rgba(200,200,200,0.2)",
-          borderColor: "rgba(166,20,20,1)"
+          backgroundColor: FILL,
+          borderColor: BRAND
         }
       ]
     },

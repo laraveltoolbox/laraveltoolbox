@@ -1,11 +1,32 @@
-= form_tag search_path, method: :get, class: "search-form" do
+/ The bar's copy of the form is compact: a shorter placeholder to fit the
+/ narrower field, plus a hint for the shortcut wired up in search_shortcut.js.
+/ Everywhere else the field is wide enough to carry its own magnifier.
+- compact = local_assigns.fetch(:compact, false)
+
+= form_tag search_path, method: :get, class: "search-form", role: "search" do
   // Keep chosen display mode across searches, regardless of search form location within page
   - if @display_mode and controller_name == "searches"
     input type="hidden" name="display" value=@display_mode.current
 
   .field.has-addons.has-addons-centered
-    .control.is-expanded
-      input.input placeholder="Search for libraries" type="text" name="q" value=@query
+    .control.is-expanded.search-control class=("has-icons-left" unless compact)
+      / type=search gets the mobile keyboard's "Search" key; the autocorrect
+      / opt-outs keep names like "laravel-permission" from being rewritten
+      input.input type="search" name="q" value=@query aria-label="Search for libraries" placeholder=(compact ? "Search libraries" : "Search for libraries") autocapitalize="none" autocorrect="off" spellcheck="false"
+
+      - unless compact
+        span.icon.is-small.is-left: i.fa.fa-search
+
+      / Both sit in the same slot at the right edge of the field and are
+      / mutually exclusive: the hint while it is empty, the reset once it is not
+      - if compact
+        kbd.shortcut-hint aria-hidden="true" /
+      / Bare icon rather than a bulma .icon span: inside a .has-icons-left
+      / control bulma absolutely positions any .icon it finds and kills its
+      / pointer events, which would both misplace the reset and stop the click
+      button.clear-search type="button" aria-label="Clear search"
+        i.fa.fa-times aria-hidden="true"
+
     .control
       button.button type="submit"
         span.icon: i.fa.fa-search

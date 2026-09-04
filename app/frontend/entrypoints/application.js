@@ -26,8 +26,8 @@
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
 
-console.log('Welcome to the Ruby Toolbox 👋🎉')
-console.log('Feel free to pass by https://github.com/rubytoolbox and contribute, see you there!')
+console.log('Welcome to the Laravel Toolbox 👋🎉')
+console.log('Feel free to pass by https://github.com/laraveltoolbox and contribute, see you there!')
 
 import Headroom from "headroom.js"
 
@@ -39,6 +39,8 @@ import BurgerHandler from "~/javascript/bulma_burger"
 import DocsAsideHandler from "~/javascript/docs_aside_handler"
 import LoadingStateHandlers from "~/javascript/loading_state_handlers"
 import ProjectAutocomplete from "~/javascript/project_autocomplete"
+import SearchClear from "~/javascript/search_clear"
+import SearchShortcut from "~/javascript/search_shortcut"
 import FixReadmeOverflow from "~/javascript/fix_readme_overflow"
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -50,5 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
   DocsAsideHandler();
   LoadingStateHandlers();
   ProjectAutocomplete();
+  SearchClear();
+  SearchShortcut();
   FixReadmeOverflow()
 });

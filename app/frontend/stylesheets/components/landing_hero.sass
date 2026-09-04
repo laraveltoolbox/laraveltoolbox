@@ -1,21 +1,70 @@
 .landing-hero
   @extend .hero
+  position: relative
+  // The artwork bleeds past the container on the right; without this it would
+  // widen the document and add a horizontal scrollbar. clip does the same
+  // without turning the section into a scroll container - hidden is the
+  // fallback for browsers that predate it.
+  overflow: hidden
+  overflow: clip
+
+  // The illustration carries its own field - white at the top fading into a
+  // pale blue at the waterline. The section adopts the same progression so the
+  // artwork has no background of its own to butt up against; what used to be a
+  // visible rectangle now reads as one continuous surface.
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 52%, #eef4fc 78%, #dfeafb 100%)
+
+  // How far the artwork has to reach past its column to land on the viewport
+  // edge. Below $desktop the container is fluid and the only thing in the way
+  // is the hero body's own 3rem padding; above it the container is capped at
+  // $breakpoint - 2 * $gap, so half the leftover space is the gutter. Either
+  // way the columns wrapper already hangs 0.75rem outside the container.
+  --hero-bleed: 2.25rem
+  +from($desktop)
+    --hero-bleed: calc((100vw - #{$desktop - 2 * $gap}) / 2 - 0.75rem)
+  +from($widescreen)
+    --hero-bleed: calc((100vw - #{$widescreen - 2 * $gap}) / 2 - 0.75rem)
+  +from($fullhd)
+    --hero-bleed: calc((100vw - #{$fullhd - 2 * $gap}) / 2 - 0.75rem)
 
   .text, .image
     @extend .column, .is-full, .is-half-tablet
 
   .image
     @extend .is-hidden-mobile
+    // Right and bottom edges are pushed onto the section's own edges, so the
+    // crop through the lighthouse and the ships reads as deliberate bleed
+    // rather than as the boundary of a pasted-in picture
+    +from($tablet)
+      // The column keeps its slot in the grid - the width grows and the margin
+      // gives the extra back, so the text column stays where it was
+      width: calc(50% + var(--hero-bleed))
+      margin-right: calc(-1 * var(--hero-bleed))
+      padding-right: 0
+      // Sit on the section's bottom edge whichever column happens to be taller
+      align-self: flex-end
+      margin-bottom: -3rem
+
     img
+      display: block
       width: 100%
       margin: 0 auto
+      // The two edges that stay inside the layout are feathered instead of
+      // cut. Ramps are kept short so the leftmost ship and the sky above the
+      // lighthouse stay at full opacity.
+      mask-image: linear-gradient(to right, transparent 0, #000 5%), linear-gradient(to bottom, transparent 0, #000 7%)
+      -webkit-mask-composite: source-in
+      mask-composite: intersect
 
   .mobile-image
     @extend .is-hidden-tablet
-    text-align: center
-    margin-bottom: 25px
+    // Same idea as the desktop column: run the artwork to both edges of the
+    // screen and dissolve the waterline, so there is no rectangle to notice
+    margin: 0 -2.25rem 25px
     img
-      width: 80%
+      display: block
+      width: 100%
+      mask-image: linear-gradient(to bottom, transparent 0, #000 6%, #000 80%, transparent 100%)
 
   .title
     font-weight: 400

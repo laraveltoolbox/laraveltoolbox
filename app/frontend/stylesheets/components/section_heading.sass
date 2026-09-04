@@ -7,6 +7,19 @@
   .content, .content strong
     color: $grey-dark
 
+  // The help affordance sits inside the heading itself, so button chrome around
+  // it competed with the title - it is reduced to the bare icon.
+  h3 .button
+    background: transparent
+    border-color: transparent
+    box-shadow: none
+    color: $grey
+    &:hover, &:focus, &:active
+      background: transparent
+      border-color: transparent
+      box-shadow: none
+      color: $primary
+
   .level-right
     .button
       @extend .is-primary, .is-outlined

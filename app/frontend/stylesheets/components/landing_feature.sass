@@ -9,17 +9,19 @@
     align-content: stretch
 
     header
-      @extend .has-text-centered
       .image
         display: inline-block
         img
-          margin: 0 auto
           height: 75px
           width: auto
 
+      // Headings sit flush above their paragraph. The centred treatment only
+      // held together while an illustration anchored it; without one the title
+      // read as offset from the text it belongs to. The top padding went with
+      // the illustration for the same reason.
       h3
         @extend .is-size-5
-        padding: 20px 0
+        padding: 0 0 0.5rem
 
     article
       @extend .content

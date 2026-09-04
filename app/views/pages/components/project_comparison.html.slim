@@ -1,6 +1,6 @@
 .hero
   section.section: .container
-    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    p.heading= link_to "Laravel Toolbox UI Components Styleguide", "/pages/components"
     h2= current_page.split("/").last.humanize
 
 - projects = Project.for_display.order(permalink: :asc).limit(100)

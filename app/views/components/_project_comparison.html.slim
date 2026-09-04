@@ -1,5 +1,5 @@
 .project-comparison
-  - metrics = %i[score rubygem_downloads github_repo_stargazers_count github_repo_forks_count rubygem_first_release_on rubygem_latest_release_on rubygem_reverse_dependencies_count]
+  - metrics = %i[score package_downloads github_repo_stargazers_count github_repo_forks_count package_first_release_on package_latest_release_on package_reverse_dependencies_count]
   table.table.is-striped.is-hoverable.is-fullwidth
     thead
       - 4.times do
@@ -20,9 +20,9 @@
             a href="/projects/#{project.permalink}"= project.permalink
 
           td
-            - if project.rubygem_url
-              a href=project.rubygem_url
-                span.icon: i.fa.fa-diamond
+            - if project.package_url
+              a href=project.package_url
+                span.icon: i.fa.fa-cube
 
           td
             - if project.github_repo_url
@@ -36,7 +36,7 @@
           - metrics.each do |key|
             - docs_page = File.join("docs", "metrics", key.to_s)
             - value = project.public_send key
-            - better = (key == :rubygem_first_released_on ? :min : :max)
+            - better = (key == :package_first_released_on ? :min : :max)
             td
               - if value == projects.map {|p| p.public_send(key) }.compact.public_send(better)
                 span.icon: i.fa.fa-star

@@ -120,6 +120,12 @@ header.main
     img
       max-height: 30px
 
+    // The logo is a square mark, so it is sized off the bar rather than off
+    // the type: 32px in a 64px bar leaves the same air above and below as the
+    // 36px menu pills either side of it.
+    .navbar-brand .logo img
+      max-height: 32px
+
     // Items are 36px pills centred in the 64px bar instead of spanning its
     // full height. The current section keeps its affordance as a persistent
     // tint, which reads in the same visual language as the hover state.
@@ -159,6 +165,24 @@ header.main
           color: $primary
       span
         height: 2px
+
+    // In the bar search is a utility, not the page's main action: the field
+    // is narrower than the one in the hero and the submit button carries only
+    // its icon, with the label kept for screen readers.
+    .search-form
+      width: 15rem
+
+      // Spelled out rather than `@extend .is-sr-only`: extending from inside
+      // a `.button` descendant drags every component that extends .button
+      // into the selector list
+      .button span:not(.icon)
+        position: absolute
+        width: 0.01em
+        height: 0.01em
+        padding: 0
+        overflow: hidden
+        white-space: nowrap
+        clip: rect(0, 0, 0, 0)
 
     // Make the mobile search direct icon appear similar to the
     // navbar burger and ensure it's nicely aligned
@@ -205,6 +229,21 @@ footer.footer
     @extend .is-size-4
     padding: 0.75rem 0
 
+  // The category index reads as a plain list of names: at this density the card
+  // chrome was more prominent than the names it framed. Two text columns per
+  // group keep roughly the row count the card grid had.
+  .category-list
+    columns: 2
+    +mobile
+      columns: 1
+    li
+      break-inside: avoid
+      padding: 0.2rem 0
+    a
+      color: $text
+      &:hover
+        color: $primary
+
 
 .narrow-column
   @extend .column, .content, .is-three-fifths-desktop, .is-offset-one-fifth-desktop
@@ -231,6 +270,62 @@ article.blog-post
       @extend .is-medium
 
 .search-form
+  .search-control
+    position: relative
+
+    // Leave room for whatever occupies the slot at the right edge of the field
+    .input
+      padding-right: 2.25rem
+
+    // Safari draws its own reset for type=search; ours is the one that matches
+    .input::-webkit-search-cancel-button
+      -webkit-appearance: none
+      appearance: none
+
+    // The hint and the reset share one slot - the field is either empty and
+    // advertising its shortcut, or it holds a query that can be dropped
+    .shortcut-hint, .clear-search
+      position: absolute
+      top: 50%
+      right: 0.5rem
+      transform: translateY(-50%)
+      z-index: 4
+
+    // Announced to nobody - it is a hint about the physical keyboard, and the
+    // shortcut itself is what screen reader users would act on
+    .shortcut-hint
+      pointer-events: none
+      font-family: $family-monospace
+      font-size: 0.6875rem
+      line-height: 1
+      color: $grey
+      background-color: rgba($black, 0.04)
+      border: 1px solid rgba($black, 0.08)
+      border-radius: 4px
+      padding: 0.2rem 0.4rem
+      transition: opacity 100ms linear
+
+    // It has done its job once the field is in use
+    .input:focus ~ .shortcut-hint, .input:not(:placeholder-shown) ~ .shortcut-hint
+      opacity: 0
+
+    .clear-search
+      display: none
+      padding: 0
+      border: 0
+      background: none
+      cursor: pointer
+      line-height: 1
+      font-size: 0.875rem
+      color: $grey-light
+      &:hover, &:focus
+        color: $text
+
+    // :placeholder-shown is false the moment there is a value, including the
+    // one rendered back into the field on a results page
+    .input:not(:placeholder-shown) ~ .clear-search
+      display: block
+
   .button i.fa
     // For some reason after converting to locally hosted font awesome and lato
     // fonts this got a little out of line

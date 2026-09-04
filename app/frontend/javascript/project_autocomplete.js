@@ -1,6 +1,6 @@
 //
 // This little snippet provides project name autocompletion the project
-// comparison page - https://www.ruby-toolbox.com/compare
+// comparison page - https://www.laravel-toolbox.com/compare
 //
 // Documentation for the library can be found at
 // * https://github.com/alphagov/accessible-autocomplete?tab=readme-ov-file

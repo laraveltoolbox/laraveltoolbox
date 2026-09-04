@@ -1,4 +1,5 @@
 import Chart from "chart.js"
+import { BRAND } from "~/javascript/charts/colors"
 
 export default function(selector, labels, values) {
   var ctx = document.querySelector(selector)
@@ -13,7 +14,7 @@ export default function(selector, labels, values) {
           data: values,
           fill: true,
           borderWidth: 0,
-          backgroundColor: "rgba(166,20,20,1)"
+          backgroundColor: BRAND
         }
       ]
     },

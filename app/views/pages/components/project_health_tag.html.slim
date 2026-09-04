@@ -1,6 +1,6 @@
 .hero
   section.section: .container
-    p.heading= link_to "Ruby Toolbox UI Components Styleguide", "/pages/components"
+    p.heading= link_to "Laravel Toolbox UI Components Styleguide", "/pages/components"
     h2= current_page.split("/").last.humanize
 
 = component_example "Project Health tags" do
@@ -21,7 +21,7 @@
     markdown:
       Projects that are a [bugfix fork](/pages/docs/features/bugfix_forks)
       get an additional badge linking the documentation and the
-      suspected originating gem.
+      suspected originating package.
 
   = project_health_tags Project.new(bugfix_fork_of: "rails")
 
@@ -31,10 +31,10 @@
       When available space is very limited, the "worst" status health indicator can be shown only, linking to the project
       details view.
 
-      Note: This [originally featured a hoverable dropdown] (https://github.com/rubytoolbox/rubytoolbox/pull/417), but this broke responsive behaviour of the project comparison table this is used within, so it's just a badge now.
+      Note: This [originally featured a hoverable dropdown] (https://github.com/laraveltoolbox/laraveltoolbox/pull/417), but this broke responsive behaviour of the project comparison table this is used within, so it's just a badge now.
 
   - Project.for_display.order(score: :desc).limit(10).each do |project|
     = small_health_indicator project
 
-  - Project.for_display.where("rubygems.latest_release_on < ?", 5.years.ago).order(score: :desc).limit(10).each do |project|
+  - Project.for_display.where("packages.latest_release_on < ?", 5.years.ago).order(score: :desc).limit(10).each do |project|
     = small_health_indicator project

@@ -1,6 +1,7 @@
 .feature
   header
-    .image= vite_image_tag File.join("images", image), title: title
+    - if image
+      .image= vite_image_tag File.join("images", image), title: title
     h3= title
 
   = yield

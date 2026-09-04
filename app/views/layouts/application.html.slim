@@ -33,21 +33,17 @@ html.has-navbar-fixed-top lang="en"
     meta content="en_US" property="og:locale" /
 
     meta content="summary" name="twitter:card" /
-    meta content="@rubytoolbox" name="twitter:site" /
-    meta content="@thedeadserious" name="twitter:creator" /
     meta content=request.original_url name="twitter:url" /
     meta content=title name="twitter:title" /
     meta content=description name="twitter:description" /
     meta content=image_url("logo/box-with-padding.png") name="twitter:image" /
 
-    = auto_discovery_link_tag :rss, blog_index_url(format: :rss)
-
   body
     header.main
       nav.navbar aria-label="main navigation" role="navigation": .container
         .navbar-brand
-          = link_to "/", title: title(default: true), class: "navbar-item" do
-            = vite_image_tag "images/logo/regular.svg", alt: title(default: true)
+          = link_to "/", title: title(default: true), class: "navbar-item logo" do
+            = vite_image_tag "images/logo/toolbox.png", alt: site_name
 
           a.navbar-burger.burger.mobile-search href=search_path role="button"
             .icon: i.fa.fa-search
@@ -56,39 +52,35 @@ html.has-navbar-fixed-top lang="en"
             span aria-hidden="true"
             span aria-hidden="true"
         .navbar-menu#mainMenu
-          .navbar-end
-            a.navbar-item.is-hidden-widescreen-only href="/" class=active_when(controller: :welcome)
+          / Navigation sits next to the wordmark and search keeps the far right
+          / to itself, so the bar reads as "where can I go" then "what am I
+          / looking for" rather than one undifferentiated cluster
+          .navbar-start
+            / Home only earns a slot in the burger drawer; the wordmark is the way
+            / back once the menu is a horizontal bar
+            a.navbar-item.is-hidden-widescreen href="/" class=active_when(controller: :welcome)
               .wrap
-                span.icon: i.fa.fa-home
                 span Home
 
             a.navbar-item href=categories_path class=active_when(controller: :categories)
               .wrap
-                span.icon: i.fa.fa-bars
                 span Categories
 
             a.navbar-item href=comparison_path class=active_when(controller: :comparisons)
               .wrap
-                span.icon: i.fa.fa-arrows-h
                 span Compare
 
             a.navbar-item href=trends_path class=active_when(controller: :trends)
               .wrap
-                span.icon: i.fa.fa-line-chart
                 span Trends
 
             a.navbar-item href=page_path("docs/index") class=active_when(controller: :pages)
               .wrap
-                span.icon: i.fa.fa-life-ring
                 span Documentation
 
-            a.navbar-item href=blog_index_path class=active_when(controller: :blog)
-              .wrap
-                span.icon: i.fa.fa-rss-square
-                span News
-
+          .navbar-end
             .navbar-item
-              = render partial: "search_form"
+              = render partial: "search_form", locals: { compact: true }
 
     section.main
       = yield
@@ -103,59 +95,15 @@ html.has-navbar-fixed-top lang="en"
               li= link_to "Categories", categories_path
               li= link_to "Trends", trends_path
               li= link_to "Documentation", page_path("docs/index")
-              li= link_to "News", blog_index_path
               li= link_to "Search", search_path
+              - unless Rails.env.production?
+                li= link_to "UI Styleguide", page_path("components")
 
           .column.who
             .heading Who
             .content
               markdown:
-                The Ruby Toolbox is brought to you from Hamburg since 2009 by [Christoph Olszowka](http://www.olszowka.de)
-
-                If you want to personally say hi or complain, you can do so via mail to me at christoph (at) ruby-toolbox (dot) com
-
-                You can also find me on Twitter as [@thedeadserious](https://twitter.com/thedeadserious)
-                and on [Github](https://github.com/colszowka)
-
-          .column.contributing
-            .heading Contributing
-            .content
-              markdown:
-                You can find the source code for this site [on github](https://github.com/rubytoolbox/rubytoolbox).
-
-                The categorization of gems is handled via the [catalog][catalog], which you can also find [on
-                Github][catalog]
-
-                [catalog]: https://github.com/rubytoolbox/catalog
-
-                <a href="https://github.com/rubytoolbox">
-                  Contributions welcome <span class="icon has-text-danger"><i class="fa fa-heart"></i></span>!
-                </a>
-
-          .column.links
-            .heading Links
-            ul
-              li: a href="https://github.com/rubytoolbox/rubytoolbox/blob/main/CODE_OF_CONDUCT.md"
-                span.icon: i.fa.fa-users
-                span Code of Conduct
-              li: a href="https://gitter.im/rubytoolbox/Lobby"
-                span.icon: i.fa.fa-comments
-                span Community Chat Room
-              li: a href=feed_url
-                span.icon: i.fa.fa-rss-square
-                span RSS Feed
-              li: a href="https://github.com/rubytoolbox/rubytoolbox"
-                span.icon: i.fa.fa-github
-                span rubytoolbox/rubytoolbox
-              li: a href="https://github.com/rubytoolbox/catalog"
-                span.icon: i.fa.fa-github
-                span rubytoolbox/catalog
-              li: a href="https://data.ruby-toolbox.com"
-                span.icon: i.fa.fa-table
-                span Production Database Exports
-              - unless Rails.env.production?
-                li: a href=page_path("components")
-                  span.icon: i.fa.fa-code
-                  span UI Styleguide
+                The Laravel Toolbox is a catalog of open source PHP and Laravel libraries that keeps track of
+                popularity and health metrics to help you choose a reliable library.
 
 

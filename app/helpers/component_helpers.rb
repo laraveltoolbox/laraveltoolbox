@@ -109,11 +109,11 @@ module ComponentHelpers
     render "components/project_display_picker", display_mode:
   end
 
-  def rubygem_download_chart(name)
+  def package_download_chart(name)
     return if name.blank?
 
-    stats = Rubygem::DownloadStat::Timeseries.fetch name, :total_downloads, :absolute_change_month
-    render "components/rubygem_download_chart", stats:
+    stats = Package::DownloadStat::Timeseries.fetch name, :total_downloads, :absolute_change_month
+    render "components/package_download_chart", stats:
   end
 
   def line_chart(data, scale: "logarithmic")
@@ -134,7 +134,7 @@ module ComponentHelpers
     render("components/landing_hero", title:, image:, &)
   end
 
-  def landing_feature(title:, image:, &)
+  def landing_feature(title:, image: nil, &)
     render("components/landing_feature", title:, image:, &)
   end
 
