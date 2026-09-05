@@ -20,6 +20,18 @@ module Packagist
   # than the small json documents the other endpoints return
   ADVISORIES_READ_TIMEOUT = 30
 
+  # Dependent listings are served by the main site rather than the CDN-cached
+  # package mirror, and a full listing is walked page by page, so individual
+  # responses are both slower and more likely to be throttled than the metadata
+  # documents the default timeout is sized for.
+  DEPENDENTS_READ_TIMEOUT = 15
+
+  # How often a single failing request is reattempted before the crawl gives up.
+  # Walking the widest root package takes several hundred sequential requests,
+  # so hitting at least one transient failure per full sync is the norm rather
+  # than the exception.
+  REQUEST_ATTEMPTS = 5
+
   # The format the p2 mirror serves release metadata in, see
   # https://github.com/composer/composer/blob/main/src/Composer/MetadataMinifier/MetadataMinifier.php
   MINIFIED_FORMAT = "composer/2.0"
@@ -106,7 +118,7 @@ module Packagist
       url = "#{File.join(BASE_URL, 'packages', name, 'dependents.json')}?order_by=name"
 
       max_pages.times.each_with_object([]) do |_page, names|
-        data = get(url)
+        data = with_retries { get(url, read_timeout: DEPENDENTS_READ_TIMEOUT) }
         break names unless data
 
         names.concat data.fetch("packages", []).pluck("name")
@@ -117,6 +129,53 @@ module Packagist
     end
 
     private
+
+    #
+    # Retries a request that failed for a reason that tends to resolve itself -
+    # a timeout, a gateway error, a rate limit - with a growing delay between
+    # attempts.
+    #
+    # This exists for the dependent crawl, where a single failed page would
+    # otherwise abort a job that has already made hundreds of requests, and the
+    # retry would start over from the first page. A request that keeps failing
+    # is still raised rather than skipped: a short list would be read as
+    # packages having disappeared upstream.
+    #
+    def with_retries(attempts: REQUEST_ATTEMPTS)
+      attempt = 0
+
+      begin
+        attempt += 1
+        yield
+      rescue InvalidResponse, HTTP::Error => e
+        raise if attempt >= attempts || !transient?(e)
+
+        sleep backoff_for(attempt, e)
+        retry
+      end
+    end
+
+    #
+    # Grows with every attempt, so an upstream that is struggling or throttling
+    # us is given room instead of being hammered at a fixed interval.
+    #
+    def backoff_for(attempt, error)
+      (2**attempt).tap do |delay|
+        Rails.logger.warn "Packagist request failed (#{error.class}: #{error.message}), " \
+                          "retrying in #{delay}s (attempt #{attempt}/#{REQUEST_ATTEMPTS})"
+      end
+    end
+
+    #
+    # Network-level failures are always worth another attempt. Response
+    # statuses are not: a 403 stays a 403, while throttling and server-side
+    # errors clear up.
+    #
+    def transient?(error)
+      return true unless error.is_a? InvalidResponse
+
+      error.status == 429 || error.status >= 500
+    end
 
     #
     # Rebuilds standalone release documents from composer's minified format:
