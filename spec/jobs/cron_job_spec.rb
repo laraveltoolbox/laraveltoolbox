@@ -15,6 +15,15 @@ RSpec.describe CronJob do
     end
   end
 
+  #
+  # The recurring jobs it dispatches are on the priority queue, which is no
+  # help while the dispatcher waits behind a default queue holding a package
+  # sync's tens of thousands of jobs
+  #
+  it "runs on the priority queue so a backlog cannot hold up the schedule" do
+    expect(described_class.get_sidekiq_options["queue"].to_s).to eq "priority"
+  end
+
   describe "schedule" do
     let(:config) { YAML.load ERB.new(Rails.root.join("config", "sidekiq.yml").read).result }
     let(:schedule) { config[:scheduler][:schedule] }
