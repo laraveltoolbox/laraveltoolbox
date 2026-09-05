@@ -2,10 +2,21 @@ local:
   service: Disk
   root: <%= Rails.root.join("tmp/storage", Rails.env) %>
 
+# Object storage for the database exports (see Database::SelectiveExport), which
+# are the only thing this application keeps outside of postgres.
+#
+# The names checked first are the ones fly.io's tigris extension sets on the app
+# and keeps current. Reading them directly means the credentials never have to
+# be copied into a second set of secrets, which would silently go stale the
+# moment the bucket's keys are rotated - and `fly secrets` does not hand out
+# values to copy in the first place.
+#
+# The S3_* names stay as an override, so the app can be pointed at any other
+# s3 compatible bucket without touching this file.
 s3:
   service: S3
-  endpoint: <%= ENV.fetch("S3_ENDPOINT_URL", nil) %>
-  bucket: <%= ENV.fetch("S3_BUCKET", nil) %>
-  region: <%= ENV.fetch("S3_REGION", "auto") %>
-  access_key_id: <%= ENV.fetch("S3_ACCESS_KEY_ID", nil) %>
-  secret_access_key: <%= ENV.fetch("S3_SECRET_ACCESS_KEY", nil) %>
+  endpoint: <%= ENV["AWS_ENDPOINT_URL_S3"].presence || ENV["S3_ENDPOINT_URL"] %>
+  bucket: <%= ENV["BUCKET_NAME"].presence || ENV["S3_BUCKET"] %>
+  region: <%= ENV["AWS_REGION"].presence || ENV.fetch("S3_REGION", "auto") %>
+  access_key_id: <%= ENV["AWS_ACCESS_KEY_ID"].presence || ENV["S3_ACCESS_KEY_ID"] %>
+  secret_access_key: <%= ENV["AWS_SECRET_ACCESS_KEY"].presence || ENV["S3_SECRET_ACCESS_KEY"] %>
