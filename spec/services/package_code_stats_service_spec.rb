@@ -96,7 +96,21 @@ RSpec.describe PackageCodeStatsService, type: :service do
         stub_request(:get, service.archive_url).to_return(status: 500)
       end
 
-      it { expect { statistics }.to raise_error(/Unknown response/) }
+      it { expect { statistics }.to raise_error described_class::DownloadError, /Unexpected response/ }
+    end
+
+    #
+    # The commit a release was tagged from stops being retrievable when the
+    # repository is deleted, renamed or turned private. That is permanent, so
+    # it has to be told apart from a request that merely failed - otherwise the
+    # job retries it for the full three week budget and gets a 404 every time.
+    #
+    context "when the archive is gone for good" do
+      before do
+        stub_request(:get, service.archive_url).to_return(status: 404)
+      end
+
+      it { expect { statistics }.to raise_error described_class::UnknownSourceError, /no longer available/ }
     end
   end
 end

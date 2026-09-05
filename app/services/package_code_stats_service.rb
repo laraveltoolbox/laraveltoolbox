@@ -12,6 +12,14 @@
 class PackageCodeStatsService
   class UnknownSourceError < StandardError; end
 
+  #
+  # Raised when the archive is retrievable in principle but this particular
+  # request did not work out, i.e. throttling or a gateway error. Unlike
+  # `UnknownSourceError` this is worth another attempt, so it is left to fail
+  # the job and let sidekiq retry it.
+  #
+  class DownloadError < StandardError; end
+
   class ResultSet
     class Entry
       attr_accessor :language, :blanks, :code, :comments
@@ -110,9 +118,20 @@ class PackageCodeStatsService
     destination
   end
 
+  #
+  # A 404 from codeload means the archive is not coming back: the repository
+  # was deleted, renamed away without a redirect or turned private, or the
+  # commit the release was tagged from no longer exists. Retrying that for
+  # three weeks achieves nothing, so it is reported as a missing source and the
+  # package is simply left without code statistics until its next release
+  # points at a reachable commit.
+  #
   def download!(source_url, to:)
     response = HTTP.follow.get source_url
-    raise "Unknown response #{response.status}" unless response.status == 200
+
+    raise UnknownSourceError, "#{name} #{version} is no longer available at #{source_url}" if
+      response.status.not_found?
+    raise DownloadError, "Unexpected response #{response.status} for #{source_url}" unless response.status.ok?
 
     Pathname.new(to).open "wb+" do |f|
       f.print response.body.to_s
