@@ -1,22 +1,36 @@
 {
   "category_groups": [
     {
-      "permalink": "data-and-storage",
-      "name": "Data & Storage",
-      "description": "Working with the database, eloquent and files",
+      "permalink": "eloquent-and-database",
+      "name": "Eloquent & Database",
+      "description": "Modelling, querying and maintaining the data your application stores",
       "categories": [
         {
-          "permalink": "database-eloquent",
-          "name": "Database & Eloquent",
+          "permalink": "full-text-search",
+          "name": "Full-Text Search",
           "description": null,
           "projects": [
-            "laravel/scout",
-            "spatie/laravel-backup"
+            "laravel/scout"
           ]
         },
         {
-          "permalink": "file-management",
-          "name": "File Management",
+          "permalink": "database-snapshots",
+          "name": "Database Snapshots",
+          "description": null,
+          "projects": [
+            "spatie/laravel-backup"
+          ]
+        }
+      ]
+    },
+    {
+      "permalink": "files-and-media",
+      "name": "Files & Media",
+      "description": "Uploading, storing, converting and serving files",
+      "categories": [
+        {
+          "permalink": "media-libraries",
+          "name": "Media Libraries",
           "description": null,
           "projects": [
             "spatie/laravel-medialibrary"
@@ -25,13 +39,13 @@
       ]
     },
     {
-      "permalink": "developer-tooling",
-      "name": "Developer Tooling",
-      "description": "Everything that supports building, testing and shipping",
+      "permalink": "developer-tools",
+      "name": "Developer Tools",
+      "description": "Everything that makes building and maintaining the codebase easier",
       "categories": [
         {
-          "permalink": "debugging-dev-tools",
-          "name": "Debugging & Dev Tools",
+          "permalink": "debugging",
+          "name": "Debugging",
           "description": null,
           "projects": [
             "barryvdh/laravel-debugbar",

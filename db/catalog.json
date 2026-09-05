@@ -3,1085 +3,798 @@
     {
       "categories": [
         {
-          "name": "Code Architecture",
-          "description": "Structuring an application: modules, domain building blocks, state machines and other architectural conventions",
+          "name": "AI Agents & MCP",
+          "description": "Agents, MCP servers and tooling that lets AI work with your codebase",
           "projects": [
-            "algoyounes/circuit-breaker",
-            "beacon-hq/bag",
-            "bensampo/laravel-enum",
-            "chefhasteeth/pipeline",
-            "chevere/workflow",
-            "daniel-cintra/modular",
-            "darsyn/ip",
-            "dragon-code/laravel-actions",
-            "gecche/laravel-multidomain",
-            "hirethunk/verbs",
-            "hybridly/laravel",
-            "ijpatricio/mingle",
-            "inertiajs/inertia-laravel",
-            "internachi/modular",
-            "l3aro/pipeline-query-collection",
-            "laracord/laracord",
-            "laravel-zero/laravel-zero",
-            "laravel/folio",
-            "laravel/pennant",
-            "livewire/livewire",
-            "livewire/volt",
-            "lorisleiva/laravel-actions",
-            "masterix21/laravel-licensing",
-            "michael-rubel/laravel-auto-binder",
-            "michael-rubel/laravel-enhanced-container",
-            "michael-rubel/laravel-formatters",
-            "michael-rubel/laravel-value-objects",
-            "moneyphp/money",
-            "nativephp/electron",
-            "nwidart/laravel-modules",
-            "prettus/l5-repository",
-            "romegadigital/multitenancy-nova-tool",
-            "sassnowski/venture",
-            "spatie/laravel-data",
-            "spatie/laravel-event-sourcing",
-            "spatie/laravel-multitenancy",
-            "spatie/laravel-view-models",
-            "sprout/sprout",
-            "stancl/tenancy",
-            "tenancy/tenancy",
-            "tightenco/jigsaw",
-            "tightenco/ziggy",
-            "wendelladriel/laravel-validated-dto",
-            "ylsideas/feature-flags",
-            "yorcreative/laravel-argonaut-dto"
-          ],
-          "permalink": "code-architecture"
-        },
-        {
-          "name": "Localization",
-          "description": "Translating an application and adapting it to different languages and locales",
-          "projects": [
-            "amirami/localizator",
-            "astrotomic/laravel-translatable",
-            "bottelet/translation-checker",
-            "chinleung/laravel-multilingual-routes",
-            "codezero/laravel-localized-routes",
-            "codezero/laravel-localizer",
-            "devrabiul/laravel-geo-genius",
-            "edulazaro/laratext",
-            "elegantly/laravel-translator",
-            "jayesh/laravel-gemini-translator",
-            "kargnas/laravel-ai-translator",
-            "kg-bot/laravel-localization-to-vue",
-            "laravel-lang/common",
-            "larswiegers/laravel-translations-checker",
-            "mariuzzo/laravel-js-localization",
-            "mcamara/laravel-localization",
-            "nikaia/translation-sheet",
-            "nnjeim/world",
-            "omaralalwi/lexi-translate",
-            "osama-98/laravel-enum-translatable",
-            "outhebox/laravel-translations",
-            "spatie/laravel-translatable",
-            "spatie/laravel-translation-loader",
-            "stefro/laravel-lang-country",
-            "tanmuhittin/laravel-google-translate",
-            "themsaid/laravel-langman",
-            "tio/laravel",
-            "vemcogroup/laravel-translation"
-          ],
-          "permalink": "localization"
-        },
-        {
-          "name": "Utilities & Helpers",
-          "description": "General purpose helpers that smooth out everyday work with Laravel and PHP",
-          "projects": [
-            "5balloons/laravel-smart-ads",
-            "abr4xas/clarity-laravel",
-            "akaunting/laravel-money",
-            "amrshawky/laravel-currency",
-            "aneeskhan47/laravel-pagination-merge",
-            "aniftyco/skeletor",
-            "anlutro/l4-settings",
-            "archtechx/enums",
-            "ashallendesign/email-utilities",
-            "ashallendesign/laravel-config-validator",
-            "ashallendesign/short-url",
-            "aureuserp/aureuserp",
-            "awt/apilogger",
-            "axlon/laravel-postal-code-validation",
-            "azjezz/psl",
-            "b7s/fluentvox",
-            "backpack/basset",
-            "barryvdh/laravel-stack-middleware",
-            "based/momentum-trail",
-            "benbjurstrom/prezet",
-            "beyondcode/laravel-server-timing",
-            "binafy/laravel-cart",
-            "blaspsoft/blasp",
-            "blaspsoft/onym",
-            "bndwgn/laravel-bandwagon",
-            "brick/money",
-            "cerbero/json-parser",
-            "cerbero/lazy-json-pages",
-            "charlielangridge/playa",
-            "cjmellor/level-up",
-            "cknow/laravel-money",
-            "clarkeash/doorman",
-            "coderello/laravel-populated-factory",
-            "coderello/laravel-shared-data",
-            "coderflexx/laravisit",
-            "codewithkyrian/whisper.php",
-            "codezero/browser-locale",
-            "consoletvs/bootpack",
-            "cpx/cpx",
-            "creativeorange/gravatar",
-            "danharrin/livewire-rate-limiting",
-            "dedoc/scramble",
-            "devdojo/genesis",
-            "devrabiul/laravel-cookie-consent",
-            "dimsav/laravel-ip-service",
-            "directorytree/dummy",
-            "directorytree/metrics",
-            "dragon-code/laravel-cache",
-            "dragon-code/laravel-feeds",
-            "driftingly/rector-laravel",
-            "dwarfdk/laravel-meilitools",
-            "echolabsdev/prism",
-            "emreyarligan/enum-concern",
-            "encoredigitalgroup/heimdall",
-            "envant/fireable",
-            "ergebnis/composer-normalize",
-            "farayaz/laravel-spy",
-            "ferdiunal/larapanda",
-            "fideloper/proxy",
-            "flugger/laravel-responder",
-            "franbarbalopez/mirror",
-            "garygreen/pretty-routes",
-            "gehrisandro/tailwind-merge-laravel",
-            "genealabs/laravel-caffeine",
-            "genericmilk/docudoodle",
-            "glhd/laravel-dumper",
-            "glhd/linen",
-            "godruoyi/php-snowflake",
-            "graham-campbell/markdown",
-            "graham-campbell/throttle",
-            "hammerstone/flaky",
-            "hammerstone/sidecar",
-            "hanifhefaz/dcter",
-            "haruncpi/laravel-option-framework",
-            "hi-folks/rando-php",
-            "hi-folks/statistics",
-            "hotmeteor/receiver",
-            "hotmeteor/regex",
-            "hotwired-laravel/turbo-laravel",
-            "hotwired/turbo-laravel",
-            "hpwebdeveloper/laravel-pay-pocket",
-            "ikechukwukalu/requirepin",
-            "infinitypaul/laravel-dynamodb-auditing",
-            "innoge/laravel-policy-soft-cache",
-            "intervention/validation",
-            "intervention/zodiac",
-            "izniburak/laravel-auto-routes",
-            "jenssegers/agent",
-            "jerome/fetch-php",
-            "jonpurvis/squeaky",
-            "justbetter/laravel-unique-values",
-            "justiversen/laravel-job-chainer",
-            "juststeveking/signal",
-            "kilroyweb/homeboy",
-            "kmlaravel/laravel-geographical-calculator",
-            "knotsphp/publicip",
-            "knplabs/knp-snappy",
-            "koenhendriks/laravel-str-acronym",
-            "krzysztofrewak/laravel-oop-validator",
-            "label84/laravel-hours-helper",
-            "lakm/laravel-comments",
-            "laracademy/interactive-make",
-            "laragear/poke",
-            "laragear/preload",
-            "laragear/rut",
-            "laramint/laravel-brain",
-            "laraotel/opentelemetry-laravel",
-            "laravel-arcanist/arcanist",
-            "laravel/prompts",
-            "laravel/reverb",
-            "laravel/roster",
-            "laravelba/route-binder",
-            "laraveljutsu/zap",
-            "larsjanssen6/underconstruction",
-            "lecturize/laravel-addresses",
-            "little-green-man/earhart",
-            "lorisleiva/laravel-search-string",
-            "lukeraymonddowning/honey",
-            "lukeraymonddowning/poser",
-            "lukeraymonddowning/self-healing-urls",
-            "maantje/charts",
-            "maestroerror/html-strings-affixer",
+            "chimit/prompt",
+            "jordandalton/laravel-tackle",
+            "joshembling/laragenie",
             "maestroerror/laragent",
-            "maize-tech/laravel-markable",
-            "masterix21/laravel-entitlements",
-            "mateffy/pan-analytics-viewer",
-            "mateusjunges/laravel-invite-codes",
-            "mateusjunges/laravel-trackable-jobs",
-            "mauricius/laravel-htmx",
-            "me-shaon/laravel-request-analytics",
-            "mews/purifier",
-            "mikebronner/laravel-sign-in-with-apple",
-            "milwad/laravel-validate",
-            "mischasigtermans/laravel-toon",
-            "moe-mizrak/laravel-openrouter",
-            "monooso/unobserve",
-            "mpociot/vat-calculator",
-            "mpstenson/laravel-advanced-string",
-            "mrmarchone/laravel-auto-crud",
+            "mateffy/laravel-codebase-mcp",
+            "mateffy/laravel-introspect",
+            "mischasigtermans/laravel-altitude",
             "mrpunyapal/laravel-auditor",
-            "mrpunyapal/laravel-extended-commands",
-            "mtownsend/progress",
-            "nexxai/laravel-cfcache",
-            "noki/laravel-xml-converter",
-            "nunomaduro/essentials",
-            "nunomaduro/laracon-schedule",
-            "nunomaduro/laravel-console-menu",
-            "nunomaduro/laravel-desktop-notifier",
-            "nunomaduro/laravel-starter-kit",
-            "offload-project/laravel-toggle",
-            "omaralalwi/gpdf",
-            "omarchouman/lara-util-x",
-            "panphp/pan",
-            "peckphp/peck",
-            "phiki/phiki",
-            "phlak/semver",
-            "phlak/splat",
-            "pion/laravel-chunk-upload",
-            "pragmarx/countries",
-            "pragmarx/laravelcs",
-            "prinsfrank/standards",
-            "prism-php/bedrock",
-            "proengsoft/laravel-jsvalidation",
-            "projektgopher/laravel-ffmpeg-tools",
-            "propaganistas/laravel-phone",
-            "pushman/pushman",
-            "qcod/laravel-app-settings",
-            "rahulhaque/laravel-filepond",
-            "rawilk/laravel-printing",
-            "rexlabs/enum",
-            "rezaamini-ir/migrator",
-            "rmunate/spell-number",
-            "roach-php/laravel",
-            "rodenastyle/stream-parser",
-            "rtippin/messenger",
-            "ryangjchandler/laravel-comments",
-            "saeedvir/supabase",
-            "safemood/discountify",
-            "safemood/laravel-workflow",
-            "sammyjo20/laravel-haystack",
-            "sammyjo20/ssh-php",
-            "sandermuller/laravel-fluent-validation",
-            "scify/laravel-cookie-guard",
-            "scrumble-nl/laravel-model-ts-type",
-            "sebastiaanluca/php-pipe-operator",
-            "silber/page-cache",
-            "simplesoftwareio/simple-qrcode",
-            "simshaun/recurr",
-            "skywarth/chaotic-schedule",
-            "soloterm/grapheme",
-            "soloterm/screen",
-            "soved/laravel-gdpr",
-            "spatie/crawler",
-            "spatie/crypto",
-            "spatie/data-transfer-object",
-            "spatie/filament-markdown-editor",
-            "spatie/geocoder",
-            "spatie/laravel-analytics",
-            "spatie/laravel-collection-macros",
-            "spatie/laravel-cookie-consent",
-            "spatie/laravel-cronless-schedule",
-            "spatie/laravel-export",
-            "spatie/laravel-feed",
-            "spatie/laravel-fractal",
-            "spatie/laravel-google-calendar",
-            "spatie/laravel-google-fonts",
-            "spatie/laravel-missing-page-redirector",
-            "spatie/laravel-mobile-pass",
-            "spatie/laravel-onboard",
-            "spatie/laravel-options",
-            "spatie/laravel-package-tools",
-            "spatie/laravel-passkeys",
-            "spatie/laravel-pdf",
-            "spatie/laravel-queueable-action",
-            "spatie/laravel-referer",
-            "spatie/laravel-responsecache",
-            "spatie/laravel-route-discovery",
-            "spatie/laravel-screenshot",
-            "spatie/laravel-settings",
-            "spatie/laravel-short-schedule",
-            "spatie/laravel-site-search",
-            "spatie/laravel-stats",
-            "spatie/laravel-stripe-webhooks",
-            "spatie/laravel-tags",
-            "spatie/laravel-url-signer",
-            "spatie/laravel-validation-rules",
-            "spatie/laravel-webhook-client",
-            "spatie/laravel-webhook-server",
-            "spatie/once",
-            "spatie/opening-hours",
-            "spatie/period",
-            "spatie/piper",
-            "spatie/schema-org",
-            "spatie/searchindex",
-            "spatie/typescript-transformer",
-            "sqids/sqids",
-            "stechstudio/laravel-jwt",
-            "stevebauman/hypertext",
-            "still-code/ar-php-laravel",
-            "strictus/strictus",
-            "surgiie/transformer",
-            "tarfin-labs/laravel-spatial",
-            "te7a-houdini/laravel-trix",
-            "tehwave/laravel-shortcodes",
-            "theriddleofenigma/laravel-google-chat-log",
-            "tightenco/collect",
-            "tightenco/lambo",
-            "tigitz/php-spellchecker",
-            "timacdonald/has-parameters",
-            "toin0u/geocoder-laravel",
-            "tomasvotruba/lines",
-            "tomloprod/colority",
-            "torann/currency",
-            "torann/geoip",
-            "tormjens/eventy",
-            "tzsk/sms",
-            "unopim/unopim",
-            "usmonaliyev/laravel-simple-rabbitmq",
-            "valorin/pwned-validator",
-            "valorin/random",
-            "vildanbina/laravel-model-json",
-            "vinkla/hashids",
-            "waad/laravel-model-metadata",
-            "waterhole/waterhole",
-            "web-id/laravel-playwright",
-            "webcrafts-studio/lens-for-laravel",
-            "werk365/etagconditionals",
-            "whitecube/laravel-cookie-consent",
-            "whitecube/laravel-timezones",
-            "whitecube/php-prices",
-            "willvincent/laravel-unique",
-            "wnx/sidecar-browsershot",
-            "wulfheart/pretty_routes",
-            "yasin_tgh/laravel-postman",
-            "yediyuz/laravel-cloudflare-cache",
-            "zero-to-prod/data-model",
-            "zidbih/laravel-deadlock",
-            "ziming/laravel-zxcvbn"
+            "neuron-core/neuron-laravel",
+            "php-mcp/server",
+            "promptphp/intercept",
+            "rajurayhan/laravel-quickbooks-mcp-server"
           ],
-          "permalink": "utilities-helpers"
+          "permalink": "ai-agents"
+        },
+        {
+          "name": "LLM Clients",
+          "description": "Talking to OpenAI, Claude, Gemini and other model providers",
+          "projects": [
+            "claude-php/claude-php-sdk",
+            "deepseek-php/deepseek-laravel",
+            "echolabsdev/prism",
+            "google-gemini-php/laravel",
+            "grok-php/laravel",
+            "hosseinhezami/laravel-gemini",
+            "laravel/ai",
+            "moe-mizrak/laravel-openrouter",
+            "openai-php/client",
+            "openai-php/laravel",
+            "orhanerday/open-ai",
+            "prism-php/bedrock",
+            "prism-php/prism"
+          ],
+          "permalink": "llm-clients"
+        },
+        {
+          "name": "Machine Learning & NLP",
+          "description": "Speech, language and other machine learning workloads",
+          "projects": [
+            "b7s/fluentvox",
+            "codewithkyrian/whisper.php",
+            "halilcosdu/laravel-replicate",
+            "joggapp/laravel-natural-language",
+            "vlados/laravel-related-content"
+          ],
+          "permalink": "machine-learning"
         }
       ],
-      "description": "Packages that shape how an application is structured and written",
-      "name": "Code & Architecture",
-      "permalink": "code-and-architecture"
+      "description": "Large language models, agents and machine learning",
+      "name": "AI & Machine Learning",
+      "permalink": "ai-and-machine-learning"
     },
     {
       "categories": [
         {
-          "name": "Database & Eloquent",
-          "description": "Working with the database: Eloquent extensions, query builders, migrations and multi-tenancy",
+          "name": "Charts & Dashboards",
+          "description": "Visualising application data in charts and dashboards",
           "projects": [
-            "021/laravel-wallet",
-            "aaronfrancis/fast-paginate",
-            "abbasudo/laravel-purity",
-            "albertoarena/laravel-truss",
-            "algolia/scout-extended",
-            "amazingbv/laravel-google-sheets-database-driver",
-            "amrlotfy/laravel-chores",
-            "analogue/orm",
-            "anourvalar/eloquent-serialize",
-            "appstract/laravel-options",
-            "asantibanez/laravel-eloquent-state-machines",
-            "ashallendesign/redactable-models",
-            "askedio/laravel-soft-cascade",
-            "atomcoder/laravel-reorderable",
-            "austinw/laravel-union-paginator",
-            "awobaz/compoships",
-            "awssat/laravel-visits",
-            "bavix/laravel-wallet",
-            "belamov/postgres-range",
-            "betterapp/laravel-db-encrypter",
-            "biiiiiigmonster/hasin",
-            "binafy/laravel-reactions",
-            "bkwld/cloner",
-            "blaspsoft/forerunner",
-            "calebporzio/parental",
-            "calebporzio/sushi",
-            "cartalyst/tags",
-            "cerbero/eloquent-inspector",
-            "chelout/laravel-relationship-events",
-            "cjmellor/approval",
-            "cjmellor/rating",
-            "clickbar/laravel-magellan",
-            "codebyray/laravel-review-rateable",
-            "creagia/laravel-sign-pad",
-            "cviebrock/eloquent-sluggable",
-            "cybercog/laravel-love",
-            "cyrildewit/eloquent-viewable",
-            "daltonmccleery/remote-models",
-            "datacreativa/laravel-presentable",
-            "devnoiseconsulting/laravel-scout-postgres-tsvector",
-            "dietercoopman/laravel-showsql",
-            "dillingham/soft-deletes-parent",
-            "directorytree/ldaprecord",
-            "dragon-code/migrate-db",
-            "drfraker/snipe-migrations",
-            "dyrynda/laravel-cascade-soft-deletes",
-            "eg-mohamed/notable",
-            "eg-mohamed/referenceable",
-            "egyjs/dbml-to-laravel",
-            "esensi/model",
-            "fitztrev/query-tracer",
-            "genealabs/laravel-model-caching",
-            "glorand/laravel-model-settings",
-            "halilcosdu/laravel-slower",
-            "hammerstone/fast-paginate",
-            "hasinhayder/tyro-checkpoint",
-            "indexzer0/eloquent-filtering",
-            "irabbi360/laravel-attribute-mask",
-            "jacknoordhuis/laravel-database-hashing",
-            "jacobjoergensen/laravel-paper",
-            "javoscript/laravel-macroable-models",
-            "jeroen-g/explorer",
-            "jerome/filterable",
+            "chartello/chartello",
+            "consoletvs/charts",
+            "directorytree/metrics",
             "jhumanj/laravel-model-stats",
-            "jlapp/smart-seeder",
-            "juststeveking/resume-php",
-            "kamranata/queue-sql",
-            "kettasoft/filterable",
-            "kirkbushell/eloquence",
-            "kirschbaum-development/eloquent-power-joins",
-            "kitar/laravel-dynamodb",
-            "kitloong/laravel-migrations-generator",
-            "kolossal-io/laravel-multiplex",
-            "kyslik/column-sortable",
-            "lacodix/laravel-model-filter",
-            "laracademy/generators",
-            "laracasts/generators",
-            "laracraft-tech/laravel-date-scopes",
-            "laracraft-tech/laravel-schema-rules",
-            "laragear/cache-query",
-            "laragear/populate",
-            "laravel-clickhouse/laravel-clickhouse",
-            "laravel-doctrine/orm",
-            "laravel/scout",
-            "leek/laravel-vendor-cleanup",
-            "lucasdotvin/laravel-soulbscription",
-            "maize-tech/laravel-excludable",
-            "makeabledk/laravel-eloquent-status",
-            "masterix21/laravel-addressable",
-            "mehdi-fathi/eloquent-filter",
-            "metalogico/laravel-formello",
-            "mike-bronner/laravel-model-caching",
-            "milwad/laravel-attributes",
-            "mitulgolakiya/laravel-api-generator",
-            "mohammedmanssour/laravel-recurring-models",
-            "mongodb/laravel-mongodb",
-            "mostafaznv/laracache",
-            "mpociot/reanimate",
-            "mr-punyapal/laravel-extended-relationships",
-            "mtolhuys/laravel-schematics",
-            "mtvs/eloquent-hashids",
-            "multicaret/laravel-acquaintances",
-            "nunomaduro/laravel-optimize-database",
-            "nunomaduro/laravel-sluggable",
+            "maantje/charts",
+            "sakanjo/laravel-easy-metrics",
+            "spatie/laravel-stats"
+          ],
+          "permalink": "charts-and-dashboards"
+        },
+        {
+          "name": "Marketing & Growth",
+          "description": "Newsletters, waitlists, onboarding, referrers and social proof",
+          "projects": [
+            "5balloons/laravel-smart-ads",
+            "bndwgn/laravel-bandwagon",
+            "offload-project/laravel-waitlist",
+            "spatie/laravel-newsletter",
+            "spatie/laravel-onboard",
+            "spatie/laravel-referer"
+          ],
+          "permalink": "marketing"
+        },
+        {
+          "name": "Web Analytics",
+          "description": "Tracking visits, page views and requests",
+          "projects": [
+            "abr4xas/clarity-laravel",
+            "awssat/laravel-visits",
+            "bilfeldt/laravel-route-statistics",
+            "coderflexx/laravisit",
+            "cyrildewit/eloquent-viewable",
+            "kerkness/fa-wired",
+            "mateffy/pan-analytics-viewer",
+            "me-shaon/laravel-request-analytics",
+            "panphp/pan",
+            "spatie/laravel-analytics"
+          ],
+          "permalink": "web-analytics"
+        }
+      ],
+      "description": "Understanding and growing your audience",
+      "name": "Analytics & Growth",
+      "permalink": "analytics-and-growth"
+    },
+    {
+      "categories": [
+        {
+          "name": "Chat & Bots",
+          "description": "Chat interfaces and bots for Telegram, Discord, WhatsApp and the web",
+          "projects": [
+            "basement-chat/basement-chat",
+            "botman/botman",
+            "cmgmyr/messenger",
+            "defstudio/telegraph",
+            "irazasyed/telegram-bot-sdk",
+            "kstmostofa/laravel-whatsapp",
+            "laracord/laracord",
+            "munafio/chatify",
+            "rtippin/messenger",
+            "wirechat/wirechat"
+          ],
+          "permalink": "chat-and-bots"
+        },
+        {
+          "name": "Cloud Platform SDKs",
+          "description": "Clients for AWS, Firebase, Kubernetes and other platforms",
+          "projects": [
+            "boci/hetzner-laravel",
+            "dcblogdev/laravel-microsoft-graph",
+            "graham-campbell/digitalocean",
+            "hammerstone/sidecar",
+            "kreait/firebase-php",
+            "kreait/laravel-firebase",
+            "orrison/cumulus"
+          ],
+          "permalink": "cloud-sdks"
+        },
+        {
+          "name": "Geocoding & Maps",
+          "description": "Coordinates, spatial data, IP lookups and map widgets",
+          "projects": [
+            "clickbar/laravel-magellan",
+            "dimsav/laravel-ip-service",
+            "geocodio/geocodio-library-php",
+            "kmlaravel/laravel-geographical-calculator",
+            "knotsphp/publicip",
+            "koossaayy/laravel-mapbox",
+            "larswiegers/laravel-maps",
+            "spatie/geocoder",
+            "tarfin-labs/laravel-spatial",
+            "toin0u/geocoder-laravel",
+            "torann/geoip"
+          ],
+          "permalink": "geocoding"
+        },
+        {
+          "name": "GraphQL",
+          "description": "Serving GraphQL from Laravel",
+          "projects": [
             "nuwave/lighthouse",
-            "oddvalue/laravel-drafts",
-            "omar-elnaghy/laradate-filters",
-            "orangehill/iseed",
+            "rebing/graphql-laravel"
+          ],
+          "permalink": "graphql"
+        },
+        {
+          "name": "HTTP Clients",
+          "description": "Writing API integrations and SDKs",
+          "projects": [
+            "ahmadwaleed/laravel-blanket",
+            "algoyounes/circuit-breaker",
+            "bilfeldt/laravel-http-client-logger",
+            "crescat-io/saloon-sdk-generator",
+            "fansipan/fansipan",
+            "farayaz/laravel-spy",
+            "gocanto/http-client",
+            "jerome/fetch-php",
+            "juststeveking/laravel-transporter",
+            "ricorocks-digital-agency/soap",
+            "saloonphp/saloon",
+            "sammyjo20/saloon"
+          ],
+          "permalink": "http-clients"
+        },
+        {
+          "name": "Real-Time & Broadcasting",
+          "description": "WebSocket servers and broadcasting drivers",
+          "projects": [
+            "anycable/laravel-broadcaster",
+            "beyondcode/laravel-websockets",
+            "cmosguy/laravel-http-pushstream-broadcaster",
+            "laravel/reverb",
+            "pushman/pushman",
+            "qruto/laravel-wave",
+            "springboardvr/laravel-ably-broadcaster"
+          ],
+          "permalink": "real-time"
+        },
+        {
+          "name": "REST APIs",
+          "description": "Building JSON APIs, resources and API gateways",
+          "projects": [
+            "binaryk/laravel-restify",
+            "dive-be/laravel-dry-requests",
+            "essa/api-tool-kit",
+            "f9webltd/laravel-api-response-helpers",
+            "flugger/laravel-responder",
+            "grazulex/laravel-apiroute",
+            "infinitypaul/idempotency-laravel",
+            "laravel-json-api/laravel",
+            "lomkit/laravel-rest-api",
+            "marcin-orlowski/laravel-api-response-builder",
+            "morcen/passage",
+            "reindert-vetter/api-version-control",
+            "sajya/server",
+            "spatie/laravel-fractal",
+            "tailflow/laravel-orion",
+            "wendelladriel/laravel-idempotency"
+          ],
+          "permalink": "rest-apis"
+        },
+        {
+          "name": "Scraping & Crawling",
+          "description": "Crawling websites and extracting their content",
+          "projects": [
+            "ferdiunal/larapanda",
+            "roach-php/laravel",
+            "spatie/crawler"
+          ],
+          "permalink": "scraping"
+        },
+        {
+          "name": "Third-Party Service Clients",
+          "description": "Wrappers around individual SaaS and public APIs",
+          "projects": [
+            "andreia/php-sdk-dolby-api",
+            "cyberduck/laravel-wp-api",
+            "fiveam-code/laravel-notion-api",
+            "github-php/sponsors",
+            "graham-campbell/github",
+            "joelbutcher/laravel-facebook-graph",
+            "johnpaulmedina/laravel-usps",
+            "needlaravelsite/tikapi-php",
+            "openfoodfacts/openfoodfacts-laravel",
+            "saeedvir/supabase",
+            "signifly/laravel-shopify",
+            "slvler/cuttly",
+            "spatie/laravel-google-calendar",
+            "xchimx/laravel-unsplash"
+          ],
+          "permalink": "service-clients"
+        },
+        {
+          "name": "Webhooks",
+          "description": "Sending, receiving and verifying webhooks",
+          "projects": [
+            "clarkeash/shield",
+            "eventhomes/laravel-mandrillhooks",
+            "hotmeteor/receiver",
+            "jcergolj/brevo-webhook-manager-for-laravel",
+            "spatie/laravel-stripe-webhooks",
+            "spatie/laravel-webhook-client",
+            "spatie/laravel-webhook-server"
+          ],
+          "permalink": "webhooks"
+        }
+      ],
+      "description": "Talking to the outside world, in both directions",
+      "name": "APIs & Integrations",
+      "permalink": "apis-and-integrations"
+    },
+    {
+      "categories": [
+        {
+          "name": "Actions & Command Objects",
+          "description": "Wrapping a single unit of work in a reusable object",
+          "projects": [
+            "lorisleiva/laravel-actions",
+            "spatie/laravel-queueable-action"
+          ],
+          "permalink": "actions-and-commands"
+        },
+        {
+          "name": "Application Settings",
+          "description": "Runtime settings that live in the database instead of config files",
+          "projects": [
+            "anlutro/l4-settings",
+            "appstract/laravel-options",
+            "haruncpi/laravel-option-framework",
+            "qcod/laravel-app-settings",
+            "spatie/laravel-settings"
+          ],
+          "permalink": "application-settings"
+        },
+        {
+          "name": "Data & Value Objects",
+          "description": "Data transfer objects, value objects and typed data structures",
+          "projects": [
+            "beacon-hq/bag",
+            "darsyn/ip",
+            "datacreativa/laravel-presentable",
+            "juststeveking/resume-php",
+            "michael-rubel/laravel-value-objects",
+            "spatie/data-transfer-object",
+            "spatie/laravel-data",
+            "spatie/laravel-view-models",
+            "strictus/strictus",
+            "wendelladriel/laravel-validated-dto",
+            "yorcreative/laravel-argonaut-dto",
+            "zero-to-prod/data-model"
+          ],
+          "permalink": "data-objects"
+        },
+        {
+          "name": "Enums",
+          "description": "Making PHP enums more capable inside a Laravel application",
+          "projects": [
+            "archtechx/enums",
+            "bensampo/laravel-enum",
+            "emreyarligan/enum-concern",
+            "rexlabs/enum"
+          ],
+          "permalink": "enums"
+        },
+        {
+          "name": "Event Sourcing",
+          "description": "Storing state as a stream of domain events",
+          "projects": [
+            "hirethunk/verbs",
+            "spatie/laravel-event-sourcing"
+          ],
+          "permalink": "event-sourcing"
+        },
+        {
+          "name": "Feature Flags",
+          "description": "Rolling features out gradually and running experiments",
+          "projects": [
+            "abrouter/laravel-abtest",
+            "laravel/pennant",
+            "offload-project/laravel-toggle",
+            "stephenjude/filament-feature-flags",
+            "ylsideas/feature-flags"
+          ],
+          "permalink": "feature-flags"
+        },
+        {
+          "name": "Micro Frameworks",
+          "description": "Building console, desktop and other non-web apps on Laravel",
+          "projects": [
+            "danjohnson95/pinout",
+            "laravel-zero/laravel-zero",
+            "nativephp/electron"
+          ],
+          "permalink": "micro-frameworks"
+        },
+        {
+          "name": "Modular Architecture",
+          "description": "Splitting an application into modules, repositories and container bindings",
+          "projects": [
+            "daniel-cintra/modular",
+            "internachi/modular",
+            "michael-rubel/laravel-auto-binder",
+            "michael-rubel/laravel-enhanced-container",
+            "nwidart/laravel-modules",
+            "prettus/l5-repository",
+            "spatie/php-attribute-reader",
+            "tormjens/eventy"
+          ],
+          "permalink": "modular-architecture"
+        },
+        {
+          "name": "Multi-Tenancy",
+          "description": "Serving multiple tenants from a single application",
+          "projects": [
+            "gecche/laravel-multidomain",
             "orchestra/tenanti",
-            "overtrue/laravel-versionable",
-            "owen-it/laravel-auditing",
-            "pdphilip/elasticlens",
-            "pricecurrent/laravel-eloquent-filters",
-            "prism-php/prism",
-            "protonemedia/laravel-cross-eloquent-search",
-            "ramadan/custom-fresh",
-            "recca0120/laravel-erd",
-            "rector/rector",
-            "reliese/laravel",
-            "rennokki/befriended",
-            "rennokki/laravel-eloquent-query-cache",
-            "ringlesoft/laravel-process-approval",
-            "robersonfaria/laravel-database-schedule",
-            "romalytar/yammi-audit-log-laravel",
-            "rs/laravel-version-control",
-            "rutorika/sortable",
-            "ryangjchandler/orbit",
-            "saloonphp/xml-wrangler",
-            "samasend/laravel-make-scope",
-            "sassnowski/laravel-shareable-models",
-            "sbamtr/laravel-query-enrich",
-            "sebastiaanluca/laravel-boolean-dates",
-            "sfolador/laravel-locked",
-            "singlestoredb/singlestoredb-laravel",
-            "sleimanx2/plastic",
-            "sowailem/ownable",
-            "spatie/eloquent-sortable",
-            "spatie/laravel-db-snapshots",
-            "spatie/laravel-deleted-models",
-            "spatie/laravel-model-flags",
-            "spatie/laravel-model-info",
-            "spatie/laravel-model-states",
-            "spatie/laravel-model-status",
-            "spatie/laravel-prefixed-ids",
-            "spatie/laravel-query-builder",
-            "spatie/laravel-schemaless-attributes",
-            "spatie/laravel-searchable",
-            "spatie/laravel-sluggable",
-            "spatie/laravel-sql-commenter",
-            "squirephp/repository",
-            "staudenmeir/belongs-to-through",
-            "staudenmeir/eloquent-has-many-deep",
-            "staudenmeir/eloquent-json-relations",
-            "staudenmeir/laravel-adjacency-list",
-            "staudenmeir/laravel-cte",
-            "staudenmeir/laravel-migration-views",
-            "teamtnt/laravel-scout-tntsearch-driver",
-            "tehwave/laravel-achievements",
-            "thefeqy/laravel-model-status",
-            "theriddleofenigma/laravel-model-validation",
-            "tightenco/parental",
-            "tightenco/quicksand",
-            "touhidurabir/laravel-model-sanitize",
-            "tpetry/laravel-mysql-explain",
-            "tpetry/laravel-postgresql-enhanced",
-            "tpetry/laravel-query-expressions",
-            "tucker-eric/eloquentfilter",
-            "tyghaykal/laravel-seed-generator",
-            "usmanhalalit/laracsv",
-            "vcian/laravel-db-auditor",
-            "vectorial1024/laravel-cache-evict",
-            "venturecraft/revisionable",
-            "vinelab/neoeloquent",
-            "vkovic/laravel-custom-casts",
-            "vlados/laravel-related-content",
-            "waad/truffle",
-            "watheqalshowaiter/backup-tables",
-            "watheqalshowaiter/model-fields",
-            "wendelladriel/laravel-expressive",
-            "wendelladriel/laravel-lift",
-            "whitecube/laravel-search-builder",
-            "wildside/userstamps",
-            "willvincent/laravel-rateable",
-            "x7media/laravel-planetscale",
-            "xethron/migrations-generator",
-            "yajra/laravel-oci8",
+            "romegadigital/multitenancy-nova-tool",
+            "spatie/laravel-multitenancy",
+            "sprout/sprout",
+            "stancl/tenancy",
+            "tenancy/tenancy"
+          ],
+          "permalink": "multi-tenancy"
+        },
+        {
+          "name": "Rate Limiting & Locking",
+          "description": "Throttling, cooldowns, quotas and application-level locks",
+          "projects": [
+            "danharrin/livewire-rate-limiting",
+            "graham-campbell/throttle",
             "zaber-dev/laravel-cooldown",
             "zaber-dev/laravel-lock",
             "zaber-dev/laravel-quota"
           ],
-          "permalink": "database-eloquent"
+          "permalink": "rate-limiting"
         },
         {
-          "name": "File Management",
-          "description": "Uploading, converting, storing and serving files and media",
+          "name": "Requests & Responses",
+          "description": "Middleware, request parsing and response conventions",
           "projects": [
-            "ace-of-aces/laravel-image-transform-url",
-            "ahmed-aliraqi/laravel-media-uploader",
-            "anourvalar/office",
-            "barryvdh/laravel-dompdf",
-            "barryvdh/laravel-snappy",
-            "binafy/laravel-stub",
-            "blaspsoft/doxswap",
-            "calebporzio/gitdown",
-            "cdsmths/laravel-ocr-space",
-            "chrisdicarlo/laravel-config-checker",
-            "coderello/laravel-proximage",
-            "colinodell/indentation",
-            "dietercoopman/smart",
-            "elegantly/laravel-media",
-            "intervention/image",
-            "kalynasolutions/laravel-tus",
-            "laraveljutsu/laravel-artifact",
-            "league/flysystem",
-            "league/html-to-markdown",
-            "livewire-filemanager/filemanager",
-            "maatwebsite/excel",
-            "maestroerror/php-heic-to-jpg",
-            "maxkhim/laravel-storage-dedupler",
-            "maxxscho/laravel-markdown-plus",
-            "mohamedgaldi/vilt-filepond",
-            "mostafaznv/pdf-optimizer",
-            "paperdoc-dev/paperdoc-lib",
-            "pbmedia/laravel-ffmpeg",
-            "petebishwhip/laradocs",
-            "phpoffice/phpspreadsheet",
-            "qcod/laravel-imageup",
-            "rap2hpoutre/fast-excel",
-            "robbiep/cloudconvert-laravel",
-            "shipfastlabs/parsel",
-            "spatie/browsershot",
-            "spatie/laravel-image-optimizer",
-            "spatie/laravel-medialibrary",
-            "spatie/laravel-personal-data-export",
-            "spatie/pdf-to-image",
-            "spatie/sheets",
-            "spatie/temporary-directory",
-            "stechstudio/laravel-zipstream",
-            "tomloprod/radiance",
-            "vormkracht10/flysystem-uploadcare",
-            "zappzerapp/laravel-ingest"
-          ],
-          "permalink": "file-management"
-        }
-      ],
-      "description": "Working with the database, eloquent and files",
-      "name": "Data & Storage",
-      "permalink": "data-and-storage"
-    },
-    {
-      "categories": [
-        {
-          "name": "Debugging & Dev Tools",
-          "description": "Profilers, debuggers, IDE helpers and everything that speeds up development",
-          "projects": [
-            "abr4xas/cache-ui-laravel",
-            "accentinteractive/laravel-logcleaner",
-            "ahmadwaleed/laravel-blanket",
-            "ajthinking/tinx",
-            "anystack-sh/porter",
-            "barryvdh/laravel-debugbar",
-            "barryvdh/laravel-ide-helper",
-            "beyondcode/laravel-prose-linter",
-            "beyondcode/laravel-query-detector",
-            "beyondcode/laravel-tinker-server",
-            "bilfeldt/laravel-route-statistics",
-            "binafy/laravel-user-monitoring",
-            "christophrumpel/artisan-benchmark",
-            "davestewart/sketchpad",
-            "eastwest/json",
-            "freshbitsweb/laravel-log-enhancer",
-            "friendsofphp/php-cs-fixer",
-            "fruitcake/laravel-debugbar",
-            "fruitcake/laravel-telescope-toolbar",
-            "grazulex/laravel-devtoolbox",
-            "haruncpi/laravel-log-reader",
-            "iamfarhad/laravel-audit-log",
-            "imanghafoori/laravel-microscope",
-            "inspector-apm/inspector-laravel",
-            "itsgoingd/clockwork",
-            "jaydeep/laravel-time-machine",
-            "laracraft-tech/laravel-xhprof",
-            "laradumps/laradumps",
-            "larastan/larastan",
-            "laravel-shift/blueprint",
-            "laravel-workflow/laravel-workflow",
-            "laravel/horizon",
-            "laravel/pail",
-            "laravel/pint",
-            "laravel/pulse",
-            "laravel/sail",
-            "laravel/telescope",
-            "leventcz/laravel-top",
-            "mailcarrier/mailcarrier",
-            "mateffy/laravel-codebase-mcp",
-            "mateffy/laravel-introspect",
-            "mathiasgrimm/laravel-log-keeper",
-            "msamgan/laravel-env-keys-checker",
-            "mtownsend/array-redactor",
-            "muhammadhuzaifa/telescope-guzzle-watcher",
-            "naoray/laravel-github-monolog",
-            "nunomaduro/collision",
-            "orisintel/laravel-process-stamps",
-            "pod-point/laravel-monolog-kinesis",
-            "saasscaleup/laravel-log-alarm",
-            "salahhusa9/laravel-updater",
-            "soloterm/dumps",
-            "soloterm/solo",
-            "spatie/activitylog",
-            "spatie/laravel-blade-comments",
-            "spatie/laravel-error-share",
-            "spatie/laravel-error-solutions",
-            "spatie/laravel-failed-job-monitor",
-            "spatie/laravel-ray",
-            "spatie/laravel-tail",
-            "spatie/laravel-web-tinker",
-            "stevebauman/autodoc-facades",
-            "studio/laravel-totem",
-            "timacdonald/pulse-validation-errors",
-            "tomasvotruba/bladestan",
-            "tomloprod/time-warden",
-            "tylercd100/lern",
-            "wire-elements/wire-spy",
-            "wnx/laravel-stats"
-          ],
-          "permalink": "debugging-dev-tools"
-        },
-        {
-          "name": "Dev Ops",
-          "description": "Deployment, provisioning, monitoring, queues and scheduled task management",
-          "projects": [
-            "aaronfrancis/pulse-outdated",
-            "aerni/cloudflared",
-            "ahuggins/open-on-make",
-            "ajaxray/laravel-server-sync",
-            "anousss007/vigilance",
-            "appstract/laravel-opcache",
-            "asanikovich/laravel-roadrunner-cache",
-            "aschmelyun/fleet",
-            "blaspsoft/token-forge",
-            "bref/laravel-bridge",
-            "brotzka/laravel-dotenv-editor",
-            "cerbero/command-validator",
-            "deployer/deployer",
-            "devakshay/scheduler-list-laravel",
-            "devifyo/watchtower",
-            "directorytree/cadence",
-            "discovery-ukraine/saga-lara-flow",
-            "dragon-code/laravel-deploy-operations",
-            "dyrynda/laravel-defibrillator",
-            "ericmakesstuff/laravel-server-monitor",
-            "hammerstone/airdrop",
-            "iazaran/smart-cache",
-            "icanhazstring/symfony-console-spinner",
-            "imtigger/laravel-job-status",
-            "indatus/dispatcher",
-            "infureal/artisan-gui",
-            "jackwh/laravel-new-relic",
-            "jordandalton/laravel-tackle",
-            "joshembling/artisan-browse",
-            "justpark/envoyer-deploy",
-            "juststeveking/laravel-envoyer-sdk",
-            "laraowl/laraowl",
-            "laravel/doctor",
-            "laravel/envoy",
-            "laravel/octane",
-            "lkaemmerling/laravel-horizon-prometheus-exporter",
-            "lubusin/laravel-decomposer",
-            "mathiasgrimm/laravel-dot-env-gen",
+            "barryvdh/laravel-stack-middleware",
+            "fideloper/proxy",
+            "jenssegers/agent",
             "mobiledetect/mobiledetectlib",
-            "mohsenabrishami/stethoscope",
-            "orrison/cumulus",
-            "php-school/cli-menu",
-            "pragmarx/health",
-            "protonemedia/laravel-task-runner",
-            "rajurayhan/laravel-quickbooks-mcp-server",
-            "renoki-co/laravel-php-k8s",
-            "robertogallea/pulse-api",
-            "sammyjo20/lasso",
-            "shipping-docker/vessel",
-            "shomisha/laravel-console-wizard",
-            "spatie/laravel-artisan-dispatchable",
-            "spatie/laravel-backup",
-            "spatie/laravel-backup-server",
-            "spatie/laravel-dynamic-servers",
-            "spatie/laravel-health",
-            "spatie/laravel-prometheus",
-            "spatie/laravel-remote",
-            "spatie/laravel-schedule-monitor",
-            "spatie/laravel-server-monitor",
-            "spatie/laravel-server-side-rendering",
-            "spatie/laravel-uptime-monitor",
-            "stechstudio/phpinfo",
-            "storviaio/vantage",
-            "svpernova09/homesteadskeleton",
-            "swooletw/laravel-swoole",
-            "timokoerber/laravel-one-time-operations",
-            "tomschlick/laravel-http2-server-push",
-            "vcian/pulse-active-sessions",
-            "vladimir-yuldashev/laravel-queue-rabbitmq",
-            "whispphp/whisp",
-            "wilbergroup/airdrop",
-            "wilderborn/partyline",
-            "wnx/laravel-backup-restore",
-            "worksome/envy",
-            "yangusik/laravel-balanced-queue"
+            "timacdonald/has-parameters",
+            "werk365/etagconditionals"
           ],
-          "permalink": "dev-ops"
+          "permalink": "http-requests"
         },
         {
-          "name": "Testing",
-          "description": "Test frameworks, factories, assertions and browser automation",
+          "name": "Routing",
+          "description": "Registering, discovering and binding routes",
           "projects": [
-            "abrouter/laravel-abtest",
-            "beyondcode/laravel-self-diagnosis",
-            "codedungeon/phpunit-result-printer",
-            "davidhsianturi/laravel-compass",
-            "defstudio/pest-plugin-laravel-expectations",
-            "grazulex/laravel-chronotrace",
-            "grazulex/laravel-turbomaker",
-            "gromatics/http-fixtures",
-            "infection/infection",
-            "jasonmccreary/laravel-test-assertions",
-            "johnkary/phpunit-speedtrap",
-            "jpcaparas/laravel-faker-openai",
-            "laracasts/cypress",
-            "laracasts/integrated",
-            "laravel/dusk",
-            "milroyfraser/pest-plugin-gwt",
-            "mpociot/laravel-test-factory-helper",
-            "nunomaduro/laravel-mojito",
-            "orchestra/testbench",
-            "pecl/pcov",
-            "pestphp/pest",
-            "pestphp/pest-plugin-profanity",
-            "pragmarx/tddd",
-            "sinnbeck/laravel-dom-assertions",
-            "spatie/pest-plugin-route-testing",
-            "spatie/tabular-assertions",
-            "tightenco/mailthief",
-            "timacdonald/log-fake",
-            "volt-test/laravel-performance-testing",
-            "yllw-digital/laravel-chatgpt-mock-api"
+            "izniburak/laravel-auto-routes",
+            "laravel/folio",
+            "laravelba/route-binder",
+            "spatie/laravel-route-discovery"
           ],
-          "permalink": "testing"
+          "permalink": "routing"
+        },
+        {
+          "name": "State Machines & Approvals",
+          "description": "Model states, status transitions and approval flows",
+          "projects": [
+            "asantibanez/laravel-eloquent-state-machines",
+            "cjmellor/approval",
+            "makeabledk/laravel-eloquent-status",
+            "ringlesoft/laravel-process-approval",
+            "spatie/laravel-model-states",
+            "spatie/laravel-model-status",
+            "thefeqy/laravel-model-status"
+          ],
+          "permalink": "state-machines"
+        },
+        {
+          "name": "Validation",
+          "description": "Extra validation rules and ways to compose them",
+          "projects": [
+            "axlon/laravel-postal-code-validation",
+            "craftlogan/laravel-overflow",
+            "intervention/validation",
+            "krzysztofrewak/laravel-oop-validator",
+            "laracraft-tech/laravel-schema-rules",
+            "laragear/rut",
+            "maize-tech/laravel-email-domain-rule",
+            "milwad/laravel-validate",
+            "propaganistas/laravel-phone",
+            "sandermuller/laravel-fluent-validation",
+            "spatie/laravel-validation-rules",
+            "square/laravel-hyrule",
+            "theriddleofenigma/laravel-model-validation",
+            "touhidurabir/laravel-model-sanitize"
+          ],
+          "permalink": "validation"
+        },
+        {
+          "name": "Workflows & Pipelines",
+          "description": "Orchestrating multi-step processes and long-running workflows",
+          "projects": [
+            "chefhasteeth/pipeline",
+            "chevere/workflow",
+            "discovery-ukraine/saga-lara-flow",
+            "durable-workflow/waterline",
+            "laravel-workflow/laravel-workflow",
+            "safemood/laravel-workflow",
+            "sassnowski/venture"
+          ],
+          "permalink": "workflows-and-pipelines"
         }
       ],
-      "description": "Everything that supports building, testing and shipping",
-      "name": "Developer Tooling",
-      "permalink": "developer-tooling"
+      "description": "Packages that shape how an application is structured, routed and validated",
+      "name": "Application Architecture",
+      "permalink": "application-architecture"
     },
     {
       "categories": [
         {
-          "name": "API",
-          "description": "Building and consuming APIs: resources, GraphQL, documentation and API clients",
+          "name": "Carts, Discounts & Vouchers",
+          "description": "Carts, discount rules and redeemable vouchers",
           "projects": [
-            "andreaselia/laravel-api-to-postman",
-            "andreia/php-sdk-dolby-api",
-            "ashallendesign/laravel-exchange-rates",
-            "bilfeldt/laravel-http-client-logger",
-            "binaryk/laravel-restify",
-            "boci/hetzner-laravel",
-            "botman/botman",
-            "claude-php/claude-php-sdk",
-            "craftlogan/laravel-overflow",
-            "crescat-io/saloon-sdk-generator",
-            "cyberduck/laravel-wp-api",
-            "darkaonline/l5-swagger",
-            "dcblogdev/laravel-microsoft-graph",
-            "deepseek-php/deepseek-laravel",
-            "defstudio/telegraph",
-            "dive-be/laravel-dry-requests",
-            "essa/api-tool-kit",
-            "f9webltd/laravel-api-response-helpers",
-            "fansipan/fansipan",
-            "fiveam-code/laravel-notion-api",
-            "geocodio/geocodio-library-php",
-            "github-php/sponsors",
-            "gocanto/http-client",
-            "google-gemini-php/laravel",
-            "graham-campbell/digitalocean",
-            "graham-campbell/github",
-            "grazulex/laravel-apiroute",
-            "grok-php/laravel",
-            "haiderjabbar/laravelsolr",
-            "hosseinhezami/laravel-gemini",
-            "infinitypaul/idempotency-laravel",
-            "irazasyed/telegram-bot-sdk",
-            "itxshakil/laravel-fast2sms",
-            "joelbutcher/laravel-facebook-graph",
-            "joggapp/laravel-natural-language",
-            "johnpaulmedina/laravel-usps",
-            "joshembling/laragenie",
-            "juststeveking/laravel-transporter",
-            "kreait/firebase-php",
-            "kreait/laravel-firebase",
-            "laravel-json-api/laravel",
-            "laravel-notification-channels/telegram",
-            "laravel/ai",
-            "lomkit/laravel-rest-api",
-            "marcin-orlowski/laravel-api-response-builder",
-            "mateusjunges/laravel-kafka",
-            "mollie/laravel-mollie",
-            "morcen/passage",
-            "mpociot/laravel-apidoc-generator",
-            "needlaravelsite/tikapi-php",
-            "netbums/laravel-quickpay",
-            "neuron-core/neuron-laravel",
-            "openai-php/client",
-            "openai-php/laravel",
-            "openfoodfacts/openfoodfacts-laravel",
-            "orhanerday/open-ai",
-            "php-mcp/server",
-            "primitive/openapi-initializer",
-            "rebing/graphql-laravel",
-            "reindert-vetter/api-version-control",
-            "ricorocks-digital-agency/soap",
-            "sajya/server",
-            "saloonphp/saloon",
-            "sammyjo20/saloon",
-            "slvler/cuttly",
-            "spatie/laravel-openapi-cli",
-            "spatie/laravel-slack-alerts",
-            "spatie/php-attribute-reader",
-            "square/laravel-hyrule",
-            "tailflow/laravel-orion",
-            "wendelladriel/laravel-idempotency",
-            "worksome/request-factories",
-            "wotz/laravel-swagger-ui",
-            "xchimx/laravel-unsplash",
-            "zircote/swagger-php"
+            "beyondcode/laravel-vouchers",
+            "binafy/laravel-cart",
+            "binafy/laravel-discount",
+            "safemood/discountify"
           ],
-          "permalink": "api"
+          "permalink": "shopping-carts"
         },
         {
-          "name": "E-Commerce",
-          "description": "Shopping carts, product catalogs and complete webshop packages",
+          "name": "Invoicing & Tax",
+          "description": "Invoices, VAT and tax calculation",
+          "projects": [
+            "laraveldaily/laravel-invoices",
+            "mpociot/vat-calculator"
+          ],
+          "permalink": "invoicing"
+        },
+        {
+          "name": "Money & Currency",
+          "description": "Monetary values, formatting and exchange rates",
+          "projects": [
+            "akaunting/laravel-money",
+            "amrshawky/laravel-currency",
+            "ashallendesign/laravel-exchange-rates",
+            "brick/money",
+            "cknow/laravel-money",
+            "moneyphp/money",
+            "torann/currency",
+            "whitecube/php-prices"
+          ],
+          "permalink": "money"
+        },
+        {
+          "name": "Payment Gateways",
+          "description": "Integrating with payment providers",
+          "projects": [
+            "danestves/laravel-polar",
+            "laravel-payhere/laravel-payhere",
+            "lemonsqueezy/laravel",
+            "mollie/laravel-mollie",
+            "musahmusah/laravel-multipayment-gateways",
+            "netbums/laravel-quickpay",
+            "protonemedia/laravel-paddle",
+            "simonhamp/laravel-stripe-connect",
+            "square1/laravel-mpp"
+          ],
+          "permalink": "payment-gateways"
+        },
+        {
+          "name": "Shop Platforms",
+          "description": "Full e-commerce and ERP platforms built on Laravel",
           "projects": [
             "aimeos/aimeos-laravel",
+            "aureuserp/aureuserp",
             "bagisto/bagisto",
             "bagistoplus/visual",
-            "binafy/laravel-discount",
-            "laraveldaily/laravel-invoices",
-            "lunarphp/livewire-starter-kit",
             "lunarphp/lunar",
             "shopper/framework",
-            "signifly/laravel-shopify",
+            "unopim/unopim",
             "vanilo/framework"
           ],
-          "permalink": "e-commerce"
+          "permalink": "shop-platforms"
         },
         {
-          "name": "Mail",
-          "description": "Sending, previewing and tracking email",
+          "name": "Subscriptions & Licensing",
+          "description": "Recurring billing, plans, entitlements and licences",
           "projects": [
+            "laravel/cashier",
+            "laravel/cashier-mollie",
+            "laravel/cashier-paddle",
+            "lucasdotvin/laravel-soulbscription",
+            "masterix21/laravel-entitlements",
+            "masterix21/laravel-licensing",
+            "perafan/cashier-openpay",
+            "revoltify/subscriptionify"
+          ],
+          "permalink": "subscriptions"
+        },
+        {
+          "name": "Wallets & Credits",
+          "description": "Balances, ledgers and credit systems",
+          "projects": [
+            "021/laravel-wallet",
+            "bavix/laravel-wallet",
+            "climactic/laravel-credits",
+            "hpwebdeveloper/laravel-pay-pocket",
+            "stephenjude/laravel-wallet"
+          ],
+          "permalink": "wallets"
+        }
+      ],
+      "description": "Selling things and getting paid for them",
+      "name": "Commerce & Payments",
+      "permalink": "commerce-and-payments"
+    },
+    {
+      "categories": [
+        {
+          "name": "Chat Notifications",
+          "description": "Posting alerts to Slack, Teams, Telegram and friends",
+          "projects": [
+            "gpressutto5/laravel-slack",
+            "guywarner/laravel-google-chat-alerts",
+            "innocenzi/bluesky-notification-channel",
+            "laravel-notification-channels/google-chat",
+            "laravel-notification-channels/telegram",
+            "maknz/slack",
+            "osa-eg/laravel-teams-notification",
+            "spatie/laravel-slack-alerts",
+            "team-nifty-gmbh/laravel-rocket-chat-notifications",
+            "theriddleofenigma/laravel-google-chat-log"
+          ],
+          "permalink": "chat-notifications"
+        },
+        {
+          "name": "Email Authoring & Preview",
+          "description": "Writing, editing and previewing mailables",
+          "projects": [
+            "joggapp/laravel-mail-viewer",
+            "qoraiche/laravel-mail-editor",
+            "spatie/laravel-mail-preview",
+            "spatie/mjml-php",
+            "xammie/mailbook"
+          ],
+          "permalink": "email-authoring"
+        },
+        {
+          "name": "Email Delivery",
+          "description": "Mail drivers, transactional providers and delivery tracking",
+          "projects": [
+            "ashallendesign/email-utilities",
             "backstage/laravel-mails",
-            "beyondcode/laravel-mailbox",
             "binarcode/laravel-mailator",
             "coconutcraig/laravel-postmark",
             "dietercoopman/mailspfchecker",
-            "directorytree/imapengine",
-            "erag/laravel-disposable-email",
-            "hmones/laravel-digest",
             "innoge/laravel-msgraph-mail",
-            "joggapp/laravel-mail-viewer",
-            "kirschbaum-development/mail-intercept",
-            "maize-tech/laravel-email-domain-rule",
+            "mailcarrier/mailcarrier",
             "pod-point/laravel-mail-export",
-            "qoraiche/laravel-mail-editor",
             "resend/resend-laravel",
             "s-ichikawa/laravel-sendgrid-driver",
-            "spatie/laravel-mail-preview",
-            "spatie/laravel-newsletter",
-            "spatie/mjml-php",
-            "wnx/laravel-sends",
-            "xammie/mailbook"
+            "wnx/laravel-sends"
           ],
-          "permalink": "mail"
+          "permalink": "email-delivery"
+        },
+        {
+          "name": "Inbound Email",
+          "description": "Receiving and processing incoming mail",
+          "projects": [
+            "beyondcode/laravel-mailbox",
+            "directorytree/imapengine"
+          ],
+          "permalink": "inbound-email"
         },
         {
           "name": "Notifications",
-          "description": "Delivering notifications via Slack, SMS, push and other channels",
+          "description": "Extending Laravel's notification system",
           "projects": [
-            "anycable/laravel-broadcaster",
             "asantibanez/laravel-subscribable-notifications",
-            "beyondcode/laravel-websockets",
-            "cerbero/notifiable-exception",
-            "clarkeash/shield",
-            "cmosguy/laravel-http-pushstream-broadcaster",
-            "devkandil/notifire",
-            "eventhomes/laravel-mandrillhooks",
-            "gpressutto5/laravel-slack",
-            "guywarner/laravel-google-chat-alerts",
-            "halilcosdu/laravel-replicate",
-            "innocenzi/bluesky-notification-channel",
-            "jcergolj/brevo-webhook-manager-for-laravel",
-            "kutia-software-company/larafirebase",
-            "laracasts/flash",
-            "laravel-notification-channels/google-chat",
-            "laravel-notification-channels/pusher-push-notifications",
-            "laravel-notification-channels/webpush",
-            "laravel/vonage-notification-channel",
-            "maknz/slack",
+            "hmones/laravel-digest",
             "mbarlow/megaphone",
-            "mckenziearts/laravel-notify",
-            "michal78/laravel-sms-catcher",
-            "offload-project/laravel-invite-only",
-            "offload-project/laravel-waitlist",
-            "osa-eg/laravel-teams-notification",
-            "qruto/laravel-wave",
-            "realrashid/sweet-alert",
-            "sly/notification-pusher",
-            "spatie/laravel-flash",
             "spatie/laravel-notification-log",
             "spatie/laravel-welcome-notification",
-            "springboardvr/laravel-ably-broadcaster",
-            "syntech/syntechfcm",
-            "team-nifty-gmbh/laravel-rocket-chat-notifications",
             "thomasjohnkane/snooze",
             "tkaratug/laravel-notification-event-subscriber",
-            "usernotnull/tall-toasts",
-            "ylsideas/subscribable-notifications",
-            "yoeunes/toastr",
-            "zackaj/laravel-debounce"
+            "ylsideas/subscribable-notifications"
           ],
           "permalink": "notifications"
         },
         {
-          "name": "Payment",
-          "description": "Taking payments and integrating with payment providers",
+          "name": "SMS & Push",
+          "description": "Text messages and push notifications to devices",
           "projects": [
-            "beyondcode/laravel-vouchers",
-            "byte5/laravel-passgenerator",
-            "chargebee/laravel-react-starter-kit",
-            "climactic/laravel-credits",
-            "danestves/laravel-polar",
-            "jacobbennett/stripe-test-token",
-            "jonpurvis/faker-stripe",
-            "laravel-payhere/laravel-payhere",
-            "laravel/cashier",
-            "laravel/cashier-mollie",
-            "laravel/cashier-paddle",
-            "lemonsqueezy/laravel",
-            "marvinlabs/laravel-luhn",
-            "musahmusah/laravel-multipayment-gateways",
-            "perafan/cashier-openpay",
-            "protonemedia/laravel-paddle",
-            "revoltify/subscriptionify",
-            "simonhamp/laravel-stripe-connect",
-            "square1/laravel-mpp",
-            "stephenjude/laravel-wallet"
+            "devkandil/notifire",
+            "itxshakil/laravel-fast2sms",
+            "kutia-software-company/larafirebase",
+            "laravel-notification-channels/pusher-push-notifications",
+            "laravel-notification-channels/webpush",
+            "laravel/vonage-notification-channel",
+            "michal78/laravel-sms-catcher",
+            "sly/notification-pusher",
+            "syntech/syntechfcm",
+            "tzsk/sms"
           ],
-          "permalink": "payment"
+          "permalink": "sms-and-push"
         }
       ],
-      "description": "Talking to the outside world, from APIs to payments",
-      "name": "Integrations & Commerce",
-      "permalink": "integrations-and-commerce"
+      "description": "Reaching users by mail, chat and push",
+      "name": "Communication",
+      "permalink": "communication"
     },
     {
       "categories": [
         {
-          "name": "CMS & Admin Panels",
-          "description": "Ready-made admin panels, dashboards and content management systems",
+          "name": "Comments",
+          "description": "Adding comment threads to models",
+          "projects": [
+            "lakm/laravel-comments",
+            "ryangjchandler/laravel-comments"
+          ],
+          "permalink": "comments"
+        },
+        {
+          "name": "Followers & Friendships",
+          "description": "Following, friending and blocking between users",
+          "projects": [
+            "cjmellor/blockade",
+            "multicaret/laravel-acquaintances",
+            "rennokki/befriended"
+          ],
+          "permalink": "social-graph"
+        },
+        {
+          "name": "Gamification",
+          "description": "Experience points, levels and achievements",
+          "projects": [
+            "cjmellor/level-up",
+            "tehwave/laravel-achievements"
+          ],
+          "permalink": "gamification"
+        },
+        {
+          "name": "Ratings & Reactions",
+          "description": "Stars, likes, reactions and reviews",
+          "projects": [
+            "binafy/laravel-reactions",
+            "cjmellor/rating",
+            "codebyray/laravel-review-rateable",
+            "cybercog/laravel-love",
+            "maize-tech/laravel-markable",
+            "willvincent/laravel-rateable"
+          ],
+          "permalink": "ratings-and-reactions"
+        }
+      ],
+      "description": "Letting users interact with your content and each other",
+      "name": "Community & Engagement",
+      "permalink": "community-and-engagement"
+    },
+    {
+      "categories": [
+        {
+          "name": "Admin Panels",
+          "description": "Filament, Nova, Backpack and other back-office toolkits",
           "projects": [
             "achyutn/filament-storage-monitor",
-            "area17/twill",
-            "austintoddj/canvas",
             "backpack/crud",
-            "binarytorch/larecipe",
-            "cmgmyr/messenger",
             "code16/sharp",
             "filament/filament",
             "jeffersongoncalves/filament-qrcode-field",
             "kirschbaum-development/nova-inline-select",
-            "laravel/laravel",
             "laravel/nova-log-viewer",
-            "maurohmartinez/impersonate-users-backpack-laravel",
-            "miran/mksine",
             "mokhosh/filament-kanban",
             "moonshine/moonshine",
-            "orchid/platform",
-            "rappasoft/laravel-livewire-tables",
+            "orchid/platform"
+          ],
+          "permalink": "admin-panels"
+        },
+        {
+          "name": "Blade & Templating",
+          "description": "Directives, filters and tooling for the template engine",
+          "projects": [
+            "appstract/laravel-blade-directives",
+            "aqua/blade-emerald",
+            "bitpress/blade-extensions",
+            "conedevelopment/blade-filters",
+            "fortephp/forte",
+            "stillat/dagger",
+            "surgiie/blade-cli",
+            "tehwave/laravel-shortcodes"
+          ],
+          "permalink": "templating"
+        },
+        {
+          "name": "Content Management",
+          "description": "CMSes, publishing platforms and community sites",
+          "projects": [
+            "area17/twill",
+            "austintoddj/canvas",
+            "miran/mksine",
             "riari/laravel-forum",
             "roelofjan-elsinga/aloia-cms",
             "statamic/cms",
-            "stephenjude/filament-feature-flags",
-            "takielias/tablar",
-            "takielias/tablar-kit",
-            "yajra/laravel-datatables-oracle"
+            "waterhole/waterhole"
           ],
-          "permalink": "cms-admin-panels"
+          "permalink": "content-management"
+        },
+        {
+          "name": "Feeds & Sitemaps",
+          "description": "Generating sitemaps, RSS feeds and product feeds",
+          "projects": [
+            "dragon-code/laravel-feeds",
+            "spatie/laravel-feed",
+            "spatie/laravel-sitemap"
+          ],
+          "permalink": "feeds-and-sitemaps"
+        },
+        {
+          "name": "Markdown",
+          "description": "Parsing and rendering Markdown",
+          "projects": [
+            "calebporzio/gitdown",
+            "graham-campbell/markdown",
+            "league/html-to-markdown",
+            "maxxscho/laravel-markdown-plus",
+            "spatie/filament-markdown-editor",
+            "spatie/laravel-markdown"
+          ],
+          "permalink": "markdown"
         },
         {
           "name": "SEO",
-          "description": "Sitemaps, metadata and everything else that helps search engines index your site",
+          "description": "Meta tags, structured data and search engine optimisation",
           "projects": [
             "archtechx/laravel-seo",
             "artesaos/seotools",
@@ -1091,223 +804,1518 @@
             "laravel/head",
             "ralphjsmit/laravel-seo",
             "saasykit/laravel-open-graphy",
-            "sirodiaz/laravel-redirection",
-            "spatie/laravel-sitemap"
+            "spatie/schema-org"
           ],
           "permalink": "seo"
         },
         {
-          "name": "UI & Blade Components",
-          "description": "Building interfaces with Blade components, Livewire and frontend integrations",
+          "name": "Static Site Generators",
+          "description": "Turning a Laravel app or Markdown files into a static site",
           "projects": [
-            "aliziodev/laravel-taxonomy",
-            "ambengers/kinetic",
-            "appstract/laravel-blade-directives",
-            "aqua/blade-emerald",
-            "area17/blast",
-            "asantibanez/laravel-blade-sortable",
-            "asantibanez/livewire-calendar",
-            "based/laravel-typescript",
-            "based/momentum-modal",
-            "basement-chat/basement-chat",
-            "beyondcode/laravel-favicon",
-            "beyondcode/laravel-view-xray",
-            "bitpress/blade-extensions",
-            "blade-ui-kit/blade-icons",
-            "blade-ui-kit/blade-ui-kit",
-            "brandymedia/turbine-ui-core",
-            "cagilo/cagilo",
-            "chartello/chartello",
-            "chimit/prompt",
-            "codeat3/blade-zondicons",
-            "conedevelopment/blade-filters",
-            "consoletvs/charts",
-            "daikazu/laravel-glider",
-            "danjohnson95/pinout",
-            "devdojo/refine",
-            "devrabiul/laravel-toaster-magic",
-            "diglactic/laravel-breadcrumbs",
-            "drpshtiwan/livewire-async-select",
-            "durable-workflow/waterline",
-            "fortephp/forte",
-            "freshbitsweb/laratables",
-            "glhd/aire",
-            "hedger/laravel-envicon",
-            "helgesverre/blade-heroicons-upgrader",
-            "hotmeteor/inertia-statamic",
+            "benbjurstrom/prezet",
             "hyde/hyde",
-            "jkque/laravel-nuxt-ui-starter-kit",
-            "kerkness/fa-wired",
-            "koossaayy/laravel-mapbox",
-            "kriswallsmith/assetic",
-            "kstmostofa/laravel-whatsapp",
-            "lara-zeus/bolt",
-            "laragear/alerts",
-            "laravel-frontend-presets/tall",
-            "laravel/jetstream",
-            "laravel/svelte-starter-kit",
-            "laravel/wayfinder",
-            "laraveldaily/starter-kit",
-            "laravelnews/laravel-twbs4",
-            "laravolt/avatar",
-            "larswiegers/laravel-maps",
-            "livewire/flux",
-            "mischasigtermans/laravel-altitude",
-            "mrfelipemartins/wirebones",
-            "munafio/chatify",
-            "mydnic/volet",
-            "outhebox/blade-flags",
-            "power-components/livewire-powergrid",
-            "pushpak1300/ai-chat",
-            "qirolab/laravel-themer",
-            "ramonrietdijk/livewire-tables",
-            "robertboes/inertia-breadcrumbs",
-            "robsontenorio/mary",
-            "ryangjchandler/blade-cache-directive",
-            "sakanjo/laravel-easy-metrics",
-            "spatie/laravel-blade-javascript",
-            "spatie/laravel-html",
-            "spatie/laravel-login-link",
-            "spatie/laravel-markdown",
-            "spatie/laravel-menu",
-            "spatie/laravel-navigation",
-            "spatie/laravel-support-bubble",
-            "spatie/laravel-view-components",
-            "spatie/livewire-filepond",
-            "stillat/dagger",
-            "styde/html",
-            "surgiie/blade-cli",
-            "tarunkorat/laravel-asset-cleaner",
-            "titasgailius/terminal",
-            "tonysm/rich-text-laravel",
-            "tonysm/tailwindcss-laravel",
-            "torchlight/torchlight-laravel",
-            "unicon-rocks/unicon-laravel",
-            "van-ons/laraberg",
-            "wendelladriel/slidewire",
-            "wire-elements/spotlight",
-            "wire-elements/wire-extender",
-            "wirechat/wirechat",
-            "wireui/wireui"
+            "spatie/laravel-export",
+            "spatie/sheets",
+            "tightenco/jigsaw"
           ],
-          "permalink": "ui-blade-components"
+          "permalink": "static-sites"
+        },
+        {
+          "name": "Syntax Highlighting",
+          "description": "Highlighting code blocks in rendered output",
+          "projects": [
+            "phiki/phiki",
+            "torchlight/torchlight-laravel"
+          ],
+          "permalink": "syntax-highlighting"
+        },
+        {
+          "name": "URLs & Redirects",
+          "description": "Short links, signed URLs and redirect management",
+          "projects": [
+            "ashallendesign/short-url",
+            "grazulex/laravel-sharelink",
+            "sassnowski/laravel-shareable-models",
+            "sirodiaz/laravel-redirection",
+            "spatie/laravel-missing-page-redirector",
+            "spatie/laravel-url-signer"
+          ],
+          "permalink": "urls-and-redirects"
         }
       ],
-      "description": "Everything users of your application get to see",
-      "name": "Interfaces & Content",
-      "permalink": "interfaces-and-content"
+      "description": "Publishing content and rendering markup",
+      "name": "Content & Markup",
+      "permalink": "content-and-markup"
     },
     {
       "categories": [
         {
-          "name": "Auth & Permissions",
-          "description": "Authentication, roles and permissions - everything around who is allowed to do what",
+          "name": "Backups",
+          "description": "Backing up an application and restoring it",
           "projects": [
-            "adamwathan/eloquent-oauth",
-            "asbiin/laravel-webauthn",
+            "spatie/laravel-backup",
+            "spatie/laravel-backup-server",
+            "wnx/laravel-backup-restore"
+          ],
+          "permalink": "backups"
+        },
+        {
+          "name": "Deployment",
+          "description": "Deploying releases and running deploy-time tasks",
+          "projects": [
+            "ajaxray/laravel-server-sync",
+            "deployer/deployer",
+            "dragon-code/laravel-actions",
+            "dragon-code/laravel-deploy-operations",
+            "hammerstone/airdrop",
+            "justpark/envoyer-deploy",
+            "juststeveking/laravel-envoyer-sdk",
+            "laravel/envoy",
+            "salahhusa9/laravel-updater",
+            "sammyjo20/lasso",
+            "timokoerber/laravel-one-time-operations",
+            "wilbergroup/airdrop"
+          ],
+          "permalink": "deployment"
+        },
+        {
+          "name": "Environment & Config",
+          "description": "Managing .env files and validating configuration",
+          "projects": [
+            "ashallendesign/laravel-config-validator",
+            "brotzka/laravel-dotenv-editor",
+            "chrisdicarlo/laravel-config-checker",
+            "intermax/veil",
+            "mathiasgrimm/laravel-dot-env-gen",
+            "msamgan/laravel-env-keys-checker",
+            "nunomaduro/essentials",
+            "worksome/envy"
+          ],
+          "permalink": "configuration"
+        },
+        {
+          "name": "Maintenance & Staging Locks",
+          "description": "Under-construction pages and locking down staging environments",
+          "projects": [
+            "codezero/laravel-stagefront",
+            "larsjanssen6/underconstruction",
+            "spatie/laravel-littlegatekeeper"
+          ],
+          "permalink": "maintenance-mode"
+        },
+        {
+          "name": "Monitoring & Health",
+          "description": "Uptime, health checks, metrics and application performance monitoring",
+          "projects": [
+            "aaronfrancis/pulse-outdated",
+            "anousss007/vigilance",
+            "beyondcode/laravel-self-diagnosis",
+            "devifyo/watchtower",
+            "dyrynda/laravel-defibrillator",
+            "ericmakesstuff/laravel-server-monitor",
+            "inspector-apm/inspector-laravel",
+            "jackwh/laravel-new-relic",
+            "laraotel/opentelemetry-laravel",
+            "laraowl/laraowl",
+            "laravel/doctor",
+            "laravel/pulse",
+            "leventcz/laravel-top",
+            "lkaemmerling/laravel-horizon-prometheus-exporter",
+            "mohsenabrishami/stethoscope",
+            "pragmarx/health",
+            "robertogallea/pulse-api",
+            "spatie/laravel-health",
+            "spatie/laravel-prometheus",
+            "spatie/laravel-server-monitor",
+            "spatie/laravel-uptime-monitor",
+            "timacdonald/pulse-validation-errors",
+            "vcian/pulse-active-sessions"
+          ],
+          "permalink": "monitoring"
+        },
+        {
+          "name": "Package Development",
+          "description": "Building, publishing and maintaining Composer packages",
+          "projects": [
+            "aniftyco/skeletor",
+            "consoletvs/bootpack",
+            "cpx/cpx",
+            "encoredigitalgroup/heimdall",
+            "leek/laravel-vendor-cleanup",
+            "phlak/semver",
+            "spatie/laravel-package-tools"
+          ],
+          "permalink": "package-development"
+        },
+        {
+          "name": "Server Management",
+          "description": "Provisioning, scaling and running commands on servers",
+          "projects": [
+            "protonemedia/laravel-task-runner",
+            "renoki-co/laravel-php-k8s",
+            "sammyjo20/ssh-php",
+            "spatie/laravel-dynamic-servers",
+            "spatie/laravel-remote",
+            "whispphp/whisp"
+          ],
+          "permalink": "server-management"
+        }
+      ],
+      "description": "Shipping the application and keeping it healthy",
+      "name": "Deployment & Operations",
+      "permalink": "deployment-and-operations"
+    },
+    {
+      "categories": [
+        {
+          "name": "API Documentation",
+          "description": "Generating OpenAPI specs, Postman collections and API reference docs",
+          "projects": [
+            "andreaselia/laravel-api-to-postman",
+            "darkaonline/l5-swagger",
+            "davidhsianturi/laravel-compass",
+            "dedoc/scramble",
+            "mpociot/laravel-apidoc-generator",
+            "primitive/openapi-initializer",
+            "spatie/laravel-openapi-cli",
+            "wotz/laravel-swagger-ui",
+            "yasin_tgh/laravel-postman",
+            "zircote/swagger-php"
+          ],
+          "permalink": "api-documentation"
+        },
+        {
+          "name": "Artisan & Console",
+          "description": "Building richer command line interfaces on top of Artisan",
+          "projects": [
+            "cerbero/command-validator",
+            "icanhazstring/symfony-console-spinner",
+            "infureal/artisan-gui",
+            "joshembling/artisan-browse",
+            "laravel/prompts",
+            "mrpunyapal/laravel-extended-commands",
+            "nunomaduro/laracon-schedule",
+            "nunomaduro/laravel-console-menu",
+            "nunomaduro/laravel-desktop-notifier",
+            "php-school/cli-menu",
+            "shomisha/laravel-console-wizard",
+            "soloterm/grapheme",
+            "soloterm/screen",
+            "spatie/laravel-artisan-dispatchable",
+            "titasgailius/terminal",
+            "wilderborn/partyline"
+          ],
+          "permalink": "artisan-console"
+        },
+        {
+          "name": "Automated Refactoring",
+          "description": "Rewriting and upgrading code automatically",
+          "projects": [
+            "driftingly/rector-laravel",
+            "rector/rector"
+          ],
+          "permalink": "refactoring"
+        },
+        {
+          "name": "Code Generators",
+          "description": "Scaffolding models, CRUD, migrations and other boilerplate",
+          "projects": [
+            "binafy/laravel-stub",
+            "egyjs/dbml-to-laravel",
+            "grazulex/laravel-turbomaker",
+            "laracademy/generators",
+            "laracademy/interactive-make",
+            "laracasts/generators",
+            "laravel-shift/blueprint",
+            "mitulgolakiya/laravel-api-generator",
+            "mrmarchone/laravel-auto-crud",
+            "reliese/laravel",
+            "samasend/laravel-make-scope"
+          ],
+          "permalink": "code-generators"
+        },
+        {
+          "name": "Code Style",
+          "description": "Formatting PHP code to a consistent standard",
+          "projects": [
+            "ergebnis/composer-normalize",
+            "friendsofphp/php-cs-fixer",
+            "laravel/pint",
+            "pragmarx/laravelcs"
+          ],
+          "permalink": "code-style"
+        },
+        {
+          "name": "Debugging",
+          "description": "Debug bars, dumpers and request inspectors",
+          "projects": [
+            "ajthinking/tinx",
+            "barryvdh/laravel-debugbar",
+            "beyondcode/laravel-tinker-server",
+            "beyondcode/laravel-view-xray",
+            "davestewart/sketchpad",
+            "fruitcake/laravel-debugbar",
+            "fruitcake/laravel-telescope-toolbar",
+            "garygreen/pretty-routes",
+            "glhd/laravel-dumper",
+            "grazulex/laravel-devtoolbox",
+            "itsgoingd/clockwork",
+            "laradumps/laradumps",
+            "laramint/laravel-brain",
+            "laravel/telescope",
+            "lubusin/laravel-decomposer",
+            "muhammadhuzaifa/telescope-guzzle-watcher",
+            "soloterm/dumps",
+            "spatie/laravel-blade-comments",
+            "spatie/laravel-ray",
+            "spatie/laravel-web-tinker",
+            "stechstudio/phpinfo",
+            "wire-elements/wire-spy",
+            "wulfheart/pretty_routes"
+          ],
+          "permalink": "debugging"
+        },
+        {
+          "name": "Documentation Tools",
+          "description": "Writing and publishing documentation next to the code",
+          "projects": [
+            "binarytorch/larecipe",
+            "genericmilk/docudoodle",
+            "juststeveking/signal",
+            "petebishwhip/laradocs"
+          ],
+          "permalink": "documentation"
+        },
+        {
+          "name": "Error Handling",
+          "description": "Reporting exceptions and making failures easier to understand",
+          "projects": [
+            "cerbero/notifiable-exception",
+            "hammerstone/flaky",
+            "nunomaduro/collision",
+            "spatie/laravel-error-share",
+            "spatie/laravel-error-solutions",
+            "tylercd100/lern"
+          ],
+          "permalink": "error-handling"
+        },
+        {
+          "name": "IDE Integration",
+          "description": "Autocompletion, doc blocks and editor tooling",
+          "projects": [
+            "ahuggins/open-on-make",
+            "barryvdh/laravel-ide-helper",
+            "devdojo/refine",
+            "stevebauman/autodoc-facades"
+          ],
+          "permalink": "ide-integration"
+        },
+        {
+          "name": "Local Development",
+          "description": "Docker setups, local servers and other development environments",
+          "projects": [
+            "aerni/cloudflared",
+            "anystack-sh/porter",
+            "aschmelyun/fleet",
+            "kilroyweb/homeboy",
+            "laravel/sail",
+            "shipping-docker/vessel",
+            "soloterm/solo",
+            "spatie/laravel-login-link",
+            "svpernova09/homesteadskeleton",
+            "tightenco/lambo"
+          ],
+          "permalink": "development-environments"
+        },
+        {
+          "name": "Logging",
+          "description": "Writing, reading, shipping and rotating log files",
+          "projects": [
+            "accentinteractive/laravel-logcleaner",
+            "awt/apilogger",
+            "freshbitsweb/laravel-log-enhancer",
+            "haruncpi/laravel-log-reader",
+            "laravel/pail",
+            "mathiasgrimm/laravel-log-keeper",
+            "naoray/laravel-github-monolog",
+            "opcodesio/log-viewer",
+            "pod-point/laravel-monolog-kinesis",
+            "rap2hpoutre/laravel-log-viewer",
+            "saasscaleup/laravel-log-alarm",
+            "spatie/laravel-tail"
+          ],
+          "permalink": "logging"
+        },
+        {
+          "name": "Static Analysis",
+          "description": "Finding bugs and measuring the codebase without running it",
+          "projects": [
+            "beyondcode/laravel-prose-linter",
+            "imanghafoori/laravel-microscope",
+            "larastan/larastan",
+            "laravel/roster",
+            "peckphp/peck",
+            "tomasvotruba/bladestan",
+            "tomasvotruba/lines",
+            "wnx/laravel-stats",
+            "zidbih/laravel-deadlock"
+          ],
+          "permalink": "static-analysis"
+        }
+      ],
+      "description": "Everything that makes building and maintaining the codebase easier",
+      "name": "Developer Tools",
+      "permalink": "developer-tools"
+    },
+    {
+      "categories": [
+        {
+          "name": "Auditing & Versioning",
+          "description": "Revision histories, drafts and change logs for model data",
+          "projects": [
+            "infinitypaul/laravel-dynamodb-auditing",
+            "oddvalue/laravel-drafts",
+            "orisintel/laravel-process-stamps",
+            "overtrue/laravel-versionable",
+            "owen-it/laravel-auditing",
+            "romalytar/yammi-audit-log-laravel",
+            "rs/laravel-version-control",
+            "venturecraft/revisionable",
+            "wildside/userstamps"
+          ],
+          "permalink": "model-auditing"
+        },
+        {
+          "name": "Database Drivers & ORMs",
+          "description": "Connecting Eloquent to databases the framework does not ship with",
+          "projects": [
+            "amazingbv/laravel-google-sheets-database-driver",
+            "analogue/orm",
+            "calebporzio/sushi",
+            "daltonmccleery/remote-models",
+            "directorytree/ldaprecord",
+            "jacobjoergensen/laravel-paper",
+            "kitar/laravel-dynamodb",
+            "laravel-clickhouse/laravel-clickhouse",
+            "laravel-doctrine/orm",
+            "mongodb/laravel-mongodb",
+            "ryangjchandler/orbit",
+            "singlestoredb/singlestoredb-laravel",
+            "tpetry/laravel-postgresql-enhanced",
+            "vinelab/neoeloquent",
+            "waad/truffle",
+            "x7media/laravel-planetscale",
+            "yajra/laravel-oci8"
+          ],
+          "permalink": "database-drivers"
+        },
+        {
+          "name": "Database Snapshots",
+          "description": "Dumping, snapshotting and restoring database contents",
+          "projects": [
+            "hasinhayder/tyro-checkpoint",
+            "spatie/laravel-db-snapshots",
+            "watheqalshowaiter/backup-tables"
+          ],
+          "permalink": "database-backups"
+        },
+        {
+          "name": "Database Tooling",
+          "description": "Inspecting schemas, tracing queries and auditing database structure",
+          "projects": [
+            "albertoarena/laravel-truss",
+            "cerbero/eloquent-inspector",
+            "dietercoopman/laravel-showsql",
+            "dragon-code/migrate-db",
+            "fitztrev/query-tracer",
+            "halilcosdu/laravel-slower",
+            "mtolhuys/laravel-schematics",
+            "recca0120/laravel-erd",
+            "spatie/laravel-model-info",
+            "spatie/laravel-sql-commenter",
+            "tpetry/laravel-mysql-explain",
+            "vcian/laravel-db-auditor",
+            "watheqalshowaiter/model-fields"
+          ],
+          "permalink": "database-tooling"
+        },
+        {
+          "name": "Eloquent Extensions",
+          "description": "Traits and behaviours that extend what a model can do out of the box",
+          "projects": [
+            "bkwld/cloner",
+            "eg-mohamed/notable",
+            "envant/fireable",
+            "esensi/model",
+            "javoscript/laravel-macroable-models",
+            "kirkbushell/eloquence",
+            "lecturize/laravel-addresses",
+            "maize-tech/laravel-excludable",
+            "masterix21/laravel-addressable",
+            "monooso/unobserve",
+            "sfolador/laravel-locked"
+          ],
+          "permalink": "eloquent-extensions"
+        },
+        {
+          "name": "Full-Text Search",
+          "description": "Searching models through Scout drivers and dedicated search engines",
+          "projects": [
+            "algolia/scout-extended",
+            "devnoiseconsulting/laravel-scout-postgres-tsvector",
+            "dwarfdk/laravel-meilitools",
+            "haiderjabbar/laravelsolr",
+            "jeroen-g/explorer",
+            "laravel/scout",
+            "pdphilip/elasticlens",
+            "protonemedia/laravel-cross-eloquent-search",
+            "sleimanx2/plastic",
+            "spatie/laravel-searchable",
+            "spatie/laravel-site-search",
+            "spatie/searchindex",
+            "teamtnt/laravel-scout-tntsearch-driver",
+            "whitecube/laravel-search-builder"
+          ],
+          "permalink": "full-text-search"
+        },
+        {
+          "name": "Migrations & Seeding",
+          "description": "Writing, generating and running schema migrations and seed data",
+          "projects": [
+            "jlapp/smart-seeder",
+            "kitloong/laravel-migrations-generator",
+            "laragear/populate",
+            "nunomaduro/laravel-optimize-database",
+            "orangehill/iseed",
+            "ramadan/custom-fresh",
+            "rezaamini-ir/migrator",
+            "staudenmeir/laravel-migration-views",
+            "tyghaykal/laravel-seed-generator",
+            "xethron/migrations-generator"
+          ],
+          "permalink": "migrations-and-seeding"
+        },
+        {
+          "name": "Model Attributes & Casts",
+          "description": "Casting, masking and storing extra attributes on a model",
+          "projects": [
+            "belamov/postgres-range",
+            "blaspsoft/forerunner",
+            "glorand/laravel-model-settings",
+            "irabbi360/laravel-attribute-mask",
+            "kolossal-io/laravel-multiplex",
+            "milwad/laravel-attributes",
+            "sebastiaanluca/laravel-boolean-dates",
+            "spatie/laravel-model-flags",
+            "spatie/laravel-schemaless-attributes",
+            "vildanbina/laravel-model-json",
+            "vkovic/laravel-custom-casts",
+            "waad/laravel-model-metadata",
+            "wendelladriel/laravel-expressive",
+            "wendelladriel/laravel-lift"
+          ],
+          "permalink": "model-attributes"
+        },
+        {
+          "name": "Model Relationships",
+          "description": "Additional relationship types and shortcuts for related records",
+          "projects": [
+            "awobaz/compoships",
+            "biiiiiigmonster/hasin",
+            "calebporzio/parental",
+            "chelout/laravel-relationship-events",
+            "mr-punyapal/laravel-extended-relationships",
+            "sowailem/ownable",
+            "staudenmeir/belongs-to-through",
+            "staudenmeir/eloquent-has-many-deep",
+            "staudenmeir/eloquent-json-relations",
+            "staudenmeir/laravel-adjacency-list",
+            "tightenco/parental"
+          ],
+          "permalink": "model-relationships"
+        },
+        {
+          "name": "Pagination",
+          "description": "Faster and more flexible ways to paginate result sets",
+          "projects": [
+            "aaronfrancis/fast-paginate",
+            "aneeskhan47/laravel-pagination-merge",
+            "austinw/laravel-union-paginator",
+            "hammerstone/fast-paginate"
+          ],
+          "permalink": "pagination"
+        },
+        {
+          "name": "Query Builders & Filters",
+          "description": "Building, filtering and sorting queries, often straight from request input",
+          "projects": [
+            "abbasudo/laravel-purity",
+            "anourvalar/eloquent-serialize",
+            "indexzer0/eloquent-filtering",
+            "jerome/filterable",
+            "kettasoft/filterable",
+            "kirschbaum-development/eloquent-power-joins",
+            "l3aro/pipeline-query-collection",
+            "lacodix/laravel-model-filter",
+            "laracraft-tech/laravel-date-scopes",
+            "lorisleiva/laravel-search-string",
+            "mehdi-fathi/eloquent-filter",
+            "omar-elnaghy/laradate-filters",
+            "pricecurrent/laravel-eloquent-filters",
+            "sbamtr/laravel-query-enrich",
+            "spatie/laravel-query-builder",
+            "staudenmeir/laravel-cte",
+            "tpetry/laravel-query-expressions",
+            "tucker-eric/eloquentfilter"
+          ],
+          "permalink": "query-builders"
+        },
+        {
+          "name": "Query Caching",
+          "description": "Caching the results of Eloquent queries and models",
+          "projects": [
+            "genealabs/laravel-model-caching",
+            "laragear/cache-query",
+            "mike-bronner/laravel-model-caching",
+            "mostafaznv/laracache",
+            "rennokki/laravel-eloquent-query-cache"
+          ],
+          "permalink": "query-caching"
+        },
+        {
+          "name": "Slugs & Model Identifiers",
+          "description": "Readable, obfuscated or self-healing identifiers for models",
+          "projects": [
+            "cviebrock/eloquent-sluggable",
+            "eg-mohamed/referenceable",
+            "lukeraymonddowning/self-healing-urls",
+            "mtvs/eloquent-hashids",
+            "nunomaduro/laravel-sluggable",
+            "spatie/laravel-prefixed-ids",
+            "spatie/laravel-sluggable",
+            "willvincent/laravel-unique"
+          ],
+          "permalink": "slugs-and-identifiers"
+        },
+        {
+          "name": "Soft Deletes & Archiving",
+          "description": "Deleting, cascading, restoring and pruning soft-deleted records",
+          "projects": [
+            "askedio/laravel-soft-cascade",
+            "dillingham/soft-deletes-parent",
+            "dyrynda/laravel-cascade-soft-deletes",
+            "mpociot/reanimate",
+            "spatie/laravel-deleted-models",
+            "tightenco/quicksand"
+          ],
+          "permalink": "soft-deletes"
+        },
+        {
+          "name": "Sorting & Ordering",
+          "description": "Keeping records in an explicit, user-defined order",
+          "projects": [
+            "atomcoder/laravel-reorderable",
+            "kyslik/column-sortable",
+            "rutorika/sortable",
+            "spatie/eloquent-sortable"
+          ],
+          "permalink": "model-sorting"
+        },
+        {
+          "name": "Tags & Taxonomies",
+          "description": "Attaching tags, categories and taxonomies to models",
+          "projects": [
+            "aliziodev/laravel-taxonomy",
+            "cartalyst/tags",
+            "spatie/laravel-tags"
+          ],
+          "permalink": "tags-and-taxonomies"
+        }
+      ],
+      "description": "Modelling, querying and maintaining the data your application stores",
+      "name": "Eloquent & Database",
+      "permalink": "eloquent-and-database"
+    },
+    {
+      "categories": [
+        {
+          "name": "Document Conversion",
+          "description": "Converting and parsing documents between formats",
+          "projects": [
+            "blaspsoft/doxswap",
+            "cdsmths/laravel-ocr-space",
+            "paperdoc-dev/paperdoc-lib",
+            "robbiep/cloudconvert-laravel",
+            "shipfastlabs/parsel"
+          ],
+          "permalink": "document-conversion"
+        },
+        {
+          "name": "File Storage",
+          "description": "Filesystem abstractions, drivers and storage helpers",
+          "projects": [
+            "dietercoopman/smart",
+            "league/flysystem",
+            "maxkhim/laravel-storage-dedupler",
+            "spatie/temporary-directory",
+            "stechstudio/laravel-zipstream",
+            "vormkracht10/flysystem-uploadcare"
+          ],
+          "permalink": "file-storage"
+        },
+        {
+          "name": "File Uploads",
+          "description": "Handling uploads, including chunked and resumable ones",
+          "projects": [
+            "ahmed-aliraqi/laravel-media-uploader",
+            "kalynasolutions/laravel-tus",
+            "mohamedgaldi/vilt-filepond",
+            "pion/laravel-chunk-upload",
+            "rahulhaque/laravel-filepond",
+            "spatie/livewire-filepond"
+          ],
+          "permalink": "file-uploads"
+        },
+        {
+          "name": "Image Processing",
+          "description": "Manipulating, optimising and rendering images",
+          "projects": [
+            "ace-of-aces/laravel-image-transform-url",
+            "coderello/laravel-proximage",
+            "daikazu/laravel-glider",
+            "intervention/image",
+            "maestroerror/php-heic-to-jpg",
+            "qcod/laravel-imageup",
+            "spatie/browsershot",
+            "spatie/laravel-image-optimizer",
+            "spatie/laravel-screenshot",
+            "spatie/pdf-to-image",
+            "wnx/sidecar-browsershot"
+          ],
+          "permalink": "image-processing"
+        },
+        {
+          "name": "Media Libraries",
+          "description": "Associating files and media collections with models",
+          "projects": [
+            "elegantly/laravel-media",
+            "laraveljutsu/laravel-artifact",
+            "livewire-filemanager/filemanager",
+            "spatie/laravel-medialibrary"
+          ],
+          "permalink": "media-libraries"
+        },
+        {
+          "name": "PDF Generation",
+          "description": "Creating, optimising and printing PDF documents",
+          "projects": [
+            "barryvdh/laravel-dompdf",
+            "barryvdh/laravel-snappy",
+            "creagia/laravel-sign-pad",
+            "knplabs/knp-snappy",
+            "mostafaznv/pdf-optimizer",
+            "omaralalwi/gpdf",
+            "rawilk/laravel-printing",
+            "spatie/laravel-pdf"
+          ],
+          "permalink": "pdf"
+        },
+        {
+          "name": "QR Codes & Passes",
+          "description": "Generating QR codes and mobile wallet passes",
+          "projects": [
+            "byte5/laravel-passgenerator",
+            "simplesoftwareio/simple-qrcode",
+            "spatie/laravel-mobile-pass"
+          ],
+          "permalink": "qr-codes"
+        },
+        {
+          "name": "Spreadsheets & CSV",
+          "description": "Reading and writing Excel, CSV and other tabular files",
+          "projects": [
+            "anourvalar/office",
+            "glhd/linen",
+            "maatwebsite/excel",
+            "phpoffice/phpspreadsheet",
+            "rap2hpoutre/fast-excel",
+            "usmanhalalit/laracsv",
+            "zappzerapp/laravel-ingest"
+          ],
+          "permalink": "spreadsheets"
+        },
+        {
+          "name": "Video & Audio",
+          "description": "Transcoding and streaming media files",
+          "projects": [
+            "achyutn/laravel-hls",
+            "pbmedia/laravel-ffmpeg",
+            "projektgopher/laravel-ffmpeg-tools"
+          ],
+          "permalink": "video-and-audio"
+        }
+      ],
+      "description": "Uploading, storing, converting and serving files",
+      "name": "Files & Media",
+      "permalink": "files-and-media"
+    },
+    {
+      "categories": [
+        {
+          "name": "Assets & Bundling",
+          "description": "Compiling, loading and cleaning up CSS and JavaScript assets",
+          "projects": [
+            "backpack/basset",
+            "gehrisandro/tailwind-merge-laravel",
+            "kriswallsmith/assetic",
+            "spatie/laravel-google-fonts",
+            "tarunkorat/laravel-asset-cleaner",
+            "tomschlick/laravel-http2-server-push",
+            "tonysm/tailwindcss-laravel"
+          ],
+          "permalink": "asset-pipeline"
+        },
+        {
+          "name": "Blade Components",
+          "description": "Reusable components and view models for Blade",
+          "projects": [
+            "area17/blast",
+            "asantibanez/laravel-blade-sortable",
+            "spatie/laravel-view-components"
+          ],
+          "permalink": "blade-components"
+        },
+        {
+          "name": "Data Tables",
+          "description": "Sortable, filterable tables driven by Eloquent",
+          "projects": [
+            "freshbitsweb/laratables",
+            "power-components/livewire-powergrid",
+            "ramonrietdijk/livewire-tables",
+            "rappasoft/laravel-livewire-tables",
+            "yajra/laravel-datatables-oracle"
+          ],
+          "permalink": "data-tables"
+        },
+        {
+          "name": "Forms & Form Builders",
+          "description": "Building, rendering and hardening HTML forms",
+          "projects": [
+            "genealabs/laravel-caffeine",
+            "glhd/aire",
+            "lara-zeus/bolt",
+            "laragear/poke",
+            "laravel-arcanist/arcanist",
+            "metalogico/laravel-formello",
+            "proengsoft/laravel-jsvalidation",
+            "spatie/laravel-html",
+            "spatie/laravel-options",
+            "styde/html"
+          ],
+          "permalink": "forms"
+        },
+        {
+          "name": "Hotwire & htmx",
+          "description": "Bringing Turbo and htmx conventions to Laravel",
+          "projects": [
+            "hotwired-laravel/turbo-laravel",
+            "hotwired/turbo-laravel",
+            "mauricius/laravel-htmx"
+          ],
+          "permalink": "hotwire"
+        },
+        {
+          "name": "Icons & Avatars",
+          "description": "Icon sets, flags, favicons and generated avatars",
+          "projects": [
+            "beyondcode/laravel-favicon",
+            "blade-ui-kit/blade-icons",
+            "codeat3/blade-zondicons",
+            "creativeorange/gravatar",
+            "hedger/laravel-envicon",
+            "helgesverre/blade-heroicons-upgrader",
+            "laravolt/avatar",
+            "outhebox/blade-flags",
+            "tomloprod/radiance",
+            "unicon-rocks/unicon-laravel"
+          ],
+          "permalink": "icons"
+        },
+        {
+          "name": "Inertia & SPA Bridges",
+          "description": "Server-driven single page applications",
+          "projects": [
+            "ambengers/kinetic",
+            "based/momentum-modal",
+            "hotmeteor/inertia-statamic",
+            "hybridly/laravel",
+            "inertiajs/inertia-laravel",
+            "robertboes/inertia-breadcrumbs"
+          ],
+          "permalink": "inertia"
+        },
+        {
+          "name": "JavaScript Integration",
+          "description": "Sharing routes, types and data with the JavaScript side",
+          "projects": [
+            "based/laravel-typescript",
+            "based/momentum-trail",
+            "coderello/laravel-shared-data",
+            "laravel/wayfinder",
+            "mariuzzo/laravel-js-localization",
+            "scrumble-nl/laravel-model-ts-type",
+            "spatie/laravel-blade-javascript",
+            "spatie/laravel-server-side-rendering",
+            "spatie/typescript-transformer",
+            "tightenco/ziggy"
+          ],
+          "permalink": "javascript-integration"
+        },
+        {
+          "name": "Livewire",
+          "description": "Livewire itself and the components built around it",
+          "projects": [
+            "asantibanez/livewire-calendar",
+            "drpshtiwan/livewire-async-select",
+            "ijpatricio/mingle",
+            "livewire/livewire",
+            "livewire/volt",
+            "mrfelipemartins/wirebones",
+            "wendelladriel/slidewire",
+            "wire-elements/spotlight",
+            "wire-elements/wire-extender"
+          ],
+          "permalink": "livewire"
+        },
+        {
+          "name": "Menus & Breadcrumbs",
+          "description": "Generating navigation structures",
+          "projects": [
+            "diglactic/laravel-breadcrumbs",
+            "spatie/laravel-menu",
+            "spatie/laravel-navigation"
+          ],
+          "permalink": "navigation"
+        },
+        {
+          "name": "Rich Text Editors",
+          "description": "Trix, Gutenberg and other WYSIWYG editors",
+          "projects": [
+            "te7a-houdini/laravel-trix",
+            "tonysm/rich-text-laravel",
+            "van-ons/laraberg"
+          ],
+          "permalink": "rich-text-editors"
+        },
+        {
+          "name": "Starter Kits",
+          "description": "Application skeletons and frontend presets to start from",
+          "projects": [
+            "chargebee/laravel-react-starter-kit",
+            "devdojo/genesis",
+            "jkque/laravel-nuxt-ui-starter-kit",
+            "laravel-frontend-presets/tall",
+            "laravel/jetstream",
+            "laravel/laravel",
+            "laravel/svelte-starter-kit",
+            "laraveldaily/starter-kit",
+            "laravelnews/laravel-twbs4",
+            "lunarphp/livewire-starter-kit",
+            "nunomaduro/laravel-starter-kit",
+            "pushpak1300/ai-chat"
+          ],
+          "permalink": "starter-kits"
+        },
+        {
+          "name": "Themes",
+          "description": "Managing swappable themes and dashboard presets",
+          "projects": [
+            "qirolab/laravel-themer",
+            "takielias/tablar",
+            "takielias/tablar-kit"
+          ],
+          "permalink": "themes"
+        },
+        {
+          "name": "Toasts & Flash Messages",
+          "description": "Flashing notifications to the browser",
+          "projects": [
+            "devrabiul/laravel-toaster-magic",
+            "laracasts/flash",
+            "laragear/alerts",
+            "mckenziearts/laravel-notify",
+            "realrashid/sweet-alert",
+            "spatie/laravel-flash",
+            "usernotnull/tall-toasts",
+            "yoeunes/toastr"
+          ],
+          "permalink": "toasts-and-alerts"
+        },
+        {
+          "name": "UI Kits",
+          "description": "Ready-made component libraries for building interfaces",
+          "projects": [
+            "blade-ui-kit/blade-ui-kit",
+            "brandymedia/turbine-ui-core",
+            "cagilo/cagilo",
+            "livewire/flux",
+            "mydnic/volet",
+            "robsontenorio/mary",
+            "spatie/laravel-support-bubble",
+            "wireui/wireui"
+          ],
+          "permalink": "ui-kits"
+        }
+      ],
+      "description": "Everything users of the application get to see",
+      "name": "Frontend & UI",
+      "permalink": "frontend-and-ui"
+    },
+    {
+      "categories": [
+        {
+          "name": "Locale Data",
+          "description": "Countries, currencies, languages and other reference data",
+          "projects": [
+            "codezero/browser-locale",
+            "devrabiul/laravel-geo-genius",
+            "laravel-lang/common",
+            "nnjeim/world",
+            "pragmarx/countries",
+            "prinsfrank/standards",
+            "squirephp/repository",
+            "stefro/laravel-lang-country"
+          ],
+          "permalink": "locale-data"
+        },
+        {
+          "name": "Localized Routing",
+          "description": "Locale detection and routes per language",
+          "projects": [
+            "chinleung/laravel-multilingual-routes",
+            "codezero/laravel-localized-routes",
+            "codezero/laravel-localizer",
+            "mcamara/laravel-localization"
+          ],
+          "permalink": "localized-routing"
+        },
+        {
+          "name": "Translatable Models",
+          "description": "Storing translated content on Eloquent models",
+          "projects": [
+            "astrotomic/laravel-translatable",
+            "omaralalwi/lexi-translate",
+            "osama-98/laravel-enum-translatable",
+            "spatie/laravel-translatable"
+          ],
+          "permalink": "translatable-models"
+        },
+        {
+          "name": "Translation Management",
+          "description": "Finding, editing and syncing translation strings",
+          "projects": [
+            "amirami/localizator",
+            "bottelet/translation-checker",
+            "edulazaro/laratext",
+            "elegantly/laravel-translator",
+            "jayesh/laravel-gemini-translator",
+            "kargnas/laravel-ai-translator",
+            "kg-bot/laravel-localization-to-vue",
+            "larswiegers/laravel-translations-checker",
+            "maestroerror/html-strings-affixer",
+            "nikaia/translation-sheet",
+            "outhebox/laravel-translations",
+            "spatie/laravel-translation-loader",
+            "tanmuhittin/laravel-google-translate",
+            "themsaid/laravel-langman",
+            "tio/laravel",
+            "vemcogroup/laravel-translation"
+          ],
+          "permalink": "translation-management"
+        }
+      ],
+      "description": "Speaking your users' language",
+      "name": "Internationalization",
+      "permalink": "internationalization"
+    },
+    {
+      "categories": [
+        {
+          "name": "Application Servers",
+          "description": "Serving Laravel with Octane, Swoole, RoadRunner and serverless runtimes",
+          "projects": [
+            "bref/laravel-bridge",
+            "laravel/octane",
+            "swooletw/laravel-swoole"
+          ],
+          "permalink": "application-servers"
+        },
+        {
+          "name": "Caching",
+          "description": "Caching responses, pages and anything else worth keeping around",
+          "projects": [
+            "abr4xas/cache-ui-laravel",
+            "appstract/laravel-opcache",
+            "asanikovich/laravel-roadrunner-cache",
+            "dragon-code/laravel-cache",
+            "iazaran/smart-cache",
+            "laragear/preload",
+            "nexxai/laravel-cfcache",
+            "ryangjchandler/blade-cache-directive",
+            "silber/page-cache",
+            "spatie/laravel-responsecache",
+            "spatie/once",
+            "vectorial1024/laravel-cache-evict",
+            "yediyuz/laravel-cloudflare-cache"
+          ],
+          "permalink": "caching"
+        },
+        {
+          "name": "Message Brokers",
+          "description": "Talking to Kafka, RabbitMQ and other brokers",
+          "projects": [
+            "mateusjunges/laravel-kafka",
+            "usmonaliyev/laravel-simple-rabbitmq",
+            "vladimir-yuldashev/laravel-queue-rabbitmq"
+          ],
+          "permalink": "messaging"
+        },
+        {
+          "name": "Profiling & Benchmarks",
+          "description": "Measuring where the time in a request actually goes",
+          "projects": [
+            "beyondcode/laravel-query-detector",
+            "beyondcode/laravel-server-timing",
+            "christophrumpel/artisan-benchmark",
+            "jaydeep/laravel-time-machine",
+            "laracraft-tech/laravel-xhprof",
+            "tomloprod/time-warden"
+          ],
+          "permalink": "profiling"
+        },
+        {
+          "name": "Queues & Jobs",
+          "description": "Running, chaining and keeping an eye on queued jobs",
+          "projects": [
+            "amrlotfy/laravel-chores",
+            "imtigger/laravel-job-status",
+            "justiversen/laravel-job-chainer",
+            "kamranata/queue-sql",
+            "laravel/horizon",
+            "mateusjunges/laravel-trackable-jobs",
+            "sammyjo20/laravel-haystack",
+            "spatie/laravel-failed-job-monitor",
+            "storviaio/vantage",
+            "yangusik/laravel-balanced-queue",
+            "zackaj/laravel-debounce"
+          ],
+          "permalink": "queues"
+        },
+        {
+          "name": "Task Scheduling",
+          "description": "Scheduling recurring commands and managing the scheduler",
+          "projects": [
+            "devakshay/scheduler-list-laravel",
+            "directorytree/cadence",
+            "indatus/dispatcher",
+            "robersonfaria/laravel-database-schedule",
+            "skywarth/chaotic-schedule",
+            "spatie/laravel-cronless-schedule",
+            "spatie/laravel-schedule-monitor",
+            "spatie/laravel-short-schedule",
+            "studio/laravel-totem"
+          ],
+          "permalink": "task-scheduling"
+        }
+      ],
+      "description": "Getting work off the request cycle and keeping the application fast",
+      "name": "Queues & Performance",
+      "permalink": "queues-and-performance"
+    },
+    {
+      "categories": [
+        {
+          "name": "Activity Logs",
+          "description": "Recording what users did and when",
+          "projects": [
+            "binafy/laravel-user-monitoring",
+            "haruncpi/laravel-user-activity",
+            "iamfarhad/laravel-audit-log",
+            "laravel-chronicle/core",
+            "rappasoft/laravel-authentication-log",
+            "spatie/activitylog",
+            "spatie/laravel-activitylog"
+          ],
+          "permalink": "audit-logs"
+        },
+        {
+          "name": "API Authentication",
+          "description": "Tokens, OAuth servers and JWTs for API clients",
+          "projects": [
+            "juststeveking/laravel-bastion",
+            "laravel/passport",
+            "laravel/sanctum",
+            "lcobucci/jwt",
+            "lucadegasperi/oauth2-server-laravel",
+            "stechstudio/laravel-jwt",
+            "tymon/jwt-auth"
+          ],
+          "permalink": "api-authentication"
+        },
+        {
+          "name": "Application Hardening",
+          "description": "Headers, firewalls, scanners and other defensive measures",
+          "projects": [
+            "akaunting/laravel-firewall",
+            "andreapollastri/checkpoint",
+            "bepsvpt/secure-headers",
+            "dgtlss/warden",
+            "hdaklue/larapath",
+            "mews/purifier",
+            "pragmarx/firewall",
+            "rahulalam31/laravel-abuse-ip",
+            "roave/security-advisories",
+            "sensiolabs/security-advisories",
+            "spatie/laravel-csp",
+            "sunspikes/clamav-validator",
+            "valorin/pwned-validator",
+            "ziming/laravel-zxcvbn"
+          ],
+          "permalink": "hardening"
+        },
+        {
+          "name": "Authentication",
+          "description": "Logging users in, from scaffolding to passwordless flows",
+          "projects": [
             "auth0/login",
+            "blaspsoft/token-forge",
+            "cartalyst/sentinel",
+            "charlielangridge/playa",
+            "chr15k/laravel-legacy-bridge",
+            "cjmellor/browser-sessions",
+            "grosv/laravel-passwordless-login",
+            "laravel/breeze",
+            "laravel/fortify",
+            "little-green-man/earhart",
+            "pushery/email-magic-link-for-laravel",
+            "reshadman/laravel-mongo-auth",
+            "spiderwebtr/isauth"
+          ],
+          "permalink": "authentication"
+        },
+        {
+          "name": "Authorization & Permissions",
+          "description": "Roles, permissions, teams and bans",
+          "projects": [
             "beatswitch/lock",
-            "benbjurstrom/otpz",
-            "beyondcode/laravel-credentials",
             "bezhansalleh/filament-shield",
             "bican/roles",
-            "blaspsoft/socialiteplus",
-            "cartalyst/sentinel",
-            "chr15k/laravel-legacy-bridge",
-            "cjmellor/blockade",
-            "codezero/laravel-stagefront",
             "cybercog/laravel-ban",
             "directorytree/authorization",
-            "directorytree/bartender",
             "edulazaro/larallow",
             "eneadm/ladder",
             "grazulex/laravel-multipersona",
-            "grosv/laravel-passwordless-login",
-            "haruncpi/laravel-user-activity",
             "hasinhayder/tyro",
             "hdaklue/porter",
             "hexters/hexa-lite",
             "inani/maravel-permissions",
-            "jeremykenedy/laravel2step",
-            "joelbutcher/socialstream",
-            "juststeveking/laravel-bastion",
+            "innoge/laravel-policy-soft-cache",
             "kyrch/laravel-prohibitions",
-            "lab404/laravel-impersonate",
-            "laragear/two-factor",
-            "laragear/webauthn",
-            "laravel/breeze",
-            "laravel/fortify",
-            "laravel/passport",
-            "laravel/sanctum",
-            "laravel/socialite",
-            "lcobucci/jwt",
-            "lucadegasperi/oauth2-server-laravel",
-            "m1guelpf/laravel-fastlogin",
             "mateusjunges/laravel-acl",
             "mchev/banhammer",
             "mpociot/teamwork",
-            "octopyid/laravel-impersonate",
-            "opcodesio/log-viewer",
-            "pragmarx/google2fa",
-            "pushery/email-magic-link-for-laravel",
-            "rap2hpoutre/laravel-log-viewer",
-            "rappasoft/laravel-authentication-log",
-            "reshadman/laravel-mongo-auth",
             "santigarcor/laratrust",
             "silber/bouncer",
-            "spatie/laravel-activitylog",
-            "spatie/laravel-permission",
-            "spiderwebtr/isauth",
-            "tymon/jwt-auth",
-            "viacreative/sudo-su"
+            "spatie/laravel-permission"
           ],
-          "permalink": "auth-permissions"
+          "permalink": "authorization"
         },
         {
-          "name": "Security",
-          "description": "Hardening an application: encryption, request protection and vulnerability scanning",
+          "name": "Encryption & Hashing",
+          "description": "Encrypting fields, files and credentials",
           "projects": [
-            "achyutn/laravel-hls",
-            "akaunting/laravel-firewall",
-            "albertcht/invisible-recaptcha",
-            "andreapollastri/checkpoint",
-            "anhskohbo/no-captcha",
-            "bepsvpt/secure-headers",
-            "cjmellor/browser-sessions",
-            "derekcodes/turnstile-laravel",
-            "dgtlss/warden",
+            "betterapp/laravel-db-encrypter",
+            "beyondcode/laravel-credentials",
             "ercsctt/laravel-file-encryption",
+            "jacknoordhuis/laravel-database-hashing",
+            "spatie/crypto",
+            "spatie/laravel-ciphersweet"
+          ],
+          "permalink": "encryption"
+        },
+        {
+          "name": "Impersonation",
+          "description": "Logging in as another user",
+          "projects": [
+            "franbarbalopez/mirror",
+            "lab404/laravel-impersonate",
+            "maurohmartinez/impersonate-users-backpack-laravel",
+            "octopyid/laravel-impersonate",
+            "viacreative/sudo-su"
+          ],
+          "permalink": "impersonation"
+        },
+        {
+          "name": "Invitations",
+          "description": "Invite codes and invite-only sign-ups",
+          "projects": [
+            "clarkeash/doorman",
+            "mateusjunges/laravel-invite-codes",
+            "offload-project/laravel-invite-only"
+          ],
+          "permalink": "invitations"
+        },
+        {
+          "name": "Privacy & GDPR",
+          "description": "Cookie consent, data redaction and personal data exports",
+          "projects": [
+            "ashallendesign/redactable-models",
+            "devrabiul/laravel-cookie-consent",
             "fuko-php/masked",
-            "grazulex/laravel-sharelink",
-            "hashids/hashids",
-            "hdaklue/larapath",
-            "intermax/veil",
-            "jenssegers/optimus",
-            "laravel-chronicle/core",
-            "mokhosh/muddle",
-            "nicobleiler/php-passphrase",
-            "oneduo/laravel-recaptcha-enterprise",
-            "pragmarx/firewall",
-            "promptphp/intercept",
-            "rahul900day/laravel-captcha",
-            "rahulalam31/laravel-abuse-ip",
-            "roave/security-advisories",
-            "ryangjchandler/laravel-cloudflare-turnstile",
-            "salehhashemi/laravel-otp-manager",
-            "sensiolabs/security-advisories",
-            "spatie/laravel-ciphersweet",
-            "spatie/laravel-csp",
-            "spatie/laravel-honeypot",
-            "spatie/laravel-littlegatekeeper",
-            "sunspikes/clamav-validator",
+            "mtownsend/array-redactor",
+            "scify/laravel-cookie-guard",
+            "soved/laravel-gdpr",
+            "spatie/laravel-cookie-consent",
+            "spatie/laravel-personal-data-export",
+            "whitecube/laravel-cookie-consent",
             "yorcreative/laravel-scrubber"
           ],
-          "permalink": "security"
+          "permalink": "privacy"
+        },
+        {
+          "name": "Social Login",
+          "description": "Authenticating through third-party OAuth providers",
+          "projects": [
+            "adamwathan/eloquent-oauth",
+            "blaspsoft/socialiteplus",
+            "directorytree/bartender",
+            "joelbutcher/socialstream",
+            "laravel/socialite",
+            "mikebronner/laravel-sign-in-with-apple"
+          ],
+          "permalink": "social-login"
+        },
+        {
+          "name": "Spam & Bot Protection",
+          "description": "Captchas, honeypots and profanity filters",
+          "projects": [
+            "albertcht/invisible-recaptcha",
+            "anhskohbo/no-captcha",
+            "blaspsoft/blasp",
+            "derekcodes/turnstile-laravel",
+            "erag/laravel-disposable-email",
+            "jonpurvis/squeaky",
+            "lukeraymonddowning/honey",
+            "mokhosh/muddle",
+            "oneduo/laravel-recaptcha-enterprise",
+            "rahul900day/laravel-captcha",
+            "ryangjchandler/laravel-cloudflare-turnstile",
+            "spatie/laravel-honeypot"
+          ],
+          "permalink": "spam-protection"
+        },
+        {
+          "name": "Two-Factor & Passkeys",
+          "description": "Second factors, one-time passwords and WebAuthn",
+          "projects": [
+            "asbiin/laravel-webauthn",
+            "benbjurstrom/otpz",
+            "ikechukwukalu/requirepin",
+            "jeremykenedy/laravel2step",
+            "laragear/two-factor",
+            "laragear/webauthn",
+            "m1guelpf/laravel-fastlogin",
+            "pragmarx/google2fa",
+            "salehhashemi/laravel-otp-manager",
+            "spatie/laravel-passkeys"
+          ],
+          "permalink": "two-factor"
         }
       ],
-      "description": "Authentication, authorization and hardening",
+      "description": "Who may enter, what they may do and how the application is hardened",
       "name": "Security & Access",
       "permalink": "security-and-access"
+    },
+    {
+      "categories": [
+        {
+          "name": "Assertions & Expectations",
+          "description": "Extra assertions for responses, views and routes",
+          "projects": [
+            "defstudio/pest-plugin-laravel-expectations",
+            "jasonmccreary/laravel-test-assertions",
+            "nunomaduro/laravel-mojito",
+            "sinnbeck/laravel-dom-assertions",
+            "spatie/pest-plugin-route-testing",
+            "spatie/tabular-assertions"
+          ],
+          "permalink": "assertions"
+        },
+        {
+          "name": "Browser Testing",
+          "description": "Driving a real browser against the application",
+          "projects": [
+            "laracasts/cypress",
+            "laracasts/integrated",
+            "laravel/dusk",
+            "web-id/laravel-playwright"
+          ],
+          "permalink": "browser-testing"
+        },
+        {
+          "name": "Factories & Test Data",
+          "description": "Generating models and fake data for tests",
+          "projects": [
+            "coderello/laravel-populated-factory",
+            "directorytree/dummy",
+            "jacobbennett/stripe-test-token",
+            "jonpurvis/faker-stripe",
+            "jpcaparas/laravel-faker-openai",
+            "lukeraymonddowning/poser",
+            "mpociot/laravel-test-factory-helper",
+            "worksome/request-factories"
+          ],
+          "permalink": "test-data"
+        },
+        {
+          "name": "Mocking & Fakes",
+          "description": "Faking mail, logs and HTTP responses in tests",
+          "projects": [
+            "gromatics/http-fixtures",
+            "kirschbaum-development/mail-intercept",
+            "tightenco/mailthief",
+            "timacdonald/log-fake",
+            "yllw-digital/laravel-chatgpt-mock-api"
+          ],
+          "permalink": "mocking"
+        },
+        {
+          "name": "Test Frameworks",
+          "description": "Running the test suite itself",
+          "projects": [
+            "milroyfraser/pest-plugin-gwt",
+            "orchestra/testbench",
+            "pestphp/pest"
+          ],
+          "permalink": "test-frameworks"
+        },
+        {
+          "name": "Test Tooling",
+          "description": "Mutation testing, coverage, speed and other test suite tooling",
+          "projects": [
+            "codedungeon/phpunit-result-printer",
+            "drfraker/snipe-migrations",
+            "grazulex/laravel-chronotrace",
+            "infection/infection",
+            "johnkary/phpunit-speedtrap",
+            "pecl/pcov",
+            "pestphp/pest-plugin-profanity",
+            "pragmarx/tddd",
+            "volt-test/laravel-performance-testing",
+            "webcrafts-studio/lens-for-laravel"
+          ],
+          "permalink": "test-tooling"
+        }
+      ],
+      "description": "Test frameworks and the tooling that surrounds them",
+      "name": "Testing",
+      "permalink": "testing"
+    },
+    {
+      "categories": [
+        {
+          "name": "Collections & Macros",
+          "description": "Collections, pipelines and general PHP building blocks",
+          "projects": [
+            "azjezz/psl",
+            "mtownsend/progress",
+            "omarchouman/lara-util-x",
+            "sebastiaanluca/php-pipe-operator",
+            "spatie/laravel-collection-macros",
+            "spatie/piper",
+            "surgiie/transformer",
+            "tightenco/collect"
+          ],
+          "permalink": "collections"
+        },
+        {
+          "name": "Dates & Time",
+          "description": "Periods, recurrence, opening hours and timezones",
+          "projects": [
+            "hanifhefaz/dcter",
+            "intervention/zodiac",
+            "label84/laravel-hours-helper",
+            "laraveljutsu/zap",
+            "mohammedmanssour/laravel-recurring-models",
+            "simshaun/recurr",
+            "spatie/opening-hours",
+            "spatie/period",
+            "whitecube/laravel-timezones"
+          ],
+          "permalink": "dates-and-time"
+        },
+        {
+          "name": "IDs & Random Values",
+          "description": "Unique ids, hashids, snowflakes and secure random values",
+          "projects": [
+            "godruoyi/php-snowflake",
+            "hashids/hashids",
+            "jenssegers/optimus",
+            "justbetter/laravel-unique-values",
+            "nicobleiler/php-passphrase",
+            "sqids/sqids",
+            "valorin/random",
+            "vinkla/hashids"
+          ],
+          "permalink": "identifiers"
+        },
+        {
+          "name": "JSON, XML & Serialization",
+          "description": "Reading and writing structured data formats",
+          "projects": [
+            "cerbero/json-parser",
+            "cerbero/lazy-json-pages",
+            "eastwest/json",
+            "mischasigtermans/laravel-toon",
+            "noki/laravel-xml-converter",
+            "rodenastyle/stream-parser",
+            "saloonphp/xml-wrangler"
+          ],
+          "permalink": "serialization"
+        },
+        {
+          "name": "Math & Numbers",
+          "description": "Statistics, number formatting and numeric algorithms",
+          "projects": [
+            "hi-folks/rando-php",
+            "hi-folks/statistics",
+            "marvinlabs/laravel-luhn",
+            "rmunate/spell-number"
+          ],
+          "permalink": "math"
+        },
+        {
+          "name": "Strings & Text",
+          "description": "Formatting, transforming and inspecting text",
+          "projects": [
+            "blaspsoft/onym",
+            "colinodell/indentation",
+            "hotmeteor/regex",
+            "koenhendriks/laravel-str-acronym",
+            "michael-rubel/laravel-formatters",
+            "mpstenson/laravel-advanced-string",
+            "phlak/splat",
+            "stevebauman/hypertext",
+            "still-code/ar-php-laravel",
+            "tigitz/php-spellchecker",
+            "tomloprod/colority"
+          ],
+          "permalink": "strings"
+        }
+      ],
+      "description": "General purpose helpers that do not belong to any one layer",
+      "name": "Utilities",
+      "permalink": "utilities"
     }
   ]
 }
