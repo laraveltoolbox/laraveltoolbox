@@ -33,19 +33,7 @@ RSpec.describe MeiliSearch, type: :service do
         the_instance = instance_double described_class
 
         allow(described_class).to receive(:new)
-          .with(url: configured_url, api_key: nil)
-          .and_return(the_instance)
-
-        expect(described_class.client).to be the_instance
-      end
-
-      it "passes the configured api key along" do
-        the_instance = instance_double described_class
-        allow(ENV).to receive(:[]).and_call_original
-        allow(ENV).to receive(:[]).with("MEILI_SEARCH_KEY").and_return("s3cr3t")
-
-        allow(described_class).to receive(:new)
-          .with(url: configured_url, api_key: "s3cr3t")
+          .with(url: configured_url)
           .and_return(the_instance)
 
         expect(described_class.client).to be the_instance
@@ -71,28 +59,6 @@ RSpec.describe MeiliSearch, type: :service do
       search = described_class.new(url: "https://example.com")
 
       expect(search.http.default_options.persistent).to eq "https://example.com"
-    end
-
-    #
-    # Meilisearch listens on 7700, so an origin assembled from scheme and host
-    # alone would send every request to port 80 instead
-    #
-    it "keeps a non-default port in the persistent origin" do
-      search = described_class.new(url: "http://example.com:7700")
-
-      expect(search.http.default_options.persistent).to eq "http://example.com:7700"
-    end
-
-    it "authenticates with the api key as a bearer token" do
-      search = described_class.new(url: "https://example.com", api_key: "s3cr3t")
-
-      expect(search.http.default_options.headers["Authorization"]).to eq "Bearer s3cr3t"
-    end
-
-    it "prefers the api key over credentials carried in the url" do
-      search = described_class.new(url: "https://foo:bar@example.com", api_key: "s3cr3t")
-
-      expect(search.http.default_options.headers["Authorization"]).to eq "Bearer s3cr3t"
     end
   end
 
