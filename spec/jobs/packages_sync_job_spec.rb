@@ -37,6 +37,10 @@ RSpec.describe PackagesSyncJob do
       expect(job.remote_packages.count("vendor/shared")).to eq 1
     end
 
+    it "includes the laravel core packages themselves" do
+      expect(job.remote_packages).to include(*described_class::ROOT_PACKAGES)
+    end
+
     it "includes packages referenced by the catalog" do
       category = Factories.category "Authentication"
       Factories.project("vendor/curated").update! categories: [category]

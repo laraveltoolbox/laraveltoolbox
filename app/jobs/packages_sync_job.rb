@@ -11,6 +11,9 @@
 #
 # * Everything published with the `laravel-package` composer type
 # * Everything depending on one of the laravel core packages
+# * The laravel core packages themselves, which are the roots of that dependent
+#   crawl and would otherwise only make it into the mirror when they happen to
+#   depend on one another
 # * Everything referenced by the catalog, so curated entries are never dropped
 #
 class PackagesSyncJob < ApplicationJob
@@ -54,7 +57,7 @@ class PackagesSyncJob < ApplicationJob
   end
 
   def remote_packages
-    @remote_packages ||= (typed_packages | dependent_packages | catalog_packages).uniq
+    @remote_packages ||= (ROOT_PACKAGES | typed_packages | dependent_packages | catalog_packages).uniq
   end
 
   private
