@@ -14,17 +14,21 @@ class MeiliSearch
   # Returns an instance configured from MEILI_SEARCH_URL
   # environment variable, or nil if that is not set.
   #
+  # MEILI_SEARCH_KEY carries the api key meilisearch expects as a bearer
+  # token. It is optional: an instance started without a master key, or one
+  # reached through a proxy that authenticates for us, needs no key.
+  #
   def self.client
     return if ENV["MEILI_SEARCH_URL"].blank?
 
-    new url: ENV["MEILI_SEARCH_URL"].presence
+    new url: ENV["MEILI_SEARCH_URL"].presence, api_key: ENV["MEILI_SEARCH_KEY"].presence
   end
 
   attr_accessor :http
   private :http=
 
-  def initialize(url:)
-    self.http = prepare_http_client URI.parse(url)
+  def initialize(url:, api_key: nil)
+    self.http = prepare_http_client URI.parse(url), api_key
   end
 
   def search(index, query)
@@ -71,16 +75,26 @@ class MeiliSearch
     Oj.load response.body
   end
 
-  def prepare_http_client(uri)
+  def prepare_http_client(uri, api_key = nil)
     client = HTTP
-             .persistent("#{uri.scheme}://#{uri.host}")
+             .persistent(persistent_origin(uri))
              .timeout(connect: 2.seconds, write: 2.seconds, read: 2.seconds)
 
-    if [uri.user, uri.password].any?
-      client.basic_auth user: uri.user, pass: uri.password
-    else
-      client
-    end
+    return client.auth("Bearer #{api_key}") if api_key.present?
+    return client.basic_auth(user: uri.user, pass: uri.password) if [uri.user, uri.password].any?
+
+    client
+  end
+
+  #
+  # The origin every request is issued against. A non-default port has to be
+  # part of it: meilisearch listens on 7700, and dropping the port here would
+  # send every request to 80 instead.
+  #
+  def persistent_origin(uri)
+    host = uri.port == uri.default_port ? uri.host : "#{uri.host}:#{uri.port}"
+
+    "#{uri.scheme}://#{host}"
   end
 
   def queue_index_update(index, path, data) # rubocop:disable Naming/PredicateMethod -- not a predicate

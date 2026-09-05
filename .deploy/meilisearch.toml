@@ -1,0 +1,37 @@
+# Standalone meilisearch instance backing the project search, running as its
+# own tiny fly.io app. See doc/deployment.md for the provisioning runbook.
+#
+# Like redis it is reachable exclusively over the organization's private
+# network at laraveltoolbox-meili.internal:7700 - no public IPs are allocated -
+# and requires the master key, which the application sends as a bearer token
+# (fly secrets set --app laraveltoolbox-meili MEILI_MASTER_KEY=...).
+#
+# The index is derived data: every document in it is rebuilt from postgres by
+# `rake meilisearch:reindex`. The volume exists so a restart does not force a
+# reindex, not because anything here is irreplaceable.
+#
+# Deploy with: fly deploy --config .deploy/meilisearch.toml
+
+app = "laraveltoolbox-meili"
+primary_region = "fra"
+
+[build]
+  image = "getmeili/meilisearch:v1.53.1"
+
+[env]
+  # Production mode is what makes the master key mandatory rather than optional
+  MEILI_ENV = "production"
+  MEILI_DB_PATH = "/meili_data/data.ms"
+  MEILI_NO_ANALYTICS = "true"
+  # Fly's private network is IPv6, and meilisearch binds to localhost unless
+  # told otherwise - which would make it unreachable from the app
+  MEILI_HTTP_ADDR = "[::]:7700"
+
+[mounts]
+  source = "meili_data"
+  destination = "/meili_data"
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1

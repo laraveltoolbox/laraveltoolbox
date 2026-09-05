@@ -62,6 +62,41 @@ This wraps `fly ssh console --pty -C "bin/rails console"`. (The image keeps the
 mise-managed ruby toolchain on `PATH`, so any other one-off command works the
 same way, e.g. `fly ssh console -C "bin/rails db:migrate:status"`.)
 
+## Search
+
+Project search runs against postgres full text search by default. Setting
+`NEW_SEARCH` switches it to the meilisearch index instead, which
+[Search](../app/models/search.rb) queries for matching permalinks and then loads
+the records themselves from postgres.
+
+Meilisearch runs as its own app, configured in
+[.deploy/meilisearch.toml](../.deploy/meilisearch.toml). Provisioning it:
+
+```sh
+fly apps create laraveltoolbox-meili
+fly volumes create meili_data --app laraveltoolbox-meili --region fra --size 3
+fly secrets set --app laraveltoolbox-meili MEILI_MASTER_KEY="$(openssl rand -hex 32)"
+fly deploy --config .deploy/meilisearch.toml
+
+# point the application at it - the key is the same master key as above
+fly secrets set --app laraveltoolbox \
+  MEILI_SEARCH_URL=http://laraveltoolbox-meili.internal:7700 \
+  MEILI_SEARCH_KEY=...
+
+mise run console:fly   # then, or via fly ssh console:
+#   bundle exec rake meilisearch:setup    # ranking rules and attributes
+#   bundle exec rake meilisearch:reindex  # fill it from postgres
+```
+
+`meilisearch:settings` prints what the index is currently configured with.
+Once the index is filled, `fly secrets set --app laraveltoolbox NEW_SEARCH=1`
+switches search over; unsetting it switches back, since the postgres path is
+left in place.
+
+Keeping the index current afterwards needs nothing: `ProjectUpdateJob` queues a
+`ProjectSearchIndexJob` for every project it touches, and that job is a no-op
+while `MEILI_SEARCH_URL` is unset.
+
 ## Database exports
 
 The [selective database export](../app/models/database/selective_export.rb) for
