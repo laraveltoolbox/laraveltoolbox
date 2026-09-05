@@ -1,4 +1,4 @@
-# The Ruby Toolbox - Contributor Covenant Code of Conduct
+# The Laravel Toolbox - Contributor Covenant Code of Conduct
 
 ## Our Pledge
 
@@ -55,7 +55,9 @@ further defined and clarified by project maintainers.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at team@ruby-toolbox.com. All
+reported to the maintainers on GitHub - by opening an issue on this
+repository, or, where the report should not be public, by contacting a
+maintainer directly through their GitHub profile. All
 complaints will be reviewed and investigated and will result in a response that
 is deemed necessary and appropriate to the circumstances. The project team is
 obligated to maintain confidentiality with regard to the reporter of an incident.
