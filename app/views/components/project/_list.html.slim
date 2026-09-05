@@ -6,7 +6,7 @@
       .level.is-mobile
         .level-left
           .level-item
-            = link_to project do
+            = link_to project_href(project) do
               strong= project.permalink
         .level-right
           - metrics.each do |metric|

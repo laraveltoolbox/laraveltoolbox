@@ -13,7 +13,7 @@
       .buttons
         - limit = 2
         - category.projects.first(limit).each do |project|
-          = link_to project, class: "project" do
+          = link_to project_href(project), class: "project" do
             strong= project.permalink
 
         - if category.projects.length > limit

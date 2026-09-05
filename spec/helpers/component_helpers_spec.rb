@@ -25,5 +25,20 @@ RSpec.describe ComponentHelpers do
 
       expect { helper.category_card(category) }.not_to make_database_queries
     end
+
+    it "links to projects with the slash of a composer package name unescaped" do
+      Factories.project("vendor/sample").update! categories: [category]
+
+      expect(helper.category_card(category)).to include 'href="/projects/vendor/sample"'
+    end
+  end
+
+  describe "#project_list" do
+    it "links to projects with the slash of a composer package name unescaped" do
+      projects = [Factories.project("vendor/sample")]
+
+      expect(helper.project_list(projects, title: "Sample"))
+        .to include 'href="/projects/vendor/sample"'
+    end
   end
 end
