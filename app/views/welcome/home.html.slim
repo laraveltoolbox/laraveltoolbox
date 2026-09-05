@@ -1,4 +1,8 @@
-- cache "welcome" do
+/ The catalog counts below move as the mirror grows, so this deliberately uses
+  the expiring cache rather than a plain fragment: the cache store is an
+  in-process memory store, and a static key would freeze the numbers for as
+  long as the process lives.
+- expiring_cache "welcome" do
   = landing_hero title: t(:title, scope: :startpage), image: "startpage/main.jpg" do
     markdown:
       The Laravel Toolbox is a catalog of all [Composer packages](https://packagist.org) that keeps track of popularity and health metrics to help you choose a reliable library
@@ -35,8 +39,11 @@
 
   - if @featured_categories.any?
     section.section.popular-categories: .container
-      / - description = t(:stats, scope: :startpage, projects_with_categories: @stats.projects_with_categories_count, categories: @stats.categories_count, packages: @stats.packages_count)
-      = section_heading "Popular Categories", help_path: "docs/features/categories" do
+      - description = t(:stats, scope: :startpage,
+                        projects_with_categories: number_with_delimiter(@stats.projects_with_categories_count),
+                        categories: @stats.categories_count,
+                        packages: number_with_delimiter(@stats.packages_count))
+      = section_heading "Popular Categories", description:, help_path: "docs/features/categories" do
         a.button href=categories_path
           span Browse all categories
 

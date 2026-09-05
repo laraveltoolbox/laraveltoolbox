@@ -9,6 +9,12 @@ RSpec.describe WelcomeController do
 
   describe "GET home" do
     let(:do_request) { get :home }
+    let(:stats) do
+      instance_double Stats,
+                      projects_with_categories_count: 1141,
+                      categories_count:               18,
+                      packages_count:                 44_060
+    end
 
     it "responds with success" do
       expect(do_request).to be_successful
@@ -26,10 +32,19 @@ RSpec.describe WelcomeController do
     end
 
     it "assigns a Stats instance" do
-      stats = instance_double Stats
       allow(Stats).to receive(:new).and_return(stats)
       do_request
       expect(assigns(:stats)).to be stats
+    end
+
+    #
+    # The catalog is the reason to be on this page, so its size is worth
+    # stating rather than leaving to be guessed from the category cards
+    #
+    it "states the size of the catalog" do
+      allow(Stats).to receive(:new).and_return(stats)
+
+      expect(do_request.body).to include "We list 1,141 projects in 18 categories as well as 44,060"
     end
 
     it "assigns trending_projects" do
