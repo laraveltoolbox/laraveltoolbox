@@ -96,11 +96,14 @@ module Packagist
     end
 
     #
-    # The names of packages depending on the given package, ordered by downloads
-    # so that truncating via `max_pages` keeps the relevant ones.
+    # The names of packages depending on the given package.
+    #
+    # Ordered by name rather than by downloads: the list is walked in full, and
+    # download counts shift while the crawl is running, which moves packages
+    # across page boundaries and would silently drop them.
     #
     def dependents(name, max_pages: 1)
-      url = "#{File.join(BASE_URL, 'packages', name, 'dependents.json')}?order_by=downloads"
+      url = "#{File.join(BASE_URL, 'packages', name, 'dependents.json')}?order_by=name"
 
       max_pages.times.each_with_object([]) do |_page, names|
         data = get(url)

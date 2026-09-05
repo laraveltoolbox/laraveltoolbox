@@ -10,12 +10,12 @@
 # subset:
 #
 # * Everything published with the `laravel-package` composer type
-# * The most-downloaded dependents of the laravel core packages
+# * Everything depending on one of the laravel core packages
 # * Everything referenced by the catalog, so curated entries are never dropped
 #
 class PackagesSyncJob < ApplicationJob
-  # The packages virtually every laravel package depends on. Their dependents
-  # are ordered by downloads, so the truncation below keeps the relevant ones.
+  # The packages virtually every laravel package depends on. Between them their
+  # dependents are what makes a composer package a laravel one.
   ROOT_PACKAGES = %w[
     laravel/framework
     illuminate/support
@@ -23,9 +23,13 @@ class PackagesSyncJob < ApplicationJob
     illuminate/database
   ].freeze
 
-  # 100 dependents are returned per page, so this caps the mirror at roughly
-  # 2000 dependents per root package (minus the sizable overlap between them)
-  DEPENDENT_PAGES = 20
+  #
+  # Packagist serves 100 dependents per page and the whole list is walked, so
+  # this is a guard against a pagination loop rather than a coverage decision.
+  # illuminate/support, by far the widest of the roots, sits at roughly 440
+  # pages.
+  #
+  DEPENDENT_PAGES = 1_000
 
   LARAVEL_PACKAGE_TYPE = "laravel-package"
 

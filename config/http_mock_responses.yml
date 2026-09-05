@@ -357,7 +357,7 @@ https://packagist.org/packages/list.json?type=laravel-package:
         "vendor/other"
       ]
     }
-https://packagist.org/packages/laravel/framework/dependents.json?order_by=downloads:
+https://packagist.org/packages/laravel/framework/dependents.json?order_by=name:
   status: 200
   body: |-
     {
@@ -369,9 +369,9 @@ https://packagist.org/packages/laravel/framework/dependents.json?order_by=downlo
           "name": "vendor/second"
         }
       ],
-      "next": "https://packagist.org/packages/laravel/framework/dependents.json?page=2&order_by=downloads"
+      "next": "https://packagist.org/packages/laravel/framework/dependents.json?page=2&order_by=name"
     }
-https://packagist.org/packages/laravel/framework/dependents.json?page=2&order_by=downloads:
+https://packagist.org/packages/laravel/framework/dependents.json?page=2&order_by=name:
   status: 200
   body: |-
     {
@@ -381,7 +381,7 @@ https://packagist.org/packages/laravel/framework/dependents.json?page=2&order_by
         }
       ]
     }
-https://packagist.org/packages/unknown/package/dependents.json?order_by=downloads:
+https://packagist.org/packages/unknown/package/dependents.json?order_by=name:
   status: 404
   body: "{}"
 https://packagist.org/packages/list.json?type=unknown-type:
