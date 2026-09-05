@@ -20,6 +20,7 @@ class CatalogImport
     destroy_obsolete_categories
     link_projects_to_categories
     destroy_obsolete_categorizations
+    destroy_obsolete_projects
   end
 
   private
@@ -108,5 +109,26 @@ class CatalogImport
 
   def destroy_obsolete_categorizations
     Categorization.where.not(project_permalink: project_data).destroy_all
+  end
+
+  #
+  # `upsert_projects` creates a project record for every catalog entry,
+  # including the ones that name a plain github repository rather than a
+  # composer package. When such an entry is dropped or renamed upstream the
+  # categorizations above go, but until now the project itself stayed - with no
+  # package behind it and no category left pointing at it, invisible to
+  # everything except the counts.
+  #
+  # Projects backed by a mirrored package are none of this method's business:
+  # those are removed by the package sync when they disappear from packagist.
+  #
+  def destroy_obsolete_projects
+    # An empty catalog would match every github-only project here. That is a
+    # broken import rather than an instruction to wipe them, so leave it alone.
+    return if project_data.empty?
+
+    Project.where(package_name: nil)
+           .where.not(permalink: project_data)
+           .destroy_all
   end
 end

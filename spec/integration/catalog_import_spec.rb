@@ -94,5 +94,45 @@ RSpec.describe CatalogImport, :clean_database do
 
       expect { import.perform }.to change { project.categories.count }.from(1).to(0)
     end
+
+    #
+    # Catalog entries name github repositories as well as composer packages, so
+    # a project record is created for each of them. Dropping the entry used to
+    # leave that record behind forever, with nothing left to display.
+    #
+    it "removes projects the catalog no longer references" do
+      import.perform
+      obsolete = Project.create! permalink: "vendor/dropped-from-catalog"
+
+      expect { import.perform }.to change { Project.exists? obsolete.permalink }.to(false)
+    end
+
+    #
+    # Those belong to the package sync, which drops them when they go missing
+    # from packagist - the catalog has no say over them
+    #
+    it "keeps projects backed by a mirrored package" do
+      import.perform
+      Factories.package "vendor/mirrored"
+      Project.create! permalink: "vendor/mirrored", package_name: "vendor/mirrored"
+
+      expect { import.perform }.not_to(change { Project.exists? "vendor/mirrored" })
+    end
+
+    #
+    # A catalog that fetched but carries nothing is a broken import, and reading
+    # it as "every github-only project is obsolete" would empty the table
+    #
+    context "when the catalog references no projects at all" do
+      let(:catalog_data) do
+        super().tap do |data|
+          data["category_groups"].each { |group| group["categories"].each { |c| c["projects"] = [] } }
+        end
+      end
+
+      it "leaves the existing projects alone" do
+        expect { import.perform }.not_to change(Project, :count)
+      end
+    end
   end
 end
