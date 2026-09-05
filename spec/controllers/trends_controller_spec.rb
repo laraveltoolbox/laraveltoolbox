@@ -14,10 +14,10 @@ RSpec.describe TrendsController do
       expect(response).to redirect_to(action: :show, id: "2019-01-02")
     end
 
-    it "renders a text message when no data is in the database" do
-      allow(Package::DownloadStat).to receive(:maximum).with(:date)
+    it "renders the unavailable template when no data is in the database" do
+      allow(Package::Trend::Navigation).to receive(:latest_date).and_return(nil)
       get :index
-      expect(response.body).to eq "No stats data is available, please seed the database"
+      expect(response).to render_template :unavailable
     end
   end
 

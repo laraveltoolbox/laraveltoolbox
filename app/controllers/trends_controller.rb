@@ -6,8 +6,9 @@ class TrendsController < ApplicationController
     if latest_date
       redirect_to action: :show, id: latest_date
     else
-      # This would normally only happen on a local, empty database
-      render plain: "No stats data is available, please seed the database"
+      # A fresh instance has no download history yet, and trends need several
+      # weeks of it before the first ranking can be calculated
+      render :unavailable
     end
   end
 

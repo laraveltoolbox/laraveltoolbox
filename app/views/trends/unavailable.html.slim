@@ -1,0 +1,17 @@
+- content_for :title, "Trending Projects"
+
+.hero
+  section.section: .container
+    .columns: .column
+      h2= content_for :title
+      .description
+        markdown:
+          We are still collecting the download history that trends are calculated from.
+
+          A project counts as trending when its download growth over the last four weeks
+          exceeded the growth of the four weeks before that, so the first ranking can only
+          appear once enough weekly snapshots have accumulated. Until then this page stays
+          empty - nothing is broken, and there is nothing you need to do.
+
+          In the meantime you can [browse the catalog by category](/categories), or read
+          [how trends are calculated](/pages/docs/features/trending_projects).
