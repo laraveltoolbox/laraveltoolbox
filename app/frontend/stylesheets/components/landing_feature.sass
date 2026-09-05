@@ -47,9 +47,31 @@
         @extend .button, .is-outlined,.is-primary
 
   // The linked variant: the whole feature is the target, so it must not pick up
-  // link colouring for its body copy - only the title answers on hover
+  // link colouring for its body copy - only the title and its arrow answer on
+  // hover
   a.feature
     color: inherit
 
+    h3
+      display: flex
+      align-items: baseline
+      justify-content: space-between
+      gap: 0.5rem
+
+    // A second affordance beside the title's hover colour, which on its own is
+    // easy to miss while the pointer rests on the blurb. It stays visible at
+    // rest - a hover-only hint never reaches touch devices - but in grey, so
+    // the row reads as four titles rather than four buttons. On hover it turns
+    // with the title, and answers keyboard focus too: the feature is a link and
+    // can be tabbed to.
+    .link-arrow
+      color: $grey-light
+      font-size: 0.8em
+      transition: color 100ms linear
+
     &:hover h3
+      color: $primary
+
+    &:hover .link-arrow,
+    &:focus-visible .link-arrow
       color: $primary

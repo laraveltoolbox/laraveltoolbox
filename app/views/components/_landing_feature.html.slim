@@ -8,6 +8,11 @@
   header
     - if image
       .image= vite_image_tag File.join("images", image), title: title
-    h3= title
+    h3
+      = title
+      / Only the linked variant carries the arrow: it exists to announce the
+      / click target, and the plain variant does not have one to announce.
+      - if path
+        span.link-arrow aria-hidden="true": i.fa.fa-long-arrow-right
 
   = body
